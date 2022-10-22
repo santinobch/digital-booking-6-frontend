@@ -10,11 +10,6 @@ footer {
     justify-content: space-between;
     align-items: center;
 
-    & > * {
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-
     .socials {
         width: 191px;
         display: flex;
@@ -29,6 +24,10 @@ footer {
         & > * {
             margin-left: 19px;
             margin-right: 19px;
+        }
+
+        .socials {
+            display: none;
         }
     }
 }

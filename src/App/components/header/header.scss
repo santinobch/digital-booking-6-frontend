@@ -1,0 +1,15 @@
+header {
+    height: 80px;
+    width: 100vw;
+    position: sticky;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    & > * {
+        margin-left: 45px;
+        margin-right: 45px;
+    }
+}
