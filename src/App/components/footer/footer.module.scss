@@ -1,0 +1,58 @@
+@import "../../scss/colors";
+@import "../../scss/vars";
+
+footer {
+    background-color: $red-books;
+
+    width: 100vw;
+    height: $footer-height;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .copyright {
+        font-weight: 700;
+        font-size: 14px;
+        color: $white-books;
+    }
+
+    .socials {
+        width: 191px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    footer {
+        & > * {
+            margin-left: 19px;
+            margin-right: 19px;
+        }
+
+        .socials {
+            display: none;
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    footer {
+        & > * {
+            margin-left: 31px;
+            margin-right: 31px;
+        }
+    }
+}
+
+@media only screen and (min-width: 1366px) {
+    footer {
+        & > * {
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+    }
+}
