@@ -6,7 +6,7 @@ $radius: 10px;
     $card-height: 490px;
     $card-width: 395px;
     $card-info-height: 260px;
-    $normal-padding: 12px;
+    $normalPadding: 12px;
 
     height: $card-height;
     width: $card-width;
@@ -21,8 +21,8 @@ $radius: 10px;
         position: absolute;
 
         z-index: 2;
-        right: $normal-padding;
-        top: $normal-padding;
+        right: $normalPadding;
+        top: $normalPadding;
     }
 
     .cardContent {
@@ -51,7 +51,7 @@ $radius: 10px;
 
             width: $card-width;
             height: $card-info-height;
-            padding: $normal-padding;
+            padding: $normalPadding;
     
             display: flex;
             flex-direction: column;
@@ -147,14 +147,14 @@ $radius: 10px;
         $card-width: 635px;
         $card-height: 280px;
         $card-info-width: 323px;
-        $normal-padding: 22px;
+        $normalPadding: 22px;
 
         height: $card-height;
         width: $card-width;
 
         .favoritoImg {
-            right: calc($normal-padding + $card-info-width);
-            top: $normal-padding;
+            right: calc($normalPadding + $card-info-width);
+            top: $normalPadding;
         }
 
         .cardContent {
@@ -179,7 +179,7 @@ $radius: 10px;
 
                 height: $card-height;
                 width: $card-info-width;
-                padding: $normal-padding;
+                padding: $normalPadding;
             }
         }
     }
@@ -190,13 +190,13 @@ $radius: 10px;
     .card {
         $card-width: 710px;
         $card-info-width: 365px;
-        $normal-padding: 24px;
+        $normalPadding: 24px;
 
         width: $card-width;
 
         .favoritoImg {
-            right: calc($normal-padding + $card-info-width);
-            top: $normal-padding;
+            right: calc($normalPadding + $card-info-width);
+            top: $normalPadding;
         }
 
         .cardContent {
@@ -214,7 +214,7 @@ $radius: 10px;
 
             .cardInfo {
                 width: $card-info-width;
-                padding: $normal-padding;
+                padding: $normalPadding;
             }
         }
     }

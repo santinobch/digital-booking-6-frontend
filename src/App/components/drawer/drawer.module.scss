@@ -1,0 +1,68 @@
+@import "../../scss/colors";
+
+@media only screen and (max-width: 768px) {
+    .drawer {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    $normalPadding: 15px;
+    $dTopHeight: 175px;
+    $linksHeight: 80px;
+    $controlsHeight: calc(100vh - ($dTopHeight + $linksHeight));
+
+    .drawer {
+        z-index: 2;
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        width: 300px;
+        height: 100vh;
+
+        border: 1px solid $light-books;
+
+        .drawerTop {
+            height: $dTopHeight;
+            background-color: $red-books;
+            padding: $normalPadding;
+        }
+
+        .drawerBottom {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            height: calc(100vh - $dTopHeight);
+            padding: $normalPadding;
+
+            background-color: $white-books;
+
+            .controls {
+                text-align: end;
+                
+                height: $controlsHeight;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                .controlsTop {
+                    font-size: 16px;
+                    font-weight: 700;
+                    color: $black2-books;
+                }
+
+                .controlsBottom {
+
+                }
+            }
+
+            .links {
+                align-self: flex-end;
+                height: 80px;
+            }
+        }
+    }
+}
