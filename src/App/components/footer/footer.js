@@ -3,15 +3,15 @@ import linkedin from '../../../imgs/socials/linkedin.png';
 import twitter from '../../../imgs/socials/tweet.png';
 import instagram from '../../../imgs/socials/ig.png';
 
-import "./footer.scss";
+import styles from "./footer.module.scss";
 
 export default function Footer() {
     return (
         <footer>
-            <div class="copyright">
+            <div className={styles.copyright}>
                 ©2021 Digital Booking
             </div>
-            <div class="socials">
+            <div className={styles.socials}>
                 <a id="facebook" href=""><img src={facebook}/></a>
                 <a id="linkedin" href=""><img src={linkedin}/></a>
                 <a id="twitter" href=""><img src={twitter}/></a>

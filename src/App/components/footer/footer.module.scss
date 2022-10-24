@@ -1,14 +1,21 @@
 @import "../../scss/colors";
+@import "../../scss/vars";
 
 footer {
     background-color: $red-books;
 
     width: 100vw;
-    height: 58px;
+    height: $footer-height;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
+    .copyright {
+        font-weight: 700;
+        font-size: 14px;
+        color: $white-books;
+    }
 
     .socials {
         width: 191px;

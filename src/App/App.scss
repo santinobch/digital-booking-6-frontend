@@ -3,6 +3,13 @@
 
 @import "~bootstrap/scss/bootstrap";
 
+@import "./scss/vars";
+
 body {
   font-family: 'Quicksand', sans-serif;
+}
+
+main {
+  min-height: $main-height;
+  background-color: grey;
 }

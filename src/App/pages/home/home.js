@@ -1,11 +1,11 @@
-import Header from "../../components/header/header";
-import Footer from "../../components/footer/footer";
+import Card from "../../components/card/card";
+import RecommendedCard from "../../components/recommendedCard/recommendedCard";
 
 export default function Home() {
     return (
-        <div>
-            <Header></Header>
-            <Footer></Footer>
-        </div>
+        <main>
+            <Card></Card>
+            <RecommendedCard></RecommendedCard>
+        </main>
     );
 }

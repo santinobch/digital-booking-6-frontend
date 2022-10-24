@@ -1,5 +1,7 @@
+@import "../../scss/vars";
+
 header {
-    height: 80px;
+    height: $header-height;
     width: 100vw;
     position: sticky;
 
@@ -9,7 +11,7 @@ header {
     align-items: center;
 
     & > * {
-        margin-left: 45px;
-        margin-right: 45px;
+        margin-left: 40px;
+        margin-right: 40px;
     }
 }
