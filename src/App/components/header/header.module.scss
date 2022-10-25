@@ -1,17 +1,17 @@
 @import "../../scss/vars";
 
 header {
-    height: $header-height;
-    width: 100vw;
-    position: sticky;
+  height: $header-height;
+  width: 100vw;
+  position: sticky;
 
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
-    & > * {
-        margin-left: 40px;
-        margin-right: 40px;
-    }
+  & > * {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
 }

@@ -7,27 +7,27 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <div className="login-container">
-      <Formik
-        initialValues={{ email: "", password: "" }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
-        }}
-      >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting,
-          /* and other goodies */
-        }) => (
-          <form onSubmit={handleSubmit}>
+    <Formik
+      initialValues={{ email: "", password: "" }}
+      onSubmit={(values, { setSubmitting }) => {
+        setTimeout(() => {
+          alert(JSON.stringify(values, null, 2));
+          setSubmitting(false);
+        }, 400);
+      }}
+    >
+      {({
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        isSubmitting,
+        /* and other goodies */
+      }) => (
+        <form onSubmit={handleSubmit}>
+          <div className="login-container">
             <h2 className="login-title">Iniciar Sessión</h2>
 
             <label className="login-label">
@@ -48,6 +48,7 @@ const Login = () => {
                 onChange={handleChange}
                 placeholder="******"
                 value={values.password}
+                isPassword
               />
             </label>
             <div className="login_ingresar">
@@ -57,10 +58,10 @@ const Login = () => {
                 aun no tenes cuenta? <Link to={`/registrarse`}>Registrate</Link>
               </span>
             </div>
-          </form>
-        )}
-      </Formik>
-    </div>
+          </div>
+        </form>
+      )}
+    </Formik>
   );
 };
 

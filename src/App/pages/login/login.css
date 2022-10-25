@@ -1,16 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+
 body {
   box-sizing: border-box;
   margin: 0;
 }
 
 .login-container {
-  margin: 0 auto;
   max-width: 500px;
+  margin: 0 auto;
 }
 .login-title {
   color: #1dbeb4;
   text-align: center;
-  font-size: 200%;
+  font-size: 26px;
+  font-weight: bold;
+  font-family: "Quicksand", sans-serif;
 }
 .login-label p {
   font-style: normal;
@@ -20,15 +24,23 @@ body {
   color: #383b58;
   margin: 3px auto;
 }
+.login_ingresar {
+  display: flex;
+  flex-direction: column;
+}
 .login_ingresar button {
   background: #1dbeb4;
   /* botton sombra */
-  position: relative;
-  left: 25%;
+
+  text-align: center;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
   border-radius: 5px;
-  margin: 40px 0;
+  margin: 40px auto 2px 150px;
   width: 206px;
   height: 40px;
   color: white;
+}
+.login_ingresar span {
+  line-height: normal;
+  text-align: center;
 }

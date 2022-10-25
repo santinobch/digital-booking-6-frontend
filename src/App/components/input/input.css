@@ -7,3 +7,15 @@
   height: 40px;
   width: 440px;
 }
+.input-container {
+  position: relative;
+}
+
+.verPassword {
+  position: absolute;
+  top: 50%;
+  left: 93%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+}

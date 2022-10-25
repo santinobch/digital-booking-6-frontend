@@ -1,10 +1,31 @@
+import * as Yup from "yup";
+
 import { Formik } from "formik";
 import Input from "../../components/input/input";
 import { Link } from "react-router-dom";
 
+const registrarseSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, "Demasiado corto")
+    .max(50, "Demasiado largo!")
+    .required("Este Campo es obligatorio"),
+  apellido: Yup.string()
+    .min(2, "Demasiado corto")
+    .max(50, "Demasiado largo")
+    .required("Este Campo es obligatorio"),
+  email: Yup.string()
+    .email("Correo invalido")
+    .required("Este Campo es obligatorio"),
+  password: Yup.string().required("Este Campo es obligatorio"),
+  password_confirm: Yup.string().oneOf(
+    [Yup.ref("password"), null],
+    "Las Contraseñas no coinciden"
+  ),
+});
 const Registro = () => {
   return (
     <Formik
+      validationSchema={registrarseSchema}
       initialValues={{
         email: "",
         password: "",
@@ -38,6 +59,7 @@ const Registro = () => {
               onChange={handleChange}
               value={values.name}
             />
+            <div>{errors.name}</div>
           </label>
           <label>
             <p>Apellido</p>
@@ -47,6 +69,7 @@ const Registro = () => {
               onChange={handleChange}
               value={values.apellido}
             />
+            <div>{errors.apellido}</div>
           </label>
           <label>
             <p>Correo Electronico</p>
@@ -56,6 +79,7 @@ const Registro = () => {
               onChange={handleChange}
               value={values.email}
             />
+            <div>{errors.email}</div>
           </label>
           <label>
             <p>Contraseña</p>
@@ -64,7 +88,10 @@ const Registro = () => {
               type="password"
               onChange={handleChange}
               value={values.password}
+              isPassword
             />
+
+            <div>{errors.password}</div>
           </label>
           <label>
             <p>Confirmar Contraseña</p>
@@ -74,6 +101,7 @@ const Registro = () => {
               onChange={handleChange}
               value={values.password_confirm}
             />
+            <div>{errors.password_confirm}</div>
           </label>
           <div>
             <button type="buttom">Crear Cuenta</button>
