@@ -31,7 +31,7 @@ export default function Drawer() {
                                 <a href="">Iniciar sesión</a>
                             </div>
                         </div>
-                        <div className={styles.controlsBottom}>
+                        <div className={styles.controlsBottom + " " + styles.bottomBorder}>
                             <p>¿Deseas <a href="">cerrar sesión</a>?</p>
                         </div>
                     </div>
