@@ -1,0 +1,144 @@
+.input-calendar {
+    width: 422px;
+    height: 40px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
+    padding-left: 42px;
+    border: none;
+    color: #545776;
+    font-size: 14px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: contain;
+    background-size: 22px;
+    background-position: 16px;
+    font-weight: 500 !important;
+  }
+  
+  .input-calendar:focus {
+    outline: none;
+  }
+  
+  .CalendarButton {
+    width: 206px;
+    height: 37px;
+    background-color: #1dbeb4;
+    color: #ffff;
+    border: none;
+    border-radius: 5px;
+    margin-left: 355px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .rmdp-wrapper {
+    width: 858px;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    border-radius: 5px;
+    height: 309px;
+  }
+  
+  .teal .rmdp-day.rmdp-today span {
+    background-color: #1dbeb4ab;
+  }
+  
+  .teal .rmdp-week-day {
+    color: #383b58;
+  }
+  
+  .teal .rmdp-range {
+    background-color: #1dbeb4;
+  }
+  
+  .teal .rmdp-arrow-container:hover {
+    background-color: #1dbeb4;
+  }
+  
+  .rmdp-wrapper {
+    width: 650px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    border-right: 1px solid #A8A8A8;
+  }
+  
+  .rmdp-day {
+    border-radius: 50%;
+  }
+  
+  .rmdp-range.end,
+  .rmdp-range.start {
+    border: 2px solid #0b8179;
+  }
+  
+  .rmdp-week,
+  .rmdp-ym {
+    width: 263px;
+  }
+  
+  .teal .rmdp-arrow-container:hover {
+    padding-top: 1px;
+  }
+  
+  .rmdp-top-class {
+    justify-content: center;
+    margin-bottom: 0px;
+  }
+  
+  .rmdp-day-picker {
+    display: flex;
+    gap: 40px;
+  }
+  
+  .rmdp-day-picker::after {
+    content: "";
+    width: 0.5px;
+    height: 100%;
+    position: absolute;
+    right: 50%;
+    margin-top: -19px;
+    background: #a8a8a8;
+  }
+  
+  @media screen and (max-width: 1278px) {
+    .input-calendar {
+      width: 254px;
+    }
+  
+    .CalendarButton {
+      margin-left: 0px;
+      width: 575px;
+    }
+  
+    .rmdp-wrapper {
+      width: 620px;
+    }
+  }
+  
+  @media screen and (max-width: 706px) {
+    .input-calendar {
+      width: 394px;
+    }
+  
+    .CalendarButton {
+      width: 290px;
+    }
+  
+    .rmdp-wrapper {
+      width: 375px;
+    }
+  
+    .rmdp-week,
+    .rmdp-ym {
+      width: 290px;
+    }
+  
+    .rmdp-day-picker::after {
+      content: "";
+      width: 0px;
+    }
+  }
