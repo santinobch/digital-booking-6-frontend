@@ -1,0 +1,73 @@
+@import "../../scss/colors";
+
+.rmdp-container {
+    width: 47%;
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+    
+    .rmdp-input {
+        width: 100%;
+        height: 40px;
+        margin: 0 0.5rem;
+        padding: 0.5rem;
+        font-size: 1rem;
+        color: #808080;
+        border-color: #cccccc;
+
+        @media (max-width: 768px) {
+            margin: 0.5rem 0;
+        }
+    }
+}
+
+.rmdp-calendar {
+    .rmdp-header {
+        .rmdp-arrow-container:hover {
+            background-color: $red-books;
+            color: white;
+            align-items: center;
+            box-shadow: none;
+
+            .rmdp-arrow {
+                margin: 0;
+            }
+        }
+    }
+
+    .rmdp-day-picker {
+        .rmdp-week {
+            .rmdp-week-day {
+                color: $red-books;
+            }
+
+            .rmdp-day {
+                margin: 5px;
+            }
+
+            .rmdp-range {
+                background-color: $red-books;
+                border-radius: 50%;
+                box-shadow: none;
+            }
+
+            .rmdp-today {
+                background-color: $red-books;
+                border-radius: 50%;
+
+                .sd {
+                    background-color: $red-books;
+                }
+            }
+
+            .rmdp-day:not(.rmdp-disabled):not(.rmdp-day-hidden) span:hover {
+                background-color: $red-books;
+            }
+
+            .icon-calendar {
+                transform: scale(-1, 1);
+            }
+        }
+    }
+}

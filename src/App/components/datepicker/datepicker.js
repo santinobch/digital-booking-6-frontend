@@ -1,29 +1,25 @@
 import "react-multi-date-picker/styles/colors/teal.css";
-import DatePicker, {DateObject} from "react-multi-date-picker";
-import "../datepicker/datepicker.css";
-import transition from "react-element-popper/animations/transition";
-import opacity from "react-element-popper/animations/opacity";
+import DatePicker from "react-multi-date-picker";
+import "./datepicker.scss";
 import { useRef } from "react";
 
 export default function Datepicker() {
   const datePickerRef = useRef();
   const weekDays = ["S", "M", "T", "W", "T", "F", "S"]
+  const width = window.innerWidth;
 
   return (
     <DatePicker
-      weekDays={weekDays}
       ref={datePickerRef}
-      calendarPosition="bottom-center"
-      inputClass="input-calendar"
-      className="teal"
-      numberOfMonths={2}
+      weekDays={weekDays}
+      numberOfMonths={width >= 768 ? 2 : 1}
       disableMonthPicker
       disableYearPicker
+      format="D MMM"
       range
-      minDate={new DateObject()}
+      minDate={new Date()}
       hideYear
-      placeholder="Check in - Check out"
-      animations={[opacity(), transition({ from: 35, duration: 800 })]}
+      placeholder= "📅 Check in - Check out"
     >
       <button
         className="CalendarButton"
