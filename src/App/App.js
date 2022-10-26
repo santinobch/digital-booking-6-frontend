@@ -6,8 +6,9 @@ import Footer from "./components/footer/footer";
 import Header from "./components/header/header";
 import Home from "./pages/home/home";
 import Login from "./pages/login/login";
+import Register from "./pages/register/register";
 import { Outlet } from "react-router-dom";
-import Registro from "./pages/login/registrarse";
+
 
 function Root() {
   return (
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
       },
       {
         path: "registrarse",
-        element: <Registro />,
+        element: <Register />,
       },
     ],
   },
