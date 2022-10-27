@@ -1,0 +1,21 @@
+.input {
+  background: #ffffff;
+  /* input shadow */
+
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  height: 40px;
+  width: 440px;
+}
+.input-container {
+  position: relative;
+}
+
+.verPassword {
+  position: absolute;
+  top: 50%;
+  left: 93%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+}
