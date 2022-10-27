@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import React from "react";
 import logo from "../../../imgs/logos/logo+frase.png";
 import styles from "./header.module.scss";
+import Button from "../button/button";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -12,19 +13,25 @@ export default function Header() {
 
   return (
     <header>
-      <div className={styles.logo}>
-        <Link to={"/"}>
-          <img src={logo} alt="" />
-        </Link>
-      </div>
-      <div className={styles.loginButtons}>
-        {!isLoginPage && (
-          <button onClick={() => navigate("/login")}>Iniciar sesion</button>
-        )}
-        {!isRegisterPage && (
-          <button onClick={() => navigate("/registrarse")}>Crear Cuenta</button>
-        )}
-      </div>
+        <div className={styles.logo}>
+            <Link to={"/"}>
+                <img src={logo} alt="" />
+            </Link>
+        </div>
+        <div className={styles.loginButtons}>
+            {!isLoginPage && (
+                <Button 
+                    onClick={() => navigate("/login")}>
+                    Iniciar sesion
+                </Button>
+            )}
+            {!isRegisterPage && (
+                <Button 
+                    onClick={() => navigate("/registrarse")}>
+                    Crear Cuenta
+                </Button>
+            )}
+        </div>
     </header>
   );
 }

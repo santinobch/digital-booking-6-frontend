@@ -11,44 +11,40 @@ import { Outlet } from "react-router-dom";
 
 
 function Root() {
-  return (
-    <>
-      {/* all the other elements */}
-      <div id="detail">
+    return (
+        <>
         <Header />
         <Outlet />
-        <Footer />
-      </div>
-    </>
-  );
+        <Footer /> 
+        </>
+    );
 }
+
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Root />,
-    children: [
-      {
-        path: "",
-        element: <Home />,
-      },
-      {
-        path: "login",
-        element: <Login />,
-      },
-      {
-        path: "registrarse",
-        element: <Register />,
-      },
-    ],
-  },
+    {
+        path: "/",
+        element: <Root />,
+        children: [
+        {
+            path: "",
+            element: <Home />,
+        },
+        {
+            path: "login",
+            element: <Login />,
+        },
+        {
+            path: "registrarse",
+            element: <Register />,
+        },
+        ],
+    },
 ]);
 
 function App() {
-  return (
-    <div>
-      <RouterProvider router={router} />
-    </div>
-  );
+    return (
+        <RouterProvider router={router} />
+    );
 }
 
 export default App;

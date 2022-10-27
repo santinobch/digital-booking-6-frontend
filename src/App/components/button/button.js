@@ -22,7 +22,10 @@ export default function Button(props) {
     }
 
     return (
-        <button style={{width: props.width}} className={styles.button + " " +  choosenStyle}>
+        <button 
+        onClick={props.onClick}
+        style={{width: props.width}} 
+        className={styles.button + " " +  choosenStyle}>
             {props.children}
         </button>
     );
