@@ -1,7 +1,7 @@
 import styles from "./recommendedCard.module.scss";
-import cuarto from "../../../imgs/test-images/cuarto_1.png"
 import star from "../../../imgs/icons/star.png";
 import heart from "../../../imgs/icons/heart.png"
+import Boton from "../button/button"
 import { isString } from "formik";
 
 
@@ -17,15 +17,15 @@ function shorten(textInput) {
 }
 
 
-export default function RecommendedCard() {
+export default function RecommendedCard({image, category, title, location, description}) {
     return (
         <div className={styles.card}>
 
-            <img className={styles.favoritoImg} src={heart} alt=""></img>
+            {/* <img className={styles.favoritoImg} src={heart} alt=""></img> */}
 
             <div className={styles.cardContent}>
                 <div className={styles.cuartoImgContainer}>
-                    <img src={cuarto} alt="" className={styles.cuartoImg}></img>
+                    <img src={image} alt="" className={styles.cuartoImg}></img>
                 </div>
                 
                 <div className={styles.cardInfo}>
@@ -33,44 +33,43 @@ export default function RecommendedCard() {
                     <div className={styles.infoTitle}>
                         <div className={styles.titleRow}>
                             <div className={styles.column}>
-                                <h3>HOTEL</h3>
+                                <h3>{category.toUpperCase()}</h3>
 
-                                <div className={styles.starsImg}>
+                                {/* <div className={styles.starsImg}>
                                     <img src={star} alt=""></img>
                                     <img src={star} alt=""></img>
                                     <img src={star} alt=""></img>
                                     <img src={star} alt=""></img>
                                     <img src={star} alt=""></img>
-                                </div>
+                                </div> */}
                             </div>
                             
-                            <h2>
-                                Hermitage Hotel
-                            </h2>
+                            <h2>{title}</h2>
                         </div>
                         
-                        <div className={styles.titleRow + " " + styles.textRight}>
+                        {/* <div className={styles.titleRow + " " + styles.textRight}>
                             <div className={styles.calificacion}>
                                 <span>8</span>
                             </div>
                             
                             <p>Muy bueno</p>
-                        </div>
+                        </div> */}
                     </div>
                     
 
                     <div className={styles.ubicacion}>
                         {/* <img src="" alt="">ubicacion</img> */}
-                        <p>A 940m del centro - <a href="">MOSTRAR EN EL MAPA</a></p>
+                        <p>{location}</p>
                     </div>
 
                     <p className={styles.text}>
-                        {shorten(text)}
+                        {shorten(description)}
                     </p>
 
-                    <button className={styles.seeMoreBtn}>
+                    <Boton style="dark">Ver Detalle</Boton>
+                    {/* <button className={styles.seeMoreBtn}>
                         boton test
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </div>
