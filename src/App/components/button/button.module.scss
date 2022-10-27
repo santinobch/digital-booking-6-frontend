@@ -1,0 +1,34 @@
+@import "../../scss/colors";
+
+.button {
+    height: 40px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+    text-align: center;
+    outline: none;
+    border: 0;
+    margin: 20px;
+}
+
+.light {
+    background: $white-books;
+    color: $red-books;
+    border: 1px solid $red-books;
+
+    &:active {
+        background: $red-books;
+        color: $white-books;
+        border: 0;
+    }
+}
+  
+.dark {
+    background: $red-books;
+    color: $white-books;
+
+    &:active {
+        background: $white-books;
+        color: $red-books;
+        border: 1px solid $red-books;
+    }
+}

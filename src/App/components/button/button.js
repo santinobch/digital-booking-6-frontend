@@ -22,7 +22,7 @@ export default function Button(props) {
     }
 
     return (
-        <button style={{width: props.width}} className={choosenStyle}>
+        <button style={{width: props.width}} className={styles.button + " " +  choosenStyle}>
             {props.children}
         </button>
     );
