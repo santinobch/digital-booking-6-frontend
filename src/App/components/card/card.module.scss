@@ -16,6 +16,7 @@ $title-height: 62px;
     .cuartoImg {
         width: $card-width;
         height: 183px;
+        object-fit:cover ;
 
         border-top-left-radius: $radius;
         border-top-right-radius: $radius;

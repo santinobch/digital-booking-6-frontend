@@ -1,0 +1,60 @@
+@import "../../scss/colors";
+
+.categoriasSection{
+    background-color: $white-books;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .categoriasSection{
+        padding: 36px 12px;
+
+        h2{
+            font-size: 24px;
+        }
+
+        .categoriasGrid{
+            display: grid;
+            width: 100%;
+            gap: 17px;
+            grid-template-columns: 1fr;
+            justify-items: center;
+        }
+    }
+
+}
+
+@media only screen and (min-width: 768px) {
+    .categoriasSection{
+        padding: 30px 23px;
+
+        h2{
+            font-size: 24px;
+        }
+
+        .categoriasGrid{
+            display: grid;
+            width: 100%;
+            gap: 17px;
+            grid-template-columns: 1fr 1fr;
+            justify-items: center;
+        }
+    }
+}
+
+@media only screen and (min-width: 1366px) {
+    .categoriasSection{
+        padding: 17px 40px;
+
+        h2{
+            font-size: 24px;
+        }
+
+        .categoriasGrid{
+            display: grid;
+            width: 100%;
+            gap: 17px;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+    }
+}
