@@ -12,7 +12,7 @@ const Buscador = () => {
         <form className='formBuscador'>
             <input type="text" />
             <Datepicker/>
-            <Button style="dark">BUSCAR</Button>
+            <Button className="btnBuscador" style="dark">BUSCAR</Button>
         </form>
     </div>
   )

@@ -13,7 +13,6 @@ export default function Home() {
             <Card></Card>
             <RecommendedCard></RecommendedCard>
             {/* <Drawer></Drawer> */}
-            <Datepicker/>
             <Button style="light" width="300px">Light</Button>
             <Button style="dark" width="300px">Light</Button>
         </main>

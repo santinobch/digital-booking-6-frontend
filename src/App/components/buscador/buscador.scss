@@ -1,8 +1,6 @@
 @import "../../scss/colors";
 
-$radius: 10px;
-$card-width: 310px;
-$title-height: 62px;
+
 
 .mainBuscador {
     background-color: $grey-books;
@@ -12,13 +10,83 @@ $title-height: 62px;
     padding: 20px;
 
     h1 {
-        font-size: 36px;
         color: $white-books;
+        margin-bottom: 0;
+    }
+
+
+
+    
+}
+
+@media only screen and (max-width: 768px) {
+    $width: 394px; 
+    $height: 38px;
+
+    .mainBuscador{
+        padding: 0;
+
+
+        h1{
+            width: $width;
+            font-size: 30px;
+            text-align: center;
+        }
+    }
+
+
+    .formBuscador {
+        margin: 14px 0px;
+        display: flex;
+        flex-direction: column;
+
+        & * {
+            width: $width;
+            height: $height;
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    $input-width: 254px; 
+
+    h1{
+        font-size: 30px;
     }
 
     .formBuscador {
+        margin: 17px 30px;
         display: flex;
+        gap: 15px;
+
+        & * {
+            width: $input-width;
+        }
+
+        :last-child {
+            width: $input-width/2;
+        }
+    }
+}
+
+@media only screen and (min-width: 1366px){
+    $input-width: 422px; 
+
+    h1{
+        font-size: 36px;
     }
 
-    
+    .formBuscador {
+        margin: 23px 150px;
+        display: flex;
+        gap: 15px;
+
+        & * {
+            width: $input-width;
+        }
+
+        :last-child {
+            width: $input-width/2;
+        }
+    }
 }
