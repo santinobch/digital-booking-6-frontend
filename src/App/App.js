@@ -8,9 +8,10 @@ function App() {
   return (
     <div>
       <Header></Header>
+      <SearchBar></SearchBar>
       <Home></Home>
       <Footer></Footer>
-      <SearchBar></SearchBar>
+      
     </div>
   );
 }
