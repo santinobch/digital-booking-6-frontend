@@ -2,6 +2,7 @@ import React from "react";
 import Select from "react-select";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import "./SearchBarStyles.scss"
 
 const ciudades = [
   { label: "San Carlos de Bariloche", value: "San Carlos de Bariloche" },
