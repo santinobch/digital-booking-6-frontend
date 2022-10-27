@@ -10,23 +10,31 @@
 
 
 @media only screen and (max-width: 768px) {
-    .listadoGrid{
-        display: grid;
-        width: 100%;
-        gap: 17px;
-        grid-template-columns: 1fr;
-        justify-items: center;
-    }
+    .listadoSection{
+        padding: 36px 12px;
 
+        .listadoGrid{
+            display: grid;
+            width: 100%;
+            gap: 17px;
+            grid-template-columns: 1fr;
+            justify-items: center;
+        }
+    }
+        
 }
 
 @media only screen and (min-width: 768px) {
-    .listadoGrid{
-        display: grid;
-        width: 100%;
-        gap: 17px;
-        grid-template-columns: 1fr;
-        justify-items: center;
+    .listadoSection{
+        padding: 36px 12px;
+        
+        .listadoGrid{
+            display: grid;
+            width: 100%;
+            gap: 17px;
+            grid-template-columns: 1fr;
+            justify-items: center;
+        }
     }
 }
 
