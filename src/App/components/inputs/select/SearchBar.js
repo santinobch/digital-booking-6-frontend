@@ -10,7 +10,7 @@ const ciudades = [
     { label: "Córdoba", value: "Córdoba" }
   ];
 
-export const Select = () => {
+export const SearchBar = () => {
     const handleSelectChange = ({ value }) => {
       console.log(value);
     };
