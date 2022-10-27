@@ -1,20 +1,20 @@
 @import "../../scss/colors";
 
-@media only screen and (max-width: 768px) {
-    .drawer {
-        display: none;
-    }
+.bottomBorder {
+    border-bottom: 1px solid $black2-books;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (max-width: 768px) {
     $normalPadding: 15px;
     $dTopHeight: 175px;
     $linksHeight: 80px;
     $controlsHeight: calc(100vh - ($dTopHeight + $linksHeight));
 
     .drawer {
+        display: none;
+        
         z-index: 2;
-        position: absolute;
+        position: fixed;
         right: 0;
         top: 0;
 
@@ -27,6 +27,22 @@
             height: $dTopHeight;
             background-color: $red-books;
             padding: $normalPadding;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            p {
+                font-size: 24px;
+                margin: 0;
+                transform: translateY(-20%);
+            }
+
+            h1 {
+                font-size: 20px;
+                align-self: flex-end;
+                margin: 0;
+            }
         }
 
         .drawerBottom {
@@ -52,17 +68,52 @@
                     font-size: 16px;
                     font-weight: 700;
                     color: $black2-books;
+                    
+
+                    .controlBox {
+                        height: 60px;
+                        margin: 0;
+
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: end;
+
+                        a {
+                            margin: 0;
+                            text-decoration: none;
+                            color: $black2-books;
+                        }
+                    }
                 }
 
                 .controlsBottom {
+                    font-size: 12px;
+                    font-weight: 500;
 
+                    a {
+                        text-decoration: none;
+                    }
                 }
             }
 
             .links {
-                align-self: flex-end;
                 height: 80px;
+
+                align-self: flex-end;
+                display: flex;
+                align-items: center;
+
+                & > * {
+                    margin-left: 15px;
+                }
             }
         }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .drawer {
+        display: none;
     }
 }

@@ -7,7 +7,7 @@ export default function Home() {
         <main>
             <Card></Card>
             <RecommendedCard></RecommendedCard>
-            {/* <Drawer></Drawer> */}
+            <Drawer></Drawer>
         </main>
     );
 }

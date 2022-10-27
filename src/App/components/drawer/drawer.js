@@ -14,7 +14,7 @@ import { FaInstagram } from "react-icons/fa";
 export default function Drawer() {
     return (
 
-        <IconContext.Provider value={{ color: "#31363F", size:"20px" }}>
+        <IconContext.Provider value={{ color: "#31363F", size:24 }}>
             <div className={styles.drawer}>
                 <div className={styles.drawerTop}>
                     <p>X</p>
@@ -24,10 +24,14 @@ export default function Drawer() {
                 <div className={styles.drawerBottom}>
                     <div className={styles.controls}>
                         <div className={styles.controlsTop}>
-                            <p>Crear cuenta</p>
-                            <p>Iniciar sesión</p>
+                            <div className={styles.controlBox + " " + styles.bottomBorder}>
+                                <a href="">Crear cuenta</a>
+                            </div>
+                            <div className={styles.controlBox}>
+                                <a href="">Iniciar sesión</a>
+                            </div>
                         </div>
-                        <div className={styles.controlsBottom}>
+                        <div className={styles.controlsBottom + " " + styles.bottomBorder}>
                             <p>¿Deseas <a href="">cerrar sesión</a>?</p>
                         </div>
                     </div>
