@@ -6,7 +6,7 @@ export default function Input(props) {
 
     let showPassButton = "none";
 
-    if (props.type == "password") {
+    if (props.type === "password") {
         showPassButton = "block";
     }
 
@@ -25,18 +25,19 @@ export default function Input(props) {
             checked={props.checked}
             disabled={props.disabled}
             name={props.name}
+            required={props.required}
+            placeholder={props.placeholder}
             src={props.src}
             type={props.type}
-            value={props.value}
-            required={props.required}>
+            value={props.value}>
 
                 {props.children}
             </input>
 
             <label 
-            className={styles.sublabel}
+            className={styles.subLabel}
             for={props.name}>
-                {props.sublabel}
+                {props.subLabel}
             </label>
 
             <button style={{display: showPassButton}} className={styles.showPassButton}>

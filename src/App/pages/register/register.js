@@ -1,10 +1,12 @@
-import "./register.scss";
+import styles from "./register.module.scss";
 
 import * as Yup from "yup";
 
 import { Formik } from "formik";
-import Input from "../../components/input/input";
 import { Link } from "react-router-dom";
+
+import Input from "../../components/input/input";
+import Button from "../../components/button/button";
 
 const registrarseSchema = Yup.object().shape({
   name: Yup.string()
@@ -27,8 +29,6 @@ const registrarseSchema = Yup.object().shape({
 const Register = () => {
   return (
     <main className="register-main">
-      <div className="register-container">
-        <h3 className="register-title">Crear cuenta</h3>
         <Formik
           validationSchema={registrarseSchema}
           initialValues={{
@@ -43,8 +43,7 @@ const Register = () => {
               alert(JSON.stringify(values, null, 2));
               setSubmitting(false);
             }, 400);
-          }}
-        >
+          }}>
           {({
             values,
             errors,
@@ -55,82 +54,57 @@ const Register = () => {
             isSubmitting,
             /* and other goodies */
           }) => (
-            <form onSubmit={handleSubmit} className="register-form">
-              <div className="register-form-name">
-                <div>
-                  <label>
-                    <p className="register-form-label">Nombre</p>
+            <form onSubmit={handleSubmit} className={styles.formContainer}>
+
+                <h2>Crear cuenta</h2>
+
+                <div className={styles.namesContainer}>
                     <Input
-                      name="name"
-                      type="text"
-                      onChange={handleChange}
-                      value={values.name}
-                      className="register-form-input"
-                    />
-                    <div className="error">{errors.name}</div>
-                  </label>
-                </div>
-                <div>
-                  <label>
-                    <p className="register-form-label">Apellido</p>
+                        name="name"
+                        type="text"
+                        onChange={handleChange}
+                        label="Nombre"/>
+
                     <Input
-                      name="apellido"
-                      type="text"
-                      onChange={handleChange}
-                      value={values.apellido}
-                      className="register-form-input"
-                    />
-                    <div className="error">{errors.apellido}</div>
-                  </label>
+                        name="apellido"
+                        type="text"
+                        onChange={handleChange}
+                        label="Apellido"/>
                 </div>
-              </div>
-              <label>
-                <p className="register-form-label">Correo Electronico</p>
-                <Input
-                  name="email"
-                  type="email"
-                  onChange={handleChange}
-                  value={values.email}
-                  className="register-form-input"
-                />
-                <div className="error">{errors.email}</div>
-              </label>
-              <label>
-                <p className="register-form-label">Contraseña</p>
-                <Input
-                  name="password"
-                  type="password"
-                  onChange={handleChange}
-                  value={values.password}
-                  className="register-form-input"
-                  isPassword
-                />
 
-                <div className="error">{errors.password}</div>
-              </label>
-              <label>
-                <p className="register-form-label">Confirmar Contraseña</p>
                 <Input
-                  name="password_confirm"
-                  type="password"
-                  onChange={handleChange}
-                  value={values.password_confirm}
-                  className="register-form-input"
-                />
-                <div className="error">{errors.password_confirm}</div>
-              </label>
+                    name="email"
+                    type="email"
+                    onChange={handleChange}
+                    width="100%"
+                    label="Correo Electronico"/>
 
-              <button type="buttom" className="register-form-submit">
-                Crear Cuenta
-              </button>
+                <Input
+                    name="password"
+                    type="password"
+                    onChange={handleChange}
+                    label="Contraseña"
+                    width="100%"
+                    isPassword/>
 
-              <p className="register-init">
-                ¿Ya tienes una cuenta? <Link to={`/login`}>Iniciar Sesión</Link>
-              </p>
+                <Input
+                    name="password_confirm"
+                    type="password"
+                    onChange={handleChange}
+                    width="100%"
+                    label="Confirmar Contraseña"/>
+
+                <Button style="dark" width="100%">Crear Cuenta</Button>
+
+                <div className={styles.changeForm}>
+                    ¿Ya tienes una cuenta?
+                    <Link to={`/login`}>
+                        Iniciar Sesión
+                    </Link>
+                </div>
             </form>
-          )}
+            )}
         </Formik>
-      </div>
     </main>
   );
 };

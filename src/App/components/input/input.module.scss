@@ -1,7 +1,8 @@
 @import "../../scss/colors";
 
 .inputContainer {
-    margin: 12px;
+    margin-top: 12px;
+    margin-bottom: 12px;
     display: flex;
     flex-direction: column;
 
@@ -40,7 +41,7 @@
         }
     }
     
-    .sublabel {
+    .subLabel {
         font-size: 12px;
         font-weight: 500;
         color: #FF0000;
