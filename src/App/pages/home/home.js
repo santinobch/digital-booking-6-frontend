@@ -1,11 +1,9 @@
 import Card from "../../components/card/card";
 import RecommendedCard from "../../components/recommendedCard/recommendedCard";
 import Drawer from "../../components/drawer/drawer";
-<<<<<<< HEAD
 import Datepicker from "../../components/datepicker/datepicker";
-=======
 import Button from "../../components/button/button";
->>>>>>> button
+
 
 export default function Home() {
     return (
