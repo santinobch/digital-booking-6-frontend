@@ -14,7 +14,7 @@ import { FaInstagram } from "react-icons/fa";
 export default function Drawer() {
     return (
 
-        <IconContext.Provider value={{ color: "#31363F", size:24 }}>
+        <IconContext.Provider value={{ color: "#DFE4EA", size:24 }}>
             <div className={styles.drawer}>
                 <div className={styles.drawerTop}>
                     <p>X</p>
