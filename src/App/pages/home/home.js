@@ -3,11 +3,13 @@ import RecommendedCard from "../../components/recommendedCard/recommendedCard";
 import Drawer from "../../components/drawer/drawer";
 import Datepicker from "../../components/datepicker/datepicker";
 import Button from "../../components/button/button";
+import Buscador from "../../components/buscador/buscador";
 
 
 export default function Home() {
     return (
         <main>
+            <Buscador/>
             <Card></Card>
             <RecommendedCard></RecommendedCard>
             {/* <Drawer></Drawer> */}

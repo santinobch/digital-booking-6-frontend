@@ -1,5 +1,6 @@
 import React from 'react'
 import Datepicker from '../datepicker/datepicker'
+import Button from "../../components/button/button";
 import './buscador.scss'
 
 const Buscador = () => {
@@ -11,7 +12,7 @@ const Buscador = () => {
         <form className='formBuscador'>
             <input type="text" />
             <Datepicker/>
-            <button>BUSCAR</button>
+            <Button style="dark">BUSCAR</Button>
         </form>
     </div>
   )
