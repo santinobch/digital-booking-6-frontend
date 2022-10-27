@@ -3,8 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import Select from "react-select";
 
-document.getElementById("location").
-
 const ciudades = [
     { label: "San Carlos de Bariloche", value: "San Carlos de Bariloche" },
     { label: "Buenos Aires", value: "Buenos Aires" },
