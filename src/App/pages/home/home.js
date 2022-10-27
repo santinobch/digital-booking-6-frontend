@@ -8,9 +8,9 @@ import Listado from "../../components/listado/listado";
 export default function Home() {
     return (
         <main>
-            {/* <Buscador/>
+            <Buscador/>
             <Categorias/>
-            <Drawer></Drawer>
+            {/*<Drawer></Drawer>
             <Button style="light" width="300px">Light</Button>
             <Button style="dark" width="300px">Light</Button> */}
             <Listado/>
