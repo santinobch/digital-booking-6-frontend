@@ -1,17 +1,14 @@
-import Card from "../../components/card/card";
-import RecommendedCard from "../../components/recommendedCard/recommendedCard";
 import Drawer from "../../components/drawer/drawer";
-import Datepicker from "../../components/datepicker/datepicker";
 import Button from "../../components/button/button";
 import Buscador from "../../components/buscador/buscador";
+import Categorias from "../../components/categorias/categorias"
 
 
 export default function Home() {
     return (
         <main>
             <Buscador/>
-            <Card></Card>
-            <RecommendedCard></RecommendedCard>
+            <Categorias/>
             {/* <Drawer></Drawer> */}
             <Button style="light" width="300px">Light</Button>
             <Button style="dark" width="300px">Light</Button>
