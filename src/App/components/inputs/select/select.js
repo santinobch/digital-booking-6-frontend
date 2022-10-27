@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "./drawer.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import Select from "react-select";
 
 document.getElementById("location").
