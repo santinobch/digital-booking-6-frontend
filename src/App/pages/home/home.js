@@ -3,11 +3,13 @@ import Button from "../../components/button/button";
 import Buscador from "../../components/buscador/buscador";
 import Categorias from "../../components/categorias/categorias"
 import Listado from "../../components/listado/listado";
+import { SelectSearch } from "../../components/inputs/select/SearchBar";
 
 
 export default function Home() {
     return (
         <main>
+            <SelectSearch/>
             <Buscador/>
             <Categorias/>
             {/*<Drawer></Drawer>

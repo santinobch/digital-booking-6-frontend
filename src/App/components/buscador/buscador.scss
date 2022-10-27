@@ -13,19 +13,15 @@
         color: $white-books;
         margin-bottom: 0;
     }
-
-
-
     
 }
 
 @media only screen and (max-width: 768px) {
     $width: 394px; 
     $height: 38px;
-
+    
     .mainBuscador{
         padding: 0;
-
 
         h1{
             width: $width;
@@ -40,7 +36,7 @@
         display: flex;
         flex-direction: column;
 
-        & * {
+        & > * {
             width: $width;
             height: $height;
         }
@@ -59,11 +55,11 @@
         display: flex;
         gap: 15px;
 
-        & * {
+        & > * {
             width: $input-width;
         }
 
-        :last-child {
+        button:last-child {
             width: $input-width/2;
         }
     }
@@ -81,11 +77,11 @@
         display: flex;
         gap: 15px;
 
-        & * {
+        & > * {
             width: $input-width;
         }
 
-        :last-child {
+        button:last-child {
             width: $input-width/2;
         }
     }
