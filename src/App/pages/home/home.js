@@ -11,13 +11,16 @@ export default function Home() {
         <main>
             <Buscador/>
             <Categorias/>
-            {/*<Drawer></Drawer>
-            <Button style="light" width="300px">Light</Button>
-            <Button style="dark" width="300px">Light</Button> */}
             <Listado/>
-            <Input name="test" label="lol" sublabel="equisde"  width="300px"></Input>
+            
+            {/* <Drawer></Drawer> */}
+
+            {/* <Input name="test" label="lol" sublabel="equisde"  width="300px"></Input>
             <Input type="password" name="test" label="lol" sublabel="equisde"  width="300px"></Input>
-            <Input type="password" name="test" label="lol" sublabel="equisde"  width="300px" required></Input>
+            <Input type="password" name="test" label="lol" sublabel="equisde"  width="300px" required></Input> */}
+
+            {/* <Button style="light" width="300px">Light</Button>
+            <Button style="dark" width="300px">Light</Button> */}
         </main>
     );
 }
