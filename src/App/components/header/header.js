@@ -4,6 +4,7 @@ import React from "react";
 import logo from "../../../imgs/logos/logo+frase.png";
 import styles from "./header.module.scss";
 import Button from "../button/button";
+import Drawer from "../drawer/drawer";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ export default function Header() {
   const isRegisterPage = location.pathname === "/registrarse";
 
   return (
-    <header>
+    <header className={styles.header}>
         <div className={styles.logo}>
             <Link to={"/"}>
                 <img src={logo} alt="" />
@@ -32,6 +33,8 @@ export default function Header() {
                 </Button>
             )}
         </div>
+
+        <Drawer></Drawer>
     </header>
   );
 }

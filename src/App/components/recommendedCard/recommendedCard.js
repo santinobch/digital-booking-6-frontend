@@ -21,7 +21,7 @@ export default function RecommendedCard({image, category, title, location, descr
     return (
         <div className={styles.card}>
 
-            {/* <img className={styles.favoritoImg} src={heart} alt=""></img> */}
+            <img className={styles.favoritoImg} src={heart} alt=""></img>
 
             <div className={styles.cardContent}>
                 <div className={styles.cuartoImgContainer}>
@@ -35,25 +35,25 @@ export default function RecommendedCard({image, category, title, location, descr
                             <div className={styles.column}>
                                 <h3>{category.toUpperCase()}</h3>
 
-                                {/* <div className={styles.starsImg}>
+                                <div className={styles.starsImg}>
                                     <img src={star} alt=""></img>
                                     <img src={star} alt=""></img>
                                     <img src={star} alt=""></img>
                                     <img src={star} alt=""></img>
                                     <img src={star} alt=""></img>
-                                </div> */}
+                                </div>
                             </div>
                             
                             <h2>{title}</h2>
                         </div>
                         
-                        {/* <div className={styles.titleRow + " " + styles.textRight}>
+                        <div className={styles.titleRow + " " + styles.textRight}>
                             <div className={styles.calificacion}>
                                 <span>8</span>
                             </div>
                             
                             <p>Muy bueno</p>
-                        </div> */}
+                        </div>
                     </div>
                     
 
@@ -67,9 +67,6 @@ export default function RecommendedCard({image, category, title, location, descr
                     </p>
 
                     <Boton style="dark">Ver Detalle</Boton>
-                    {/* <button className={styles.seeMoreBtn}>
-                        boton test
-                    </button> */}
                 </div>
             </div>
         </div>

@@ -8,7 +8,6 @@ footer {
     height: $footer-height;
 
     position: fixed;
-    z-index: 2;
     top:calc(100vh - $footer-height);
 
     display: flex;

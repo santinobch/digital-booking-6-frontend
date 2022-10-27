@@ -49,6 +49,9 @@
     }
 
     .rmdp-day-picker {
+        //TEMPORAL
+        margin-bottom: 16px;
+        
         padding: 0;
 
         & > *:first-child {
@@ -94,9 +97,4 @@
             }
         }
     }
-}
-
-.CalendarButton{
-    width: 100%;
-    margin-top: 16px;
 }

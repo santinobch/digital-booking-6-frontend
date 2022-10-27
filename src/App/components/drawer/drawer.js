@@ -11,13 +11,36 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 
+import React, { useState, useEffect } from 'react';
+
 export default function Drawer() {
+
+    const [drawerToggle, toggle] = useState(false);
+
+    let firstRun = true;
+
+    useEffect(() => {    
+        if (firstRun) {
+            firstRun = false;
+        } else {
+            // Update the document title using the browser API    
+            if (drawerToggle) {
+                document.getElementById("drawer").style.display = "block";
+                toggle(true);
+            } else {
+                document.getElementById("drawer").style.display = "none";
+                toggle(false);
+            }
+        }
+        
+    }, []);
+
     return (
 
         <IconContext.Provider value={{ color: "#DFE4EA", size:24 }}>
-            <div className={styles.drawer}>
+            <div className={styles.drawer} id="drawer">
                 <div className={styles.drawerTop}>
-                    <p>X</p>
+                    <button onClick={() =>  toggle(false)}>X</button>
                     <h1>MENÚ</h1>
                 </div>
 

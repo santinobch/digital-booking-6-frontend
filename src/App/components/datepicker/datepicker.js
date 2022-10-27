@@ -2,6 +2,7 @@ import "react-multi-date-picker/styles/colors/teal.css";
 import DatePicker from "react-multi-date-picker";
 import "./datepicker.scss";
 import { useRef } from "react";
+import Button from "../button/button";
 
 export default function Datepicker() {
   const datePickerRef = useRef();
@@ -21,12 +22,13 @@ export default function Datepicker() {
       hideYear
       placeholder= "📅 Check in - Check out"
     >
-      <button
-        className="CalendarButton"
+      <Button
+        style="dark"
+        width="100%"
         onClick={() => datePickerRef.current.closeCalendar()}
       >
         Aplicar
-      </button>
+      </Button>
     </DatePicker>
   );
 }
