@@ -3,6 +3,7 @@ import Home from "./pages/home/home";
 
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
+import Select from './components/inputs/select/select';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Header></Header>
       <Home></Home>
       <Footer></Footer>
+      <Select></Select>
     </div>
   );
 }
