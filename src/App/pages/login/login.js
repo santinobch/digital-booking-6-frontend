@@ -1,13 +1,12 @@
 import "./login.scss";
 
-import Button from "../../components/button/button";
 import { Formik } from "formik";
 import Input from "../../components/input/input";
 import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <main>
+    <main className="login-main">
       <div className="login-container">
         <h2 className="login-title">Iniciar sesión</h2>
         <Formik
@@ -53,14 +52,14 @@ const Login = () => {
                   isPassword
                 />
               </label>
-              <div className="login_ingresar">
-                <Button type="buttom">Ingresar</Button>
 
-                <span>
-                  aun no tenes cuenta?{" "}
-                  <Link to={`/registrarse`}>Registrate</Link>
-                </span>
-              </div>
+              <button type="buttom" className="login_ingresar_button">
+                Ingresar
+              </button>
+
+              <span className="login_ingresar_span">
+                aun no tenes cuenta? <Link to={`/registrarse`}>Registrate</Link>
+              </span>
             </form>
           )}
         </Formik>

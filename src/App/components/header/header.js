@@ -1,6 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-import Button from "../button/button";
 import React from "react";
 import logo from "../../../imgs/logos/logo+frase.png";
 import styles from "./header.module.scss";
@@ -20,10 +19,10 @@ export default function Header() {
       </div>
       <div className={styles.loginButtons}>
         {!isLoginPage && (
-          <Button onClick={() => navigate("/login")}>Iniciar sesion</Button>
+          <button onClick={() => navigate("/login")}>Iniciar sesion</button>
         )}
         {!isRegisterPage && (
-          <Button onClick={() => navigate("/registrarse")}>Crear Cuenta</Button>
+          <button onClick={() => navigate("/registrarse")}>Crear Cuenta</button>
         )}
       </div>
     </header>

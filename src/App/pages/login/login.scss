@@ -4,11 +4,15 @@ body {
   box-sizing: border-box;
   margin: 0;
 }
-
+.login-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .login-container {
   margin: 0;
   padding: 1rem 2rem;
-  background-color: gray;
+  background-color: #c4c4c4;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -53,29 +57,24 @@ body {
     border-width: 0px;
     font-family: Poppins;
   }
-  .login_ingresar {
-    display: flex;
-    flex-direction: column;
-  }
-  .login_ingresar button {
-    background: #1dbeb4;
-    /* botton sombra */
 
-    text-align: center;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
-    border-radius: 5px;
-    margin: 40px auto 2px 150px;
+  .login_ingresar_button {
+    background-color: #1dbeb4;
+    width: 60%;
+    margin: 1rem;
+    align-self: center;
     width: 206px;
     height: 40px;
     color: white;
+
     @media (max-width: 1024px) {
       width: 100%;
     }
   }
-  .login_ingresar span {
+  .login_ingresar_span {
     display: flex;
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 12px;
     margin-left: 10rem;
   }
 }
