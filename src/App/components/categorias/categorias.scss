@@ -2,16 +2,15 @@
 
 .categoriasSection{
     background-color: $white-books;
+    h2{
+        font-size: 24px;
+    }
 }
 
 
 @media only screen and (max-width: 768px) {
     .categoriasSection{
         padding: 36px 12px;
-
-        h2{
-            font-size: 24px;
-        }
 
         .categoriasGrid{
             display: grid;
@@ -28,10 +27,6 @@
     .categoriasSection{
         padding: 30px 23px;
 
-        h2{
-            font-size: 24px;
-        }
-
         .categoriasGrid{
             display: grid;
             width: 100%;
@@ -45,11 +40,7 @@
 @media only screen and (min-width: 1366px) {
     .categoriasSection{
         padding: 17px 40px;
-
-        h2{
-            font-size: 24px;
-        }
-
+        
         .categoriasGrid{
             display: grid;
             width: 100%;
