@@ -1,5 +1,4 @@
 import styles from "./card.module.scss";
-import cuarto from "../../../imgs/test-images/cuarto_1.png"
 
 export default function Card({id, img, title, description}) {
     return (
