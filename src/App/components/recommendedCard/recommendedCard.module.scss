@@ -1,0 +1,223 @@
+@import "../../scss/colors";
+
+$radius: 10px;
+
+.card {
+    $card-height: 490px;
+    $card-width: 395px;
+    $card-info-height: 260px;
+    $normalPadding: 12px;
+
+    height: $card-height;
+    width: $card-width;
+    border-radius: $radius;
+    border: 0;
+    box-shadow: 0px 4px 4px 0px #00000040;
+
+    background-color: $white-books;
+    position: relative;
+
+    .favoritoImg {
+        position: absolute;
+
+        z-index: 1;
+        right: $normalPadding;
+        top: $normalPadding;
+    }
+
+    .cardContent {
+        display: flex;
+        flex-direction: column;
+
+        .cuartoImgContainer {
+            border-top-left-radius: $radius;
+            border-top-right-radius: $radius;
+            overflow: hidden;
+
+            width: $card-width;
+            height: 230px;
+            
+            .cuartoImg {
+                width: $card-width;
+                height: auto;
+            }
+        }
+    
+        .cardInfo {
+            background-color: $white-books;
+            border-bottom-left-radius: $radius;
+            border-bottom-right-radius: $radius;
+            border: 0;
+
+            width: $card-width;
+            height: $card-info-height;
+            padding: $normalPadding;
+    
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+    
+            .infoTitle {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+    
+                .titleRow {
+                    display: flex;
+                    flex-direction: column;
+    
+                    .column {
+                        display: flex;
+                        align-items: center;
+    
+                        .starsImg {
+                            display: flex;
+                            flex-direction: row;
+                            height: 14px;
+                            margin-bottom: 2px;
+                            margin-left: 6px;
+                        }
+                    }
+    
+                    p {
+                        margin: 0;
+                    }
+                }
+    
+                .calificacion {
+                    width: 34px;
+                    height: 27px;
+                    border-radius: $radius;
+                    background-color: $black2-books;
+    
+                    font-weight: 700;
+                    color: $white-books;
+                    font-size: 20px;
+    
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+    
+                .textRight {
+                    text-align: right;
+                    align-items: flex-end;
+                }
+            }
+    
+            .ubicacion {
+                margin-top: 20px;
+                margin-bottom: 20px;
+    
+                p {
+                    margin: 0;
+                }
+            }
+    
+            h3 {
+                font-weight: 700;
+                font-size: 14px;
+                margin: 0;
+                color: $grey-books;
+            }
+    
+            h2 {
+                font-weight: 700;
+                font-size: 24px;
+                margin: 0;
+                color: $black2-books;
+            }
+    
+            .text {
+                font-weight: 500;
+                font-size: 14px;
+                color: $black2-books;
+            }
+
+            .seeMoreBtn {
+                margin-top: auto;
+            }
+        }
+    }
+}
+
+
+@media only screen and (min-width: 768px) {
+
+    .card {
+        $card-width: 635px;
+        $card-height: 280px;
+        $card-info-width: 323px;
+        $normalPadding: 22px;
+
+        height: $card-height;
+        width: $card-width;
+
+        .favoritoImg {
+            right: calc($normalPadding + $card-info-width);
+            top: $normalPadding;
+        }
+
+        .cardContent {
+            flex-direction: row;
+
+            .cuartoImgContainer {
+                border-radius: $radius;
+
+                height: $card-height;
+                width: 310px;
+
+                .cuartoImg {
+                    height: $card-height;
+                    width: auto;
+
+                    transform: translateX(-10%);
+                }
+            }
+
+            .cardInfo {
+                border-top-right-radius: $radius;
+
+                height: $card-height;
+                width: $card-info-width;
+                padding: $normalPadding;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1366px) {
+
+    .card {
+        $card-width: 710px;
+        $card-info-width: 365px;
+        $normalPadding: 24px;
+
+        width: $card-width;
+
+        .favoritoImg {
+            right: calc($normalPadding + $card-info-width);
+            top: $normalPadding;
+        }
+
+        .cardContent {
+            flex-direction: row;
+
+            .cuartoImgContainer {
+                width: 345px;
+
+                .cuartoImg {
+                    width: auto;
+
+                    transform: translateX(-10%);
+                }
+            }
+
+            .cardInfo {
+                width: $card-info-width;
+                padding: $normalPadding;
+            }
+        }
+    }
+
+}

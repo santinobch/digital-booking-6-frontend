@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+//font-family: 'Quicksand', sans-serif;
+
+@import "~bootstrap/scss/bootstrap";
+
+@import "./scss/vars";
+
+body {
+  font-family: 'Quicksand', sans-serif;
+}
+
+main {
+  position: absolute;
+  top: $header-height;
+  width: 100vw;
+  min-height: $main-height;
+  overflow: scroll;
+  background-color: grey;
+}

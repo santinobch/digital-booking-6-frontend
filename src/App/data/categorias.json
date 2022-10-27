@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "title": "Departamentos", 
+        "description": "XXXXXX encontrados",
+        "img":"https://images.unsplash.com/photo-1597047084993-bf337e09ede0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8YXBhcnRtZW50c3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" 
+    },
+    {
+        "id": 2,
+        "title": "Hoteles", 
+        "description": "XXXXXX encontrados",
+        "img":"https://images.unsplash.com/photo-1568084680786-a84f91d1153c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" 
+    },
+    {
+        "id": 3,
+        "title": "Hostels", 
+        "description": "XXXXXX encontrados" ,
+        "img":"https://images.unsplash.com/photo-1630486440513-034ef4480384?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fGhvc3RlbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" 
+    },
+    {
+        "id": 4,
+        "title": "Bed and Breakfast", 
+        "description": "XXXXXX encontrados" ,
+        "img":"https://static.hosteltur.com/app/public/uploads/img/articles/2015/08/01/L_5b14fe49e7f2c_breakfast.jpg" 
+    }
+]

@@ -1,0 +1,29 @@
+@import "../../scss/colors";
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $light-books;
+
+    .formContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 430px;
+
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: $red-books;
+        }
+
+        .changeForm {
+            margin-top: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            color: $black2-books;
+        }
+    }
+}
