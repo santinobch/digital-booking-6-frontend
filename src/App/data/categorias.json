@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "title": "Departamentos", 
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem et metus maximus blandit in semper diam. Curabitur vel risus nunc. Donec et neque lorem. Cras arcu justo, scelerisque ac consectetur id, lacinia eget urna. Pellentesque sit amet mauris. ",
+        "img":"https://images.unsplash.com/photo-1597047084993-bf337e09ede0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8YXBhcnRtZW50c3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" 
+    },
+    {
+        "id": 2,
+        "title": "Hoteles", 
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem et metus maximus blandit in semper diam. Curabitur vel risus nunc. Donec et neque lorem. Cras arcu justo, scelerisque ac consectetur id, lacinia eget urna. Pellentesque sit amet mauris. ",
+        "img":"https://images.unsplash.com/photo-1568084680786-a84f91d1153c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" 
+    },
+    {
+        "id": 3,
+        "title": "Hostels", 
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem et metus maximus blandit in semper diam. Curabitur vel risus nunc. Donec et neque lorem. Cras arcu justo, scelerisque ac consectetur id, lacinia eget urna. Pellentesque sit amet mauris. " ,
+        "img":"https://images.unsplash.com/photo-1630486440513-034ef4480384?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fGhvc3RlbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" 
+    },
+    {
+        "id": 4,
+        "title": "Bed and Breakfast", 
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae lorem et metus maximus blandit in semper diam. Curabitur vel risus nunc. Donec et neque lorem. Cras arcu justo, scelerisque ac consectetur id, lacinia eget urna. Pellentesque sit amet mauris. " ,
+        "img":"https://images.unsplash.com/photo-1598539551176-0aaba3cb63b5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" 
+    }
+]
