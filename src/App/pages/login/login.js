@@ -1,71 +1,68 @@
-import "./login.scss";
+import styles from "./login.module.scss";
 
 import { Formik } from "formik";
-import Input from "../../components/input/input";
 import { Link } from "react-router-dom";
 
+import Input from "../../components/input/input";
+import Button from "../../components/button/button";
+
 const Login = () => {
-  return (
-    <main className="login-main">
-      <div className="login-container">
-        <h2 className="login-title">Iniciar sesión</h2>
-        <Formik
-          initialValues={{ email: "", password: "" }}
-          onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              setSubmitting(false);
-            }, 400);
-          }}
-        >
-          {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            isSubmitting,
-            /* and other goodies */
-          }) => (
-            <form onSubmit={handleSubmit} className="login-form">
-              <label className="login-label">
-                <p>Correo Electronico</p>
-                <Input
-                  name="email"
-                  type="email"
-                  value={values.email}
-                  placeholder="email@example.com"
-                  onChange={handleChange}
-                  className="login-input"
-                />
-              </label>
-              <label className="login-label">
-                <p>Contraseña</p>
-                <Input
-                  name="password"
-                  type="password"
-                  onChange={handleChange}
-                  placeholder="******"
-                  value={values.password}
-                  className="login-input"
-                  isPassword
-                />
-              </label>
+    return (
+        <main>
+            <Formik
+                initialValues={{ email: "", password: "" }}
+                onSubmit={(values, { setSubmitting }) => {
+                setTimeout(() => {
+                    alert(JSON.stringify(values, null, 2));
+                    setSubmitting(false);
+                }, 400);
+                }}>
 
-              <button type="buttom" className="login_ingresar_button">
-                Ingresar
-              </button>
+                    {({
+                    values,
+                    errors,
+                    touched,
+                    handleChange,
+                    handleBlur,
+                    handleSubmit,
+                    isSubmitting,
+                    }) => (
+                    <form onSubmit={handleSubmit} className={styles.formContainer}>
 
-              <span className="login_ingresar_span">
-                aun no tenes cuenta? <Link to={`/registrarse`}>Registrate</Link>
-              </span>
-            </form>
-          )}
-        </Formik>
-      </div>
-    </main>
-  );
+                        <h2>Iniciar sesión</h2>
+
+                        <Input
+                            name="email"
+                            type="email"
+                            placeholder="email@example.com"
+                            onChange={handleChange}
+                            label="Correo Electronico"
+                            width="100%"/>
+
+                        <Input
+                            name="password"
+                            type="password"
+                            placeholder="******"
+                            onChange={handleChange}
+                            label="Contraseña"
+                            subLabel="Este campo es obligatorio"
+                            width="100%"
+                            isPassword/>
+
+                        <Button style="dark" width="100%">Ingresar</Button>
+
+                        
+                        <div className={styles.changeForm}>
+                            aun no tenes cuenta? 
+                            <Link to={`/registrarse`}>
+                                Registrate
+                            </Link>
+                        </div>
+                    </form>
+                    )}
+            </Formik>
+        </main>
+    );
 };
 
 export default Login;
