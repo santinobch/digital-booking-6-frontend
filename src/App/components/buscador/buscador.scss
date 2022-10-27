@@ -1,0 +1,24 @@
+@import "../../scss/colors";
+
+$radius: 10px;
+$card-width: 310px;
+$title-height: 62px;
+
+.mainBuscador {
+    background-color: $grey-books;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+
+    h1 {
+        font-size: 36px;
+        color: $white-books;
+    }
+
+    .formBuscador {
+        display: flex;
+    }
+
+    
+}
