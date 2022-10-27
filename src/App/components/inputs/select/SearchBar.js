@@ -1,15 +1,28 @@
 import React from "react";
-import Select from "react-select";
+import Select, { components } from "react-select";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import "./SearchBarStyles.scss"
 
 const ciudades = [
-  { label: "San Carlos de Bariloche", value: "San Carlos de Bariloche" },
-  { label: "Buenos Aires", value: "Buenos Aires" },
-  { label: "Mendoza", value: "Mendoza" },
-  { label: "Córdoba", value: "Córdoba" }
+  { label: "San Carlos de Bariloche", value: "San Carlos de Bariloche", country: "Argentina" },
+  { label: "Buenos Aires", value: "Buenos Aires", country: "Argentina" },
+  { label: "Mendoza", value: "Mendoza", country: "Argentina" },
+  { label: "Córdoba", value: "Córdoba", country: "Argentina" }
 ];
+
+const formatOptionLabel = ({label, country}) => (
+  <div style={{ display: "flex", alignItems: "center" }}>
+      <FontAwesomeIcon
+                icon={faLocationDot}
+                style={{ marginRight: "4px" }}
+                />
+    <div style={{display: "flex", flexDirection:"column", gap:"4px"}}>
+      <p style={{marginBottom: '0px'}}>{label}</p>
+      <p style={{ color: "#ccc", marginBottom: '0px' }}>{country}</p>
+    </div>
+  </div>
+);
 
 export const SearchBar = () => {
   const handleSelectChange = ({ value }) => {
@@ -30,6 +43,8 @@ export const SearchBar = () => {
         }
         options={ciudades}
         onChange={handleSelectChange}
+        formatOptionLabel={formatOptionLabel}
+        
       />
     </div>
   );
