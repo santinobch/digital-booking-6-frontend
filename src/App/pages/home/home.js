@@ -1,7 +1,11 @@
 import Card from "../../components/card/card";
 import RecommendedCard from "../../components/recommendedCard/recommendedCard";
 import Drawer from "../../components/drawer/drawer";
+<<<<<<< HEAD
 import Datepicker from "../../components/datepicker/datepicker";
+=======
+import Button from "../../components/button/button";
+>>>>>>> button
 
 export default function Home() {
     return (
@@ -10,6 +14,8 @@ export default function Home() {
             <RecommendedCard></RecommendedCard>
             {/* <Drawer></Drawer> */}
             <Datepicker/>
+            <Button style="light" width="300px">Light</Button>
+            <Button style="dark" width="300px">Light</Button>
         </main>
     );
 }
