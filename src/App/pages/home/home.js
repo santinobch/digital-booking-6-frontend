@@ -6,12 +6,10 @@ import Listado from "../../components/listado/listado";
 
 export default function Home() {
     return (
-        <main>
+        <main className={styles.main}>
             <Buscador/>
             <Categorias/>
             <Listado/>
-
-            <div style={{height: "58px"}}></div>
         </main>
     );
 }
