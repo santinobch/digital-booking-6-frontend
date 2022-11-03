@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { Formik } from "formik";
 import { Link } from "react-router-dom";
 
-import Input from "../../components/input/input";
+import Input from "../../components/inputs/text/input";
 import Button from "../../components/button/button";
 
 const registrarseSchema = Yup.object().shape({

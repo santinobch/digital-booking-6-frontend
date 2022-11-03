@@ -3,7 +3,7 @@ import styles from "./login.module.scss";
 import { Formik } from "formik";
 import { Link } from "react-router-dom";
 
-import Input from "../../components/input/input";
+import Input from "../../components/inputs/text/input";
 import Button from "../../components/button/button";
 
 const Login = () => {
