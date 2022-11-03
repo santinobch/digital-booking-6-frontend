@@ -8,7 +8,7 @@ import Button from "../../components/button/button";
 
 const Login = () => {
     return (
-        <main>
+        <main className={styles.main}>
             <Formik
                 initialValues={{ email: "", password: "" }}
                 onSubmit={(values, { setSubmitting }) => {

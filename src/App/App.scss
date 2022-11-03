@@ -12,8 +12,11 @@ body {
 main {
   position: absolute;
   top: $header-height;
+
   width: 100vw;
-  min-height: $main-height;
+  height: $main-height;
+
   overflow: scroll;
+
   background-color: grey;
 }

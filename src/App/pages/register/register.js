@@ -28,7 +28,7 @@ const registrarseSchema = Yup.object().shape({
 });
 const Register = () => {
   return (
-    <main className="register-main">
+    <main className={styles.main}>
         <Formik
           validationSchema={registrarseSchema}
           initialValues={{
