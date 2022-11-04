@@ -1,0 +1,16 @@
+@import "../../../../scss/colors";
+
+.calificacion {
+    width: 34px;
+    height: 27px;
+    border-radius: 10px;
+    background-color: $black2-books;
+
+    font-weight: 700;
+    color: $white-books;
+    font-size: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
