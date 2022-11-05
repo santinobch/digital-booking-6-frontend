@@ -1,18 +1,33 @@
-import React from 'react'
+import "./listado.scss";
+
+import React, { useEffect, useState } from "react";
+
 import RecommendedCard from "../../components/recommendedCard/recommendedCard";
-import data from '../../data/data.json'
-import './listado.scss'
+import { getHospedaje } from "../../services";
 
-const Listado = () => {
-    console.log(data)
+const Listado = ({ busqueda, filtros }) => {
+  const [hospedajes, setHospedajes] = useState([]);
+
+  useEffect(() => {
+    let query = busqueda;
+
+    if (filtros.category) {
+      query = filtros;
+    }
+
+    getHospedaje(query).then((data) => setHospedajes(data));
+  }, [busqueda, filtros]);
+
   return (
-    <section className='listadoSection'>
-        <h2>Recomendaciones</h2>
-        <div className='listadoGrid'>
-            {data.map(item => <RecommendedCard {...item}/>)}
-        </div>
+    <section className="listadoSection">
+      <h2>Recomendaciones</h2>
+      <div className="listadoGrid">
+        {hospedajes.map((item) => (
+          <RecommendedCard key={item.title} {...item} />
+        ))}
+      </div>
     </section>
-  )
-}
+  );
+};
 
-export default Listado
+export default Listado;

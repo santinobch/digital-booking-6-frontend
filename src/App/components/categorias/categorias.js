@@ -1,19 +1,31 @@
-import React from 'react'
+import "./categorias.scss";
+
+import React, { useEffect, useState } from "react";
+
 import Card from "../../components/card/card";
-import categoriasJson from '../../data/categorias.json'
-import './categorias.scss'
+import { getCategorias } from "../../services";
 
-const Categorias = () => {
+const Categorias = ({ onCategoriaSeleccionada }) => {
+  const [categorias, setCategorias] = useState([]);
+
+  useEffect(() => {
+    getCategorias().then((data) => setCategorias(data));
+  }, []);
+
   return (
-    <section className='categoriasSection'>
-        <h2>Buscar por tipo de alojamiento</h2>
-        <section className='categoriasGrid'>
-            {categoriasJson.map(item =>
-                <Card {...item}/>   
-                )}
-        </section>
+    <section className="categoriasSection">
+      <h2>Buscar por tipo de alojamiento</h2>
+      <section className="categoriasGrid">
+        {categorias.map((item) => (
+          <Card
+            key={item.title}
+            {...item}
+            onClick={() => onCategoriaSeleccionada({ category: item.title })}
+          />
+        ))}
+      </section>
     </section>
-  )
-}
+  );
+};
 
-export default Categorias
+export default Categorias;
