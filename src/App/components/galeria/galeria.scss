@@ -1,0 +1,60 @@
+@import "../../scss/colors";
+
+.imageGallery{
+    padding: 36px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 12px;
+    background-color: #DFE4EA;
+    
+
+    .mainImgContainer {
+        width: 50%;
+        border-radius: 20px;
+
+        .mainImg{
+            width: 100%;
+            border-radius: 20px;
+            height: 500px;
+        }
+    }
+
+    .otherImgsContainer {
+        width: 50%;
+        display: grid;
+        height: 500px;
+        border-radius: 20px;
+        border-radius: 20px;
+        position: relative;
+        box-sizing: border-box;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 10px;
+
+        .otherImg{
+            width: 100%;
+            border-radius: 20px;
+            object-fit: cover;
+            height: 245px;
+        }
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+}
+
+@media only screen and (min-width: 768px) {
+    
+}
+
+@media only screen and (max-width: 1366px) {
+    .imageGallery{
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 1366px) {
+
+}
