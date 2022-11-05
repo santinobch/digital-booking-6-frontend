@@ -1,5 +1,16 @@
 @import "../../scss/colors";
 
+.imgModal{
+    height: 80vh;
+}
+
+.carouselModal{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+}
+
 .imageGallery{
     padding: 36px;
     display: flex;
@@ -38,6 +49,18 @@
             object-fit: cover;
             height: 245px;
         }
+    }
+
+    .verMasBtn {
+        background: none;
+        border: none;
+        padding: 0;
+        text-decoration: underline;
+        cursor: pointer;
+        position: absolute;
+        bottom: 16px;
+        right: 20px;
+        color: $white-books;
     }
 }
 
