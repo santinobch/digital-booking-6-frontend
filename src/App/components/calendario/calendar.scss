@@ -1,53 +1,80 @@
 @import "../../scss/colors";
 
 .button {
-    height: 40px;
+    height: 30px;
+    width: 100%;
     border-radius: 5px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
     text-align: center;
-    outline: none;
-    border: 0;
     background-color:$red-books;
     border: 1px solid $red-books;
 }
 
-.product--calendarLayout {
+.fechasDisponibles{
+
     background-color: rgba(239, 239, 239, 0.524);
     padding: 0 3rem;
 }
-
-.product--calendarLayout-elements {
-    display: grid;
-    grid-template-columns: [x0] 1fr [x1] 1fr [x2] 1fr [x3];
-    grid-template-rows: [y0] 1fr ;
-    gap: 2rem;
-    align-items: center;
-    padding: 1rem 0 3rem;
-}
-
-.product--calendarLayout-form{
-    grid-column: x2 / x3;
-    grid-row: y0 / y1;
-}
-.product--calendarLayout-container{
-    grid-column: x0 / x2;
-    grid-row: y0 / y1;
-}
-
-
-.product--calendarLayout > h3 {
-    padding: 1rem 0;
-}
-
-.product--calendarLayout-form {
+.contenedorCalendario{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1.5rem;
-    padding: 2rem;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    gap:100px;
+    
+}
+
+.contendorReserva{
+    max-width: 500px;
     background-color: $white-books;
-    box-shadow: var(--main-box-shadow);
-    border-radius: 0.5rem;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.12);    
+}
+
+@media screen and (max-width: 768px){
+    .contenedorCalendario{
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+        text-align: left;
+
+    }
+
+    .contendorReserva{
+        display: flex;
+        gap: 15px;
+        background-color: rgba(239, 239, 239, 0.524);   
+        box-shadow: none;
+       
+    }
+    .button{
+        width: 50%;
+    }
+    
+  }
+
+@media screen and (max-width: 460px){
+
+
+    .contenedorCalendario{
+        flex-direction: column;
+        gap: 15px;
+        text-align: start;
+    }
+
+    .contendorReserva{
+        flex-direction: column;
+        background-color: rgba(239, 239, 239, 0.524);
+        padding: 0px;
+        border-radius: none;
+        box-shadow: none;    
+    }
+    
+    .button{
+        width: 100%;
+    }
 }
 
 
@@ -63,10 +90,7 @@
 }
 
 .rmdp-container {
-
-    @media (max-width: 768px) {
-        width: 100%;
-    }
+        
     
     .rmdp-input {
         width: 100%;
@@ -75,10 +99,6 @@
         font-size: 1rem;
         color: #808080;
         border-color: #cccccc;
-
-        @media (max-width: 768px) {
-            margin: 0.5rem 0;
-        }
     }
 }
 
@@ -91,25 +111,27 @@
 
         .rmdp-arrow-container {
             background-color: $red-books;
-            color: $white-books;
             box-shadow: none;
-         
+            
         }
         .rmdp-arrow {
             border-color: $white-books;
-          
-                
+            
+
         }
     }
 
     .rmdp-day-picker {
         padding: 0;
+    
 
         & > *:first-child {
             border-right: 1px solid $grey-books;
             padding-right: 12px;
         }
         
+        
+
         .rmdp-week {
             .rmdp-week-day {
                 color: $black1-books;
@@ -120,19 +142,17 @@
                 margin: 5px;
                 pointer-events: none;
                 
-            
-    }
+            }
             .rmdp-today {
-                border-color: white;
-                color: white;
                 .sd {
                     color: $black1-books;
                     background-color: $white-books;
-                    border-color: white;
                 }
             }
 
-    
+            .icon-calendar {
+                transform: scale(-1, 1);
+            }
         }
     }
 }
