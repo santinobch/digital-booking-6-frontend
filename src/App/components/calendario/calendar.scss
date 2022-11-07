@@ -1,6 +1,6 @@
 @import "../../scss/colors";
 
-.button {
+.buttonC {
     height: 30px;
     width: 100%;
     border-radius: 5px;
@@ -60,7 +60,7 @@
         box-shadow: none;
        
     }
-    .button{ 
+    .buttonC{ 
         display: flex;
         width: 50%;  
         align-items: center;
@@ -89,7 +89,7 @@
         box-shadow: none;   
     }
     
-    .button{
+    .buttonC{
         width: 100%;
         justify-content: center;
         color: $white-books;
@@ -132,15 +132,22 @@
         margin-top: 0px;
 
         .rmdp-arrow-container {
+            display: flex;
             background-color: $red-books;
             box-shadow: none;
-            padding:5px;
+            //padding:5px;
+            margin: 121px -32px;
+        justify-content: center;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+       
             
         }
         .rmdp-arrow {
             border-color: $white-books;
-            padding:3px;
-            
+            padding:6px;
+            margin-top: 8px;
         }
     }
 

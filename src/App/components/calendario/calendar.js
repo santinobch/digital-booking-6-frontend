@@ -38,7 +38,7 @@ export default function Calendario() {
           </div>
           <div className="contendorReserva">
             <h4>Agregá tus fechas de viaje para obtener precios exactos</h4>
-            <button className="button">Iniciar reserva</button>
+            <button className="buttonC">Iniciar reserva</button>
           </div>
         </div>
       </section>
