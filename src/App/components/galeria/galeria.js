@@ -1,6 +1,6 @@
 import React from 'react'
 import './galeria.scss'
-import Modal from 'react-modal'
+import ImgModal from '../modal/imgModal';
 
 
 const Galeria = () => {
@@ -25,18 +25,17 @@ const Galeria = () => {
 
   return (
     <>
-    <Modal isOpen={modalOpen} className="carouselModal">
-
-    </Modal>
     <section className='imageGallery'>
       <div className='mainImgContainer'>
         <img className='mainImg' src={images[0]} alt="Main" onClick={openModal} />
       </div>
       <div className='otherImgsContainer'>
         {images.slice(1).map((i, index) => <img key={index} className='otherImg' onClick={openModal} src={i} alt="Other"/>)}
-        <button className='verMasBtn' onClick={openModal}>Ver más</button>
+        {images.length > 5 ? <button className='verMasBtn' onClick={openModal}>Ver más</button> : null }
+        
       </div>
     </section>
+    <ImgModal show={modalOpen} onHide={closeModal} images={images}/>
     </>
   )
 }
