@@ -4,7 +4,6 @@ import "../calendario/calendar.scss";
 
 export default function Calendario() {
   const weekDays = ["D", "L", "M", "M", "J", "V", "S"];
-  const width = window.innerWidth;
   const months = [
     "Enero",
     "Febrero",
@@ -20,18 +19,21 @@ export default function Calendario() {
     "Diciembre"
   ];
 
+   
+   
   return (
     <>
-        <section className="fechasDisponibles">
+      <section className="fechasDisponibles">
         <h2>Fechas disponibles</h2>
         <div className="contenedorCalendario">
           <div className="product--calendarLayout-container">
             <Calendar
               weekDays={weekDays}
-              numberOfMonths={width >= 768 ? 2 : 2}
+              numberOfMonths={2}
               minDate={new Date()}
               hideYear
               months={months}
+             
             />
           </div>
           <div className="contendorReserva">

@@ -8,6 +8,7 @@
     text-align: center;
     background-color:$red-books;
     border: 1px solid $red-books;
+    color: $white-books;
 }
 
 .fechasDisponibles{
@@ -33,13 +34,23 @@
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.12);    
 }
 
+
+    .sd{
+        
+        text-decoration: line-through;
+           color: $grey-books;
+          
+    
+}
+
+//Estilos Tablet
+
 @media screen and (max-width: 768px){
     .contenedorCalendario{
         flex-direction: column;
         width: 100%;
         gap: 10px;
         text-align: left;
-
     }
 
     .contendorReserva{
@@ -49,11 +60,17 @@
         box-shadow: none;
        
     }
-    .button{
-        width: 50%;
-    }
-    
-  }
+    .button{ 
+        display: flex;
+        width: 50%;  
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+        color: $white-books;
+    } 
+}
+
+//Estilos Mobile
 
 @media screen and (max-width: 460px){
 
@@ -69,15 +86,21 @@
         background-color: rgba(239, 239, 239, 0.524);
         padding: 0px;
         border-radius: none;
-        box-shadow: none;    
+        box-shadow: none;   
     }
     
     .button{
         width: 100%;
+        justify-content: center;
+        color: $white-books;
     }
-}
+    
+    
+
+    }
 
 
+//Estilos calendario
 
 .rmdp-wrapper{
     box-sizing: border-box;
@@ -97,27 +120,27 @@
         height: 40px;
         padding: 0.5rem;
         font-size: 1rem;
-        color: #808080;
-        border-color: #cccccc;
+        
     }
 }
 
 
 .rmdp-calendar {
-    padding: 0;
-
+    padding: 0px 50px 0px 50px;
+  
     .rmdp-header {
         margin-top: 0px;
 
         .rmdp-arrow-container {
             background-color: $red-books;
             box-shadow: none;
+            padding:5px;
             
         }
         .rmdp-arrow {
             border-color: $white-books;
+            padding:3px;
             
-
         }
     }
 
@@ -130,29 +153,33 @@
             padding-right: 12px;
         }
         
-        
-
+    
         .rmdp-week {
             .rmdp-week-day {
                 color: $black1-books;
-                
+              
             }
 
             .rmdp-day {
                 margin: 5px;
-                pointer-events: none;
+            pointer-events: none;
                 
             }
             .rmdp-today {
                 .sd {
                     color: $black1-books;
                     background-color: $white-books;
+                
                 }
             }
-
-            .icon-calendar {
-                transform: scale(-1, 1);
+            .rmdp-day:not(.rmdp-disabled):not(.rmdp-day-hidden)  {
+              .sd{
+                
+              //  text-decoration: line-through;
+                //   color: $grey-books;
+              }
             }
+
         }
     }
 }
