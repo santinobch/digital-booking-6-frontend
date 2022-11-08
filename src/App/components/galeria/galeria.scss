@@ -23,11 +23,12 @@
     .mainImgContainer {
         width: 50%;
         border-radius: 20px;
-
+        
         .mainImg{
             width: 100%;
             border-radius: 20px;
             height: 500px;
+            cursor: pointer;
         }
     }
 
@@ -48,6 +49,7 @@
             border-radius: 20px;
             object-fit: cover;
             height: 245px;
+            cursor: pointer;
         }
     }
 
