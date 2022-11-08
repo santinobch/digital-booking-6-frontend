@@ -18,9 +18,9 @@ const Categorias = ({ onCategoriaSeleccionada }) => {
       <section className="categoriasGrid">
         {categorias.map((item) => (
           <Card
-            key={item.title}
+            key={item.titulo}
             {...item}
-            onClick={() => onCategoriaSeleccionada({ category: item.title })}
+            onClick={() => onCategoriaSeleccionada({ category: item.titulo })}
           />
         ))}
       </section>

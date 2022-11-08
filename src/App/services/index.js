@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const urlBase = process.env.REACT_APP_API_URL;
 
 export function getCiudades() {

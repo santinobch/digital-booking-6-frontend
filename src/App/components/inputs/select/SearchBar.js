@@ -44,7 +44,11 @@ export const SelectSearch = ({ onChange }) => {
             ¿A dónde vamos?
           </div>
         }
-        options={ciudades}
+        options={ciudades.map((opc) => ({
+          label: opc.id,
+          country: opc.pais,
+          label: opc.nombre,
+        }))}
         onChange={handleSelectChange}
         formatOptionLabel={formatOptionLabel}
       />
