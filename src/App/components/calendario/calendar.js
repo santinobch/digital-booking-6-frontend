@@ -19,7 +19,7 @@ export default function Calendario() {
     "Diciembre"
   ];
 
-   
+  const width = window.innerWidth;
    
   return (
     <>
@@ -29,10 +29,11 @@ export default function Calendario() {
           <div className="product--calendarLayout-container">
             <Calendar
               weekDays={weekDays}
-              numberOfMonths={2}
+              
               minDate={new Date()}
               hideYear
               months={months}
+              numberOfMonths={width >= 768 ? 2 : 1}
              
             />
           </div>
