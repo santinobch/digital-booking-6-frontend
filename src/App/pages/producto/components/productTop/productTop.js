@@ -9,6 +9,7 @@ import Galeria from "../galeria/galeria";
 import ImgCarousel from "../carousel/carousel";
 import * as FontAwesome from "react-icons/fa"
 import Calendario from "../calendario/calendar"
+import MobileCarousel from "../carousel/mobileCarousel";
 
 export default function ProductTop({producto}) {
     const size = useWindowSize()    
@@ -51,7 +52,7 @@ export default function ProductTop({producto}) {
             </section>
 
             <section className={styles.productGallery}>
-                {size.width > 1280 ? <Galeria images={producto.imagenes}/> : <ImgCarousel images={producto.imagenes}/>}
+                {size.width > 1280 ? <Galeria images={producto.imagenes}/> : <MobileCarousel images={producto.imagenes}/>}
             </section>
 
             <section className={styles.productInfo}>
