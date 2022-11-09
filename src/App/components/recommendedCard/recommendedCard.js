@@ -5,9 +5,6 @@ import star from "../../../imgs/icons/star.png";
 import styles from "./recommendedCard.module.scss";
 import { useNavigate } from "react-router-dom";
 
-let text =
-  "En el corazón de San Telmo, disfruta de un albergue inspirado en las pasiones de Buenos Aires. con 2 impresionantes piscinas, una en la terraza y otra al aire libre; habitaciones privadas";
-
 function shorten(textInput) {
   if (isString(textInput)) {
     return textInput.slice(0, 80) + "...";
@@ -63,8 +60,7 @@ export default function RecommendedCard({
 
           <div className={styles.ubicacion}>
             {/* <img src="" alt="">ubicacion</img> */}
-            <p>{ciudad.pais}</p>
-            <p>{ciudad.nombre}</p>
+            <p> {ciudad.nombre}, {ciudad.pais}</p>
           </div>
 
           <p className={styles.text}>{shorten(descripcion)}</p>
