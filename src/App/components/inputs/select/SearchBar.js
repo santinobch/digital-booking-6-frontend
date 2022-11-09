@@ -9,7 +9,7 @@ import { getCiudades } from "../../../services";
 
 const formatOptionLabel = ({ label, country }) => (
   <div style={{ display: "flex", alignItems: "center" }}>
-    <FontAwesomeIcon icon={faLocationDot} style={{ marginRight: "4px" }} />
+    <FontAwesomeIcon icon={faLocationDot} style={{ marginRight: "14px" }} />
     <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
       <p style={{ marginBottom: "0px" }}>{label}</p>
       <p style={{ color: "#ccc", marginBottom: "0px" }}>{country}</p>
