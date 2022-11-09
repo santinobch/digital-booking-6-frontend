@@ -1,5 +1,3 @@
-import axios from "axios";
-
 const urlBase = process.env.REACT_APP_API_URL;
 
 export function getCiudades() {
@@ -15,4 +13,8 @@ export function getHospedaje(busqueda) {
 
 export function getCategorias() {
   return fetch(`${urlBase}/categorias`).then((respuesta) => respuesta.json());
+}
+
+export function getRandomProductos(){
+  return fetch(`${urlBase}/productos/random`).then((respuesta) => respuesta.json())
 }
