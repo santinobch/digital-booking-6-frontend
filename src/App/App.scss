@@ -16,7 +16,7 @@ main {
   width: 100vw;
   height: $main-height;
 
-  overflow: scroll;
+  overflow-y: scroll;
 
   background-color: grey;
 }

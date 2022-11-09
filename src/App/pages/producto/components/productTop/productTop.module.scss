@@ -1,16 +1,109 @@
 @import "../../../../scss/colors";
 
-.calificacion {
-    width: 34px;
-    height: 27px;
-    border-radius: 10px;
+$spacing: 42px;
+
+h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: $black2-books;
+}
+
+.productName {
+    height: 60px;
     background-color: $black2-books;
 
-    font-weight: 700;
     color: $white-books;
-    font-size: 20px;
+
+    padding-top: 10px;
+    padding-left: $spacing;
+
+    h2 {
+        font-size: 14px;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    h1 {
+        margin: 0;
+        color: $white-books;
+    }
+}
+
+.productLocation {
+    height: 55px;
+    background-color: $grey-books;
+    padding-left: $spacing;
+    padding-right: $spacing;
 
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
+
+    .location {
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .calificacion {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+
+        p {
+            margin: 0;
+        }
+
+        .puntaje {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background-color: $black2-books;
+        
+            font-weight: 700;
+            color: $white-books;
+            font-size: 20px;
+        
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+.productInfo {
+    background-color: $white-books;
+
+    padding-left: $spacing;
+    padding-right: $spacing;
+
+
+}
+
+.productOfferings {
+    background-color: $white-books;
+
+    h1 {
+        padding-left: $spacing;
+    }
+
+    .offeringsContainer{
+        padding: $spacing;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        row-gap: 35px;
+        
+        .offering {
+            display: flex;
+            align-items: center;
+
+            p {
+                font-size: 14px;
+                font-weight: 500;
+                margin: 0; 
+                margin-left: 10px;
+            }
+        }
+    }
 }

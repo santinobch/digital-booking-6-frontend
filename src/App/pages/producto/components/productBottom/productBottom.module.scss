@@ -1,0 +1,36 @@
+@import "../../../../scss/colors";
+
+$spacing: 42px;
+
+.productBottom {
+    color: $black2-books;
+    background-color: $white-books;
+
+    
+
+    h1 {
+        font-size: 24px;
+        font-weight: 700;
+
+        margin-left: $spacing;
+    }
+
+    .normasContainer {
+        display: flex;
+        align-items: flex-start;
+
+        .norma {
+            width: 20%;
+            margin: $spacing;
+    
+            h2 {
+                font-size: 20px;
+                font-weight: 700;
+            }
+    
+            p {
+                color: $black1-books;
+            }
+        }
+    }
+}
