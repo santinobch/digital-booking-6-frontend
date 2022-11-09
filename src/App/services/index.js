@@ -6,13 +6,22 @@ export function getCiudades() {
 
 //
 export function getProductos(busqueda) {
-  const defaultQuery = "all/";
-  const query = new URLSearchParams(busqueda);
-  return fetch(
-    `${urlBase}/productos/${
-      busqueda?.ciudad ? `ciudad/${busqueda?.ciudad}` : defaultQuery
-    }`
-  ).then((respuesta) => respuesta.json());
+  const { ciudad, categoria, fecha } = busqueda || {};
+  // const query = new URLSearchParams({});
+
+  let url = "all/";
+
+  if (categoria) {
+    url = `categoria/${categoria}`;
+  }
+
+  if (ciudad) {
+    url = `ciudad/${ciudad}`;
+  }
+
+  return fetch(`${urlBase}/productos/${url}`).then((respuesta) =>
+    respuesta.json()
+  );
 }
 
 export function getCategorias() {

@@ -11,7 +11,7 @@ const Listado = ({ busqueda, filtros }) => {
   useEffect(() => {
     let query = busqueda;
 
-    if (filtros.category) {
+    if (filtros.categoria) {
       query = filtros;
     }
 

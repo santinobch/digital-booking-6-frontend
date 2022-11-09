@@ -1,11 +1,12 @@
-import React from "react";
+import * as FontAwesome from "react-icons/fa";
+
 import Boton from "../button/button";
+import React from "react";
 import heart from "../../../imgs/icons/heart.png";
 import { isString } from "formik";
 import star from "../../../imgs/icons/star.png";
 import styles from "./recommendedCard.module.scss";
 import { useNavigate } from "react-router-dom";
-import * as FontAwesome from "react-icons/fa"
 
 function shorten(textInput) {
   if (isString(textInput)) {
@@ -22,14 +23,11 @@ export default function RecommendedCard({
   titulo,
   ciudad,
   descripcion,
-  caracteristicas
+  caracteristicas,
 }) {
-
   const navigate = useNavigate();
 
-  console.log(caracteristicas)
-
-  const renderIcon = icon => React.createElement(FontAwesome[icon])
+  const renderIcon = (icon) => React.createElement(FontAwesome[icon]);
 
   return (
     <div className={styles.card}>
@@ -69,11 +67,15 @@ export default function RecommendedCard({
 
           <div className={styles.ubicacion}>
             {/* <img src="" alt="">ubicacion</img> */}
-            <p> {ciudad.nombre}, {ciudad.pais}</p>
+            <p>
+              {ciudad.nombre}, {ciudad.pais}
+            </p>
           </div>
 
           <div className={styles.caracteristicas}>
-            {caracteristicas.map(i => renderIcon(i.icono))}
+            {caracteristicas.map((i) => (
+              <span key={i.icono}>{renderIcon(i.icono)}</span>
+            ))}
           </div>
 
           <p className={styles.text}>{shorten(descripcion)}</p>
