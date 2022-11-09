@@ -20,3 +20,7 @@ export function getCategorias() {
 export function getRandomProductos(){
   return fetch(`${urlBase}/productos/random`).then((respuesta) => respuesta.json())
 }
+
+export function getProducto(id){
+  return fetch(`${urlBase}/productos/${id}`).then((respuesta) => respuesta.json())
+}

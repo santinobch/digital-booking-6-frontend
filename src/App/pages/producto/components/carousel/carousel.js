@@ -8,7 +8,7 @@ const ImgCarousel = ({images}) => {
     <>
       <Carousel infiniteLoop showIndicators={false} statusFormatter={(currentItem, total) => `${currentItem}/${total}` } >
         {images?.map((item, idx) => (
-              <img src={item} key={idx} alt="banner" objectPosition="center top" layout="fill" objectFit="cover" priority />
+              <img src={item.url} key={idx} alt="banner" objectPosition="center top" layout="fill" objectFit="cover" priority />
           ))}
       </Carousel>
     </>

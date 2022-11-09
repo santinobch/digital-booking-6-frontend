@@ -4,6 +4,7 @@ import MobileCarousel from '../carousel/carousel'
 import './imgModal.scss'
 
 export default function ImgModal({show, onHide, images}) {
+
     return (
         <div>
             <Modal
