@@ -10,12 +10,12 @@ export default function Calendario() {
   return (
     <>
       <section className={styles.calendarLayout}>
-        <h2 className={styles.elements}>Fechas disponibles</h2>
+        <h1>Fechas disponibles</h1>
         <div className={styles.elements}>
           <div className={styles.container}>
             <Calendar
               weekDays={weekDays}
-              numberOfMonths={width >= 768 ? 2 : 2}
+              numberOfMonths={width >= 768 ? 2 : 1}
               minDate={new Date()}
               hideYear
             />

@@ -91,10 +91,6 @@
             .rmdp-day:not(.rmdp-disabled):not(.rmdp-day-hidden) span:hover {
                 background-color: $red-books;
             }
-
-            .icon-calendar {
-                transform: scale(-1, 1);
-            }
         }
     }
 }
