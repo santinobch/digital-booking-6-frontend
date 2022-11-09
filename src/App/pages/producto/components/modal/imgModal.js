@@ -11,6 +11,7 @@ export default function ImgModal({show, onHide, images}) {
             show={show}
             centered
             size="lg"
+            onHide={onHide}
         >
             <Modal.Body>
                 <button className='closeBtn' onClick={onHide}>X</button>

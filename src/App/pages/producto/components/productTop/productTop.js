@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./productTop.module.scss";
 import star from "../../../../../imgs/icons/star.png";
 import useWindowSize from "../../../../hooks/useWindowSize";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Galeria from "../galeria/galeria";
 import ImgCarousel from "../carousel/carousel";
@@ -24,7 +26,8 @@ export default function ProductTop({producto}) {
             <section className={styles.productLocation}>
 
                 <div className={styles.location}>
-                    <p>  {producto.ciudad.nombre}, {producto.ciudad.pais} </p>
+                <FontAwesomeIcon icon={faLocationDot} style={{ marginRight: "4px" }} />
+                    <span>  {producto.ciudad.nombre}, {producto.ciudad.pais} </span>
                 </div>
 
                 <div className={styles.calificacion}>

@@ -31,7 +31,7 @@ h1 {
 
 .productLocation {
     height: 55px;
-    background-color: $grey-books;
+    background-color: $light-books;
     padding-left: $spacing;
     padding-right: $spacing;
 
@@ -43,6 +43,7 @@ h1 {
     .location {
         font-size: 14px;
         font-weight: 500;
+
     }
 
     .calificacion {
@@ -89,7 +90,7 @@ h1 {
     }
 
     .offeringsContainer{
-        padding: $spacing;
+        padding: $spacing/2 $spacing $spacing $spacing;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         row-gap: 35px;
@@ -97,6 +98,10 @@ h1 {
         .offering {
             display: flex;
             align-items: center;
+
+            svg{
+                color: $red-books;
+            }
 
             p {
                 font-size: 14px;
