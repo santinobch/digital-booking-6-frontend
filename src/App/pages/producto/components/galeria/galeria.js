@@ -1,6 +1,6 @@
 import React from 'react'
 import './galeria.scss'
-import ImgModal from '../modal/imgModal';
+import ImgModal from "../modal/imgModal";
 
 
 const Galeria = () => {
