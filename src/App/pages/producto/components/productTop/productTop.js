@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Galeria from "../galeria/galeria";
 import ImgCarousel from "../carousel/carousel";
 import * as FontAwesome from "react-icons/fa"
+import Calendario from "../calendario/calendar"
 
 export default function ProductTop({producto}) {
     const size = useWindowSize()    
@@ -70,7 +71,9 @@ export default function ProductTop({producto}) {
                         </div>
                     )}
                 </div>
-                
+            </section>
+            <section>
+                <Calendario/>
             </section>
         </>
     );

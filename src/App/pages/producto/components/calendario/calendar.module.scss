@@ -1,4 +1,8 @@
-@import "../../scss/colors";
+@import "../../../../scss/colors";
+
+.h2{
+    font-size: 24px;
+}
 
 .button {
     height: 40px;
@@ -11,43 +15,51 @@
     border: 1px solid $red-books;
 }
 
-.product--calendarLayout {
+.calendarLayout {
     background-color: rgba(239, 239, 239, 0.524);
     padding: 0 3rem;
+
+    
+    .elements {
+        display: grid;
+        grid-template-columns: [x0] 1fr [x1] 1fr [x2] 1fr [x3];
+        grid-template-rows: [y0] 1fr ;
+        gap: 2rem;
+        align-items: center;
+        padding: 1rem 0 3rem;
+    }
+    
+    .form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1.5rem;
+        padding: 2rem;
+        background-color: $white-books;
+        box-shadow: var(--main-box-shadow);
+        border-radius: 0.5rem;
+
+        .h3 {
+            padding: 1rem 0;
+        }
+
+        .button{
+            width: 100%;
+        }
+
+        grid-column: x2 / x3;
+        grid-row: y0 / y1;
+    }
+
+    .container{
+        grid-column: x0 / x2;
+        grid-row: y0 / y1;
+    }
 }
 
-.product--calendarLayout-elements {
-    display: grid;
-    grid-template-columns: [x0] 1fr [x1] 1fr [x2] 1fr [x3];
-    grid-template-rows: [y0] 1fr ;
-    gap: 2rem;
-    align-items: center;
-    padding: 1rem 0 3rem;
-}
-
-.product--calendarLayout-form{
-    grid-column: x2 / x3;
-    grid-row: y0 / y1;
-}
-.product--calendarLayout-container{
-    grid-column: x0 / x2;
-    grid-row: y0 / y1;
-}
-
-
-.product--calendarLayout > h3 {
-    padding: 1rem 0;
-}
 
 .product--calendarLayout-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1.5rem;
-    padding: 2rem;
-    background-color: $white-books;
-    box-shadow: var(--main-box-shadow);
-    border-radius: 0.5rem;
+
 }
 
 
