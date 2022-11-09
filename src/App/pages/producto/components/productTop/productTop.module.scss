@@ -14,8 +14,7 @@ h1 {
 
     color: $white-books;
 
-    padding-top: 10px;
-    padding-left: $spacing;
+    padding: 10px $spacing 10px $spacing;
 
     h2 {
         font-size: 14px;
@@ -30,7 +29,6 @@ h1 {
 }
 
 .productLocation {
-    height: 55px;
     background-color: $light-books;
     padding-left: $spacing;
     padding-right: $spacing;
@@ -43,7 +41,7 @@ h1 {
     .location {
         font-size: 14px;
         font-weight: 500;
-
+        width: 50%;
     }
 
     .calificacion {
@@ -124,6 +122,10 @@ h1 {
 }
 
 @media only screen and (min-width: 768px) and (max-width:1280px) {
+    .productInfo{
+        padding-top: $spacing;
+    }
+
     .offeringsContainer{
         padding: $spacing/2 $spacing $spacing $spacing;
         grid-template-columns: 1fr 1fr;
