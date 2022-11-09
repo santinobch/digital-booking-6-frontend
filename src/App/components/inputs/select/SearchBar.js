@@ -1,32 +1,35 @@
-import React from "react";
-import Select from "react-select";
+import "./SearchBarStyles.scss";
+
+import { useEffect, useState } from "react";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Select from "react-select";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import "./SearchBarStyles.scss"
+import { getCiudades } from "../../../services";
 
-const ciudades = [
-  { label: "San Carlos de Bariloche", value: "San Carlos de Bariloche", country: "Argentina" },
-  { label: "Buenos Aires", value: "Buenos Aires", country: "Argentina" },
-  { label: "Mendoza", value: "Mendoza", country: "Argentina" },
-  { label: "Córdoba", value: "Córdoba", country: "Argentina" }
-];
-
-const formatOptionLabel = ({label, country}) => (
+const formatOptionLabel = ({ label, country }) => (
   <div style={{ display: "flex", alignItems: "center" }}>
-      <FontAwesomeIcon
-                icon={faLocationDot}
-                style={{ marginRight: "4px" }}
-                />
-    <div style={{display: "flex", flexDirection:"column", gap:"4px"}}>
-      <p style={{marginBottom: '0px'}}>{label}</p>
-      <p style={{ color: "#ccc", marginBottom: '0px' }}>{country}</p>
+    <FontAwesomeIcon icon={faLocationDot} style={{ marginRight: "4px" }} />
+    <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+      <p style={{ marginBottom: "0px" }}>{label}</p>
+      <p style={{ color: "#ccc", marginBottom: "0px" }}>{country}</p>
     </div>
   </div>
 );
 
-export const SelectSearch = () => {
+export const SelectSearch = ({ onChange }) => {
+  const [ciudades, setCiudades] = useState([]);
+
+  useEffect(() => {
+    getCiudades().then((datos) => setCiudades(datos));
+  }, []);
+
   const handleSelectChange = ({ value }) => {
-    console.log(value);
+    if (value === "Todos") {
+      onChange("");
+    } else {
+      onChange({ name: "location", value });
+    }
   };
 
   return (
@@ -41,12 +44,14 @@ export const SelectSearch = () => {
             ¿A dónde vamos?
           </div>
         }
-        options={ciudades}
+        options={ciudades.map((opc) => ({
+          label: opc.id,
+          country: opc.pais,
+          label: opc.nombre,
+        }))}
         onChange={handleSelectChange}
         formatOptionLabel={formatOptionLabel}
-        
       />
     </div>
   );
 };
-
