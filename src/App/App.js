@@ -38,7 +38,7 @@ const router = createBrowserRouter([{
             element: <Register />,
         },
         {
-            path: "producto",
+            path: "producto/:idProducto",
             element: <Producto />,
         }
     ]
