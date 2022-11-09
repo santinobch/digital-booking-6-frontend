@@ -1,9 +1,11 @@
+import React from "react";
 import Boton from "../button/button";
 import heart from "../../../imgs/icons/heart.png";
 import { isString } from "formik";
 import star from "../../../imgs/icons/star.png";
 import styles from "./recommendedCard.module.scss";
 import { useNavigate } from "react-router-dom";
+import * as FontAwesome from "react-icons/fa"
 
 function shorten(textInput) {
   if (isString(textInput)) {
@@ -20,8 +22,15 @@ export default function RecommendedCard({
   titulo,
   ciudad,
   descripcion,
+  caracteristicas
 }) {
+
   const navigate = useNavigate();
+
+  console.log(caracteristicas)
+
+  const renderIcon = icon => React.createElement(FontAwesome[icon])
+
   return (
     <div className={styles.card}>
       <img className={styles.favoritoImg} src={heart} alt=""></img>
@@ -63,10 +72,14 @@ export default function RecommendedCard({
             <p> {ciudad.nombre}, {ciudad.pais}</p>
           </div>
 
+          <div className={styles.caracteristicas}>
+            {caracteristicas.map(i => renderIcon(i.icono))}
+          </div>
+
           <p className={styles.text}>{shorten(descripcion)}</p>
 
           <Boton style="dark" onClick={() => navigate(`/producto/${id}`)}>
-            Ver Detalle
+            Ver más
           </Boton>
         </div>
       </div>
