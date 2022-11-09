@@ -1,0 +1,138 @@
+@import "../../scss/colors";
+
+.button {
+    height: 40px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+    text-align: center;
+    outline: none;
+    border: 0;
+    background-color:$red-books;
+    border: 1px solid $red-books;
+}
+
+.product--calendarLayout {
+    background-color: rgba(239, 239, 239, 0.524);
+    padding: 0 3rem;
+}
+
+.product--calendarLayout-elements {
+    display: grid;
+    grid-template-columns: [x0] 1fr [x1] 1fr [x2] 1fr [x3];
+    grid-template-rows: [y0] 1fr ;
+    gap: 2rem;
+    align-items: center;
+    padding: 1rem 0 3rem;
+}
+
+.product--calendarLayout-form{
+    grid-column: x2 / x3;
+    grid-row: y0 / y1;
+}
+.product--calendarLayout-container{
+    grid-column: x0 / x2;
+    grid-row: y0 / y1;
+}
+
+
+.product--calendarLayout > h3 {
+    padding: 1rem 0;
+}
+
+.product--calendarLayout-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    background-color: $white-books;
+    box-shadow: var(--main-box-shadow);
+    border-radius: 0.5rem;
+}
+
+
+
+.rmdp-wrapper{
+    box-sizing: border-box;
+    padding: 13px;
+}
+
+.rmdp-shadow {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 0px 5px 5px;
+}
+
+.rmdp-container {
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+    
+    .rmdp-input {
+        width: 100%;
+        height: 40px;
+        padding: 0.5rem;
+        font-size: 1rem;
+        color: #808080;
+        border-color: #cccccc;
+
+        @media (max-width: 768px) {
+            margin: 0.5rem 0;
+        }
+    }
+}
+
+
+.rmdp-calendar {
+    padding: 0;
+
+    .rmdp-header {
+        margin-top: 0px;
+
+        .rmdp-arrow-container {
+            background-color: $red-books;
+            color: $white-books;
+            box-shadow: none;
+         
+        }
+        .rmdp-arrow {
+            border-color: $white-books;
+          
+                
+        }
+    }
+
+    .rmdp-day-picker {
+        padding: 0;
+
+        & > *:first-child {
+            border-right: 1px solid $grey-books;
+            padding-right: 12px;
+        }
+        
+        .rmdp-week {
+            .rmdp-week-day {
+                color: $black1-books;
+                
+            }
+
+            .rmdp-day {
+                margin: 5px;
+                pointer-events: none;
+                
+            
+    }
+            .rmdp-today {
+                border-color: white;
+                color: white;
+                .sd {
+                    color: $black1-books;
+                    background-color: $white-books;
+                    border-color: white;
+                }
+            }
+
+    
+        }
+    }
+}
