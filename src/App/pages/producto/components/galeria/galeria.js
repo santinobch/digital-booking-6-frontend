@@ -22,7 +22,7 @@ const Galeria = ({images}) => {
         <img className='mainImg' src={images[0].url} alt="Main" onClick={openModal} />
       </div>
       <div className='otherImgsContainer'>
-        {images.slice(1).map((i, index) => <img key={index} className='otherImg' onClick={openModal} src={i.url} alt="Other"/>)}
+        {images.slice(1,5).map((i, index) => <img key={index} className='otherImg' onClick={openModal} src={i.url} alt="Other"/>)}
         {images.length > 5 ? <button className='verMasBtn' onClick={openModal}>Ver más</button> : null }
         
       </div>

@@ -1,7 +1,11 @@
 @import "../../../../scss/colors";
 
+.modal-content{
+    overflow: hidden;
+}
+
 .modal-lg {
-    width: 715px !important;
+    width: 716px !important;
 }
 
 .modal-body{
