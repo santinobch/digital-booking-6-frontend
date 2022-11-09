@@ -144,3 +144,89 @@ $spacing: 42px;
         }
     }
 }
+
+@media only screen and (max-width: 768px) {
+    .calendarLayout {
+        background-color: rgba(239, 239, 239, 0.524);
+        padding: $spacing/2 $spacing/2 0 $spacing/2;
+
+        .elements {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            justify-items: space-around;
+            padding: 1rem 0 2rem;
+            
+            .form{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 0;
+                padding: 0;
+                background-color: transparent;
+                box-shadow: var(--main-box-shadow);
+                border-radius: 0.5rem;
+                width: 100%;
+                
+                .h3 {
+                    font-size: 16px;
+                    padding: 0;
+                }
+
+                .buttonReserva{
+                    width: 50%;
+                }
+                
+                grid-column: x2 / x3;
+                grid-row: y0 / y1;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width:1280px) {
+    .calendarLayout {
+        background-color: rgba(239, 239, 239, 0.524);
+        padding: $spacing/2 $spacing 0 $spacing;
+
+        .elements {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: $spacing;
+            align-items: center;
+            justify-items: space-around;
+            padding: 1rem 0 3rem;
+            
+            .form{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                gap: 1.5rem;
+                padding: 0 2rem;
+                background-color: transparent;
+                box-shadow: var(--main-box-shadow);
+                border-radius: 0.5rem;
+                width: 100%;
+                
+                .h3 {
+                    font-size: 16px;
+                    padding: 0;
+                    width: 50%;
+                }
+
+                .buttonReserva{
+                    width: 50%;
+                }
+                
+                grid-column: x2 / x3;
+                grid-row: y0 / y1;
+            }
+        }
+    }
+}
+    
+    @media only screen and (min-width: 1280px) {
+        
+    }

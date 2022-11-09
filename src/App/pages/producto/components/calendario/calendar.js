@@ -2,10 +2,12 @@ import "react-multi-date-picker/styles/colors/teal.css";
 import { Calendar } from "react-multi-date-picker";
 import styles from "./calendar.module.scss";
 import Button from "../../../../components/button/button";
+import useWindowSize from "../../../../hooks/useWindowSize";
 
 export default function Calendario() {
   const weekDays = ["D", "L", "M", "M", "J", "V", "S"];
-  const width = window.innerWidth;
+
+  const size = useWindowSize();
 
   return (
     <>
@@ -15,14 +17,14 @@ export default function Calendario() {
           <div className={styles.container}>
             <Calendar
               weekDays={weekDays}
-              numberOfMonths={width >= 768 ? 2 : 1}
+              numberOfMonths={size.width >= 768 ? 2 : 1}
               minDate={new Date()}
               hideYear
             />
           </div>
           <div className={styles.form}>
             <h3 className={styles.h3}>Agregá tus fechas de viaje para obtener precios exactos</h3>
-            <Button className={styles.button} style="dark"> Iniciar reserva </Button>
+            <Button width={size.width >= 768 && size.width <= 1280 ? "50%" : "100%"} style="dark"> Iniciar reserva </Button>
           </div>
         </div>
       </section>
