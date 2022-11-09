@@ -1,0 +1,37 @@
+@import "../../scss/colors";
+
+.slide{
+    height: 476px;
+    object-fit: cover;
+
+    img{
+        object-fit: contain;
+        height: 100%;
+    }
+}
+
+.carousel{
+    margin:0;
+    .thumbs-wrapper{
+        margin: 10px;
+
+        .thumbs{
+            margin-bottom: 0;
+            
+            .thumb{
+                height: 60px;
+            }
+        }
+
+    }
+
+
+    .carousel-status{
+        position: relative;
+        color: $black1-books;
+        text-shadow: none;
+        font-size: 16px;
+        text-align: center;
+        margin-bottom: 0;
+    }
+}

@@ -1,0 +1,42 @@
+@import "../../scss/colors";
+
+.imgNumber{
+    position: absolute;
+    color: $white-books;
+    bottom: 5%;
+    right: 5%;
+}
+
+.carousel-inner{
+    height: 100%;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    .carousel.slide{
+        height: 50vh;
+    
+        .carousel-item{
+            height: 100%;
+        }
+    
+        img {
+            object-fit: cover;
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .carousel.slide{
+        height: 50vh;
+    
+        .carousel-item{
+            height: 100%;
+        }
+    
+        img {
+            object-fit: contain;
+        }
+    }
+}

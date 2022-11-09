@@ -9,8 +9,8 @@
     $dTopHeight: 175px;
     $linksHeight: 80px;
     $controlsHeight: calc(100vh - ($dTopHeight + $linksHeight));
-
     .drawer {
+        display: none;
         margin: 0;
         
         z-index: 3;

@@ -1,0 +1,82 @@
+@import "../../scss/colors";
+
+.imgModal{
+    height: 80vh;
+}
+
+.carouselModal{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+}
+
+.imageGallery{
+    padding: 36px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 12px;
+    background-color: #DFE4EA;
+    
+
+    .mainImgContainer {
+        width: 50%;
+        border-radius: 20px;
+        
+        .mainImg{
+            width: 100%;
+            border-radius: 20px;
+            height: 500px;
+            cursor: pointer;
+        }
+    }
+
+    .otherImgsContainer {
+        width: 50%;
+        display: grid;
+        height: 500px;
+        border-radius: 20px;
+        border-radius: 20px;
+        position: relative;
+        box-sizing: border-box;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 10px;
+
+        .otherImg{
+            width: 100%;
+            border-radius: 20px;
+            object-fit: cover;
+            height: 245px;
+            cursor: pointer;
+        }
+    }
+
+    .verMasBtn {
+        background: none;
+        border: none;
+        padding: 0;
+        text-decoration: underline;
+        cursor: pointer;
+        position: absolute;
+        bottom: 16px;
+        right: 20px;
+        color: $white-books;
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+}
+
+@media only screen and (min-width: 768px) {
+    
+}
+
+@media only screen and (max-width: 1366px) {
+}
+
+@media only screen and (min-width: 1366px) {
+
+}
