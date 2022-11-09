@@ -20,7 +20,7 @@ const Categorias = ({ onCategoriaSeleccionada }) => {
           <Card
             key={item.titulo}
             {...item}
-            onClick={() => onCategoriaSeleccionada({ category: item.titulo })}
+            onClick={() => onCategoriaSeleccionada({ categoria: item.titulo })}
           />
         ))}
       </section>

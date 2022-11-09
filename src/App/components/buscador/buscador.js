@@ -20,11 +20,11 @@ const Buscador = ({ onChange }) => {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    const { fecha, location } = inputValue;
+    const { fecha, ciudad } = inputValue;
     const [fechaInicio, fechaFin] = fecha;
 
     const data = {
-      location,
+      ciudad,
       fechaInicio: fechaInicio.format(DATE_FORMAT),
       fechaFin: fechaFin.format(DATE_FORMAT),
     };

@@ -25,10 +25,11 @@ export const SelectSearch = ({ onChange }) => {
   }, []);
 
   const handleSelectChange = ({ value }) => {
+    console.log(value);
     if (value === "Todos") {
       onChange("");
     } else {
-      onChange({ name: "location", value });
+      onChange({ name: "ciudad", value });
     }
   };
 
@@ -45,7 +46,7 @@ export const SelectSearch = ({ onChange }) => {
           </div>
         }
         options={ciudades.map((opc) => ({
-          label: opc.id,
+          value: opc.id,
           country: opc.pais,
           label: opc.nombre,
         }))}

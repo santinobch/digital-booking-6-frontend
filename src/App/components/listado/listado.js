@@ -3,7 +3,7 @@ import "./listado.scss";
 import React, { useEffect, useState } from "react";
 
 import RecommendedCard from "../../components/recommendedCard/recommendedCard";
-import { getHospedaje } from "../../services";
+import { getProductos } from "../../services";
 
 const Listado = ({ busqueda, filtros }) => {
   const [hospedajes, setHospedajes] = useState([]);
@@ -15,7 +15,7 @@ const Listado = ({ busqueda, filtros }) => {
       query = filtros;
     }
 
-    getHospedaje(query).then((data) => setHospedajes(data));
+    getProductos(query).then((data) => setHospedajes(data));
   }, [busqueda, filtros]);
 
   return (
@@ -23,7 +23,7 @@ const Listado = ({ busqueda, filtros }) => {
       <h2>Recomendaciones</h2>
       <div className="listadoGrid">
         {hospedajes.map((item) => (
-          <RecommendedCard key={item.title} {...item} />
+          <RecommendedCard key={item.titulo} {...item} />
         ))}
       </div>
     </section>
