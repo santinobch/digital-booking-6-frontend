@@ -8,6 +8,10 @@ h1 {
     color: $black2-books;
 }
 
+hr {
+    border: 1px solid $red-books;
+}
+
 .productName {
     height: 60px;
     background-color: $black2-books;
@@ -31,7 +35,7 @@ h1 {
 
 .productLocation {
     height: 55px;
-    background-color: $grey-books;
+    background-color: $light-books;
     padding-left: $spacing;
     padding-right: $spacing;
 
@@ -43,6 +47,10 @@ h1 {
     .location {
         font-size: 14px;
         font-weight: 500;
+        
+        p {
+            margin: 0;
+        }
     }
 
     .calificacion {

@@ -86,36 +86,36 @@ export default function ProductTop() {
 
                 <div className={styles.offeringsContainer}>
                     <div className={styles.offering}>
-                        <FaRegEyeSlash style={{ color: "#31363F", fontSize:"24px" }}/>
+                        <FaRegEyeSlash style={{ color: "#F0572D", fontSize:"24px" }}/>
                         <p>Test</p>
                     </div>
                     <div className={styles.offering}>
-                        <FaRegEyeSlash style={{ color: "#31363F", fontSize:"24px" }}/>
+                        <FaRegEyeSlash style={{ color: "#F0572D", fontSize:"24px" }}/>
                         <p>Test</p>
                     </div>
                     <div className={styles.offering}>
-                        <FaRegEyeSlash style={{ color: "#31363F", fontSize:"24px" }}/>
+                        <FaRegEyeSlash style={{ color: "#F0572D", fontSize:"24px" }}/>
                         <p>Test</p>
                     </div>
                     <div className={styles.offering}>
-                        <FaRegEyeSlash style={{ color: "#31363F", fontSize:"24px" }}/>
+                        <FaRegEyeSlash style={{ color: "#F0572D", fontSize:"24px" }}/>
                         <p>Test</p>
                     </div>
 
                     <div className={styles.offering}>
-                        <FaRegEyeSlash style={{ color: "#31363F", fontSize:"24px" }}/>
+                        <FaRegEyeSlash style={{ color: "#F0572D", fontSize:"24px" }}/>
                         <p>Test</p>
                     </div>
                     <div className={styles.offering}>
-                        <FaRegEyeSlash style={{ color: "#31363F", fontSize:"24px" }}/>
+                        <FaRegEyeSlash style={{ color: "#F0572D", fontSize:"24px" }}/>
                         <p>Test</p>
                     </div>
                     <div className={styles.offering}>
-                        <FaRegEyeSlash style={{ color: "#31363F", fontSize:"24px" }}/>
+                        <FaRegEyeSlash style={{ color: "#F0572D", fontSize:"24px" }}/>
                         <p>Test</p>
                     </div>
                     <div className={styles.offering}>
-                        <FaRegEyeSlash style={{ color: "#31363F", fontSize:"24px" }}/>
+                        <FaRegEyeSlash style={{ color: "#F0572D", fontSize:"24px" }}/>
                         <p>Test</p>
                     </div>
 
