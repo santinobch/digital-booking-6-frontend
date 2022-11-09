@@ -4,6 +4,7 @@ import "./datepicker.scss";
 import Button from "../button/button";
 import DatePicker from "react-multi-date-picker";
 import { useRef } from "react";
+import {AiOutlineArrowUp} from "react-icons/ai"
 
 export default function Datepicker({ value, onChange }) {
   const datePickerRef = useRef();

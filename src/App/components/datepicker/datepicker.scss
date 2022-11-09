@@ -37,19 +37,27 @@
         margin-top: 0px;
 
         .rmdp-arrow-container:hover {
-            background-color: $red-books;
-            color: white;
-            align-items: center;
+            background-color: $white-books;
+            border-color: $red-books;
             box-shadow: none;
 
+            .rmdp-arrow {
+                border-color: $red-books;
+            }
         }
+
         .rmdp-arrow {
             border-color: $red-books;
         }
+
+        .rmdp-arrow-container.disabled{
+                .rmdp-arrow{
+                    border-color:$grey-books
+                }
+            }
     }
 
     .rmdp-day-picker {
-        //TEMPORAL
         margin-bottom: 16px;
         
         padding: 0;
@@ -86,10 +94,6 @@
                 .sd:hover {
                     color: $white-books;
                 }
-            }
-
-            .rmdp-day:not(.rmdp-disabled):not(.rmdp-day-hidden) span:hover {
-                background-color: $red-books;
             }
         }
     }

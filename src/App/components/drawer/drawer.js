@@ -3,6 +3,9 @@ import linkedin from '../../../imgs/socials/linkedin.png';
 import twitter from '../../../imgs/socials/tweet.png';
 import instagram from '../../../imgs/socials/ig.png';
 
+import { useNavigate } from 'react-router-dom';
+import useWindowSize from '../../hooks/useWindowSize';
+
 import styles from "./drawer.module.scss";
 import { IconContext } from "react-icons";
 
@@ -11,36 +14,22 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-export default function Drawer() {
+export default function Drawer({open, setOpen}) {
 
-    const [drawerToggle, toggle] = useState(false);
+    const navigate = useNavigate();
+    const size = useWindowSize();
 
-    let firstRun = true;
-
-    useEffect(() => {    
-        if (firstRun) {
-            firstRun = false;
-        } else {
-            // Update the document title using the browser API    
-            if (drawerToggle) {
-                document.getElementById("drawer").style.display = "block";
-                toggle(true);
-            } else {
-                document.getElementById("drawer").style.display = "none";
-                toggle(false);
-            }
-        }
-        
-    }, []);
+    if(size.width > 768){
+        return(null);
+    }
 
     return (
-
         <IconContext.Provider value={{ color: "#DFE4EA", size:24 }}>
-            <div className={styles.drawer} id="drawer">
+            <div className={open && size.width < 768 ? styles.drawer : styles.hiddenDrawer} id="drawer">
                 <div className={styles.drawerTop}>
-                    <button onClick={() =>  toggle(false)}>X</button>
+                    <button className={styles.closeBtn} onClick={() => setOpen(true)}>X</button>
                     <h1>MENÚ</h1>
                 </div>
 
@@ -48,10 +37,10 @@ export default function Drawer() {
                     <div className={styles.controls}>
                         <div className={styles.controlsTop}>
                             <div className={styles.controlBox + " " + styles.bottomBorder}>
-                                <a href="">Crear cuenta</a>
+                                <button onClick={() => navigate("/registrarse")}>Crear cuenta</button>
                             </div>
                             <div className={styles.controlBox}>
-                                <a href="">Iniciar sesión</a>
+                                <button onClick={() => navigate("/login")}>Iniciar sesión</button>
                             </div>
                         </div>
                         <div className={styles.controlsBottom + " " + styles.bottomBorder}>

@@ -40,7 +40,7 @@ const Buscador = ({ onChange }) => {
       <form className="formBuscador" onSubmit={handleSubmit}>
         <SelectSearch onChange={handleChange} />
         <Datepicker value={inputValue.fecha} onChange={handleChange} />
-        <Button className="btnBuscador" type="Submit" style="dark">
+        <Button className="btnBuscador" type="Submit" styleBtn="dark">
           BUSCAR
         </Button>
       </form>

@@ -1,0 +1,88 @@
+@import "../../../../scss/colors";
+
+.calendarSection {
+
+    .rmdp-wrapper{
+        box-sizing: border-box;
+        padding: 13px;
+    }
+
+    .rmdp-shadow {
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 0px 0px 5px 5px;
+    }
+
+    .rmdp-container {
+
+        @media (max-width: 768px) {
+            width: 100%;
+        }
+        
+        .rmdp-input {
+            width: 100%;
+            height: 40px;
+            padding: 0.5rem;
+            font-size: 1rem;
+            color: #808080;
+            border-color: #cccccc;
+
+            @media (max-width: 768px) {
+                margin: 0.5rem 0;
+            }
+        }
+    }
+
+
+    .rmdp-calendar {
+        padding: 0;
+
+        .rmdp-header {
+            margin-top: 0px;
+
+            .rmdp-arrow-container {
+                box-shadow: none;
+                
+            }
+            .rmdp-arrow-container.disabled{
+
+                .rmdp-arrow{
+                    border-color:$grey-books
+                }
+            }
+
+            
+        }
+        
+        .rmdp-day-picker {
+            padding: 0;
+
+            & > *:first-child {
+                border-right: 1px solid $grey-books;
+                padding-right: 12px;
+            }
+            
+            .rmdp-week {
+                .rmdp-week-day {
+                    color: $black1-books;
+                    
+                }
+
+                .rmdp-day {
+                    margin: 5px;
+                    pointer-events: none;
+                    
+                
+                }
+                .rmdp-today {
+                    border-color: white;
+                    color: white;
+                    .sd {
+                        color: $black1-books;
+                        background-color: $white-books;
+                        border-color: white;
+                    }
+                }
+            }
+        }
+    }
+}

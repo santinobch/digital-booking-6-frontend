@@ -3,8 +3,8 @@ import styles from "./button.module.scss";
 export default function Button(props) {
   let choosenStyle = "";
 
-  switch (props.style) {
-    case "ligth":
+  switch (props.styleBtn) {
+    case "light":
       choosenStyle = styles.light;
       break;
 
