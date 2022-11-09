@@ -5,7 +5,7 @@ import ProductBottom from "./components/productBottom/productBottom";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getProducto } from "../../services";
-import { Spinner } from "react-bootstrap";
+import SpinnerLoader from "../../components/spinnerLoader/spinnerLoader";
 
 
 
@@ -23,9 +23,11 @@ export default function Producto() {
     }, [])
 
     if(producto.length === 0){
-        return <Spinner/>
+        return (
+            <SpinnerLoader/>
+        )
     }
-
+    
     return (
         <main className={styles.main}>
 

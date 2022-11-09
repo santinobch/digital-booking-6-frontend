@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 
 import Card from "../../components/card/card";
 import { getCategorias } from "../../services";
+import SpinnerLoader from "../spinnerLoader/spinnerLoader";
 
 const Categorias = ({ onCategoriaSeleccionada }) => {
   const [categorias, setCategorias] = useState([]);
@@ -12,6 +13,11 @@ const Categorias = ({ onCategoriaSeleccionada }) => {
     getCategorias().then((data) => setCategorias(data));
   }, []);
 
+  if(categorias.length === 0){
+    return (
+        <SpinnerLoader/>
+      )
+  }
   return (
     <section className="categoriasSection">
       <h2>Buscar por tipo de alojamiento</h2>
