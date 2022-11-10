@@ -1,6 +1,8 @@
 import styles from "./input.module.scss";
 import { FaRegEyeSlash } from "react-icons/fa";
 
+import {useState} from 'react'
+
 
 export default function Input(props) {
 
@@ -10,37 +12,55 @@ export default function Input(props) {
         showPassButton = "block";
     }
 
+
+    let  toggle = false;
+    const [toggleState, setToggle] = useState(toggle);
+
+    function checkValid() {
+        
+    }
+
+
     return (
         <div className={styles.inputContainer} style={{width: props.width}}>
             <label 
-            className={styles.label}
-            for={props.name}>
+                className={styles.label}
+                for={props.name}>
+                
                 {props.label}
             </label>
 
             <input 
-            className={styles.input}
-            style={{width: props.width}}
+                className={styles.input}
+                style={{width: props.width}}
 
-            checked={props.checked}
-            disabled={props.disabled}
-            name={props.name}
-            required={props.required}
-            placeholder={props.placeholder}
-            src={props.src}
-            type={props.type}
-            value={props.value}>
+                src={props.src}
+                
+                type={(props.type === "password") ? (toggleState ? "text" : "password") : props.type}
+
+                name={props.name}
+                value={props.value}
+                placeholder={props.placeholder}
+
+                disabled={props.disabled}
+                checked={props.checked}
+                
+                required={props.required}
+                pattern={props.pattern}
+                onKeyDown={() => checkValid()}>
 
                 {props.children}
             </input>
 
+
             <label 
-            className={styles.subLabel}
-            for={props.name}>
+                className={styles.subLabel}
+                for={props.name}>
+
                 {props.subLabel}
             </label>
 
-            <button style={{display: showPassButton}} className={styles.showPassButton}>
+            <button type="button" style={{display: showPassButton}} className={styles.showPassButton} onClick={() => setToggle(!toggleState)}>
                 <FaRegEyeSlash style={{ color: "#31363F", fontSize:"24px" }}/>
             </button>
         </div>

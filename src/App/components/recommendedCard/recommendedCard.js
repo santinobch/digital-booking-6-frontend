@@ -2,18 +2,14 @@ import styles from "./recommendedCard.module.scss";
 import star from "../../../imgs/icons/star.png";
 import heart from "../../../imgs/icons/heart.png"
 import Boton from "../button/button"
-import { isString } from "formik";
+
 
 
 let text = "En el corazón de San Telmo, disfruta de un albergue inspirado en las pasiones de Buenos Aires. con 2 impresionantes piscinas, una en la terraza y otra al aire libre; habitaciones privadas";
 
 
 function shorten(textInput) {
-    if (isString(textInput)) {
-        return textInput.slice(0, 80) + "..."
-    } else {
-        return "";
-    }
+    return textInput.slice(0, 80) + "..."
 }
 
 
