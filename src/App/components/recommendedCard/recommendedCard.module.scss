@@ -102,15 +102,24 @@ $radius: 10px;
                 .textRight {
                     text-align: right;
                     align-items: flex-end;
+                    width: 30%;
                 }
             }
     
             .ubicacion {
-                margin-top: 20px;
-                margin-bottom: 20px;
+                margin-top: 10px;
     
                 p {
                     margin: 0;
+                }
+            }
+
+            .caracteristicas {
+                margin-bottom: 16px;
+
+                > * {
+                    font-size: 20px;
+                    margin: 0px 6px;
                 }
             }
     
@@ -132,6 +141,7 @@ $radius: 10px;
                 font-weight: 500;
                 font-size: 14px;
                 color: $black2-books;
+                margin-bottom: 10px;
             }
 
             .seeMoreBtn {
@@ -186,12 +196,12 @@ $radius: 10px;
     }
 }
 
-@media only screen and (min-width: 1366px) {
+@media only screen and (min-width: 1280px) {
 
     .card {
         $card-width: 710px;
         $card-info-width: 365px;
-        $normalPadding: 24px;
+        $normalPadding: 20px;
 
         width: $card-width;
 

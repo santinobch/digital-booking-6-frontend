@@ -10,7 +10,7 @@ const DATE_FORMAT = "DD-MM-YYYY";
 const Buscador = ({ onChange }) => {
   const [inputValue, setInputValue] = useState({
     location: "",
-    fecha: [new Date(), new Date()],
+    fecha: [],
   });
 
   function handleChange(data = {}) {
@@ -20,14 +20,18 @@ const Buscador = ({ onChange }) => {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    const { fecha, location } = inputValue;
+    const { fecha = [], ciudad } = inputValue;
     const [fechaInicio, fechaFin] = fecha;
 
-    const data = {
-      location,
-      fechaInicio: fechaInicio.format(DATE_FORMAT),
-      fechaFin: fechaFin.format(DATE_FORMAT),
-    };
+    let data = { ciudad };
+
+    if (fechaInicio && fechaFin) {
+      data = {
+        ...data,
+        fechaInicio: fechaInicio?.format(DATE_FORMAT),
+        fechaFin: fechaFin?.format(DATE_FORMAT),
+      };
+    }
 
     onChange(data);
   }

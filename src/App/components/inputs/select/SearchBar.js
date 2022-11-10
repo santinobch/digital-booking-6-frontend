@@ -9,7 +9,7 @@ import { getCiudades } from "../../../services";
 
 const formatOptionLabel = ({ label, country }) => (
   <div style={{ display: "flex", alignItems: "center" }}>
-    <FontAwesomeIcon icon={faLocationDot} style={{ marginRight: "4px" }} />
+    <FontAwesomeIcon icon={faLocationDot} style={{ marginRight: "14px" }} />
     <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
       <p style={{ marginBottom: "0px" }}>{label}</p>
       <p style={{ color: "#ccc", marginBottom: "0px" }}>{country}</p>
@@ -25,10 +25,11 @@ export const SelectSearch = ({ onChange }) => {
   }, []);
 
   const handleSelectChange = ({ value }) => {
+    console.log(value);
     if (value === "Todos") {
       onChange("");
     } else {
-      onChange({ name: "location", value });
+      onChange({ name: "ciudad", value });
     }
   };
 
@@ -45,7 +46,7 @@ export const SelectSearch = ({ onChange }) => {
           </div>
         }
         options={ciudades.map((opc) => ({
-          label: opc.id,
+          value: opc.id,
           country: opc.pais,
           label: opc.nombre,
         }))}
