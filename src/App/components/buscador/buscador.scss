@@ -22,7 +22,7 @@
     $height: 38px;
     
     .mainBuscador{
-        padding: 0;
+        padding: 20px;
 
         h1{
             width: $width;
@@ -72,6 +72,7 @@
 @media only screen and (min-width: 1366px){
     $input-width: 422px; 
     .mainBuscador{
+        
         h1{
             font-size: 36px;
         }

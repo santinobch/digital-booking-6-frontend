@@ -1,15 +1,46 @@
 import styles from "./login.module.scss";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Input from "../../components/inputs/text/input";
 import Button from "../../components/button/button";
+import UsuarioContext from "../../services/context";
+import { useContext } from "react";
 
 const Login = () => {
+
+    const {handleUsuarioLogin} = useContext(UsuarioContext)
+
+    const navigate = useNavigate()
+
+    const userHardcode = {
+        nombre: "Usuario Default",
+        email: "abc123@gmail.com",
+        pw: "abcdef"
+    }
+
+    const handleLogin = e => {
+        e.preventDefault()
+        let form = document.getElementById("loginForm")
+
+        let userForm = {
+            nombre: "Usuario Default",
+            email: form.email.value,
+            pw: form.password.value
+        }
+
+        let valid = JSON.stringify(userForm) === JSON.stringify(userHardcode)
+        
+        if(valid){
+            handleUsuarioLogin(userForm)
+        }
+        navigate("/home")
+    }
+
     return (
         <main className={styles.main}>
 
-            <form className={styles.formContainer}>
+            <form id="loginForm" className={styles.formContainer} onSubmit={handleLogin}>
 
                 <h2>Iniciar sesión</h2>
 
@@ -31,7 +62,7 @@ const Login = () => {
                     pattern="[A-Za-z0-9]{6,20}"
                     width="100%"/>
 
-                <Button styleBtn="dark" width="100%">Ingresar</Button>
+                <Button styleBtn="dark" width="100%" type="submit">Ingresar</Button>
 
                 
                 <div className={styles.changeForm}>
