@@ -1,7 +1,7 @@
 import styles from "./input.module.scss";
 import { FaRegEyeSlash } from "react-icons/fa";
 
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 
 import { v4 as uuid } from 'uuid';
 
@@ -31,7 +31,6 @@ export default function Input(props) {
 
         if(props.name === "password_confirm"){
             let confirmValue = event.target.value
-            let match;
             if(props.comparePass !== undefined && props.comparePass === confirmValue){
                 setSubLabelVisibility("none");
                 setInvalid(false)

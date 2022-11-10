@@ -6,8 +6,7 @@ export default function SpinnerLoader() {
   return (
     <div className="contenedorSpinner">
       <Spinner animation="border" role="status" className="spinnerReactstrap">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>      
+      </Spinner> 
     </div>
   );
 }

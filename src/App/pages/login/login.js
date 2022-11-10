@@ -18,7 +18,6 @@ const Login = () => {
                     type="email"
                     placeholder="email@example.com"
                     label="Correo Electronico"
-                    required
                     subLabel="Este campo es obligatorio"
                     pattern="[A-Za-z0-9]{1,20}@[A-Za-z0-9.]{1,20}"
                     width="100%"/>
@@ -30,7 +29,6 @@ const Login = () => {
                     label="Contraseña"
                     subLabel="Este campo es obligatorio"
                     pattern="[A-Za-z0-9]{6,20}"
-                    required
                     width="100%"/>
 
                 <Button styleBtn="dark" width="100%">Ingresar</Button>

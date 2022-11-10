@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Input from "../../components/inputs/text/input";
 import Button from "../../components/button/button";
 
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 
 const Register = () => {
 
@@ -58,10 +58,10 @@ const Register = () => {
                     comparePass={passState}
                     subLabel="Las contraseñas deben coincidir"/>
 
-                <Button style="dark" width="100%">Crear Cuenta</Button>
+                <Button styleBtn="dark" width="100%">Crear Cuenta</Button>
 
                 <div className={styles.changeForm}>
-                    ¿Ya tienes una cuenta?
+                    <span> ¿Ya tienes una cuenta? </span>
                     <Link to={`/login`}>
                         Iniciar Sesión
                     </Link>
