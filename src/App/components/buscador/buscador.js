@@ -9,7 +9,8 @@ const DATE_FORMAT = "DD-MM-YYYY";
 
 const Buscador = ({ onChange }) => {
   const [inputValue, setInputValue] = useState({
-    location: "",
+    ciudad: "",
+    categoria: "",
     fecha: [],
   });
 
@@ -32,7 +33,6 @@ const Buscador = ({ onChange }) => {
         fechaFin: fechaFin?.format(DATE_FORMAT),
       };
     }
-
     onChange(data);
   }
 

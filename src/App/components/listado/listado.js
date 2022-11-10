@@ -5,18 +5,12 @@ import React, { useEffect, useState } from "react";
 import RecommendedCard from "../../components/recommendedCard/recommendedCard";
 import { getProductos } from "../../services";
 
-const Listado = ({ busqueda, filtros }) => {
+const Listado = ({ filtros }) => {
   const [hospedajes, setHospedajes] = useState([]);
 
   useEffect(() => {
-    let query = busqueda;
-
-    if (filtros.categoria) {
-      query = filtros;
-    }
-
-    getProductos(query).then((data) => setHospedajes(data));
-  }, [busqueda, filtros]);
+    getProductos(filtros).then((data) => setHospedajes(data));
+  }, [filtros]);
 
   return (
     <section className="listadoSection">

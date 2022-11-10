@@ -5,14 +5,13 @@ import styles from "./home.module.scss";
 import { useState } from "react";
 
 export default function Home() {
-  const [busqueda, setBusqueda] = useState("");
   const [filtros, setFiltros] = useState({ categoria: "" });
 
   return (
     <main className={styles.main}>
-      <Buscador onChange={setBusqueda} />
+      <Buscador onChange={setFiltros} />
       <Categorias onCategoriaSeleccionada={setFiltros} />
-      <Listado busqueda={busqueda} filtros={filtros} />
+      <Listado filtros={filtros} />
     </main>
   );
 }

@@ -14,7 +14,6 @@ export function getProductos(busqueda) {
   if (categoria) {
     url = `categoria/${categoria}`;
   }
-
   if (ciudad) {
     url = `ciudad/${ciudad}`;
   }

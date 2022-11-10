@@ -25,11 +25,10 @@ export const SelectSearch = ({ onChange }) => {
   }, []);
 
   const handleSelectChange = ({ value }) => {
-    console.log(value);
     if (value === "Todos") {
       onChange("");
     } else {
-      onChange({ name: "ciudad", value });
+      onChange({ name: "ciudad", value, categoria: "" });
     }
   };
 
