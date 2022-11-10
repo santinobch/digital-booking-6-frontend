@@ -80,7 +80,7 @@ export default function RecommendedCard({
 
           <p className={styles.text}>{shorten(descripcion)}</p>
 
-          <Boton style="dark" onClick={() => navigate(`/producto/${id}`)}>
+          <Boton styleBtn="dark" onClick={() => navigate(`/producto/${id}`)}>
             Ver más
           </Boton>
         </div>

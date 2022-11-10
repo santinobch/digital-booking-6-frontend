@@ -154,6 +154,7 @@ $radius: 10px;
 
 @media only screen and (min-width: 768px) {
 
+
     .card {
         $card-width: 635px;
         $card-height: 280px;
@@ -192,6 +193,21 @@ $radius: 10px;
                 width: $card-info-width;
                 padding: $normalPadding;
             }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .card {
+        $card-height: 280px;
+        $card-info-width: 323px;
+        $normalPadding: 22px;
+        
+        .cardInfo {
+            border-top-right-radius: $radius;
+            height: $card-height;
+            width: 100%;
+            padding: $normalPadding;
         }
     }
 }

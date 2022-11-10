@@ -10,12 +10,17 @@
     $linksHeight: 80px;
     $controlsHeight: calc(100vh - ($dTopHeight + $linksHeight));
     .drawer {
-        margin: 0 !important;
-        
+        margin: 0 !important;      
         z-index: 3;
-        position: fixed;
-        right: 0;
+        position: absolute;
+        right: 0px;
         top: 0;
+        animation: drawerOpen 0.25s;
+
+        @keyframes drawerOpen {
+            from {right: -200px;}
+            to {right: 0px;}
+          }
 
         width: 300px;
         height: 100vh;
