@@ -11,10 +11,6 @@ const Register = () => {
 
     const [passState, setPass] = useState("");
 
-    const handlePass = pass => {
-        setPass(current => current + pass);
-    };
-
     return (
         <main className={styles.main}>
             <form className={styles.formContainer}>
@@ -51,7 +47,7 @@ const Register = () => {
                     label="Contraseña"
                     width="100%"
                     subLabel="La contraseña debe estar compuesta de 8 a 20 caracteres alfenumericos"
-                    handlePass={handlePass}
+                    handlePass={setPass}
                     pattern="[A-Za-z0-9]{6,20}"/>
 
                 <Input
@@ -59,9 +55,8 @@ const Register = () => {
                     type="password"
                     width="100%"
                     label="Confirmar Contraseña"
-                    compare={passState}
-                    subLabel="Las contraseñas deben coincidir"
-                    pattern="[A-Za-z0-9]{6,20}"/>
+                    comparePass={passState}
+                    subLabel="Las contraseñas deben coincidir"/>
 
                 <Button style="dark" width="100%">Crear Cuenta</Button>
 

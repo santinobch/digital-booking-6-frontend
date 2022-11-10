@@ -33,11 +33,11 @@ const Login = () => {
                     required
                     width="100%"/>
 
-                <Button style="dark" width="100%">Ingresar</Button>
+                <Button styleBtn="dark" width="100%">Ingresar</Button>
 
                 
                 <div className={styles.changeForm}>
-                    aun no tenes cuenta? 
+                    <span> aun no tenes cuenta?  </span>
                     <Link to={`/registrarse`}>
                         Registrate
                     </Link>

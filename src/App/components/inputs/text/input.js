@@ -13,32 +13,34 @@ export default function Input(props) {
     let showPassButton = "none";
     let showSubLabel_ = "none";
     const [showSubLabel, setSubLabelVisibility] = useState(showSubLabel_);
+    const [invalid, setInvalid] = useState()
 
     let  toggle_ = false;
     const [toggleState, setToggle] = useState(toggle_);
-
-    let  value_ = false;
-    const [valueState, setValue] = useState(value_);
-
-    const [compareState, setCompare] = useState("");
 
     if (props.type === "password") {
         showPassButton = "block";
     }
 
-    function keyUp() {
+    function keyUp(event) {
         if (!document.getElementById(id).checkValidity()) {
             setSubLabelVisibility("block");
         } else {
             setSubLabelVisibility("none");
         }
 
-        //Esto es lo que deberia andar, pero el string de compare lo devuelve de una manera muy rara
-        if (props.compare !== undefined && props.value === props.compare) {
-            console.log("Passwords match")
-        } else {
-            console.log("compare: " + props.compare);
-            console.log("Passwords dont match")
+        if(props.name === "password_confirm"){
+            let confirmValue = event.target.value
+            let match;
+            if(props.comparePass !== undefined && props.comparePass === confirmValue){
+                setSubLabelVisibility("none");
+                setInvalid(false)
+            } else {
+                console.log("compare: " + props.comparePass);
+                console.log("Passwords dont match")
+                setSubLabelVisibility("block");
+                setInvalid(true)
+            }
         }
     }
     
@@ -52,7 +54,7 @@ export default function Input(props) {
     return (
         <div className={styles.inputContainer} style={{width: props.width}}>
             <label 
-                className={styles.label}
+                className= {styles.label}
                 htmlFor={props.name}>
                 
                 {props.label}
@@ -60,7 +62,7 @@ export default function Input(props) {
 
             <input 
                 id={id}
-                className={styles.input}
+                className= {`${styles.input} ${invalid ? styles.invalidInput :null}`}
                 style={{width: props.width}}
 
                 src={props.src}
@@ -77,7 +79,7 @@ export default function Input(props) {
                 
                 required={props.required}
                 pattern={props.pattern}
-                onKeyUp={() => keyUp()}>
+                onKeyUp={(event) => keyUp(event)}>
 
                 {props.children}
             </input>
