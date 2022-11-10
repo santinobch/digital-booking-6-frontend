@@ -1,0 +1,34 @@
+@import "../../scss/colors";
+
+.userLoggedDrawer{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+
+    .userInfo{
+        display: flex;
+        align-items: end;
+        flex-direction: column;
+
+        .userName{
+            color: $black1-books;
+            font-weight: 800;
+        }
+    }
+}
+
+.userLoggedHeader{
+    display: flex;
+    flex-direction: row;
+    
+    .userInfo{
+        display: flex;
+        flex-direction: column;
+        margin: 0 1rem; 
+
+        .userName{
+            color: $red-books;
+            font-weight: 800;
+        }
+    }
+}

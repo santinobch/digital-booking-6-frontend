@@ -1,0 +1,79 @@
+@import "../../../../scss/colors";
+
+$spacing: 42px;
+
+.productBottom {
+    padding: $spacing 0;
+    color: $black2-books;
+    background-color: $white-books;
+
+    h1 {
+        font-size: 24px;
+        font-weight: 700;
+
+        margin-left: $spacing;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .normasContainer {
+        display: grid;
+        grid-template-columns: 1fr;
+
+        .norma {
+            width: 100%;
+            padding: $spacing;
+    
+            h2 {
+                font-size: 20px;
+                font-weight: 700;
+            }
+    
+            p {
+                color: $black1-books;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1366px){
+    .normasContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        .norma {
+            width: 100%;
+            padding: $spacing;
+    
+            h2 {
+                font-size: 20px;
+                font-weight: 700;
+            }
+    
+            p {
+                color: $black1-books;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1366px) {
+    .normasContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+
+        .norma {
+            width: 100%;
+            padding: $spacing;
+    
+            h2 {
+                font-size: 20px;
+                font-weight: 700;
+            }
+    
+            p {
+                color: $black1-books;
+            }
+        }
+    }
+}
