@@ -61,7 +61,7 @@ export default function Drawer({open, setOpen}) {
                                 <button onClick={() => navegar("registrarse")}>Crear cuenta</button>
                             </div>
                             <div className={styles.controlBox}>
-                                <button onClick={() => navegar("registrarse")}>Iniciar sesión</button>
+                                <button onClick={() => navegar("login")}>Iniciar sesión</button>
                             </div>
                         </div>
                         }

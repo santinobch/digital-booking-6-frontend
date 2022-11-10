@@ -29,6 +29,8 @@ export default function Input(props) {
             setSubLabelVisibility("none");
         }
 
+        props.setHasError(false)
+
         if(props.name === "password_confirm"){
             let confirmValue = event.target.value
             if(props.comparePass !== undefined && props.comparePass === confirmValue){

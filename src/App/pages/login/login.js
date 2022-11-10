@@ -5,13 +5,15 @@ import { Link, useNavigate } from "react-router-dom";
 import Input from "../../components/inputs/text/input";
 import Button from "../../components/button/button";
 import UsuarioContext from "../../services/context";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 const Login = () => {
 
     const {handleUsuarioLogin} = useContext(UsuarioContext)
 
     const navigate = useNavigate()
+
+    const [hasError, setHasError] = useState(false)
 
     const userHardcode = {
         nombre: "Usuario Default",
@@ -33,8 +35,10 @@ const Login = () => {
         
         if(valid){
             handleUsuarioLogin(userForm)
+            navigate("/home")
+        } else {
+            setHasError(true)
         }
-        navigate("/home")
     }
 
     return (
@@ -44,6 +48,8 @@ const Login = () => {
 
                 <h2>Iniciar sesión</h2>
 
+                <p className={styles.errorDiv} style={{ visibility: hasError ? "visible" : "hidden" }}>Por favor, revise las credenciales ingresadas</p>
+
                 <Input
                     name="email"
                     type="email"
@@ -51,7 +57,8 @@ const Login = () => {
                     label="Correo Electronico"
                     subLabel="Este campo es obligatorio"
                     pattern="[A-Za-z0-9]{1,20}@[A-Za-z0-9.]{1,20}"
-                    width="100%"/>
+                    width="100%"
+                    setHasError={setHasError}/>
 
                 <Input
                     name="password"
@@ -60,7 +67,8 @@ const Login = () => {
                     label="Contraseña"
                     subLabel="Este campo es obligatorio"
                     pattern="[A-Za-z0-9]{6,20}"
-                    width="100%"/>
+                    width="100%"
+                    setHasError={setHasError}/>
 
                 <Button styleBtn="dark" width="100%" type="submit">Ingresar</Button>
 
