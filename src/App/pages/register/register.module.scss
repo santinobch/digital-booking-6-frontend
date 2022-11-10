@@ -11,19 +11,12 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 430px;
+        width: 330px;
 
         .namesContainer {
             width: 100%;
             display: flex;
-
-            input[name=name] {
-                margin-right: 6px;
-            }
-
-            input[name=apellido] {
-                margin-left: 6px;
-            }
+            flex-direction: column;
         }
 
         h2 {
@@ -37,6 +30,27 @@
             font-size: 12px;
             font-weight: 500;
             color: $black2-books;
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+
+    .main {
+        .formContainer {
+            width: 430px;
+
+            .namesContainer {
+                flex-direction: row;
+
+                input[name=name] {
+                    margin-right: 6px;
+                }
+    
+                input[name=apellido] {
+                    margin-left: 6px;
+                }
+            }
         }
     }
 }

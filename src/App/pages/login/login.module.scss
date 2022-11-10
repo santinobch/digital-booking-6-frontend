@@ -11,7 +11,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 430px;
+        width: 330px;
 
         h2 {
             font-size: 24px;
@@ -24,6 +24,15 @@
             font-size: 12px;
             font-weight: 500;
             color: $black2-books;
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+
+    .main {
+        .formContainer {
+            width: 430px;
         }
     }
 }
