@@ -22,6 +22,7 @@ const Register = () => {
                         name="name"
                         type="text"
                         label="Nombre"
+                        width="100%"
                         subLabel="Este campo es obligatorio"
                         pattern="[A-Za-z]{2,20}"/>
 
@@ -29,6 +30,7 @@ const Register = () => {
                         name="apellido"
                         type="text"
                         label="Apellido"
+                        width="100%"
                         subLabel="Este campo es obligatorio"
                         pattern="[A-Za-z]{2,20}"/>
                 </div>
