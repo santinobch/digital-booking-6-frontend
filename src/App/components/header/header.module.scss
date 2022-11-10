@@ -13,13 +13,23 @@
     justify-content: space-between;
     align-items: center;
 
-    &>* {
+    .logo{
         margin-left: 40px;
-        margin-right: 40px;
     }
 
-    Button {
-        margin-left: 6px;
-        margin-right: 6px;
+    .loginButtons{
+        margin-right: 40px;
+
+        Button {
+            margin-left: 6px;
+            margin-right: 6px;
+        }
+
+        .drawerBtn{
+            cursor: pointer;
+        }
     }
+}
+
+@media only screen and (max-width: 768px) {
 }

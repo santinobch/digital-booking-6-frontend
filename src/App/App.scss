@@ -16,7 +16,17 @@ main {
   width: 100vw;
   height: $main-height;
 
-  overflow: scroll;
+  overflow-y: scroll;
 
   background-color: grey;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
 }

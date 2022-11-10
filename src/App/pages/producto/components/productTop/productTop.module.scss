@@ -1,0 +1,146 @@
+@import "../../../../scss/colors";
+
+$spacing: 42px;
+
+h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: $black2-books;
+}
+
+hr {
+    border: 1px solid $red-books;
+}
+
+.productName {
+    height: 60px;
+    background-color: $black2-books;
+
+    color: $white-books;
+
+    padding: 10px $spacing 10px $spacing;
+
+    h2 {
+        font-size: 14px;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    h1 {
+        margin: 0;
+        color: $white-books;
+    }
+}
+
+.productLocation {
+    background-color: $light-books;
+    padding-left: $spacing;
+    padding-right: $spacing;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .location {
+        font-size: 14px;
+        font-weight: 500;
+        width: 50%;
+    }
+
+    .calificacion {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+
+        p {
+            margin: 0;
+        }
+
+        .puntaje {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background-color: $black2-books;
+        
+            font-weight: 700;
+            color: $white-books;
+            font-size: 20px;
+        
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+.productInfo {
+    background-color: $white-books;
+
+    padding-left: $spacing;
+    padding-right: $spacing;
+
+
+}
+
+.productOfferings {
+    padding: $spacing/2 0;
+    background-color: $white-books;
+
+    h1 {
+        padding-left: $spacing;
+    }
+    .offeringsContainer{
+        display: grid;
+        
+        .offering {
+            display: flex;
+            align-items: center;
+            
+            svg{
+                color: $red-books;
+            }
+            
+            p {
+                font-size: 14px;
+                font-weight: 500;
+                margin: 0; 
+                margin-left: 10px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .productInfo{
+        padding-top: $spacing;
+    }
+
+    .offeringsContainer{
+        padding: 0 $spacing/2;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 1rem;
+        column-gap: 0.5rem;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width:1280px) {
+    .productInfo{
+        padding-top: $spacing;
+    }
+
+    .offeringsContainer{
+        padding: $spacing/2 $spacing $spacing $spacing;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 35px;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    .offeringsContainer{
+        padding: $spacing/2 $spacing $spacing $spacing;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        row-gap: 35px;
+    }
+}

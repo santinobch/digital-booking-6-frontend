@@ -1,0 +1,18 @@
+@import "../../scss/colors";
+
+.contenedorSpinner{
+    height: 100vh;
+    display: flex ;
+    flex-direction: row ;
+    justify-content: center ;
+    align-items: center ;
+    text-align: center ;
+}
+
+.spinnerReactstrap{
+    width: 60px !important;
+    height: 60px !important;
+
+    border: 8px solid $red-books !important;
+    border-right-color:transparent !important;
+}

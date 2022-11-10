@@ -7,6 +7,7 @@ import Header from "./components/header/header";
 import Home from "./pages/home/home";
 import Login from "./pages/login/login";
 import Register from "./pages/register/register";
+import Producto from "./pages/producto/producto";
 import { Outlet } from "react-router-dom";
 
 
@@ -20,11 +21,10 @@ function Root() {
     );
 }
 
-const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <Root />,
-        children: [
+const router = createBrowserRouter([{
+    path: "/",
+    element: <Root />,
+    children: [
         {
             path: "",
             element: <Home />,
@@ -37,9 +37,12 @@ const router = createBrowserRouter([
             path: "registrarse",
             element: <Register />,
         },
-        ],
-    },
-]);
+        {
+            path: "producto/:idProducto",
+            element: <Producto />,
+        }
+    ]
+}]);
 
 function App() {
     return (
