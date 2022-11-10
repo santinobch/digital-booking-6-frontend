@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 
 import RecommendedCard from "../../components/recommendedCard/recommendedCard";
 import { getProductos } from "../../services";
+import SpinnerLoader from "../spinnerLoader/spinnerLoader";
 
 const Listado = ({ busqueda, filtros }) => {
   const [hospedajes, setHospedajes] = useState([]);
@@ -17,6 +18,12 @@ const Listado = ({ busqueda, filtros }) => {
 
     getProductos(query).then((data) => setHospedajes(data));
   }, [busqueda, filtros]);
+
+  if(hospedajes.length === 0){
+    return (
+        <SpinnerLoader/>
+      )
+  }
 
   return (
     <section className="listadoSection">
