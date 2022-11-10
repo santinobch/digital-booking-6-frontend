@@ -5,29 +5,15 @@ import { Link } from "react-router-dom";
 import Input from "../../components/inputs/text/input";
 import Button from "../../components/button/button";
 
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 
-// const registrarseSchema = Yup.object().shape({
-//   name: Yup.string()
-//     .min(2, "Demasiado corto")
-//     .max(50, "Demasiado largo!")
-//     .required("Este Campo es obligatorio"),
-//   apellido: Yup.string()
-//     .min(2, "Demasiado corto")
-//     .max(50, "Demasiado largo")
-//     .required("Este Campo es obligatorio"),
-//   email: Yup.string()
-//     .email("Correo invalido")
-//     .required("Este Campo es obligatorio"),
-//   password: Yup.string().required("Este Campo es obligatorio"),
-//   password_confirm: Yup.string().oneOf(
-//     [Yup.ref("password"), null],
-//     "Las Contraseñas no coinciden"
-//   ),
-// });
 const Register = () => {
 
-    //const [stockState, setStock] = useState(stock);
+    const [passState, setPass] = useState("");
+
+    const handlePass = pass => {
+        setPass(current => current + pass);
+    };
 
     return (
         <main className={styles.main}>
@@ -39,18 +25,23 @@ const Register = () => {
                     <Input
                         name="name"
                         type="text"
-                        label="Nombre"/>
+                        label="Nombre"
+                        subLabel="Este campo es obligatorio"
+                        pattern="[A-Za-z]{2,20}"/>
 
                     <Input
                         name="apellido"
                         type="text"
-                        label="Apellido"/>
+                        label="Apellido"
+                        subLabel="Este campo es obligatorio"
+                        pattern="[A-Za-z]{2,20}"/>
                 </div>
 
                 <Input
                     name="email"
                     type="email"
                     width="100%"
+                    subLabel="Este campo es obligatorio"
                     pattern="[A-Za-z0-9]{1,20}@[A-Za-z0-9.]{1,20}"
                     label="Correo Electronico"/>
 
@@ -59,13 +50,18 @@ const Register = () => {
                     type="password"
                     label="Contraseña"
                     width="100%"
-                    isPassword/>
+                    subLabel="La contraseña debe estar compuesta de 8 a 20 caracteres alfenumericos"
+                    handlePass={handlePass}
+                    pattern="[A-Za-z0-9]{6,20}"/>
 
                 <Input
                     name="password_confirm"
                     type="password"
                     width="100%"
-                    label="Confirmar Contraseña"/>
+                    label="Confirmar Contraseña"
+                    compare={passState}
+                    subLabel="Las contraseñas deben coincidir"
+                    pattern="[A-Za-z0-9]{6,20}"/>
 
                 <Button style="dark" width="100%">Crear Cuenta</Button>
 

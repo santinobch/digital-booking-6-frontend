@@ -1,36 +1,65 @@
 import styles from "./input.module.scss";
 import { FaRegEyeSlash } from "react-icons/fa";
 
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
+
+import { v4 as uuid } from 'uuid';
 
 
 export default function Input(props) {
 
+    const id = uuid();
+
     let showPassButton = "none";
+    let showSubLabel_ = "none";
+    const [showSubLabel, setSubLabelVisibility] = useState(showSubLabel_);
+
+    let  toggle_ = false;
+    const [toggleState, setToggle] = useState(toggle_);
+
+    let  value_ = false;
+    const [valueState, setValue] = useState(value_);
+
+    const [compareState, setCompare] = useState("");
 
     if (props.type === "password") {
         showPassButton = "block";
     }
 
+    function keyUp() {
+        if (!document.getElementById(id).checkValidity()) {
+            setSubLabelVisibility("block");
+        } else {
+            setSubLabelVisibility("none");
+        }
 
-    let  toggle = false;
-    const [toggleState, setToggle] = useState(toggle);
-
-    function checkValid() {
-        
+        //Esto es lo que deberia andar, pero el string de compare lo devuelve de una manera muy rara
+        if (props.compare !== undefined && props.value === props.compare) {
+            console.log("Passwords match")
+        } else {
+            console.log("compare: " + props.compare);
+            console.log("Passwords dont match")
+        }
     }
+    
+    const handleChange = event => {
+        if (props.handlePass !== undefined) {
+            props.handlePass(event.target.value);
+        }
+    };
 
 
     return (
         <div className={styles.inputContainer} style={{width: props.width}}>
             <label 
                 className={styles.label}
-                for={props.name}>
+                htmlFor={props.name}>
                 
                 {props.label}
             </label>
 
             <input 
+                id={id}
                 className={styles.input}
                 style={{width: props.width}}
 
@@ -39,6 +68,7 @@ export default function Input(props) {
                 type={(props.type === "password") ? (toggleState ? "text" : "password") : props.type}
 
                 name={props.name}
+                onChange={handleChange}
                 value={props.value}
                 placeholder={props.placeholder}
 
@@ -47,7 +77,7 @@ export default function Input(props) {
                 
                 required={props.required}
                 pattern={props.pattern}
-                onKeyDown={() => checkValid()}>
+                onKeyUp={() => keyUp()}>
 
                 {props.children}
             </input>
@@ -55,7 +85,8 @@ export default function Input(props) {
 
             <label 
                 className={styles.subLabel}
-                for={props.name}>
+                htmlFor={props.name}
+                style={{display: showSubLabel}}>
 
                 {props.subLabel}
             </label>
