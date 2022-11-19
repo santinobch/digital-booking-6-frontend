@@ -2,13 +2,15 @@ import React from "react";
 import styles from "./productTop.module.scss";
 import star from "../../../../../imgs/icons/star.png";
 import useWindowSize from "../../../../hooks/useWindowSize";
+
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import * as FontAwesome from "react-icons/fa"
 
 import Galeria from "../galeria/galeria";
-import * as FontAwesome from "react-icons/fa"
 import Calendario from "../calendario/calendar"
 import MobileCarousel from "../carousel/mobileCarousel";
+import ProductHeader from "../../../../components/productHeader/productHeader";
 
 export default function ProductTop({producto}) {
     const size = useWindowSize()    
@@ -17,13 +19,7 @@ export default function ProductTop({producto}) {
 
     return (
         <>
-            <section className={styles.productName}>
-                <div>
-                    <h2>{producto.categoria.titulo}</h2>
-                    <h1>{producto.titulo}</h1>
-                </div>
-
-            </section>
+            <ProductHeader />
             <section className={styles.productLocation}>
 
                 <div className={styles.location}>
