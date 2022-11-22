@@ -5,6 +5,7 @@ import ProductBottom from "../../components/productBottom/productBottom"
 
 import DataInput from "./components/dataInput/dataInput";
 import Llegada from "./components/llegada/llegada";
+import CalendarioReserva from "./components/calendarioReserva/calendarioReserva"
 import DetalleReserva from "./components/detalleReserva/detalleReserva";
 
 export default function Reserva() {
@@ -16,6 +17,7 @@ export default function Reserva() {
         <div className={styles.content}>
             <div className={styles.leftContainer}>
                 <DataInput />
+                <CalendarioReserva/>
                 <Llegada />
             </div>
             
