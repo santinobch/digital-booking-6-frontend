@@ -20,7 +20,8 @@ export default function CalendarioReserva() {
     "Noviembre",
     "Diciembre"
   ];
-  const dates = ["2022/11/25"];
+
+  const dates = ["26/11/2022"];
   const size = useWindowSize();
 
   return (
@@ -37,8 +38,9 @@ export default function CalendarioReserva() {
               hideYear
               range
               mapDays={({ date }) => {
+                let day = `${date.day}/${date.month}/${date.year}`   
                 let props = {}
-                if ([25,26,27].includes(date.day)) props.disabled= true
+                if (day === dates[0]) props.disabled= true
                 return props
               }}
             />
