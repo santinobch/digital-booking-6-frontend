@@ -27,7 +27,7 @@ export default function Datepicker({ value, onChange }) {
       value={value}
     >
       <Button
-        style="dark"
+        styleBtn="dark"
         width="100%"
         onClick={() => datePickerRef.current.closeCalendar()}
       >
