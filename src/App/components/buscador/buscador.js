@@ -5,7 +5,7 @@ import Datepicker from "../datepicker/datepicker";
 import { SelectSearch } from "../inputs/select/SearchBar";
 import { useState } from "react";
 
-const DATE_FORMAT = "DD-MM-YYYY";
+const DATE_FORMAT = "YYYY-MM-DD";
 
 const Buscador = ({ onChange }) => {
   const [inputValue, setInputValue] = useState({
@@ -29,8 +29,8 @@ const Buscador = ({ onChange }) => {
     if (fechaInicio && fechaFin) {
       data = {
         ...data,
-        fechaInicio: fechaInicio?.format(DATE_FORMAT),
-        fechaFin: fechaFin?.format(DATE_FORMAT),
+        fechaInicio: fechaInicio.format(DATE_FORMAT),
+        fechaFin: fechaFin.format(DATE_FORMAT),
       };
     }
     onChange(data);
