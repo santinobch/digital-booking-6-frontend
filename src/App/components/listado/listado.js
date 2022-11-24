@@ -3,12 +3,14 @@ import "./listado.scss";
 import React, { useEffect, useState } from "react";
 
 import RecommendedCard from "../../components/recommendedCard/recommendedCard";
-import { getProductos } from "../../services/products";
+import { getProductos } from "../../services/index.js";
 import SpinnerLoader from "../spinnerLoader/spinnerLoader";
 
 const Listado = ({ filtros }) => {
   const [hospedajes, setHospedajes] = useState([]);
   const [error, setError] = useState("");
+
+  console.log(filtros)
 
   useEffect(() => {
     setError("");
