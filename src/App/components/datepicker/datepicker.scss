@@ -75,12 +75,21 @@
 
             .rmdp-day {
                 margin: 5px;
+
+                .sd:hover{
+                    background: $red-books;
+                }
             }
 
             .rmdp-range {
                 background-color: $red-books;
                 border-radius: 50%;
                 box-shadow: none;
+
+                .sd{
+                    background-color: transparent !important;
+                    color: $white-books !important;
+                }
             }
 
             .rmdp-today {
