@@ -10,6 +10,7 @@ import Drawer from "../drawer/drawer";
 import {GiHamburgerMenu} from "react-icons/gi"
 import useWindowSize from "../../hooks/useWindowSize";
 import { getStoreItem, removeItem } from "../../storage/storage";
+import { LoggedContext } from "../../services/context";
 
 export default function Header() {
     const size = useWindowSize();
@@ -18,6 +19,8 @@ export default function Header() {
 
     const [usuario, setUsuario] = useState(getStoreItem('usuario'))
     const [usuarioLogeado, setUsuarioLogeado] = useState(false)
+
+    const {logged, handleLogged} = useContext(LoggedContext);
 
 
     const [drawerOpen, setDrawerOpen] = useState(false)
@@ -34,12 +37,17 @@ export default function Header() {
         }
     }, [usuario])
 
+    useEffect(() => {
+        setUsuario(getStoreItem('usuario'));
+    }, [logged])
+
     const handleLogout =() =>{
         console.log("cerrando sesión")
         removeItem('auth');
         removeItem('usuario');
         setUsuario(undefined);
         setUsuarioLogeado(false);
+        handleLogged(false);
         navigate('/home');
     }
 

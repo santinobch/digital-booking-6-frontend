@@ -4,17 +4,19 @@ import React, { useState } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { route } from "./Routes";
 
+import { LoggedContext } from "./services/context"
+
 function App() {
-    const [usuario, setUsuario] = useState();
+    const [logged, setLogged] = useState(false);
     
-    const handleUsuario = usuario => {
-        setUsuario(usuario)
+    const handlelogged = (log) => {
+        setLogged(log)
     }
 
     return (
-        <UsuarioContext.Provider value={ {usuario, handleUsuario} }>
+        <LoggedContext.Provider value={ {logged, handlelogged} }>
             <RouterProvider router={route} />  
-        </UsuarioContext.Provider>
+        </LoggedContext.Provider>
     );
 }
 
