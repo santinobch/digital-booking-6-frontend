@@ -37,7 +37,7 @@ export default function CalendarioReserva({reservas,fechasReserva, setFechasRese
           let currentDate = fechaInicio
       
           while(currentDate < fechaFin){
-            dates.push(new Date(currentDate).toISOString())
+            dates.push(new Date(currentDate).toDateString())
             currentDate.setDate(currentDate.getDate() + 1)
           }
           setFechasReservadas(dates)

@@ -16,6 +16,7 @@ import { useEffect, useState, useContext } from "react";
 
 export default function Reserva() {
 
+    
     const { idProducto } = useParams();
     const { usuario } = useContext(UsuarioContext)
     const [producto, setProducto] = useState([]);
@@ -24,6 +25,7 @@ export default function Reserva() {
         fechaCheckIn: null,
         fechaCheckOut: null
     });
+    console.log(reservas)
 
     const getDataProducto = async() => {
         await getProducto(idProducto).then((data) => setProducto(data))
@@ -67,10 +69,10 @@ export default function Reserva() {
             <div className={styles.content}>
                 <div className={styles.leftContainer}>
                     <DataInput 
-                        nombre={usuario.nombre} 
-                        apellido={usuario.apellido} 
-                        email={usuario.email} 
-                        ciudad={usuario.ciudad}
+                        nombre={usuario ? usuario.nombre : ""} 
+                        apellido={usuario ? usuario.apellido : ""} 
+                        email={usuario ? usuario.email : ""} 
+                        ciudad={usuario ? usuario.ciudad : ""}
                         />
                     <CalendarioReserva reservas={reservas} fechasReserva={fechasReserva} setFechasReserva={setFechasReserva}/>
                     <Llegada />
