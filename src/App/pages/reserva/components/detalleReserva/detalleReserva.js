@@ -5,10 +5,20 @@ import star from "../../../../../imgs/icons/star.png";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { postBooking } from "../../../../services/bookings";
+import { useNavigate } from 'react-router-dom';
 
 import Button from "../../../../components/button/button";
 
 export default function DetalleReserva({auth, producto, fechas, usuario}) {
+    const navigate = useNavigate();
+
+    const handleConfirmarReserva = () => {
+        postBooking(auth, usuario, producto, fechas).then(status => {
+            if(status>200 && status<300){
+                navigate("/reservaExistosa")
+            }
+        })
+    }
 
     return (
         <div className={styles.inputContainer}>
@@ -50,7 +60,7 @@ export default function DetalleReserva({auth, producto, fechas, usuario}) {
 
                     <hr />
 
-                    <Button styleBtn="dark" onClick={() => postBooking(auth, usuario, producto, fechas)}>Confirmar reserva</Button>
+                    <Button styleBtn="dark" onClick={handleConfirmarReserva}>Confirmar reserva</Button>
                 </div>
             </div>
             

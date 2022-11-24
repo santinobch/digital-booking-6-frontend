@@ -50,7 +50,7 @@ export function postBooking(auth, user, product, fechas){
     }
 
     return fetch(`${urlBase}/bookings/`, requestOptions)
-    .then(response => console.log(response.status))
+    .then(response => response.status)
 
 
 

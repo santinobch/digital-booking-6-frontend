@@ -15,7 +15,7 @@ const UserInfo = ({section}) => {
         </div>
         <div className={styles.userInfo}>
             <span>Hola, </span>
-            <span className={styles.userName}>{usuario.nombre}</span>
+            <span className={styles.userName}>{usuario.nombre} {usuario.apellido}</span>
         </div>
     </div>
   )
