@@ -1,7 +1,7 @@
 import styles from "./producto.module.scss";
 
 import ProductTop from "./components/productTop/productTop";
-import ProductBottom from "./components/productBottom/productBottom";
+import ProductBottom from "../../components/productBottom/productBottom";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getProducto } from "../../services";

@@ -1,0 +1,46 @@
+@import "../../../../scss/colors";
+
+.title {
+    font-weight: 700;
+    font-size: 20px;
+
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+.inputContainer {
+    border-radius: 8px;
+    border: 1px solid $light-books;
+    background-color: $white-books;
+    box-shadow: 0px 4px 4px 0px #00000040;
+
+    width: 90vw;
+
+    padding: 17px;
+
+    & > * {
+        margin: 0;
+    }
+
+    .checkIn {
+        display: flex;
+        gap: 13px;
+        margin-bottom: 30px;
+
+        h4 {
+            font-weight: 500;
+            font-size: 14px;
+            margin: 0;
+        }
+    }
+}
+
+
+@media only screen and (min-width: 768px) { 
+}
+
+@media only screen and (min-width: 1366px) { 
+    .inputContainer {
+        width: 100%;
+    }
+}
