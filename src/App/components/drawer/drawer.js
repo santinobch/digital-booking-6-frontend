@@ -13,7 +13,7 @@ import UserInfo from '../userInfo/userInfo';
 
 import React from 'react';
 
-export default function Drawer({open, setOpen}) {
+export default function Drawer({open, setOpen, handleLogout}) {
 
     const navigate = useNavigate();
     const size = useWindowSize();
@@ -62,7 +62,7 @@ export default function Drawer({open, setOpen}) {
                         }
                         {usuarioLogeado && 
                             <div className={styles.controlsBottom + " " + styles.bottomBorder}>
-                                <p>¿Deseas <a href="">cerrar sesión</a>?</p>
+                                <p>¿Deseas <span className={styles.logoutBtn} onClick={handleLogout}>cerrar sesión</span>?</p>
                             </div>
                         }
                     </div>

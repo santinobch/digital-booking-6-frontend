@@ -10,6 +10,10 @@
         align-items: end;
         flex-direction: column;
 
+        .logoutBtnDrawer{
+            display: none;
+        }
+
         .userName{
             color: $black1-books;
             font-weight: 800;
@@ -20,11 +24,29 @@
 .userLoggedHeader{
     display: flex;
     flex-direction: row;
+
+    .avatar{
+        align-self: 'center';
+    }
     
     .userInfo{
         display: flex;
         flex-direction: column;
         margin: 0 1rem; 
+
+        .greetingsSpan{
+            display: flex;
+            justify-content: space-between;
+
+            .logoutBtn{
+                background: none;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+                color: $black1-books;
+                margin: 0;
+            }
+        }
 
         .userName{
             color: $red-books;
