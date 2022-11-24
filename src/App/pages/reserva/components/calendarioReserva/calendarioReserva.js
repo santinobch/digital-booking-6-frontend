@@ -7,88 +7,87 @@ import { useState, useEffect } from "react";
 import SpinnerLoader from "../../../../components/spinnerLoader/spinnerLoader";
 
 export default function CalendarioReserva({reservas,fechasReserva, setFechasReserva}) {
-  const weekDays = ["D", "L", "M", "M", "J", "V", "S"];
-  const months = [
-    "Enero",
-    "Febrero",
-    "Marzo",
-    "Abril",
-    "Mayo",
-    "Junio",
-    "Julio",
-    "Agosto",
-    "Septiembre",
-    "Octubre",
-    "Noviembre",
-    "Diciembre"
-  ];
+    const weekDays = ["D", "L", "M", "M", "J", "V", "S"];
+    const months = [
+        "Enero",
+        "Febrero",
+        "Marzo",
+        "Abril",
+        "Mayo",
+        "Junio",
+        "Julio",
+        "Agosto",
+        "Septiembre",
+        "Octubre",
+        "Noviembre",
+        "Diciembre"
+    ];
 
-  const size = useWindowSize();
+    const size = useWindowSize();
 
-  const [fechasReservadas, setFechasReservadas] = useState([]);
+    const [fechasReservadas, setFechasReservadas] = useState([]);
 
-  const getFechasReservadas = () => {
-    if(reservas){
-      console.log(reservas)
-      let fechasReservadas = []
-      reservas?.map(i => {
-        
-        let fechaInicio = new Date(i.fechaDesde);
-        let fechaFin = new Date(i.fechaHasta);
-        
-        let currentDate = fechaInicio
-        
-        while(currentDate <= fechaFin){
-          fechasReservadas.push(new Date(currentDate).toDateString())
-          currentDate.setDate(currentDate.getDate() + 1)
+    const getFechasReservadas = () => {
+        if(reservas){
+        let fechasReservadas = []
+        reservas?.map(i => {
+            
+            let fechaInicio = new Date(i.fechaDesde);
+            let fechaFin = new Date(i.fechaHasta);
+            
+            let currentDate = fechaInicio
+            
+            while(currentDate <= fechaFin){
+            fechasReservadas.push(new Date(currentDate).toDateString())
+            currentDate.setDate(currentDate.getDate() + 1)
+            }
+
+            if(fechasReservadas.length > 0) {setFechasReservadas(fechasReservadas)}
+        })
         }
-
-        if(fechasReservadas.length > 0) {setFechasReservadas(fechasReservadas)}
-      })
     }
-  }
-    
-    useEffect(() => {
-      getFechasReservadas()
-  }, [reservas])
+        
+        useEffect(() => {
+        getFechasReservadas()
+    }, [reservas])
 
-  const handleSelectDates = (value) => {
-    let isoDatesArr = value.map(i => `${i.toDate().getDate()}/${i.toDate().getMonth()+1}/${i.toDate().getFullYear()}`)
-    if(isoDatesArr.length===1){
-      setFechasReserva(prevState => ({
-        fechaCheckIn: isoDatesArr[0],
-        fechaCheckOut: null})
-      )} else if(isoDatesArr.length===2){
+    const handleSelectDates = (value) => {
+        let isoDatesArr = value.map(i => `${i.toDate().getDate()}/${i.toDate().getMonth()+1}/${i.toDate().getFullYear()}`)
+        if(isoDatesArr.length===1){
         setFechasReserva(prevState => ({
-          fechaCheckIn: isoDatesArr[0],
-        fechaCheckOut: isoDatesArr[1]})
-        )}
+            fechaCheckIn: isoDatesArr[0],
+            fechaCheckOut: null})
+        )} else if(isoDatesArr.length===2){
+            setFechasReserva(prevState => ({
+            fechaCheckIn: isoDatesArr[0],
+            fechaCheckOut: isoDatesArr[1]})
+            )}
 
-  }
+    }
 
-  return (
-    <div className={styles.calendarSection}>
-      <section className={styles.calendarLayout}>
-        <h4>Seleccioná tu fecha de reserva</h4>
-        <div className={styles.elements}>
-          <div className={styles.container}>
-            <Calendar
-              weekDays={weekDays}
-              months={months}
-              numberOfMonths={size.width >= 768 ? 2 : 1}
-              minDate={new Date()}
-              hideYear
-              range
-              onChange={handleSelectDates}
-              mapDays={ ({date})  => {
-                let props = {}
-                if(fechasReservadas.includes(date.toDate().toDateString())) props.disabled = true
-                return props
-              }}
-              />
-          </div>
+    return (
+        <div className={styles.calendarSection}>
+        <section className={styles.calendarLayout}>
+            <h4>Seleccioná tu fecha de reserva</h4>
+            <div className={styles.elements}>
+            <div className={styles.container}>
+                <Calendar
+                weekDays={weekDays}
+                months={months}
+                numberOfMonths={size.width >= 768 ? 2 : 1}
+                minDate={new Date()}
+                hideYear
+                range
+                onChange={handleSelectDates}
+                mapDays={ ({date})  => {
+                    let props = {}
+                    if(fechasReservadas.includes(date.toDate().toDateString())) props.disabled = true
+                    return props
+                }}
+                />
+            </div>
+            </div>
+        </section>
         </div>
-      </section>
-    </div>
-  );
+    );
 }

@@ -1,15 +1,16 @@
-import UsuarioModel from "../models/usuario.model";
-import { AuthContext, UsuarioContext } from "../services/context";
-
-import {useContext} from 'react'
-import { useEffect } from "react";
+import AuthModel from "../models/auth.model";
+import { setStoreItem, getStoreItem } from "../storage/storage";
 
 const urlBase = process.env.REACT_APP_API_URL;
 
 
-export function GetLoggedUser(auth, handleUsuario) {
+export function GetLoggedUser(setUsuario) {
 
     let status = 0;
+
+    let auth = new AuthModel();
+
+    auth = getStoreItem('auth');
 
     const requestOptions = {
         method: 'GET',
@@ -24,7 +25,10 @@ export function GetLoggedUser(auth, handleUsuario) {
             status = response.status;
             return response.json()
         }).then(data => {
-            handleUsuario(data);
+            setStoreItem('usuario', data);
+            if (setUsuario !== undefined) {
+                setUsuario(data);
+            }
             return status;
         })
         .catch( error => {

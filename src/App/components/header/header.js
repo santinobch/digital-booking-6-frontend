@@ -9,55 +9,54 @@ import Button from "../button/button";
 import Drawer from "../drawer/drawer";
 import {GiHamburgerMenu} from "react-icons/gi"
 import useWindowSize from "../../hooks/useWindowSize";
-import {UsuarioContext} from "../../services/context";
+import { getStoreItem } from "../../storage/storage";
 
 export default function Header() {
     const size = useWindowSize();
-  const navigate = useNavigate();
-  const location = useLocation();
+    const navigate = useNavigate();
+    const location = useLocation();
 
-  const { usuario } = useContext(UsuarioContext)
-  const [usuarioLogeado, setUsuarioLogeado] = useState()
 
-  const [drawerOpen, setDrawerOpen] = useState(false)
-  const isLoginPage = location.pathname === "/login";
-  const isRegisterPage = location.pathname === "/registrarse";
+    const usuario = getStoreItem('usuario');
+    const [usuarioLogeado, setUsuarioLogeado] = useState(false)
 
-  const toggleDrawer = () => {
-    drawerOpen ? setDrawerOpen(false) : setDrawerOpen(true)
-  }
 
-  useEffect(() => {
-    if(usuario !== undefined){
-        setUsuarioLogeado(true)
-        console.log(`HOLA ${usuario.email}`)
-    } else {
-        setUsuarioLogeado(false)
+    const [drawerOpen, setDrawerOpen] = useState(false)
+    const isLoginPage = location.pathname === "/login";
+    const isRegisterPage = location.pathname === "/registrarse";
+
+    const toggleDrawer = () => {
+        drawerOpen ? setDrawerOpen(false) : setDrawerOpen(true)
     }
-  }, [usuario])
 
-  return (
-    <header className={styles.header}>
-        <div className={styles.logo}>
-            <Link to={"/home"}>
-                {size.width > 768 ? <img src={logo} alt="" /> : <img src={logoSolo} alt="" />}
-            </Link>
-        </div>
-        <div className={styles.loginButtons}>
-            {!isLoginPage && !usuarioLogeado && size.width > 768 && (
-                <Button width="200px"  onClick={() => navigate("/login")}> Iniciar sesion</Button>
-            )}
-            {!isRegisterPage && !usuarioLogeado && size.width > 768 && (
-                <Button width="200px" onClick={() => navigate("/registrarse")}> Crear Cuenta </Button>
-            )}
-            {usuarioLogeado && size.width > 768 && (
-                <UserInfo/>
-            )}
-            {size.width <= 768 ? <GiHamburgerMenu size={30} className={styles.drawerBtn} onClick={() => setDrawerOpen(true)}/> : null}
-        </div>
+    useEffect(() => {
+        if(usuario !== undefined){
+            setUsuarioLogeado(true)
+        }
+    })
 
-        <Drawer open={drawerOpen} setOpen={toggleDrawer}></Drawer>
-    </header>
-  );
+    return (
+        <header className={styles.header}>
+            <div className={styles.logo}>
+                <Link to={"/home"}>
+                    {size.width > 768 ? <img src={logo} alt="" /> : <img src={logoSolo} alt="" />}
+                </Link>
+            </div>
+            <div className={styles.loginButtons}>
+                {!isLoginPage && !usuarioLogeado && size.width > 768 && (
+                    <Button width="200px"  onClick={() => navigate("/login")}> Iniciar sesion</Button>
+                )}
+                {!isRegisterPage && !usuarioLogeado && size.width > 768 && (
+                    <Button width="200px" onClick={() => navigate("/registrarse")}> Crear Cuenta </Button>
+                )}
+                {usuarioLogeado && size.width > 768 && (
+                    <UserInfo/>
+                )}
+                {size.width <= 768 ? <GiHamburgerMenu size={30} className={styles.drawerBtn} onClick={() => setDrawerOpen(true)}/> : null}
+            </div>
+
+            <Drawer open={drawerOpen} setOpen={toggleDrawer}></Drawer>
+        </header>
+    );
 }
 

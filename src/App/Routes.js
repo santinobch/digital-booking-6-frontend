@@ -5,6 +5,10 @@ import Header from "./components/header/header";
 
 import { Outlet } from "react-router-dom";
 
+//Directives
+import ProtectedLoggedRoute from "./directives/ProtectedLoggedRoute/ProtectedLoggedRoute";
+
+//Pages
 import Home from "./pages/home/home";
 import Login from "./pages/login/login";
 import Register from "./pages/register/register";
@@ -50,7 +54,10 @@ export const route = createBrowserRouter([{
         },
         {
             path: "producto/:idProducto/reserva",
-            element: <Reserva />,
+            element: 
+            <ProtectedLoggedRoute redirect="/login">
+                <Reserva />
+            </ProtectedLoggedRoute>
         },
         {
             path: "reservaExistosa",

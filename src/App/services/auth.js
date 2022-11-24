@@ -1,10 +1,8 @@
-import { useReducer } from "react";
-import { useEffect } from "react";
+import { setStoreItem, getStoreItem } from "../storage/storage";
 
 const urlBase = process.env.REACT_APP_API_URL;
 
-
-export async function PostAuth(email, pass, handleAuth) {
+export async function PostAuth(email, pass, setAuth) {
 
     let status = 0;
 
@@ -24,7 +22,10 @@ export async function PostAuth(email, pass, handleAuth) {
             status = response.status;
             return response.json()
         }).then(data => {
-            handleAuth(data);
+            setStoreItem('auth', data);
+            if (setAuth !== undefined) {
+                setAuth(data);
+            }
             return status;
         })
         .catch( error => {
