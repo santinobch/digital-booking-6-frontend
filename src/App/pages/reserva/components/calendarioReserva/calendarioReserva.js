@@ -53,13 +53,20 @@ export default function CalendarioReserva({reservas,fechasReserva, setFechasRese
   }, [reservas])
 
   const handleSelectDates = (value) => {
-    let isoDatesArr = value.map(i => `${i.toDate().getDate()}/${i.toDate().getMonth()+1}/${i.toDate().getFullYear()}`)
+    let isoDatesArr = value.map(i => {
+      console.log(i.toDate().getDate().toString().length === 1)
+      let day = i.toDate().getDate().toString().length === 1 ? `0${i.toDate().getDate()}` : i.toDate().getDate()
+      let month = (i.toDate().getMonth()+1).toString().length === 1 ? `0${i.toDate().getMonth()+1}` : i.toDate().getMonth()+1
+      console.log(`${day}/${month}/${i.toDate().getFullYear()}`)
+      return `${day}/${month}/${i.toDate().getFullYear()}`
+    })
+  
     if(isoDatesArr.length===1){
-      setFechasReserva(prevState => ({
+      setFechasReserva(() => ({
         fechaCheckIn: isoDatesArr[0],
         fechaCheckOut: null})
       )} else if(isoDatesArr.length===2){
-        setFechasReserva(prevState => ({
+        setFechasReserva(() => ({
           fechaCheckIn: isoDatesArr[0],
         fechaCheckOut: isoDatesArr[1]})
         )}
