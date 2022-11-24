@@ -1,10 +1,7 @@
-import { AuthContext } from "../services/context";
-import { useContext } from 'react'
-
 const urlBase = process.env.REACT_APP_API_URL;
 
 
-export async function PostAuth(email, pass, auth) {
+export async function PostAuth(email, pass, handleAuth) {
 
     let status = 0;
 
@@ -24,7 +21,7 @@ export async function PostAuth(email, pass, auth) {
             status = response.status;
             return response.json()
         }).then(data => {
-            auth = data;
+            handleAuth(data);
             return status;
         })
         .catch( error => {

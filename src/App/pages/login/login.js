@@ -11,8 +11,8 @@ import { GetLoggedUser } from "../../services/users";
 
 const Login = () => {
 
-    const usuario = useContext(UsuarioContext);
-    const auth = useContext(AuthContext);
+    const {usuario, handleUsuarioLogin} = useContext(UsuarioContext);
+    const {auth, handleAuth} = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -22,11 +22,10 @@ const Login = () => {
         el.preventDefault();
         let form = document.getElementById("loginForm");
 
-        PostAuth(form.email.value, form.password.value, auth).then(status => {
+        PostAuth(form.email.value, form.password.value, handleAuth).then(status => {
             if(status === 200){
-                //console.log(auth);
-                GetLoggedUser(auth, usuario);
-                //navigate("/home")
+                console.log(auth);
+                GetLoggedUser(auth, handleUsuarioLogin);
             } else {
                 setHasError(true)
             }

@@ -6,22 +6,24 @@ import {useContext} from 'react'
 const urlBase = process.env.REACT_APP_API_URL;
 
 
-export function GetLoggedUser(auth, usuario) {
+export function GetLoggedUser(auth, handleUsuarioLogin) {
 
     let status = 0;
 
     const requestOptions = {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
+        headers: {
+             'Content-Type': 'application/json',
+             'Authorization': `Bearer ${auth.jwt}`
+        }
     };
-    console.log(auth);
 
     return fetch(`${urlBase}/users?username=${auth.username}`, requestOptions)
         .then(response => {
             status = response.status;
             return response.json()
         }).then(data => {
-            usuario = data;
+            handleUsuarioLogin(data);
             return status;
         })
         .catch( error => {
