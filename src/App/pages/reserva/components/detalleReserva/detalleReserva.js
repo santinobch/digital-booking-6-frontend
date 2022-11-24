@@ -41,7 +41,7 @@ export default function DetalleReserva({auth, producto, fechas, usuario}) {
 
                     <div className={styles.ubication}>
                         <FontAwesomeIcon icon={faLocationDot} style={{ marginRight: "4px" }} />
-                        <p>Av. Colón 1643, Buenos Aires, Ciudad Autónoma de Buenos Aires, Argentina</p>
+                        <p>{producto.ciudad.nombre}, {producto.ciudad.pais}</p>
                     </div>
                     
                     <hr />
