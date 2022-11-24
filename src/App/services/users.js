@@ -2,11 +2,12 @@ import UsuarioModel from "../models/usuario.model";
 import { AuthContext, UsuarioContext } from "../services/context";
 
 import {useContext} from 'react'
+import { useEffect } from "react";
 
 const urlBase = process.env.REACT_APP_API_URL;
 
 
-export function GetLoggedUser(auth, handleUsuarioLogin) {
+export function GetLoggedUser(auth, handleUsuario) {
 
     let status = 0;
 
@@ -23,7 +24,7 @@ export function GetLoggedUser(auth, handleUsuarioLogin) {
             status = response.status;
             return response.json()
         }).then(data => {
-            handleUsuarioLogin(data);
+            handleUsuario(data);
             return status;
         })
         .catch( error => {

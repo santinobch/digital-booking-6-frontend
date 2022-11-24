@@ -10,8 +10,8 @@ function App() {
     const [usuario, setUsuario] = useState();
     const [auth, setAuth] = useState();
     
-    const handleUsuarioLogin = user => {
-        setUsuario(user)
+    const handleUsuario = usuario => {
+        setUsuario(usuario)
     }
 
     const handleAuth = auth => {
@@ -19,8 +19,8 @@ function App() {
     }
 
     return (
-        <UsuarioContext.Provider value={ {usuario, handleUsuarioLogin} }>
-            <AuthContext.Provider value={{auth, handleAuth}}>
+        <UsuarioContext.Provider value={ {usuario, handleUsuario} }>
+            <AuthContext.Provider value={ {auth, handleAuth} }>
                 <RouterProvider router={route} />  
             </AuthContext.Provider>
         </UsuarioContext.Provider>

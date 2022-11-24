@@ -8,28 +8,39 @@ import {AuthContext, UsuarioContext} from "../../services/context";
 import { useContext, useState } from "react";
 import {PostAuth} from "../../services/auth";
 import { GetLoggedUser } from "../../services/users";
+import { useReducer } from "react";
+import { useEffect } from "react";
 
 const Login = () => {
 
-    const {usuario, handleUsuarioLogin} = useContext(UsuarioContext);
+    const {usuario, handleUsuario} = useContext(UsuarioContext);
     const {auth, handleAuth} = useContext(AuthContext);
 
     const navigate = useNavigate();
 
     const [hasError, setHasError] = useState(false);
+    const [status, setStatus] = useState(0);
+
+
+    useEffect(() => {
+        // console.log(auth);
+        console.log(status);
+
+        if (status === 200 && auth.jwt !== "") {
+            GetLoggedUser(auth, handleUsuario).then(() => {
+                navigate("/home");
+            });
+        } else if (status !== 0 &&  status !== 200) {
+            setHasError(true);
+        }
+    }, [auth])
+
 
     const HandleLogin = el => {
         el.preventDefault();
         let form = document.getElementById("loginForm");
 
-        PostAuth(form.email.value, form.password.value, handleAuth).then(status => {
-            if(status === 200){
-                console.log(auth);
-                GetLoggedUser(auth, handleUsuarioLogin);
-            } else {
-                setHasError(true)
-            }
-        });
+        PostAuth(form.email.value, form.password.value, handleAuth).then((s) => setStatus(s));
         
     }
 
