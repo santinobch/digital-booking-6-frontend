@@ -7,12 +7,13 @@ import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as FontAwesome from "react-icons/fa"
 
+
 import Galeria from "../galeria/galeria";
 import Calendario from "../calendario/calendar"
 import MobileCarousel from "../carousel/mobileCarousel";
 import ProductHeader from "../../../../components/productHeader/productHeader";
 
-export default function ProductTop({producto}) {
+export default function ProductTop({producto, reservas}) {
     const size = useWindowSize()    
 
     const renderIcon = icon => React.createElement(FontAwesome[icon])
@@ -69,7 +70,7 @@ export default function ProductTop({producto}) {
                 </div>
             </section>
             <section>
-                <Calendario productInfo={producto}/>
+                <Calendario reservas={reservas} productInfo={producto}/>
             </section>
         </>
     );

@@ -4,10 +4,39 @@ import styles from "./calendar.module.scss";
 import Button from "../../../../components/button/button";
 import useWindowSize from "../../../../hooks/useWindowSize";
 import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from "react";
 import React from "react";
 import "./calendar.scss"
 
-export default function Calendario({productInfo}) {
+export default function Calendario({productInfo, reservas}) {
+
+  const [fechasReservadas, setFechasReservadas] = useState([]);
+
+  useEffect(() => {
+    getFechasReservadas()
+}, [reservas])
+
+  const getFechasReservadas = () => {
+    if(reservas){
+      console.log(reservas)
+      let fechasReservadas = []
+      reservas?.map(i => {
+        
+        let fechaInicio = new Date(i.fechaDesde);
+        let fechaFin = new Date(i.fechaHasta);
+        
+        let currentDate = fechaInicio
+        
+        while(currentDate <= fechaFin){
+          fechasReservadas.push(new Date(currentDate).toDateString())
+          currentDate.setDate(currentDate.getDate() + 1)
+        }
+
+        if(fechasReservadas.length > 0) {setFechasReservadas(fechasReservadas)}
+      })
+    }
+  }
+
   const weekDays = ["D", "L", "M", "M", "J", "V", "S"];
 
   const size = useWindowSize();
@@ -25,6 +54,11 @@ export default function Calendario({productInfo}) {
               numberOfMonths={size.width >= 768 ? 2 : 1}
               minDate={new Date()}
               hideYear
+              mapDays={ ({date})  => {
+                let props = {}
+                if(fechasReservadas.includes(date.toDate().toDateString())) props.disabled = true
+                return props
+              }}
             />
           </div>
           <div className={styles.form}>
