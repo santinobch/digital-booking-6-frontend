@@ -48,7 +48,7 @@ export const route = createBrowserRouter([{
             element: <Producto />,
         },
         {
-            path: "reserva",
+            path: "producto/:idProducto/reserva",
             element: <Reserva />,
         }
     ]

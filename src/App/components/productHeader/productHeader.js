@@ -1,14 +1,14 @@
 import React from "react";
 import styles from "./productHeader.module.scss";
 
-export default function ProductHeader() {
+export default function ProductHeader({productInfo}) {
 
     return (
         <>
             <section className={styles.productHeader}>
                 <div>
-                    <h2>Top text</h2>
-                    <h1>Bottom text</h1>
+                    <h2>{productInfo.categoria.titulo}</h2>
+                    <h1>{productInfo.titulo}</h1>
                 </div>
 
             </section>

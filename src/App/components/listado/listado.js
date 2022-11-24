@@ -3,8 +3,8 @@ import "./listado.scss";
 import React, { useEffect, useState } from "react";
 
 import RecommendedCard from "../../components/recommendedCard/recommendedCard";
+import { getProductos } from "../../services/products";
 import SpinnerLoader from "../spinnerLoader/spinnerLoader";
-import { getProductos } from "../../services";
 
 const Listado = ({ filtros }) => {
   const [hospedajes, setHospedajes] = useState([]);

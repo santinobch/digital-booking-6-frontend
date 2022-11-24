@@ -2,9 +2,11 @@ import "react-multi-date-picker/styles/colors/teal.css";
 import { Calendar } from "react-multi-date-picker";
 import styles from "./calendarioReserva.module.scss";
 import useWindowSize from "../../../../hooks/useWindowSize";
-import "../../../../components/datepicker/datepicker.scss"
+import "../../../../components/datepicker/datepicker.scss";
+import { useState, useEffect } from "react";
+import SpinnerLoader from "../../../../components/spinnerLoader/spinnerLoader";
 
-export default function CalendarioReserva() {
+export default function CalendarioReserva({reservas}) {
   const weekDays = ["D", "L", "M", "M", "J", "V", "S"];
   const months = [
     "Enero",
@@ -21,8 +23,36 @@ export default function CalendarioReserva() {
     "Diciembre"
   ];
 
-  const dates = ["26/11/2022"];
   const size = useWindowSize();
+
+  const [fechasReservadas, setFechasReservadas] = useState();
+
+  const getFechasReservadas = () => {
+        reservas?.map(i => {
+          let dates = []
+          
+          let fechaInicio = new Date(i.fechaDesde);
+          let fechaFin = new Date(i.fechaHasta);
+
+          let currentDate = fechaInicio
+      
+          while(currentDate < fechaFin){
+            dates.push(new Date(currentDate).toDateString())
+            currentDate.setDate(currentDate.getDate() + 1)
+          }
+          setFechasReservadas(dates)
+        })
+    }
+
+    useEffect(() => {
+      getFechasReservadas()
+  }, [reservas])
+
+  if(reservas === undefined){
+    return (
+      <SpinnerLoader/>
+  )
+  }
 
   return (
     <div className={styles.calendarSection}>
@@ -37,13 +67,12 @@ export default function CalendarioReserva() {
               minDate={new Date()}
               hideYear
               range
-              mapDays={({ date }) => {
-                let day = `${date.day}/${date.month}/${date.year}`   
+              mapDays={ ({date})  => {
                 let props = {}
-                if (day === dates[0]) props.disabled= true
+                if(fechasReservadas.includes(date.toDate().toDateString())) props.disabled = true
                 return props
               }}
-            />
+              />
           </div>
         </div>
       </section>

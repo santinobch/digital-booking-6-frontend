@@ -1,7 +1,7 @@
 import styles from "./dataInput.module.scss";
 import Input from "../../../../components/inputs/text/input";
 
-export default function DataInput() {
+export default function DataInput(props) {
 
   return (
     <div>

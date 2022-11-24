@@ -19,7 +19,7 @@ export default function ProductTop({producto}) {
 
     return (
         <>
-            <ProductHeader />
+            <ProductHeader productInfo={producto} />
             <section className={styles.productLocation}>
 
                 <div className={styles.location}>

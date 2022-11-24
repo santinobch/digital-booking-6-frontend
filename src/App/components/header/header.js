@@ -9,7 +9,7 @@ import Button from "../button/button";
 import Drawer from "../drawer/drawer";
 import {GiHamburgerMenu} from "react-icons/gi"
 import useWindowSize from "../../hooks/useWindowSize";
-import UsuarioContext from "../../services/context";
+import {UsuarioContext} from "../../services/context";
 
 export default function Header() {
     const size = useWindowSize();

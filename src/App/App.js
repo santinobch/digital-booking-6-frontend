@@ -4,18 +4,25 @@ import React, { useState } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { route } from "./Routes";
 
-import UsuarioContext from "./services/context";
+import {AuthContext, UsuarioContext} from "./services/context";
 
 function App() {
-  const [usuario, setUsuario] = useState();
+    const [usuario, setUsuario] = useState();
+    const [auth, setAuth] = useState();
+    
+    const handleUsuarioLogin = user => {
+        setUsuario(user)
+    }
 
-  const handleUsuarioLogin = user => {
-    setUsuario(user)
+    const handleAuth = auth => {
+        setAuth(auth)
     }
 
     return (
         <UsuarioContext.Provider value={ {usuario, handleUsuarioLogin} }>
-            <RouterProvider router={route} />  
+            <AuthContext.Provider value={{auth, handleAuth}}>
+                <RouterProvider router={route} />  
+            </AuthContext.Provider>
         </UsuarioContext.Provider>
     );
 }

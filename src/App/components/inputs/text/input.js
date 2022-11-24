@@ -37,8 +37,6 @@ export default function Input(props) {
                 setSubLabelVisibility("none");
                 setInvalid(false)
             } else {
-                console.log("compare: " + props.comparePass);
-                console.log("Passwords dont match")
                 setSubLabelVisibility("block");
                 setInvalid(true)
             }

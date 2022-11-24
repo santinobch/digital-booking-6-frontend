@@ -8,7 +8,7 @@ import { FaFacebook } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
-import UsuarioContext from "../../services/context";
+import {UsuarioContext} from "../../services/context";
 import UserInfo from '../userInfo/userInfo';
 
 import React from 'react';
