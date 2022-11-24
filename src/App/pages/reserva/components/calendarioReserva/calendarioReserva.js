@@ -25,31 +25,35 @@ export default function CalendarioReserva({reservas,fechasReserva, setFechasRese
 
   const size = useWindowSize();
 
-  const [fechasReservadas, setFechasReservadas] = useState();
+  const [fechasReservadas, setFechasReservadas] = useState([]);
 
   const getFechasReservadas = () => {
-        reservas?.map(i => {
-          let dates = []
-          
-          let fechaInicio = new Date(i.fechaDesde);
-          let fechaFin = new Date(i.fechaHasta);
+    if(reservas){
+      console.log(reservas)
+      let fechasReservadas = []
+      reservas?.map(i => {
+        
+        let fechaInicio = new Date(i.fechaDesde);
+        let fechaFin = new Date(i.fechaHasta);
+        
+        let currentDate = fechaInicio
+        
+        while(currentDate <= fechaFin){
+          fechasReservadas.push(new Date(currentDate).toDateString())
+          currentDate.setDate(currentDate.getDate() + 1)
+        }
 
-          let currentDate = fechaInicio
-      
-          while(currentDate < fechaFin){
-            dates.push(new Date(currentDate).toDateString())
-            currentDate.setDate(currentDate.getDate() + 1)
-          }
-          setFechasReservadas(dates)
-        })
+        if(fechasReservadas.length > 0) {setFechasReservadas(fechasReservadas)}
+      })
     }
-
+  }
+    
     useEffect(() => {
       getFechasReservadas()
   }, [reservas])
 
   const handleSelectDates = (value) => {
-    let isoDatesArr = value.map(i => `${i.toDate().getDate()}/${i.toDate().getMonth()}/${i.toDate().getFullYear()}`)
+    let isoDatesArr = value.map(i => `${i.toDate().getDate()}/${i.toDate().getMonth()+1}/${i.toDate().getFullYear()}`)
     if(isoDatesArr.length===1){
       setFechasReserva(prevState => ({
         fechaCheckIn: isoDatesArr[0],
@@ -60,12 +64,6 @@ export default function CalendarioReserva({reservas,fechasReserva, setFechasRese
         fechaCheckOut: isoDatesArr[1]})
         )}
 
-  }
-
-  if(reservas === undefined){
-    return (
-      <SpinnerLoader/>
-  )
   }
 
   return (

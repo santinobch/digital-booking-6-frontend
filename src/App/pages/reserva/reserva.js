@@ -9,14 +9,15 @@ import CalendarioReserva from "./components/calendarioReserva/calendarioReserva"
 import DetalleReserva from "./components/detalleReserva/detalleReserva";
 import { getProducto, getReservas } from "../../services/products";
 import SpinnerLoader from "../../components/spinnerLoader/spinnerLoader";
-import {UsuarioContext} from "../../services/context";
+import {UsuarioContext, AuthContext} from "../../services/context";
 
 import { useParams } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 
 export default function Reserva() {
 
-    
+    const {auth} = useContext(AuthContext);
+
     const { idProducto } = useParams();
     const { usuario } = useContext(UsuarioContext)
     const [producto, setProducto] = useState([]);
@@ -25,25 +26,18 @@ export default function Reserva() {
         fechaCheckIn: null,
         fechaCheckOut: null
     });
-    console.log(reservas)
 
     const getDataProducto = async() => {
         await getProducto(idProducto).then((data) => setProducto(data))
     }
 
     const getDataReservas = async() => {
-        await getReservas(idProducto).then((data) => {
-            setReservas(data)
-        })
+        await getReservas(idProducto).then((data) => Array.isArray(data) ? setReservas(data) : "" )
     }
     useEffect(() => {
         getDataProducto()
         getDataReservas()
     }, [])
-
-    useEffect(() => {
-        console.log(fechasReserva)
-    }, [fechasReserva])
 
 
     // const bookingData = async() => {
@@ -78,7 +72,7 @@ export default function Reserva() {
                     <Llegada />
                 </div>
                 
-                <DetalleReserva producto={producto} fechas={fechasReserva} />
+                <DetalleReserva auth={auth} producto={producto} fechas={fechasReserva} usuario={usuario} />
             </div>
 
             <ProductBottom />

@@ -23,3 +23,35 @@ export function GetBooking(user, pass) {
             usuario.email = response.usuario.email;
         });
 }
+
+export function postBooking(auth, user, product, fechas){
+    let fechaDesde = fechas.fechaCheckIn.split("/").reverse().join("-")
+    console.log(fechaDesde)
+    let fechaHasta = fechas.fechaCheckOut.split("/").reverse().join("-")
+    console.log(fechaHasta)
+
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${auth.jwt}`
+       },
+        body: JSON.stringify({ 
+            hora: "10:00:00",
+            fechaDesde: fechaDesde,
+            fechaHasta: fechaHasta,
+            producto:{
+                id: product.id
+            },
+            usuario:{
+                id: user.id
+            }
+        })
+    }
+
+    return fetch(`${urlBase}/bookings/`, requestOptions)
+    .then(response => console.log(response.status))
+
+
+
+}

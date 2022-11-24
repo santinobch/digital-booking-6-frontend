@@ -10,6 +10,7 @@ import Login from "./pages/login/login";
 import Register from "./pages/register/register";
 import Producto from "./pages/producto/producto";
 import Reserva from "./pages/reserva/reserva";
+import ReservaExitosa from "./pages/reservaExitosa/reservaExitosa";
 
 
 
@@ -50,6 +51,10 @@ export const route = createBrowserRouter([{
         {
             path: "producto/:idProducto/reserva",
             element: <Reserva />,
+        },
+        {
+            path: "reservaExistosa",
+            element: <ReservaExitosa />,
         }
     ]
 }]);

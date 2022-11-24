@@ -8,7 +8,6 @@ import {AuthContext, UsuarioContext} from "../../services/context";
 import { useContext, useState } from "react";
 import {PostAuth} from "../../services/auth";
 import { GetLoggedUser } from "../../services/users";
-import { useReducer } from "react";
 import { useEffect } from "react";
 
 const Login = () => {

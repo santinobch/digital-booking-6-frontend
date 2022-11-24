@@ -1,16 +1,14 @@
 import styles from "./detalleReserva.module.scss";
 
-import cuarto from "../../../../../imgs/test-images/cuarto_1.png";
 import star from "../../../../../imgs/icons/star.png";
 
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { postBooking } from "../../../../services/bookings";
 
 import Button from "../../../../components/button/button";
 
-export default function DetalleReserva({producto, fechas}) {
-
-    console.log(fechas)
+export default function DetalleReserva({auth, producto, fechas, usuario}) {
 
     return (
         <div className={styles.inputContainer}>
@@ -52,7 +50,7 @@ export default function DetalleReserva({producto, fechas}) {
 
                     <hr />
 
-                    <Button styleBtn="dark">Confirmar reserva</Button>
+                    <Button styleBtn="dark" onClick={() => postBooking(auth, usuario, producto, fechas)}>Confirmar reserva</Button>
                 </div>
             </div>
             
