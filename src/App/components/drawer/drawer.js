@@ -1,8 +1,3 @@
-import facebook from '../../../imgs/socials/facebook.png';
-import linkedin from '../../../imgs/socials/linkedin.png';
-import twitter from '../../../imgs/socials/tweet.png';
-import instagram from '../../../imgs/socials/ig.png';
-
 import { useNavigate } from 'react-router-dom';
 import useWindowSize from '../../hooks/useWindowSize';
 
