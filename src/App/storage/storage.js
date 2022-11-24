@@ -6,7 +6,7 @@ export function getStoreItem(item) {
 
     if (i !== 'undefined') {
         iJson = JSON.parse(i);
-        return i;
+        return iJson;
     } else {
         return undefined;
     }

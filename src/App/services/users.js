@@ -1,3 +1,4 @@
+import { isString } from "formik";
 import AuthModel from "../models/auth.model";
 import { setStoreItem, getStoreItem } from "../storage/storage";
 
@@ -8,9 +9,7 @@ export function GetLoggedUser(setUsuario) {
 
     let status = 0;
 
-    let auth = new AuthModel();
-
-    auth = getStoreItem('auth');
+    let auth = getStoreItem('auth');
 
     const requestOptions = {
         method: 'GET',
@@ -20,11 +19,15 @@ export function GetLoggedUser(setUsuario) {
         }
     };
 
+    
+
     return fetch(`${urlBase}/users?username=${auth.username}`, requestOptions)
         .then(response => {
             status = response.status;
             return response.json()
         }).then(data => {
+            console.log('user: ' + auth.username);
+
             setStoreItem('usuario', data);
             if (setUsuario !== undefined) {
                 setUsuario(data);
@@ -33,6 +36,8 @@ export function GetLoggedUser(setUsuario) {
         })
         .catch( error => {
             console.log('Hubo un problema con la petición Fetch, users.js: ' + error.message);
+
+            console.log(auth);
             return error.status;
         });
 }

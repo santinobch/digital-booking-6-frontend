@@ -8,21 +8,19 @@ export default function ProtectedLoggedRoute(props) {
 
     const auth = getStoreItem('auth');
 
-    const [nav, setNav] = useState('');
-
     const navigate = useNavigate();
 
     useEffect(() => {
-        navigate(nav);
-    }, [nav])
+        if (props.checkUnlogged === undefined && (auth === undefined || auth.jwt === "")) {
+            navigate(props.redirect);
+        } else if (props.checkUnlogged && auth !== null && auth !== undefined) {
+            navigate(props.redirect);
+        }
+    })
 
-    if (props.checkUnlogged === undefined && (auth === undefined || auth.jwt === "")) {
-        setNav(props.redirect);
-    } else if (props.checkUnlogged && auth !== null && auth !== undefined) {
-        setNav(props.redirect);
-    } else {
-        return props.children;
-    }
-
-    
+    return (
+        <>
+            {props.children}
+        </>
+    )
 };

@@ -40,7 +40,7 @@ export default function Header() {
         removeItem('usuario');
         setUsuario(undefined);
         setUsuarioLogeado(false);
-        console.log(usuario);
+        navigate('/home');
     }
 
     return (
