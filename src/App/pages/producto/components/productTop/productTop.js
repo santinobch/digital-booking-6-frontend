@@ -69,7 +69,7 @@ export default function ProductTop({producto}) {
                 </div>
             </section>
             <section>
-                <Calendario/>
+                <Calendario productInfo={producto}/>
             </section>
         </>
     );

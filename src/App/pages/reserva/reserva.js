@@ -9,14 +9,15 @@ import CalendarioReserva from "./components/calendarioReserva/calendarioReserva"
 import DetalleReserva from "./components/detalleReserva/detalleReserva";
 import { getProducto, getReservas } from "../../services/products";
 import SpinnerLoader from "../../components/spinnerLoader/spinnerLoader";
+import {UsuarioContext} from "../../services/context";
 
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 export default function Reserva() {
 
     const { idProducto } = useParams();
-
+    const { usuario } = useContext(UsuarioContext)
     const [producto, setProducto] = useState([]);
     const [reservas, setReservas] = useState();
     const [fechasReserva, setFechasReserva] = useState({
@@ -66,10 +67,10 @@ export default function Reserva() {
             <div className={styles.content}>
                 <div className={styles.leftContainer}>
                     <DataInput 
-                        // nombre={booking.usuario.nombre} 
-                        // apellido={booking.usuario.apellido} 
-                        // email={booking.usuario.email} 
-                        // ciudad={booking.usuario.ciudad}
+                        nombre={usuario.nombre} 
+                        apellido={usuario.apellido} 
+                        email={usuario.email} 
+                        ciudad={usuario.ciudad}
                         />
                     <CalendarioReserva reservas={reservas} fechasReserva={fechasReserva} setFechasReserva={setFechasReserva}/>
                     <Llegada />
