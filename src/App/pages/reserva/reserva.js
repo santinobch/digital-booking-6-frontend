@@ -19,6 +19,10 @@ export default function Reserva() {
 
     const [producto, setProducto] = useState([]);
     const [reservas, setReservas] = useState();
+    const [fechasReserva, setFechasReserva] = useState({
+        fechaCheckIn: null,
+        fechaCheckOut: null
+    });
 
     const getDataProducto = async() => {
         await getProducto(idProducto).then((data) => setProducto(data))
@@ -29,31 +33,14 @@ export default function Reserva() {
             setReservas(data)
         })
     }
-
-    function convertDateToUTC(date) { return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds()); }
-
-    // const getFechasReservadas = () => {
-    //     reservas?.map(i => {
-    //       let dates = []
-          
-    //       let fechaInicio = new Date(i.fechaDesde);
-    //       fechaInicio = convertDateToUTC(fechaInicio)
-    //       let fechaFin = new Date(i.fechaHasta);
-    //       fechaFin = convertDateToUTC(fechaFin)
-      
-    //       while(fechaInicio < fechaFin){
-    //         dates.push(`${fechaInicio.getFullYear()}-${fechaInicio.getMonth()}-${fechaInicio.getDate()}` )
-    //         fechaInicio.setDate(fechaInicio.getDate()+1)
-    //       }
-    //       console.log(dates)
-    //       return setFechasReservadas(dates)
-    //     })
-    // }
-
     useEffect(() => {
         getDataProducto()
         getDataReservas()
     }, [])
+
+    useEffect(() => {
+        console.log(fechasReserva)
+    }, [fechasReserva])
 
 
     // const bookingData = async() => {
@@ -84,11 +71,11 @@ export default function Reserva() {
                         // email={booking.usuario.email} 
                         // ciudad={booking.usuario.ciudad}
                         />
-                    <CalendarioReserva reservas={reservas}/>
+                    <CalendarioReserva reservas={reservas} fechasReserva={fechasReserva} setFechasReserva={setFechasReserva}/>
                     <Llegada />
                 </div>
                 
-                <DetalleReserva />
+                <DetalleReserva producto={producto} fechas={fechasReserva} />
             </div>
 
             <ProductBottom />

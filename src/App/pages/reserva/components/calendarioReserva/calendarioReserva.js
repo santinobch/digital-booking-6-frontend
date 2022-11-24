@@ -6,7 +6,7 @@ import "../../../../components/datepicker/datepicker.scss";
 import { useState, useEffect } from "react";
 import SpinnerLoader from "../../../../components/spinnerLoader/spinnerLoader";
 
-export default function CalendarioReserva({reservas}) {
+export default function CalendarioReserva({reservas,fechasReserva, setFechasReserva}) {
   const weekDays = ["D", "L", "M", "M", "J", "V", "S"];
   const months = [
     "Enero",
@@ -37,7 +37,7 @@ export default function CalendarioReserva({reservas}) {
           let currentDate = fechaInicio
       
           while(currentDate < fechaFin){
-            dates.push(new Date(currentDate).toDateString())
+            dates.push(new Date(currentDate).toISOString())
             currentDate.setDate(currentDate.getDate() + 1)
           }
           setFechasReservadas(dates)
@@ -47,6 +47,20 @@ export default function CalendarioReserva({reservas}) {
     useEffect(() => {
       getFechasReservadas()
   }, [reservas])
+
+  const handleSelectDates = (value) => {
+    let isoDatesArr = value.map(i => `${i.toDate().getDate()}/${i.toDate().getMonth()}/${i.toDate().getFullYear()}`)
+    if(isoDatesArr.length===1){
+      setFechasReserva(prevState => ({
+        fechaCheckIn: isoDatesArr[0],
+        fechaCheckOut: null})
+      )} else if(isoDatesArr.length===2){
+        setFechasReserva(prevState => ({
+          fechaCheckIn: isoDatesArr[0],
+        fechaCheckOut: isoDatesArr[1]})
+        )}
+
+  }
 
   if(reservas === undefined){
     return (
@@ -67,6 +81,7 @@ export default function CalendarioReserva({reservas}) {
               minDate={new Date()}
               hideYear
               range
+              onChange={handleSelectDates}
               mapDays={ ({date})  => {
                 let props = {}
                 if(fechasReservadas.includes(date.toDate().toDateString())) props.disabled = true
