@@ -20,7 +20,7 @@ export default function Calendario({productInfo, reservas}) {
     if(reservas){
       console.log(reservas)
       let fechasReservadas = []
-      reservas?.map(i => {
+      reservas?.forEach(i => {
         
         let fechaInicio = new Date(i.fechaDesde);
         let fechaFin = new Date(i.fechaHasta);

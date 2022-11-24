@@ -4,9 +4,8 @@ import styles from "./calendarioReserva.module.scss";
 import useWindowSize from "../../../../hooks/useWindowSize";
 import "../../../../components/datepicker/datepicker.scss";
 import { useState, useEffect } from "react";
-import SpinnerLoader from "../../../../components/spinnerLoader/spinnerLoader";
 
-export default function CalendarioReserva({reservas,fechasReserva, setFechasReserva}) {
+export default function CalendarioReserva({reservas, setFechasReserva}) {
   const weekDays = ["D", "L", "M", "M", "J", "V", "S"];
   const months = [
     "Enero",
@@ -31,7 +30,7 @@ export default function CalendarioReserva({reservas,fechasReserva, setFechasRese
     if(reservas){
       console.log(reservas)
       let fechasReservadas = []
-      reservas?.map(i => {
+      reservas?.forEach(i => {
         
         let fechaInicio = new Date(i.fechaDesde);
         let fechaFin = new Date(i.fechaHasta);
@@ -76,7 +75,7 @@ export default function CalendarioReserva({reservas,fechasReserva, setFechasRese
   return (
     <div className={styles.calendarSection}>
       <section className={styles.calendarLayout}>
-        <h4>Seleccioná tu fecha de reserva</h4>
+        <h3 className={styles.title}>Seleccioná tu fecha de reserva</h3>
         <div className={styles.elements}>
           <div className={styles.container}>
             <Calendar

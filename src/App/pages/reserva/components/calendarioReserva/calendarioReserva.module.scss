@@ -2,9 +2,12 @@
 
 $spacing: 42px;
 
-.h4{
-    font-size: 24px;
-    font-weight: 500;
+.title{
+    font-weight: 700;
+    font-size: 20px;
+
+    margin: 0;
+    margin-bottom: 15px;
 }
 
 
@@ -102,7 +105,7 @@ $spacing: 42px;
             gap: $spacing;
             align-items: center;
             justify-items: space-around;
-            padding: 1rem 0 3rem;
+            padding: 0;
             
             .form{
                 display: flex;
