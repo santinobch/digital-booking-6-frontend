@@ -20,6 +20,10 @@ export function getProducto(id){
   return fetch(`${urlBase}/products/${id}`).then((respuesta) => respuesta.json())
 }
 
+export function getReservas(id){
+  return fetch(`${urlBase}/bookings/product/${id}`).then((respuesta) => respuesta.json())
+}
+
 
 export function getRandomProductos() {
   return fetch(`${urlBase}/products/random`).then((respuesta) =>

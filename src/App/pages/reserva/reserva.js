@@ -6,31 +6,75 @@ import ProductBottom from "../../components/productBottom/productBottom"
 import DataInput from "./components/dataInput/dataInput";
 import Llegada from "./components/llegada/llegada";
 import DetalleReserva from "./components/detalleReserva/detalleReserva";
+import { getProducto, getReservas } from "../../services/products";
+import CalendarioReserva from "./components/calendarioReserva/calendarioReserva";
+import SpinnerLoader from "../../components/spinnerLoader/spinnerLoader";
 
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-
-import { GetBooking } from "../../services/bookings";
 
 export default function Reserva() {
 
     const { idProducto } = useParams();
 
-    const [booking, setBooking] = useState([]);
+    const [producto, setProducto] = useState([]);
+    const [reservas, setReservas] = useState();
+
+    const getDataProducto = async() => {
+        await getProducto(idProducto).then((data) => setProducto(data))
+    }
+
+    const getDataReservas = async() => {
+        await getReservas(idProducto).then((data) => {
+            setReservas(data)
+        })
+    }
+
+    function convertDateToUTC(date) { return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds()); }
+
+    // const getFechasReservadas = () => {
+    //     reservas?.map(i => {
+    //       let dates = []
+          
+    //       let fechaInicio = new Date(i.fechaDesde);
+    //       fechaInicio = convertDateToUTC(fechaInicio)
+    //       let fechaFin = new Date(i.fechaHasta);
+    //       fechaFin = convertDateToUTC(fechaFin)
+      
+    //       while(fechaInicio < fechaFin){
+    //         dates.push(`${fechaInicio.getFullYear()}-${fechaInicio.getMonth()}-${fechaInicio.getDate()}` )
+    //         fechaInicio.setDate(fechaInicio.getDate()+1)
+    //       }
+    //       console.log(dates)
+    //       return setFechasReservadas(dates)
+    //     })
+    // }
+
+    useEffect(() => {
+        getDataProducto()
+        getDataReservas()
+    }, [])
+
 
     // const bookingData = async() => {
     //     await GetBooking(idProducto).then((data) => setBooking(data))
     // }
 
-    GetBooking();
+    //GetBooking();
 
     // useEffect(() => {
     //     bookingData()
     // }, [])
 
+    if(producto.length === 0){
+        return (
+            <SpinnerLoader/>
+        )
+    }
+
     return (
         <main className={styles.main}>
-            <ProductHeader />
+            <ProductHeader productInfo={producto} />
 
             <div className={styles.content}>
                 <div className={styles.leftContainer}>
@@ -40,6 +84,7 @@ export default function Reserva() {
                         // email={booking.usuario.email} 
                         // ciudad={booking.usuario.ciudad}
                         />
+                    <CalendarioReserva reservas={reservas}/>
                     <Llegada />
                 </div>
                 

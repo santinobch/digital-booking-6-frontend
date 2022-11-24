@@ -3,8 +3,6 @@ import styles from "./productHeader.module.scss";
 
 export default function ProductHeader({productInfo}) {
 
-    console.log(productInfo)
-
     return (
         <>
             <section className={styles.productHeader}>
