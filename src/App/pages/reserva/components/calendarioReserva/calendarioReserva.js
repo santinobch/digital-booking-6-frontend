@@ -4,6 +4,7 @@ import styles from "./calendarioReserva.module.scss";
 import useWindowSize from "../../../../hooks/useWindowSize";
 import "../../../../components/datepicker/datepicker.scss";
 import { useState, useEffect } from "react";
+import SpinnerLoader from "../../../../components/spinnerLoader/spinnerLoader";
 
 export default function CalendarioReserva({reservas}) {
   const weekDays = ["D", "L", "M", "M", "J", "V", "S"];
@@ -32,10 +33,12 @@ export default function CalendarioReserva({reservas}) {
           
           let fechaInicio = new Date(i.fechaDesde);
           let fechaFin = new Date(i.fechaHasta);
+
+          let currentDate = fechaInicio
       
-          while(fechaInicio < fechaFin){
-            dates.push(`${fechaInicio.getFullYear()}-${fechaInicio.getMonth()}-${fechaInicio.getDate()}` )
-            fechaInicio.setDate(fechaInicio.getDate()+1)
+          while(currentDate < fechaFin){
+            dates.push(new Date(currentDate).toDateString())
+            currentDate.setDate(currentDate.getDate() + 1)
           }
           setFechasReservadas(dates)
         })
@@ -44,6 +47,12 @@ export default function CalendarioReserva({reservas}) {
     useEffect(() => {
       getFechasReservadas()
   }, [reservas])
+
+  if(reservas === undefined){
+    return (
+      <SpinnerLoader/>
+  )
+  }
 
   return (
     <div className={styles.calendarSection}>
@@ -58,9 +67,10 @@ export default function CalendarioReserva({reservas}) {
               minDate={new Date()}
               hideYear
               range
-              mapDays={({ date }) => {
-                let day = `${date.day}/${date.month}/${date.year}`   
-                console.log(day)
+              mapDays={ ({date})  => {
+                let props = {}
+                if(fechasReservadas.includes(date.toDate().toDateString())) props.disabled = true
+                return props
               }}
               />
           </div>
