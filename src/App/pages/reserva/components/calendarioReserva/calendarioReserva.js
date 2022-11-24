@@ -75,26 +75,28 @@ export default function CalendarioReserva({reservas, setFechasReserva}) {
     }
 
   return (
-    <div className={styles.calendarSection}>
-      <section className={styles.calendarLayout}>
-        <h3 className={styles.title}>Seleccioná tu fecha de reserva</h3>
-        <div className={styles.elements}>
-          <div className={styles.container}>
-            <Calendar
-              weekDays={weekDays}
-              months={months}
-              numberOfMonths={size.width >= 768 ? 2 : 1}
-              minDate={new Date()}
-              hideYear
-              range
-              onChange={handleSelectDates}
-              mapDays={ ({date})  => {
-                let props = {}
-                if(fechasReservadas.includes(date.toDate().toDateString())) props.disabled = true
-                return props
-              }}
-              />
-          </div>
+        <div className={styles.calendarSection}>
+            <section className={styles.calendarLayout}>
+                <h3 className={styles.title}>Seleccioná tu fecha de reserva</h3>
+                <div className={styles.elements}>
+                    <div className={styles.container}>
+                    <Calendar
+                    weekDays={weekDays}
+                    months={months}
+                    numberOfMonths={size.width >= 768 ? 2 : 1}
+                    minDate={new Date()}
+                    hideYear
+                    range
+                    onChange={handleSelectDates}
+                    mapDays={ ({date})  => {
+                        let props = {}
+                        if(fechasReservadas.includes(date.toDate().toDateString())) props.disabled = true
+                        return props
+                    }}
+                    />
+                    </div>
+                </div>
+            </section>
         </div>
     );
 }
