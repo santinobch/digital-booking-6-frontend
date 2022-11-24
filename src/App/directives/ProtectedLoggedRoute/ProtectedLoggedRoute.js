@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { getStoreItem } from '../../storage/storage';
@@ -7,10 +8,16 @@ export default function ProtectedLoggedRoute(props) {
     const auth = getStoreItem('auth');
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (props.checkUnlogged === undefined && (auth === undefined || auth.jwt === "")) {
+            navigate(props.redirect);
+        } else if (props.checkUnlogged && auth !== null) {
+            navigate(props.redirect);
+        } else {
+            return props.children;
+        }
+    })
+
     
-    if (auth === undefined || auth.jwt === "") {
-        navigate(props.redirect);
-    } else {
-        return props.children;
-    }
 };

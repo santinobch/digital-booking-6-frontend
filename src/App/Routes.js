@@ -42,11 +42,17 @@ export const route = createBrowserRouter([{
         },
         {
             path: "login",
-            element: <Login />,
+            element: 
+            <ProtectedLoggedRoute redirect="/home" checkUnlogged>
+                <Login />
+            </ProtectedLoggedRoute>
         },
         {
             path: "registrarse",
-            element: <Register />,
+            element: 
+            <ProtectedLoggedRoute redirect="/home" checkUnlogged>
+                <Register />
+            </ProtectedLoggedRoute>
         },
         {
             path: "producto/:idProducto",
