@@ -28,7 +28,6 @@ export default function CalendarioReserva({reservas, setFechasReserva}) {
 
   const getFechasReservadas = () => {
     if(reservas){
-      console.log(reservas)
       let fechasReservadas = []
       reservas?.forEach(i => {
         
@@ -53,11 +52,11 @@ export default function CalendarioReserva({reservas, setFechasReserva}) {
 
   const handleSelectDates = (value) => {
     let isoDatesArr = value.map(i => {
-      console.log(i.toDate().getDate().toString().length === 1)
+      //console.log(i.toDate().getDate().toString().length === 1)
 
       let day = i.toDate().getDate().toString().length === 1 ? `0${i.toDate().getDate()}` : i.toDate().getDate()
       let month = (i.toDate().getMonth()+1).toString().length === 1 ? `0${i.toDate().getMonth()+1}` : i.toDate().getMonth()+1
-      console.log(`${day}/${month}/${i.toDate().getFullYear()}`)
+      //console.log(`${day}/${month}/${i.toDate().getFullYear()}`)
       
       return `${day}/${month}/${i.toDate().getFullYear()}`
     })

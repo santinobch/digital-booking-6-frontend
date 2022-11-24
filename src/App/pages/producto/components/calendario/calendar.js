@@ -18,7 +18,6 @@ export default function Calendario({productInfo, reservas}) {
 
   const getFechasReservadas = () => {
     if(reservas){
-      console.log(reservas)
       let fechasReservadas = []
       reservas?.forEach(i => {
         
