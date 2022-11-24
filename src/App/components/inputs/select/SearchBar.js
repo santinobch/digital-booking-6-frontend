@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Select from "react-select";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import { getCiudades } from "../../../services";
+import { getCiudades } from "../../../services/cities";
 
 const formatOptionLabel = ({ label, country }) => (
   <div style={{ display: "flex", alignItems: "center" }}>

@@ -5,7 +5,7 @@ import { route } from "./Routes";
 
 import React, {useState} from "react";
 
-import UsuarioContext from "./services/context";
+import {UsuarioContext} from "./services/context";
 
 function App() {
     const [usuario, setUsuario] = useState();

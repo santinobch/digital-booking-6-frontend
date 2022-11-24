@@ -3,7 +3,7 @@ import "./categorias.scss";
 import React, { useEffect, useState } from "react";
 
 import Card from "../../components/card/card";
-import { getCategorias } from "../../services";
+import { getCategorias } from "../../services/categories";
 import SpinnerLoader from "../spinnerLoader/spinnerLoader";
 
 const Categorias = ({ onCategoriaSeleccionada }) => {

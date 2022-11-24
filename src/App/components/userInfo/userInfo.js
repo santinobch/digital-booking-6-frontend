@@ -1,7 +1,7 @@
 import React, {useContext} from 'react'
 import styles from './userInfo.module.scss'
 import avatar from "../../../imgs/icons/avatar.svg"
-import UsuarioContext from "../../services/context";
+import {UsuarioContext} from "../../services/context";
 
 
 const UserInfo = ({section}) => {

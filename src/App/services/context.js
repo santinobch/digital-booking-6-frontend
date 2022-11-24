@@ -1,5 +1,6 @@
-import React, {createContext} from 'react'
+import {createContext} from 'react'
+import AuthModel from '../models/auth.model';
+import UsuarioModel from '../models/usuario.model';
 
-const UsuarioContext = createContext(undefined)
-
-export default UsuarioContext;
+export const UsuarioContext = createContext(new UsuarioModel);
+export const AuthContext = createContext(new AuthModel);

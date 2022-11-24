@@ -4,7 +4,7 @@ import ProductTop from "./components/productTop/productTop";
 import ProductBottom from "../../components/productBottom/productBottom";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getProducto } from "../../services";
+import { getProducto } from "../../services/products";
 import SpinnerLoader from "../../components/spinnerLoader/spinnerLoader";
 
 
