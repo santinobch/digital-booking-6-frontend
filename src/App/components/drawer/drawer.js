@@ -8,18 +8,24 @@ import { FaFacebook } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
-import {UsuarioContext} from "../../services/context";
 import UserInfo from '../userInfo/userInfo';
 
 import React from 'react';
+import { getStoreItem } from '../../storage/storage';
 
 export default function Drawer({open, setOpen, handleLogout}) {
 
     const navigate = useNavigate();
     const size = useWindowSize();
 
-    const { usuario } = useContext(UsuarioContext)
-    const [usuarioLogeado, setUsuarioLogeado] = useState()
+    const [usuario, setUsuario] = useState(getStoreItem('usaurio'));
+    const [usuarioLogeado, setUsuarioLogeado] = useState(false);
+    
+    useEffect(() => {
+        if(usuario !== undefined){
+            setUsuarioLogeado(true)
+        }
+    })
 
     const navegar = sitio => {
         let path = "/"+sitio
@@ -27,18 +33,10 @@ export default function Drawer({open, setOpen, handleLogout}) {
         setOpen(true)
     }
 
-    useEffect(() => {
-        if(usuario !== undefined){
-            setUsuarioLogeado(true)
-            console.log(`HOLA ${usuario.email}`)
-        } else {
-            setUsuarioLogeado(false)
-        }
-      }, [usuario])
-
     if(size.width > 768){
         return(null);
     }
+
     return (
         <IconContext.Provider value={{ color: "#DFE4EA", size:24 }}>
             <div className={open && size.width < 768 ? styles.drawer : styles.hiddenDrawer} id="drawer">

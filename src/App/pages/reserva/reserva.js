@@ -9,17 +9,17 @@ import CalendarioReserva from "./components/calendarioReserva/calendarioReserva"
 import DetalleReserva from "./components/detalleReserva/detalleReserva";
 import { getProducto, getReservas } from "../../services/products";
 import SpinnerLoader from "../../components/spinnerLoader/spinnerLoader";
-import {UsuarioContext, AuthContext} from "../../services/context";
 
 import { useParams } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
+import { getStoreItem } from "../../storage/storage";
 
 export default function Reserva() {
-
-    const {auth} = useContext(AuthContext);
+    const auth = getStoreItem('auth');
+    const usuario = getStoreItem('usuario');
 
     const { idProducto } = useParams();
-    const { usuario } = useContext(UsuarioContext)
+    
     const [producto, setProducto] = useState([]);
     const [reservas, setReservas] = useState();
     const [fechasReserva, setFechasReserva] = useState({
@@ -38,17 +38,6 @@ export default function Reserva() {
         getDataProducto()
         getDataReservas()
     }, [])
-
-
-    // const bookingData = async() => {
-    //     await GetBooking(idProducto).then((data) => setBooking(data))
-    // }
-
-    //GetBooking();
-
-    // useEffect(() => {
-    //     bookingData()
-    // }, [])
 
     if(producto.length === 0){
         return (

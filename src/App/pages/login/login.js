@@ -4,16 +4,17 @@ import { Link, useNavigate } from "react-router-dom";
 
 import Input from "../../components/inputs/text/input";
 import Button from "../../components/button/button";
-import {AuthContext, UsuarioContext} from "../../services/context";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import {PostAuth} from "../../services/auth";
 import { GetLoggedUser } from "../../services/users";
 import { useEffect } from "react";
 
-const Login = () => {
+//Models
+import AuthModel from "../../models/auth.model";
+import UsuarioModel from "../../models/usuario.model";
 
-    const {usuario, handleUsuario} = useContext(UsuarioContext);
-    const {auth, handleAuth} = useContext(AuthContext);
+const Login = () => {
+    const [auth, setAuth] = useState(new AuthModel);
 
     const navigate = useNavigate();
 
@@ -22,11 +23,8 @@ const Login = () => {
 
 
     useEffect(() => {
-        // console.log(auth);
-        console.log(status);
-
         if (status === 200 && auth.jwt !== "") {
-            GetLoggedUser(auth, handleUsuario).then(() => {
+            GetLoggedUser().then(() => {
                 navigate("/home");
             });
         } else if (status !== 0 &&  status !== 200) {
@@ -39,8 +37,7 @@ const Login = () => {
         el.preventDefault();
         let form = document.getElementById("loginForm");
 
-        PostAuth(form.email.value, form.password.value, handleAuth).then((s) => setStatus(s));
-        
+        PostAuth(form.email.value, form.password.value, setAuth).then((s) => setStatus(s));
     }
 
     return (

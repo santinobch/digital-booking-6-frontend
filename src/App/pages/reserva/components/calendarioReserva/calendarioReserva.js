@@ -22,9 +22,9 @@ export default function CalendarioReserva({reservas, setFechasReserva}) {
     "Diciembre"
   ];
 
-  const size = useWindowSize();
+    const size = useWindowSize();
 
-  const [fechasReservadas, setFechasReservadas] = useState([]);
+    const [fechasReservadas, setFechasReservadas] = useState([]);
 
   const getFechasReservadas = () => {
     if(reservas){
@@ -42,14 +42,14 @@ export default function CalendarioReserva({reservas, setFechasReserva}) {
           currentDate.setDate(currentDate.getDate() + 1)
         }
 
-        if(fechasReservadas.length > 0) {setFechasReservadas(fechasReservadas)}
-      })
+            if(fechasReservadas.length > 0) {setFechasReservadas(fechasReservadas)}
+        })
+        }
     }
-  }
-    
-    useEffect(() => {
-      getFechasReservadas()
-  }, [reservas])
+        
+        useEffect(() => {
+        getFechasReservadas()
+    }, [reservas])
 
   const handleSelectDates = (value) => {
     let isoDatesArr = value.map(i => {
@@ -72,7 +72,7 @@ export default function CalendarioReserva({reservas, setFechasReserva}) {
         fechaCheckOut: isoDatesArr[1]})
         )}
 
-  }
+    }
 
   return (
     <div className={styles.calendarSection}>
@@ -96,7 +96,5 @@ export default function CalendarioReserva({reservas, setFechasReserva}) {
               />
           </div>
         </div>
-      </section>
-    </div>
-  );
+    );
 }

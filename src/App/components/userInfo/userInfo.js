@@ -1,11 +1,15 @@
-import React, {useContext} from 'react'
+import { useState } from 'react';
+
+//Storage
+import { getStoreItem } from '../../storage/storage';
+
+//Assets
 import styles from './userInfo.module.scss'
 import avatar from "../../../imgs/icons/avatar.svg"
-import {UsuarioContext} from "../../services/context";
 
 
 const UserInfo = ({section, handleLogout}) => {
-    const { usuario } = useContext(UsuarioContext)
+  const [usuario, setUsuario] = useState(getStoreItem('usuario'));
 
   return (
     <div className={section === "drawer" ? styles.userLoggedDrawer : styles.userLoggedHeader}>

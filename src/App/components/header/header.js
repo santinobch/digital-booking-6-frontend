@@ -9,32 +9,31 @@ import Button from "../button/button";
 import Drawer from "../drawer/drawer";
 import {GiHamburgerMenu} from "react-icons/gi"
 import useWindowSize from "../../hooks/useWindowSize";
-import {UsuarioContext, AuthContext} from "../../services/context";
+import { getStoreItem } from "../../storage/storage";
 
 export default function Header() {
     const size = useWindowSize();
-  const navigate = useNavigate();
-  const location = useLocation();
+    const navigate = useNavigate();
+    const location = useLocation();
 
-  const { usuario, handleUsuario } = useContext(UsuarioContext)
-  const { handleAuth } = useContext(AuthContext)
-  const [usuarioLogeado, setUsuarioLogeado] = useState()
 
-  const [drawerOpen, setDrawerOpen] = useState(false)
-  const isLoginPage = location.pathname === "/login";
-  const isRegisterPage = location.pathname === "/registrarse";
+    const usuario = getStoreItem('usuario');
+    const [usuarioLogeado, setUsuarioLogeado] = useState(false)
 
-  const toggleDrawer = () => {
-    drawerOpen ? setDrawerOpen(false) : setDrawerOpen(true)
-  }
 
-  useEffect(() => {
-    if(usuario !== undefined){
-        setUsuarioLogeado(true)
-    } else {
-        setUsuarioLogeado(false)
+    const [drawerOpen, setDrawerOpen] = useState(false)
+    const isLoginPage = location.pathname === "/login";
+    const isRegisterPage = location.pathname === "/registrarse";
+
+    const toggleDrawer = () => {
+        drawerOpen ? setDrawerOpen(false) : setDrawerOpen(true)
     }
-  }, [usuario])
+
+    useEffect(() => {
+        if(usuario !== undefined){
+            setUsuarioLogeado(true)
+        }
+    })
 
   const handleLogout =() =>{
     console.log("cerrando sesión")
