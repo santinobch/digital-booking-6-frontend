@@ -29,7 +29,7 @@ export default function Header() {
     }
 
     useEffect(() => {
-        if(usuario !== undefined){
+        if(usuario !== undefined && usuario !== null){
             setUsuarioLogeado(true)
         }
     }, [usuario])
