@@ -1,17 +1,20 @@
-import styles from "./home.module.scss";
-
 import Buscador from "../../components/buscador/buscador";
-import Categorias from "../../components/categorias/categorias"
+import Categorias from "../../components/categorias/categorias";
 import Listado from "../../components/listado/listado";
+import styles from "./home.module.scss";
+import { useState } from "react";
+
 
 export default function Home() {
-    return (
-        <main>
-            <Buscador/>
-            <Categorias/>
-            <Listado/>
+  const [filtros, setFiltros] = useState({ categoria: "" });
 
-            <div style={{height: "58px"}}></div>
-        </main>
-    );
+ 
+
+  return (
+    <main className={styles.main}>
+      <Buscador onChange={setFiltros} />
+      <Categorias onCategoriaSeleccionada={setFiltros} />
+      <Listado filtros={filtros} />
+    </main>
+  );
 }

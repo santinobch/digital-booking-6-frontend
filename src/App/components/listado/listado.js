@@ -1,18 +1,34 @@
-import React from 'react'
+import "./listado.scss";
+
+import React, { useEffect, useState } from "react";
+
 import RecommendedCard from "../../components/recommendedCard/recommendedCard";
-import data from '../../data/data.json'
-import './listado.scss'
+import { getProductos } from "../../services";
+import SpinnerLoader from "../spinnerLoader/spinnerLoader";
 
-const Listado = () => {
-    console.log(data)
+const Listado = ({ filtros }) => {
+  const [hospedajes, setHospedajes] = useState([]);
+
+  useEffect(() => {
+    getProductos(filtros).then((data) => setHospedajes(data));
+  }, [filtros]);
+
+  if(hospedajes.length === 0){
+    return (
+        <SpinnerLoader/>
+      )
+  }
+
   return (
-    <section className='listadoSection'>
-        <h2>Recomendaciones</h2>
-        <div className='listadoGrid'>
-            {data.map(item => <RecommendedCard {...item}/>)}
-        </div>
+    <section className="listadoSection">
+      <h2>Recomendaciones</h2>
+      <div className="listadoGrid">
+        {hospedajes.map((item) => (
+          <RecommendedCard key={item.titulo} {...item} />
+        ))}
+      </div>
     </section>
-  )
-}
+  );
+};
 
-export default Listado
+export default Listado;

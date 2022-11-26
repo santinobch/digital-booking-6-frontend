@@ -9,14 +9,18 @@
     $dTopHeight: 175px;
     $linksHeight: 80px;
     $controlsHeight: calc(100vh - ($dTopHeight + $linksHeight));
-
     .drawer {
-        margin: 0;
-        
+        margin: 0 !important;      
         z-index: 3;
-        position: fixed;
-        right: 0;
+        position: absolute;
+        right: 0px;
         top: 0;
+        animation: drawerOpen 0.25s;
+
+        @keyframes drawerOpen {
+            from {right: -200px;}
+            to {right: 0px;}
+          }
 
         width: 300px;
         height: 100vh;
@@ -32,10 +36,15 @@
             flex-direction: column;
             justify-content: space-between;
 
-            button {
+            .closeBtn {
+                background: none;
+                border: none;
+                padding: 0;
                 font-size: 24px;
-                margin: 0;
-                transform: translateY(-20%);
+                font-weight: 800;
+                cursor: pointer;
+                color: $white-books;
+                align-self: baseline;
             }
 
             h1 {
@@ -79,6 +88,16 @@
                         justify-content: center;
                         align-items: end;
 
+                        button{
+                            margin: 0;                
+                            background: none;
+                            border: none;
+                            padding: 2px;
+                            text-decoration: none;
+                            color: $black2-books;
+                            cursor: pointer;
+                        }
+
                         a {
                             margin: 0;
                             text-decoration: none;
@@ -88,6 +107,8 @@
                 }
 
                 .controlsBottom {
+                    margin-top: auto;
+                    justify-self: end;
                     font-size: 12px;
                     font-weight: 500;
 
@@ -110,10 +131,12 @@
             }
         }
     }
+
+    .hiddenDrawer{
+        display: none;
+    }
 }
 
 @media only screen and (min-width: 768px) {
-    .drawer {
-        display: none;
-    }
+
 }

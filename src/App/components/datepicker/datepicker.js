@@ -1,12 +1,14 @@
 import "react-multi-date-picker/styles/colors/teal.css";
-import DatePicker from "react-multi-date-picker";
 import "./datepicker.scss";
-import { useRef } from "react";
-import Button from "../button/button";
 
-export default function Datepicker() {
+import Button from "../button/button";
+import DatePicker from "react-multi-date-picker";
+import { useRef } from "react";
+import {AiOutlineArrowUp} from "react-icons/ai"
+
+export default function Datepicker({ value, onChange }) {
   const datePickerRef = useRef();
-  const weekDays = ["S", "M", "T", "W", "T", "F", "S"]
+  const weekDays = ["S", "M", "T", "W", "T", "F", "S"];
   const width = window.innerWidth;
 
   return (
@@ -20,7 +22,9 @@ export default function Datepicker() {
       range
       minDate={new Date()}
       hideYear
-      placeholder= "📅 Check in - Check out"
+      placeholder="📅 Check in - Check out"
+      onChange={(value) => onChange({ name: "fecha", value })}
+      value={value}
     >
       <Button
         style="dark"

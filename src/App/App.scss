@@ -12,8 +12,21 @@ body {
 main {
   position: absolute;
   top: $header-height;
+
   width: 100vw;
-  min-height: $main-height;
-  overflow: scroll;
+  height: $main-height;
+
+  overflow-y: scroll;
+
   background-color: grey;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
 }
