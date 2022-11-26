@@ -26,10 +26,10 @@ export default function DetalleReserva({auth, producto, fechas, usuario}) {
             <h3 className={styles.title}>Detalle de la reserva</h3>
 
             <div className={styles.tabletContainer}>
-                <img src={producto.imagenes[0].url} className={styles.cuartoImg}></img>
+                <img src={producto.imagenes[0].imagenUrl} className={styles.cuartoImg}></img>
 
                 <div className={styles.bottomContainer}>
-                    <h4>{producto.categoria.titulo}</h4>
+                    <h4>{producto.categoriaNombre}</h4>
                     <h3>{producto.titulo}</h3>
                     <div className={styles.stars}>
                         <img src={star} alt=""></img>
@@ -41,7 +41,7 @@ export default function DetalleReserva({auth, producto, fechas, usuario}) {
 
                     <div className={styles.ubication}>
                         <FontAwesomeIcon icon={faLocationDot} style={{ marginRight: "4px" }} />
-                        <p>{producto.ciudad.nombre}, {producto.ciudad.pais}</p>
+                        <p>{producto.ciudadNombre}, {producto.ciudadPais}</p>
                     </div>
                     
                     <hr />

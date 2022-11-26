@@ -25,6 +25,11 @@ export function GetBooking(user, pass) {
 }
 
 export function postBooking(auth, user, product, fechas){
+    console.log(auth)
+    console.log(user)
+    console.log(product)
+    console.log(fechas)
+
     let fechaDesde = fechas.fechaCheckIn.split("/").reverse().join("-")
     console.log(fechaDesde)
     let fechaHasta = fechas.fechaCheckOut.split("/").reverse().join("-")
@@ -37,15 +42,11 @@ export function postBooking(auth, user, product, fechas){
             'Authorization': `Bearer ${auth.jwt}`
        },
         body: JSON.stringify({ 
+            username:user.username,
+            idProducto:product.idProducto,
             hora: "10:00:00",
             fechaDesde: fechaDesde,
-            fechaHasta: fechaHasta,
-            producto:{
-                id: product.id
-            },
-            usuario:{
-                id: user.id
-            }
+            fechaHasta: fechaHasta
         })
     }
 

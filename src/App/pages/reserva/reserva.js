@@ -39,17 +39,6 @@ export default function Reserva() {
         getDataReservas()
     }, [])
 
-
-    // const bookingData = async() => {
-    //     await GetBooking(idProducto).then((data) => setBooking(data))
-    // }
-
-    //GetBooking();
-
-    // useEffect(() => {
-    //     bookingData()
-    // }, [])
-
     if(producto.length === 0){
         return (
             <SpinnerLoader/>

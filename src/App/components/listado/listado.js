@@ -10,8 +10,6 @@ const Listado = ({ filtros }) => {
   const [hospedajes, setHospedajes] = useState([]);
   const [error, setError] = useState("");
 
-  console.log(filtros)
-
   useEffect(() => {
     setError("");
     getProductos(filtros)

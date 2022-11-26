@@ -10,6 +10,8 @@ import "./calendar.scss"
 
 export default function Calendario({productInfo, reservas}) {
 
+  console.log(productInfo)
+
   const [fechasReservadas, setFechasReservadas] = useState([]);
 
   useEffect(() => {
@@ -63,7 +65,7 @@ export default function Calendario({productInfo, reservas}) {
           </div>
           <div className={styles.form}>
             <h3 className={styles.h3}>Agregá tus fechas de viaje para obtener precios exactos</h3>
-            <Button width={size.width >= 768 && size.width <= 1280 ? "50%" : "100%"} styleBtn="dark" onClick={() => navigate(`/producto/${productInfo.id}/reserva`)}> Iniciar reserva </Button>
+            <Button width={size.width >= 768 && size.width <= 1280 ? "50%" : "100%"} styleBtn="dark" onClick={() => navigate(`/producto/${productInfo.idProducto}/reserva`)}> Iniciar reserva </Button>
           </div>
         </div>
       </section>

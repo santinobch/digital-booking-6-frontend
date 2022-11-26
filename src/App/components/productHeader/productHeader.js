@@ -12,7 +12,7 @@ export default function ProductHeader({productInfo}) {
         <>
             <section className={styles.productHeader}>
                 <div>
-                    <h2>{productInfo.categoria.titulo}</h2>
+                    <h2>{productInfo.categoriaNombre}</h2>
                     <h1>{productInfo.titulo}</h1>
                 </div>
                 <div onClick={() => navigate(-1)} className={styles.backArrow}>

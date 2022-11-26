@@ -14,6 +14,8 @@ import MobileCarousel from "../carousel/mobileCarousel";
 import ProductHeader from "../../../../components/productHeader/productHeader";
 
 export default function ProductTop({producto, reservas}) {
+
+    console.log(producto)
     const size = useWindowSize()    
 
     const renderIcon = icon => React.createElement(FontAwesome[icon])
@@ -25,7 +27,7 @@ export default function ProductTop({producto, reservas}) {
 
                 <div className={styles.location}>
                 <FontAwesomeIcon icon={faLocationDot} style={{ marginRight: "4px" }} />
-                    <span>  {producto.ciudad.nombre}, {producto.ciudad.pais} </span>
+                    <span>  {producto.ciudadNombre}, {producto.ciudadPais} </span>
                 </div>
 
                 <div className={styles.calificacion}>
@@ -63,8 +65,8 @@ export default function ProductTop({producto, reservas}) {
                 <div className={styles.offeringsContainer}>
                     {producto.caracteristicas.map((i, idx) => 
                         <div key={idx} className={styles.offering}>
-                            {renderIcon(i.icono)}
-                            <p>{i.nombre}</p>
+                            {renderIcon(i.caracteristicaIcono)}
+                            <p>{i.caracteristicaNombre}</p>
                         </div>
                     )}
                 </div>
