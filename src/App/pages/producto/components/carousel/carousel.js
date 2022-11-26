@@ -4,11 +4,12 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './carousel.scss'
 
 const ImgCarousel = ({images}) => {
+  console.log(images)
   return (
     <>
       <Carousel infiniteLoop showIndicators={false} statusFormatter={(currentItem, total) => `${currentItem}/${total}` } >
         {images?.map((item, idx) => (
-              <img src={item.url} key={idx} alt="banner" objectPosition="center top" layout="fill" objectFit="cover" priority />
+              <img src={item.imagenUrl} key={idx} alt={item.imagenTitulo} objectPosition="center top" layout="fill" objectFit="cover" priority />
           ))}
       </Carousel>
     </>

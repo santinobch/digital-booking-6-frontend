@@ -17,8 +17,8 @@ export default function MobileCarousel({images}) {
             <Carousel.Item key={index}>
               <img
                 className="d-block w-100"
-                src={item.url}
-                alt={item.descripcion}
+                src={item.imagenUrl}
+                alt={item.imagenTitulo}
               />
             <span className="imgNumber" style={{ "textAlign": "end" }}>{(index + 1) + "/" + images.length}</span>
             </Carousel.Item>

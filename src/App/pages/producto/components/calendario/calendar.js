@@ -3,12 +3,47 @@ import { Calendar } from "react-multi-date-picker";
 import styles from "./calendar.module.scss";
 import Button from "../../../../components/button/button";
 import useWindowSize from "../../../../hooks/useWindowSize";
+import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import React from "react";
 import "./calendar.scss"
 
-export default function Calendario() {
+export default function Calendario({productInfo, reservas}) {
+
+  console.log(productInfo)
+
+  const [fechasReservadas, setFechasReservadas] = useState([]);
+
+  useEffect(() => {
+    getFechasReservadas()
+}, [reservas])
+
+  const getFechasReservadas = () => {
+    if(reservas){
+      console.log(reservas)
+      let fechasReservadas = []
+      reservas?.forEach(i => {
+        
+        let fechaInicio = new Date(i.fechaDesde);
+        let fechaFin = new Date(i.fechaHasta);
+        
+        let currentDate = fechaInicio
+        
+        while(currentDate <= fechaFin){
+          fechasReservadas.push(new Date(currentDate).toDateString())
+          currentDate.setDate(currentDate.getDate() + 1)
+        }
+
+        if(fechasReservadas.length > 0) {setFechasReservadas(fechasReservadas)}
+      })
+    }
+  }
+
   const weekDays = ["D", "L", "M", "M", "J", "V", "S"];
 
   const size = useWindowSize();
+
+  const navigate = useNavigate();
 
   return (
     <div className="calendarSection">
@@ -21,11 +56,16 @@ export default function Calendario() {
               numberOfMonths={size.width >= 768 ? 2 : 1}
               minDate={new Date()}
               hideYear
+              mapDays={ ({date})  => {
+                let props = {}
+                if(fechasReservadas.includes(date.toDate().toDateString())) props.disabled = true
+                return props
+              }}
             />
           </div>
           <div className={styles.form}>
             <h3 className={styles.h3}>Agregá tus fechas de viaje para obtener precios exactos</h3>
-            <Button width={size.width >= 768 && size.width <= 1280 ? "50%" : "100%"} styleBtn="dark"> Iniciar reserva </Button>
+            <Button width={size.width >= 768 && size.width <= 1280 ? "50%" : "100%"} styleBtn="dark" onClick={() => navigate(`/producto/${productInfo.idProducto}/reserva`)}> Iniciar reserva </Button>
           </div>
         </div>
       </section>

@@ -1,8 +1,3 @@
-import facebook from '../../../imgs/socials/facebook.png';
-import linkedin from '../../../imgs/socials/linkedin.png';
-import twitter from '../../../imgs/socials/tweet.png';
-import instagram from '../../../imgs/socials/ig.png';
-
 import { useNavigate } from 'react-router-dom';
 import useWindowSize from '../../hooks/useWindowSize';
 
@@ -13,12 +8,12 @@ import { FaFacebook } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
-import UsuarioContext from "../../services/context";
+import {UsuarioContext} from "../../services/context";
 import UserInfo from '../userInfo/userInfo';
 
 import React from 'react';
 
-export default function Drawer({open, setOpen}) {
+export default function Drawer({open, setOpen, handleLogout}) {
 
     const navigate = useNavigate();
     const size = useWindowSize();
@@ -67,7 +62,7 @@ export default function Drawer({open, setOpen}) {
                         }
                         {usuarioLogeado && 
                             <div className={styles.controlsBottom + " " + styles.bottomBorder}>
-                                <p>¿Deseas <a href="">cerrar sesión</a>?</p>
+                                <p>¿Deseas <span className={styles.logoutBtn} onClick={handleLogout}>cerrar sesión</span>?</p>
                             </div>
                         }
                     </div>

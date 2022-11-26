@@ -4,47 +4,49 @@ import { Link, useNavigate } from "react-router-dom";
 
 import Input from "../../components/inputs/text/input";
 import Button from "../../components/button/button";
-import UsuarioContext from "../../services/context";
+import {AuthContext, UsuarioContext} from "../../services/context";
 import { useContext, useState } from "react";
+import {PostAuth} from "../../services/auth";
+import { GetLoggedUser } from "../../services/users";
+import { useEffect } from "react";
 
 const Login = () => {
 
-    const {handleUsuarioLogin} = useContext(UsuarioContext)
+    const {usuario, handleUsuario} = useContext(UsuarioContext);
+    const {auth, handleAuth} = useContext(AuthContext);
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
-    const [hasError, setHasError] = useState(false)
+    const [hasError, setHasError] = useState(false);
+    const [status, setStatus] = useState(0);
 
-    const userHardcode = {
-        nombre: "Usuario Default",
-        email: "abc123@gmail.com",
-        pw: "abcdef"
-    }
 
-    const handleLogin = e => {
-        e.preventDefault()
-        let form = document.getElementById("loginForm")
+    useEffect(() => {
+        // console.log(auth);
+        console.log(status);
 
-        let userForm = {
-            nombre: "Usuario Default",
-            email: form.email.value,
-            pw: form.password.value
+        if (status === 200 && auth.jwt !== "") {
+            GetLoggedUser(auth, handleUsuario).then(() => {
+                navigate("/home");
+            });
+        } else if (status !== 0 &&  status !== 200) {
+            setHasError(true);
         }
+    }, [auth])
 
-        let valid = JSON.stringify(userForm) === JSON.stringify(userHardcode)
+
+    const HandleLogin = el => {
+        el.preventDefault();
+        let form = document.getElementById("loginForm");
+
+        PostAuth(form.email.value, form.password.value, handleAuth).then((s) => setStatus(s));
         
-        if(valid){
-            handleUsuarioLogin(userForm)
-            navigate("/home")
-        } else {
-            setHasError(true)
-        }
     }
 
     return (
         <main className={styles.main}>
 
-            <form id="loginForm" className={styles.formContainer} onSubmit={handleLogin}>
+            <form id="loginForm" className={styles.formContainer} onSubmit={HandleLogin}>
 
                 <h2>Iniciar sesión</h2>
 

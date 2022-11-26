@@ -4,7 +4,6 @@ import "./datepicker.scss";
 import Button from "../button/button";
 import DatePicker from "react-multi-date-picker";
 import { useRef } from "react";
-import {AiOutlineArrowUp} from "react-icons/ai"
 
 export default function Datepicker({ value, onChange }) {
   const datePickerRef = useRef();
@@ -27,7 +26,7 @@ export default function Datepicker({ value, onChange }) {
       value={value}
     >
       <Button
-        style="dark"
+        styleBtn="dark"
         width="100%"
         onClick={() => datePickerRef.current.closeCalendar()}
       >

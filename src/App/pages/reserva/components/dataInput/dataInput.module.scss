@@ -1,0 +1,42 @@
+@import "../../../../scss/colors";
+
+.title {
+    font-weight: 700;
+    font-size: 20px;
+
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+.inputContainer {
+    border-radius: 8px;
+    border: 1px solid $light-books;
+    background-color: $white-books;
+    box-shadow: 0px 4px 4px 0px #00000040;
+
+    width: 90vw;
+
+    padding: 17px;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr;
+
+    & > * {
+        margin: 0;
+    }
+}
+
+
+@media only screen and (min-width: 768px) { 
+    .inputContainer {
+        width: 100%;
+
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media only screen and (min-width: 1366px) { 
+    .inputContainer {
+        width: 100%;
+    }
+}

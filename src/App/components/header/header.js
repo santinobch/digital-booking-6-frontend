@@ -9,14 +9,15 @@ import Button from "../button/button";
 import Drawer from "../drawer/drawer";
 import {GiHamburgerMenu} from "react-icons/gi"
 import useWindowSize from "../../hooks/useWindowSize";
-import UsuarioContext from "../../services/context";
+import {UsuarioContext, AuthContext} from "../../services/context";
 
 export default function Header() {
     const size = useWindowSize();
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { usuario } = useContext(UsuarioContext)
+  const { usuario, handleUsuario } = useContext(UsuarioContext)
+  const { handleAuth } = useContext(AuthContext)
   const [usuarioLogeado, setUsuarioLogeado] = useState()
 
   const [drawerOpen, setDrawerOpen] = useState(false)
@@ -30,11 +31,14 @@ export default function Header() {
   useEffect(() => {
     if(usuario !== undefined){
         setUsuarioLogeado(true)
-        console.log(`HOLA ${usuario.email}`)
     } else {
         setUsuarioLogeado(false)
     }
   }, [usuario])
+
+  const handleLogout =() =>{
+    console.log("cerrando sesión")
+  }
 
   return (
     <header className={styles.header}>
@@ -51,12 +55,12 @@ export default function Header() {
                 <Button width="200px" onClick={() => navigate("/registrarse")}> Crear Cuenta </Button>
             )}
             {usuarioLogeado && size.width > 768 && (
-                <UserInfo/>
+                <UserInfo handleLogout={handleLogout}/>
             )}
             {size.width <= 768 ? <GiHamburgerMenu size={30} className={styles.drawerBtn} onClick={() => setDrawerOpen(true)}/> : null}
         </div>
 
-        <Drawer open={drawerOpen} setOpen={toggleDrawer}></Drawer>
+        <Drawer handleLogout={handleLogout} open={drawerOpen} setOpen={toggleDrawer}></Drawer>
     </header>
   );
 }

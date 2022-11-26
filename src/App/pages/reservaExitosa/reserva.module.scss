@@ -1,0 +1,37 @@
+@import "../../scss/colors";
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $light-books;
+
+  .container {
+    background-color: white;
+    width: 638px;
+    height: 302px;
+    border-radius: 1rem;
+    box-shadow: 0.1rem 0.1rem rgba(0, 0, 0, 0.2);
+    .check {
+      margin: 30px;
+      padding-left: 40%;
+      height: 74px;
+    }
+    h4 {
+      text-align: center;
+      color: $red-books;
+      font-size: 24px;
+      font-weight: 700;
+    }
+    p {
+      text-align: center;
+      font-weight: 700;
+      color: #383b58;
+      font-size: 20px;
+    }
+    button {
+      width: 207px;
+      margin-left: 35%;
+    }
+  }
+}

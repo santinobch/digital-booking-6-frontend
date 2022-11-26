@@ -1,0 +1,138 @@
+@import "/src/App/scss/colors";
+
+$spacing: 42px;
+
+.title{
+    font-weight: 700;
+    font-size: 20px;
+
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+
+.calendarLayout {
+    background-color: #DFE4EA;
+    
+   // padding: $spacing/2 $spacing 0 $spacing;
+    
+    .elements {
+        display: flex;
+        justify-content: center;
+        gap: $spacing;
+        align-items: center;
+        justify-items: space-around;
+        padding: 1rem 0 3rem;
+    }
+    
+    .form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 40%;
+        gap: 1.5rem;
+        padding: 2rem;
+        background-color: $white-books;
+        box-shadow: var(--main-box-shadow);
+        border-radius: 0.5rem;
+
+        .h4 {
+            font-size: 24px;
+            padding: 1rem 0;
+        }
+
+        
+
+        grid-column: x2 / x3;
+        grid-row: y0 / y1;
+    }
+
+    .container{
+        grid-column: x0 / x2;
+        grid-row: y0 / y1;
+    }
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    .calendarLayout {
+        background-color: #DFE4EA;
+        //padding: $spacing/2 $spacing/2 0 $spacing/2;
+
+        .elements {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            justify-items: space-around;
+            padding: 1rem 0 2rem;
+            
+            .form{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 0;
+                padding: 0;
+                background-color: transparent;
+                box-shadow: var(--main-box-shadow);
+                border-radius: 0.5rem;
+                width: 100%;
+                
+                .h4 {
+                    font-size: 16px;
+                    padding: 0;
+                }
+
+               
+                
+                grid-column: x2 / x3;
+                grid-row: y0 / y1;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width:1280px) {
+    .calendarLayout {
+        background-color: #DFE4EA;
+      //  padding: $spacing/2 $spacing 0 $spacing;
+
+        .elements {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: $spacing;
+            align-items: center;
+            justify-items: space-around;
+            padding: 0;
+            
+            .form{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                gap: 1.5rem;
+                padding: 0 2rem;
+                background-color: transparent;
+                box-shadow: var(--main-box-shadow);
+                border-radius: 0.5rem;
+                width: 100%;
+                
+                .h4 {
+                    font-size: 16px;
+                    padding: 0;
+                    width: 50%;
+                }
+
+               
+                
+                grid-column: x2 / x3;
+                grid-row: y0 / y1;
+            }
+        }
+    }
+}
+    
+    @media only screen and (min-width: 1280px) {
+        
+    }
