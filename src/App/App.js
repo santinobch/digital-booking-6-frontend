@@ -4,9 +4,19 @@ import React, { useState } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { route } from "./Routes";
 
+import { LoggedContext } from "./services/context"
+
 function App() {
+    const [logged, setLogged] = useState(false);
+    
+    const handlelogged = (log) => {
+        setLogged(log)
+    }
+
     return (
-        <RouterProvider router={route} />  
+        <LoggedContext.Provider value={ {logged, handlelogged} }>
+            <RouterProvider router={route} />  
+        </LoggedContext.Provider>
     );
 }
 

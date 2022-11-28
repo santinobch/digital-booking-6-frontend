@@ -9,7 +9,7 @@ import avatar from "../../../imgs/icons/avatar.svg"
 
 
 const UserInfo = ({section, handleLogout}) => {
-  const [usuario, setUsuario] = useState(getStoreItem('usuario'));
+  const usuario = getStoreItem('usuario');
 
   return (
     <div className={section === "drawer" ? styles.userLoggedDrawer : styles.userLoggedHeader}>

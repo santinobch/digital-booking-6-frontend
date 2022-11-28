@@ -12,6 +12,8 @@ import { useEffect } from "react";
 //Models
 import AuthModel from "../../models/auth.model";
 import UsuarioModel from "../../models/usuario.model";
+import { LoggedContext } from "../../services/context";
+import { useContext } from "react";
 
 const Login = () => {
     const [auth, setAuth] = useState(new AuthModel);
@@ -21,10 +23,13 @@ const Login = () => {
     const [hasError, setHasError] = useState(false);
     const [status, setStatus] = useState(0);
 
+    const {logged, handleLogged} = useContext(LoggedContext);
+
 
     useEffect(() => {
         if (status === 200 && auth.jwt !== "") {
             GetLoggedUser().then(() => {
+                handleLogged(true);
                 navigate("/home");
             });
         } else if (status !== 0 &&  status !== 200) {
