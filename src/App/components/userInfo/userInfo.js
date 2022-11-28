@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 //Storage
-import { getStoreItem } from '../../storage/storage';
+import { getStoreItem } from '../../utils/storage';
 
 //Assets
 import styles from './userInfo.module.scss'

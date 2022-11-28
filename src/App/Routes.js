@@ -6,7 +6,7 @@ import Header from "./components/header/header";
 import { Outlet } from "react-router-dom";
 
 //Directives
-import ProtectedLoggedRoute from "./directives/ProtectedLoggedRoute/ProtectedLoggedRoute";
+import ProtectedLoggedRoute from "./directives/ProtectedLoggedRoute";
 
 //Pages
 import Home from "./pages/home/home";

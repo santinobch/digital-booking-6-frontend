@@ -12,7 +12,7 @@ import SpinnerLoader from "../../components/spinnerLoader/spinnerLoader";
 
 import { useParams } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
-import { getStoreItem } from "../../storage/storage";
+import { getStoreItem } from "../../utils/storage";
 
 export default function Reserva() {
     const auth = getStoreItem('auth');

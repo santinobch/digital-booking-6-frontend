@@ -2,7 +2,7 @@ import "react-multi-date-picker/styles/colors/teal.css";
 import { Calendar } from "react-multi-date-picker";
 import styles from "./calendar.module.scss";
 import Button from "../../../../components/button/button";
-import useWindowSize from "../../../../hooks/useWindowSize";
+import useWindowSize from "../../../../utils/useWindowSize";
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import React from "react";

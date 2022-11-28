@@ -1,7 +1,7 @@
 import "react-multi-date-picker/styles/colors/teal.css";
 import { Calendar } from "react-multi-date-picker";
 import styles from "./calendarioReserva.module.scss";
-import useWindowSize from "../../../../hooks/useWindowSize";
+import useWindowSize from "../../../../utils/useWindowSize";
 import "../../../../components/datepicker/datepicker.scss";
 import { useState, useEffect } from "react";
 

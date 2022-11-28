@@ -1,6 +1,6 @@
 import { isString } from "formik";
 import AuthModel from "../models/auth.model";
-import { setStoreItem, getStoreItem } from "../storage/storage";
+import { setStoreItem, getStoreItem } from "../utils/storage";
 
 const urlBase = process.env.REACT_APP_API_URL;
 

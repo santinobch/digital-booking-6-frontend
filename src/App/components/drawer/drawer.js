@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import useWindowSize from '../../hooks/useWindowSize';
+import useWindowSize from '../../utils/useWindowSize';
 
 import styles from "./drawer.module.scss";
 import { IconContext } from "react-icons";
@@ -11,7 +11,7 @@ import { FaInstagram } from "react-icons/fa";
 import UserInfo from '../userInfo/userInfo';
 
 import React from 'react';
-import { getStoreItem } from '../../storage/storage';
+import { getStoreItem } from '../../utils/storage';
 
 export default function Drawer({open, setOpen, handleLogout}) {
 

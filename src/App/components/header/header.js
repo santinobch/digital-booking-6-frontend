@@ -8,9 +8,9 @@ import styles from "./header.module.scss";
 import Button from "../button/button";
 import Drawer from "../drawer/drawer";
 import {GiHamburgerMenu} from "react-icons/gi"
-import useWindowSize from "../../hooks/useWindowSize";
-import { getStoreItem, removeItem } from "../../storage/storage";
-import { LoggedContext } from "../../services/context";
+import useWindowSize from "../../utils/useWindowSize";
+import { getStoreItem, removeItem } from "../../utils/storage";
+import { LoggedContext } from "../../Context";
 
 export default function Header() {
     const size = useWindowSize();

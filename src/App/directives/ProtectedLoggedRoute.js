@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { getStoreItem } from '../../storage/storage';
+import { getStoreItem } from '../utils/storage';
   
 export default function ProtectedLoggedRoute(props) {
 

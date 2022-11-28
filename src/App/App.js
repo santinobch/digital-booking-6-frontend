@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { route } from "./Routes";
 
-import { LoggedContext } from "./services/context"
+import { LoggedContext } from "./Context"
 
 function App() {
     const [logged, setLogged] = useState(false);

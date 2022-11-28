@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./productTop.module.scss";
 import star from "../../../../../imgs/icons/star.png";
-import useWindowSize from "../../../../hooks/useWindowSize";
+import useWindowSize from "../../../../utils/useWindowSize";
 
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

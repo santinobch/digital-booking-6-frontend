@@ -36,7 +36,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start:db": "json-server --watch ./src/App/data/database.json --port 3001",
+    "start:db": "json-server --watch ./src/Data/database.json --port 3001",
     "dev": "concurrently  npm:start*"
   },
   "eslintConfig": {

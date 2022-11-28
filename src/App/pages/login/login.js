@@ -12,7 +12,7 @@ import { useEffect } from "react";
 //Models
 import AuthModel from "../../models/auth.model";
 import UsuarioModel from "../../models/usuario.model";
-import { LoggedContext } from "../../services/context";
+import { LoggedContext } from "../../Context";
 import { useContext } from "react";
 
 const Login = () => {
