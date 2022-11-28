@@ -17,11 +17,12 @@ function shorten(textInput) {
 }
 
 export default function RecommendedCard({
-  id,
+  idProducto,
   imagenes,
-  categoria,
+  tituloCategoria,
   titulo,
-  ciudad,
+  ciudadNombre,
+  ciudadPais,
   descripcion,
   caracteristicas,
 }) {
@@ -29,20 +30,23 @@ export default function RecommendedCard({
 
   const renderIcon = (icon) => React.createElement(FontAwesome[icon]);
 
+  console.log(imagenes)
+
   return (
     <div className={styles.card}>
+      
       <img className={styles.favoritoImg} src={heart} alt=""></img>
 
       <div className={styles.cardContent}>
         <div className={styles.cuartoImgContainer}>
-          <img src={imagenes[0].url} alt="" className={styles.cuartoImg}></img>
+          <img src={imagenes[0].imagenUrl} alt="" className={styles.cuartoImg}></img>
         </div>
 
         <div className={styles.cardInfo}>
           <div className={styles.infoTitle}>
             <div className={styles.titleRow}>
               <div className={styles.column}>
-                <h3>{categoria.titulo.toUpperCase()}</h3>
+                <h3>{tituloCategoria.toUpperCase()}</h3>
 
                 <div className={styles.starsImg}>
                   <img src={star} alt=""></img>
@@ -66,21 +70,20 @@ export default function RecommendedCard({
           </div>
 
           <div className={styles.ubicacion}>
-            {/* <img src="" alt="">ubicacion</img> */}
             <p>
-              {ciudad.nombre}, {ciudad.pais}
+              {ciudadNombre}, {ciudadPais}
             </p>
           </div>
 
           <div className={styles.caracteristicas}>
             {caracteristicas.map((i) => (
-              <span key={i.icono}>{renderIcon(i.icono)}</span>
+              <span>{renderIcon(i.caracteristicaIcono)}</span>
             ))}
           </div>
 
           <p className={styles.text}>{shorten(descripcion)}</p>
 
-          <Boton styleBtn="dark" onClick={() => navigate(`/producto/${id}`)}>
+          <Boton styleBtn="dark" onClick={() => navigate(`/producto/${idProducto}`)}>
             Ver más
           </Boton>
         </div>
