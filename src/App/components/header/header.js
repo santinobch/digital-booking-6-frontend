@@ -25,7 +25,7 @@ export default function Header() {
 
     const [drawerOpen, setDrawerOpen] = useState(false)
     const isLoginPage = location.pathname === "/login";
-    const isRegisterPage = location.pathname === "/registrarse";
+    const isRegisterPage = location.pathname === "/register";
 
     const toggleDrawer = () => {
         drawerOpen ? setDrawerOpen(false) : setDrawerOpen(true)
@@ -63,7 +63,7 @@ export default function Header() {
                     <Button width="200px"  onClick={() => navigate("/login")}> Iniciar sesion</Button>
                 )}
                 {!isRegisterPage && !usuarioLogeado && size.width > 768 && (
-                    <Button width="200px" onClick={() => navigate("/registrarse")}> Crear Cuenta </Button>
+                    <Button width="200px" onClick={() => navigate("/register")}> Crear Cuenta </Button>
                 )}
                 {usuarioLogeado && size.width > 768 && (
                     <UserInfo handleLogout={handleLogout}/>

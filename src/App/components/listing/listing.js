@@ -1,18 +1,18 @@
-import "./listado.scss";
+import "./listing.scss";
 
 import React, { useEffect, useState } from "react";
 
 import RecommendedCard from "../../components/recommendedCard/recommendedCard";
-import { getProductos } from "../../services/index.js";
+import { getProducts } from "../../services/index.js";
 import SpinnerLoader from "../spinnerLoader/spinnerLoader";
 
-const Listado = ({ filtros }) => {
+const Listing = ({ filtros }) => {
   const [hospedajes, setHospedajes] = useState([]);
   const [error, setError] = useState("");
 
   useEffect(() => {
     setError("");
-    getProductos(filtros)
+    getProducts(filtros)
       .then((data) => {
         setHospedajes(data);
       })
@@ -26,9 +26,9 @@ const Listado = ({ filtros }) => {
   }
 
   return (
-    <section className="listadoSection">
+    <section className="listingSection">
       <h2>Recomendaciones</h2>
-      <div className="listadoGrid">
+      <div className="listingGrid">
         {error ? (
           <p>{error}</p>
         ) : (
@@ -41,4 +41,4 @@ const Listado = ({ filtros }) => {
   );
 };
 
-export default Listado;
+export default Listing;

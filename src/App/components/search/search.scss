@@ -2,7 +2,7 @@
 
 
 
-.mainBuscador {
+.mainSearch {
     background-color: $grey-books;
     display: flex;
     flex-direction: column;
@@ -21,7 +21,7 @@
     $width: 100%; 
     $height: 38px;
     
-    .mainBuscador{
+    .mainSearch{
         padding: 20px;
 
         h1{
@@ -32,7 +32,7 @@
     }
 
 
-    .formBuscador {
+    .formSearch {
         margin: 14px 0px;
         display: flex;
         flex-direction: column;
@@ -48,13 +48,13 @@
 
 @media only screen and (min-width: 768px) {
     $input-width: 254px; 
-    .mainBuscador{
+    .mainSearch{
         h1{
             font-size: 30px;
         }
     }
 
-    .formBuscador {
+    .formSearch {
         margin: 17px 30px;
         display: flex;
         gap: 15px;
@@ -71,14 +71,14 @@
 
 @media only screen and (min-width: 1366px){
     $input-width: 422px; 
-    .mainBuscador{
+    .mainSearch{
         
         h1{
             font-size: 36px;
         }
     }
 
-    .formBuscador {
+    .formSearch {
         margin: 23px 150px;
         display: flex;
         gap: 15px;

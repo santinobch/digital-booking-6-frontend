@@ -8,26 +8,26 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as FontAwesome from "react-icons/fa"
 
 
-import Galeria from "../galeria/galeria";
-import Calendario from "../calendario/calendar"
+import Gallery from "../gallery/gallery";
+import ProductCalendar from "../calendar/calendar"
 import MobileCarousel from "../carousel/mobileCarousel";
 import ProductHeader from "../../../../components/productHeader/productHeader";
 
-export default function ProductTop({producto, reservas}) {
+export default function ProductTop({product, bookings}) {
 
-    console.log(producto)
+    console.log(product)
     const size = useWindowSize()    
 
     const renderIcon = icon => React.createElement(FontAwesome[icon])
 
     return (
         <>
-            <ProductHeader productInfo={producto} />
+            <ProductHeader productInfo={product} />
             <section className={styles.productLocation}>
 
                 <div className={styles.location}>
                 <FontAwesomeIcon icon={faLocationDot} style={{ marginRight: "4px" }} />
-                    <span>  {producto.ciudadNombre}, {producto.ciudadPais} </span>
+                    <span>  {product.ciudadNombre}, {product.ciudadPais} </span>
                 </div>
 
                 <div className={styles.calificacion}>
@@ -50,20 +50,20 @@ export default function ProductTop({producto, reservas}) {
             </section>
 
             <section className={styles.productGallery}>
-                {size.width > 1280 ? <Galeria images={producto.imagenes}/> : <MobileCarousel images={producto.imagenes}/>}
+                {size.width > 1280 ? <Gallery images={product.imagenes}/> : <MobileCarousel images={product.imagenes}/>}
             </section>
 
             <section className={styles.productInfo}>
-                <h1>{producto.titulo}</h1>
+                <h1>{product.titulo}</h1>
 
-                <p>{producto.descripcion}</p>
+                <p>{product.descripcion}</p>
 
             </section>
             <section className={styles.productOfferings}>
                 <h1> ¿Qué ofrece este lugar? </h1>
                 <hr/>
                 <div className={styles.offeringsContainer}>
-                    {producto.caracteristicas.map((i, idx) => 
+                    {product.caracteristicas.map((i, idx) => 
                         <div key={idx} className={styles.offering}>
                             {renderIcon(i.caracteristicaIcono)}
                             <p>{i.caracteristicaNombre}</p>
@@ -72,7 +72,7 @@ export default function ProductTop({producto, reservas}) {
                 </div>
             </section>
             <section>
-                <Calendario reservas={reservas} productInfo={producto}/>
+                <ProductCalendar bookings={bookings} productInfo={product}/>
             </section>
         </>
     );

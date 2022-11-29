@@ -1,11 +1,11 @@
 import "react-multi-date-picker/styles/colors/teal.css";
 import { Calendar } from "react-multi-date-picker";
-import styles from "./calendarioReserva.module.scss";
+import styles from "./calendarBooking.module.scss";
 import useWindowSize from "../../../../utils/useWindowSize";
 import "../../../../components/datepicker/datepicker.scss";
 import { useState, useEffect } from "react";
 
-export default function CalendarioReserva({reservas, setFechasReserva}) {
+export default function CalendarBooking({bookings, setFechasBooking}) {
   const weekDays = ["D", "L", "M", "M", "J", "V", "S"];
   const months = [
     "Enero",
@@ -24,12 +24,12 @@ export default function CalendarioReserva({reservas, setFechasReserva}) {
 
     const size = useWindowSize();
 
-    const [fechasReservadas, setFechasReservadas] = useState([]);
+    const [fechasBookingdas, setFechasBookingdas] = useState([]);
 
-  const getFechasReservadas = () => {
-    if(reservas){
-      let fechasReservadas = []
-      reservas?.forEach(i => {
+  const getFechasBookingdas = () => {
+    if(bookings){
+      let fechasBookingdas = []
+      bookings?.forEach(i => {
         
         let fechaInicio = new Date(i.fechaDesde);
         let fechaFin = new Date(i.fechaHasta);
@@ -37,18 +37,18 @@ export default function CalendarioReserva({reservas, setFechasReserva}) {
         let currentDate = fechaInicio
         
         while(currentDate <= fechaFin){
-          fechasReservadas.push(new Date(currentDate).toDateString())
+          fechasBookingdas.push(new Date(currentDate).toDateString())
           currentDate.setDate(currentDate.getDate() + 1)
         }
 
-            if(fechasReservadas.length > 0) {setFechasReservadas(fechasReservadas)}
+            if(fechasBookingdas.length > 0) {setFechasBookingdas(fechasBookingdas)}
         })
         }
     }
         
         useEffect(() => {
-        getFechasReservadas()
-    }, [reservas])
+        getFechasBookingdas()
+    }, [bookings])
 
   const handleSelectDates = (value) => {
     let isoDatesArr = value.map(i => {
@@ -62,11 +62,11 @@ export default function CalendarioReserva({reservas, setFechasReserva}) {
     })
   
     if(isoDatesArr.length===1){
-      setFechasReserva(() => ({
+      setFechasBooking(() => ({
         fechaCheckIn: isoDatesArr[0],
         fechaCheckOut: null})
       )} else if(isoDatesArr.length===2){
-        setFechasReserva(() => ({
+        setFechasBooking(() => ({
           fechaCheckIn: isoDatesArr[0],
         fechaCheckOut: isoDatesArr[1]})
         )}
@@ -76,7 +76,7 @@ export default function CalendarioReserva({reservas, setFechasReserva}) {
   return (
         <div className={styles.calendarSection}>
             <section className={styles.calendarLayout}>
-                <h3 className={styles.title}>Seleccioná tu fecha de reserva</h3>
+                <h3 className={styles.title}>Seleccioná tu fecha de booking</h3>
                 <div className={styles.elements}>
                     <div className={styles.container}>
                     <Calendar
@@ -89,7 +89,7 @@ export default function CalendarioReserva({reservas, setFechasReserva}) {
                     onChange={handleSelectDates}
                     mapDays={ ({date})  => {
                         let props = {}
-                        if(fechasReservadas.includes(date.toDate().toDateString())) props.disabled = true
+                        if(fechasBookingdas.includes(date.toDate().toDateString())) props.disabled = true
                         return props
                     }}
                     />

@@ -8,20 +8,20 @@ import { useState, useEffect } from "react";
 import React from "react";
 import "./calendar.scss"
 
-export default function Calendario({productInfo, reservas}) {
+export default function ProductCalendar({productInfo, bookings}) {
 
   console.log(productInfo)
 
-  const [fechasReservadas, setFechasReservadas] = useState([]);
+  const [fechasBookingdas, setFechasBookingdas] = useState([]);
 
   useEffect(() => {
-    getFechasReservadas()
-}, [reservas])
+    getFechasBookingdas()
+}, [bookings])
 
-  const getFechasReservadas = () => {
-    if(reservas){
-      let fechasReservadas = []
-      reservas?.forEach(i => {
+  const getFechasBookingdas = () => {
+    if(bookings){
+      let fechasBookingdas = []
+      bookings?.forEach(i => {
         
         let fechaInicio = new Date(i.fechaDesde);
         let fechaFin = new Date(i.fechaHasta);
@@ -29,11 +29,11 @@ export default function Calendario({productInfo, reservas}) {
         let currentDate = fechaInicio
         
         while(currentDate <= fechaFin){
-          fechasReservadas.push(new Date(currentDate).toDateString())
+          fechasBookingdas.push(new Date(currentDate).toDateString())
           currentDate.setDate(currentDate.getDate() + 1)
         }
 
-        if(fechasReservadas.length > 0) {setFechasReservadas(fechasReservadas)}
+        if(fechasBookingdas.length > 0) {setFechasBookingdas(fechasBookingdas)}
       })
     }
   }
@@ -57,14 +57,14 @@ export default function Calendario({productInfo, reservas}) {
               hideYear
               mapDays={ ({date})  => {
                 let props = {}
-                if(fechasReservadas.includes(date.toDate().toDateString())) props.disabled = true
+                if(fechasBookingdas.includes(date.toDate().toDateString())) props.disabled = true
                 return props
               }}
             />
           </div>
           <div className={styles.form}>
             <h3 className={styles.h3}>Agregá tus fechas de viaje para obtener precios exactos</h3>
-            <Button width={size.width >= 768 && size.width <= 1280 ? "50%" : "100%"} styleBtn="dark" onClick={() => navigate(`/producto/${productInfo.idProducto}/reserva`)}> Iniciar reserva </Button>
+            <Button width={size.width >= 768 && size.width <= 1280 ? "50%" : "100%"} styleBtn="dark" onClick={() => navigate(`/product/${productInfo.idProduct}/booking`)}> Iniciar booking </Button>
           </div>
         </div>
       </section>

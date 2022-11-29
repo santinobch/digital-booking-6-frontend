@@ -5,14 +5,14 @@ export function getCiudades() {
 }
 
 //
-export function getProductos(busqueda) {
-  const { ciudad, categoria, fechaInicio, fechaFin } = busqueda || {};
+export function getProducts(busqueda) {
+  const { ciudad, category, fechaInicio, fechaFin } = busqueda || {};
   // const query = new URLSearchParams({});
 
   let url = "";
 
-  if (categoria) {
-    url = `category/${categoria}`;
+  if (category) {
+    url = `category/${category}`;
   }
   if (ciudad) {
     url = `city/${ciudad}`;
@@ -32,18 +32,18 @@ export function getProductos(busqueda) {
   });
 }
 
-export function getCategorias() {
+export function getCategories() {
   return fetch(`${urlBase}/categories/`).then((respuesta) => respuesta.json());
 }
 
 // Estos se renderizan en el home
-export function getRandomProductos() {
+export function getRandomProducts() {
   return fetch(`${urlBase}/products/random`).then((respuesta) =>
     respuesta.json()
   );
 }
 
-export function getProducto(id) {
+export function getProduct(id) {
   return fetch(`${urlBase}/products/${id}`).then((respuesta) =>
     respuesta.json()
   );

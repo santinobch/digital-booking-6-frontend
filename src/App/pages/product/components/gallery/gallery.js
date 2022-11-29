@@ -1,9 +1,9 @@
 import React from 'react'
-import './galeria.scss'
+import './gallery.scss'
 import ImgModal from "../modal/imgModal";
 
 
-const Galeria = ({images}) => {
+const Gallery = ({images}) => {
 
   const [modalOpen, setModalOpen] = React.useState(false);
 
@@ -32,4 +32,4 @@ const Galeria = ({images}) => {
   )
 }
 
-export default Galeria
+export default Gallery

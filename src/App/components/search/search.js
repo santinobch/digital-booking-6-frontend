@@ -1,4 +1,4 @@
-import "./buscador.scss";
+import "./search.scss";
 
 import Button from "../../components/button/button";
 import Datepicker from "../datepicker/datepicker";
@@ -7,10 +7,10 @@ import { useState } from "react";
 
 const DATE_FORMAT = "YYYY-MM-DD";
 
-const Buscador = ({ onChange }) => {
+const Search = ({ onChange }) => {
   const [inputValue, setInputValue] = useState({
     ciudad: "",
-    categoria: "",
+    category: "",
     fecha: [],
   });
 
@@ -37,14 +37,14 @@ const Buscador = ({ onChange }) => {
   }
 
   return (
-    <div className="mainBuscador">
+    <div className="mainSearch">
       <div>
         <h1>Busca ofertas en hoteles, casas y mucho más</h1>
       </div>
-      <form className="formBuscador" onSubmit={handleSubmit}>
+      <form className="formSearch" onSubmit={handleSubmit}>
         <SelectSearch onChange={handleChange} />
         <Datepicker value={inputValue.fecha} onChange={handleChange} />
-        <Button className="btnBuscador" type="Submit" styleBtn="dark">
+        <Button className="btnSearch" type="Submit" styleBtn="dark">
           BUSCAR
         </Button>
       </form>
@@ -52,4 +52,4 @@ const Buscador = ({ onChange }) => {
   );
 };
 
-export default Buscador;
+export default Search;

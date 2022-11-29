@@ -51,7 +51,7 @@ export default function Drawer({open, setOpen, handleLogout}) {
                         {!usuarioLogeado && 
                         <div className={styles.controlsTop}>
                             <div className={styles.controlBox + " " + styles.bottomBorder}>
-                                <button onClick={() => navegar("registrarse")}>Crear cuenta</button>
+                                <button onClick={() => navegar("register")}>Crear cuenta</button>
                             </div>
                             <div className={styles.controlBox}>
                                 <button onClick={() => navegar("login")}>Iniciar sesión</button>

@@ -12,9 +12,9 @@ import ProtectedLoggedRoute from "./directives/ProtectedLoggedRoute";
 import Home from "./pages/home/home";
 import Login from "./pages/login/login";
 import Register from "./pages/register/register";
-import Producto from "./pages/producto/producto";
-import Reserva from "./pages/reserva/reserva";
-import ReservaExitosa from "./pages/reservaExitosa/reservaExitosa";
+import Product from "./pages/product/product";
+import Booking from "./pages/booking/booking";
+import SuccesfullBooking from "./pages/succesfullBooking/succesfullBooking";
 
 
 
@@ -48,26 +48,26 @@ export const route = createBrowserRouter([{
             </ProtectedLoggedRoute>
         },
         {
-            path: "registrarse",
+            path: "register",
             element: 
             <ProtectedLoggedRoute redirect="/home" checkUnlogged>
                 <Register />
             </ProtectedLoggedRoute>
         },
         {
-            path: "producto/:idProducto",
-            element: <Producto />,
+            path: "product/:idProduct",
+            element: <Product />,
         },
         {
-            path: "producto/:idProducto/reserva",
+            path: "product/:idProduct/booking",
             element: 
             <ProtectedLoggedRoute redirect="/login">
-                <Reserva />
+                <Booking />
             </ProtectedLoggedRoute>
         },
         {
-            path: "reservaExistosa",
-            element: <ReservaExitosa />,
+            path: "succesfulBooking",
+            element: <SuccesfullBooking />,
         }
     ]
 }]);

@@ -1,13 +1,13 @@
 const urlBase = process.env.REACT_APP_API_URL;
 
-export function getProductos(busqueda) {
-  const { ciudad, categoria, fecha } = busqueda || {};
+export function getProducts(busqueda) {
+  const { ciudad, category, fecha } = busqueda || {};
   // const query = new URLSearchParams({});
 
   let url = "";
 
-  if (categoria) {
-    url = `categories/${categoria}`;
+  if (category) {
+    url = `categories/${category}`;
   }
   if (ciudad) {
     url = `cities/${ciudad}`;
@@ -16,16 +16,16 @@ export function getProductos(busqueda) {
   return fetch(`${urlBase}/products/${url}`).then((respuesta) => respuesta.json());
 }
 
-export function getProducto(id){
+export function getProduct(id){
   return fetch(`${urlBase}/products/${id}`).then((respuesta) => respuesta.json())
 }
 
-export function getReservas(id){
+export function getBookings(id){
   return fetch(`${urlBase}/bookings/product/${id}`).then((respuesta) => respuesta.json())
 }
 
 
-export function getRandomProductos() {
+export function getRandomProducts() {
   return fetch(`${urlBase}/products/random`).then((respuesta) =>
     respuesta.json()
   );

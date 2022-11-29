@@ -1,4 +1,4 @@
-import styles from "./detalleReserva.module.scss";
+import styles from "./detalleBooking.module.scss";
 
 import star from "../../../../../imgs/icons/star.png";
 
@@ -9,13 +9,13 @@ import { useNavigate } from 'react-router-dom';
 
 import Button from "../../../../components/button/button";
 
-export default function DetalleReserva({auth, producto, fechas, usuario}) {
+export default function DetalleBooking({auth, product, fechas, usuario}) {
     const navigate = useNavigate();
 
-    const handleConfirmarReserva = () => {
-        postBooking(auth, usuario, producto, fechas).then(status => {
+    const handleConfirmarBooking = () => {
+        postBooking(auth, usuario, product, fechas).then(status => {
             if(status>200 && status<300){
-                navigate("/reservaExistosa")
+                navigate("/succesfulBooking")
             }
         })
     }
@@ -23,14 +23,14 @@ export default function DetalleReserva({auth, producto, fechas, usuario}) {
     return (
         <div className={styles.inputContainer}>
 
-            <h3 className={styles.title}>Detalle de la reserva</h3>
+            <h3 className={styles.title}>Detalle de la booking</h3>
 
             <div className={styles.tabletContainer}>
-                <img src={producto.imagenes[0].imagenUrl} className={styles.cuartoImg}></img>
+                <img src={product.imagenes[0].imagenUrl} className={styles.cuartoImg}></img>
 
                 <div className={styles.bottomContainer}>
-                    <h4>{producto.categoriaNombre}</h4>
-                    <h3>{producto.titulo}</h3>
+                    <h4>{product.categoryNombre}</h4>
+                    <h3>{product.titulo}</h3>
                     <div className={styles.stars}>
                         <img src={star} alt=""></img>
                         <img src={star} alt=""></img>
@@ -41,7 +41,7 @@ export default function DetalleReserva({auth, producto, fechas, usuario}) {
 
                     <div className={styles.ubication}>
                         <FontAwesomeIcon icon={faLocationDot} style={{ marginRight: "4px" }} />
-                        <p>{producto.ciudadNombre}, {producto.ciudadPais}</p>
+                        <p>{product.ciudadNombre}, {product.ciudadPais}</p>
                     </div>
                     
                     <hr />
@@ -60,7 +60,7 @@ export default function DetalleReserva({auth, producto, fechas, usuario}) {
 
                     <hr />
 
-                    <Button styleBtn="dark" onClick={handleConfirmarReserva}>Confirmar reserva</Button>
+                    <Button styleBtn="dark" onClick={handleConfirmarBooking}>Confirmar booking</Button>
                 </div>
             </div>
             

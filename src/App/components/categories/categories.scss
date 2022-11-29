@@ -1,9 +1,8 @@
 @import "../../scss/colors";
 
-.listadoSection{
-    background-color: $light-books;
+.categoriesSection{
+    background-color: $white-books;
     width: 100%;
-
     h2{
         font-size: 24px;
     }
@@ -11,10 +10,10 @@
 
 
 @media only screen and (max-width: 768px) {
-    .listadoSection{
+    .categoriesSection{
         padding: 36px 12px;
 
-        .listadoGrid{
+        .categoriesGrid{
             display: grid;
             width: 100%;
             gap: 17px;
@@ -22,32 +21,32 @@
             justify-items: center;
         }
     }
-        
+
 }
 
 @media only screen and (min-width: 768px) {
-    .listadoSection{
-        padding: 36px 12px;
-        
-        .listadoGrid{
+    .categoriesSection{
+        padding: 30px 23px;
+
+        .categoriesGrid{
             display: grid;
             width: 100%;
             gap: 17px;
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr 1fr;
             justify-items: center;
         }
     }
 }
 
 @media only screen and (min-width: 1366px) {
-    .listadoSection{
+    .categoriesSection{
         padding: 17px 40px;
-
-        .listadoGrid{
+        
+        .categoriesGrid{
             display: grid;
             width: 100%;
-            gap: 13px;
-            grid-template-columns: 1fr 1fr;
+            gap: 17px;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
         }
     }
 }
