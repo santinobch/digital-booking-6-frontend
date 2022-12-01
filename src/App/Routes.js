@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
+//Components
 import Footer from "./components/footer/footer";
 import Header from "./components/header/header";
-
-import { Outlet } from "react-router-dom";
 
 //Directives
 import ProtectedLoggedRoute from "./directives/ProtectedLoggedRoute";
@@ -16,9 +16,16 @@ import Product from "./pages/product/product";
 import Booking from "./pages/booking/booking";
 import SuccesfullBooking from "./pages/succesfullBooking/succesfullBooking";
 
-
+//Cookies
+import { useCookies } from 'react-cookie';
 
 function Root() {
+    const [cookies, setCookie] = useCookies(['name']);
+
+    function onChange(newName) {
+        setCookie('name', newName, { path: '/' });
+    }
+
     return (
         <>
         <Header />

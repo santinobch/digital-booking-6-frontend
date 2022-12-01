@@ -1,22 +1,19 @@
 import "./App.scss";
 
-import React, { useState } from "react";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+//React libraries
+import React from "react";
+import { RouterProvider } from "react-router-dom";
 import { route } from "./Routes";
 
-import { LoggedContext } from "./Context"
+//Context
+import { CookiesProvider } from 'react-cookie';
 
 function App() {
-    const [logged, setLogged] = useState(false);
-    
-    const handlelogged = (log) => {
-        setLogged(log)
-    }
 
     return (
-        <LoggedContext.Provider value={ {logged, handlelogged} }>
+        <CookiesProvider>
             <RouterProvider router={route} />  
-        </LoggedContext.Provider>
+        </CookiesProvider>
     );
 }
 
