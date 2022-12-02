@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-import React, {useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import logo from "../../../imgs/logos/logo+frase.png";
 import logoSolo from "../../../imgs/logos/logo_1.png";
 import UserInfo from "../userInfo/userInfo";
@@ -11,6 +11,8 @@ import {GiHamburgerMenu} from "react-icons/gi"
 import useWindowSize from "../../utils/useWindowSize";
 
 import { useCookies } from "react-cookie";
+
+import parseBool from "../../utils/parseBool";
 
 export default function Header() {
     const size = useWindowSize();
@@ -43,13 +45,13 @@ export default function Header() {
                 </Link>
             </div>
             <div className={styles.loginButtons}>
-                {!isLoginPage && !JSON.parse(cookie.logged) && size.width > 768 && (
+                {!isLoginPage && !parseBool(cookie.logged) && size.width > 768 && (
                     <Button width="200px"  onClick={() => navigate("/login")}> Iniciar sesion</Button>
                 )}
-                {!isRegisterPage && !JSON.parse(cookie.logged) && size.width > 768 && (
+                {!isRegisterPage && !parseBool(cookie.logged) && size.width > 768 && (
                     <Button width="200px" onClick={() => navigate("/register")}> Crear Cuenta </Button>
                 )}
-                {JSON.parse(cookie.logged) && size.width > 768 && (
+                {parseBool(cookie.logged) && size.width > 768 && (
                     <UserInfo handleLogout={handleLogout}/>
                 )}
                 {size.width <= 768 ? <GiHamburgerMenu size={30} className={styles.drawerBtn} onClick={() => setDrawerOpen(true)}/> : null}

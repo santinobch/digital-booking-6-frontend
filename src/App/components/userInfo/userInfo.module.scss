@@ -3,11 +3,11 @@
 .userLoggedDrawer{
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: flex-end;
 
     .userInfo{
         display: flex;
-        align-items: end;
+        align-items: flex-end;
         flex-direction: column;
 
         .logoutBtnDrawer{

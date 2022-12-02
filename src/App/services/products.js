@@ -17,13 +17,8 @@ export function getProducts(busqueda) {
 }
 
 export function getProduct(id){
-  return fetch(`${urlBase}/products/${id}`).then((respuesta) => respuesta.json())
+  return fetch(`${urlBase}/products/${id}`).then(response => response.json());
 }
-
-export function getBookings(id){
-  return fetch(`${urlBase}/bookings/product/${id}`).then((respuesta) => respuesta.json())
-}
-
 
 export function getRandomProducts() {
   return fetch(`${urlBase}/products/random`).then((respuesta) =>

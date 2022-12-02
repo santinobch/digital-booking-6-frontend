@@ -7,12 +7,14 @@ import DataInput from "./components/dataInput/dataInput";
 import Llegada from "./components/llegada/llegada";
 import CalendarBooking from "./components/calendarBooking/calendarBooking"
 import DetalleBooking from "./components/detalleBooking/detalleBooking";
-import { getProduct, getBookings } from "../../services/products";
 import SpinnerLoader from "../../components/spinnerLoader/spinnerLoader";
 
 import { useParams } from "react-router-dom";
-import { useEffect, useState, useContext } from "react";
+import { useState } from "react";
 import { useCookies } from "react-cookie";
+
+import { getProduct } from "../../services/products";
+import { getBookings } from "../../services/bookings";
 
 export default function Booking() {
     const [cookie] = useCookies();
@@ -26,19 +28,24 @@ export default function Booking() {
         fechaCheckOut: null
     });
 
-    const getDataProduct = async() => {
-        await getProduct(idProduct).then((data) => setProduct(data))
-    }
+    // const getDataProduct = async() => {
+    //     await getProduct(idProduct).then((data) => setProduct(data))
+    // }
 
-    const getDataBookings = async() => {
-        await getBookings(idProduct).then((data) => Array.isArray(data) ? setBookings(data) : "" )
-    }
-    useEffect(() => {
-        getDataProduct()
-        getDataBookings()
-    }, [])
+    // const getDataBookings = async() => {
+    //     await getBookings(idProduct).then((data) => Array.isArray(data) ? setBookings(data) : "" )
+    // }
 
-    if(product.length === 0){
+    getProduct(idProduct)
+        .then((response) => {
+            setProduct(response);
+        });
+    getBookings(idProduct)
+        .then((response) => {
+            if (Array.isArray(response)) { setBookings(response) }
+        });
+
+    if(product === undefined && bookings === undefined){
         return (
             <SpinnerLoader/>
         )

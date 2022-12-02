@@ -1,22 +1,8 @@
 const urlBase = process.env.REACT_APP_API_URL;
 
-
-// export function GetBooking(user, pass) {
-
-//     usuario.nombre = "asdasdsa";
-
-//     const requestOptions = {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' }
-//     };
-//     fetch(`${urlBase}/bookings/`, requestOptions)
-//         .then(response => {
-//             usuario.username = response.usuario.username;
-//             usuario.nombre = response.usuario.nombre;
-//             usuario.apellido = response.usuario.apellido;
-//             usuario.email = response.usuario.email;
-//         });
-// }
+export function getBookings(idProduct) {
+    return fetch(`${urlBase}/bookings/product/${idProduct}`);
+}
 
 export function postBooking(auth, user, product, fechas){
 

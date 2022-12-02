@@ -3,7 +3,6 @@ import useWindowSize from '../../utils/useWindowSize';
 
 import styles from "./drawer.module.scss";
 import { IconContext } from "react-icons";
-import {useState, useContext, useEffect } from "react";
 import { FaFacebook } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
@@ -12,6 +11,8 @@ import UserInfo from '../userInfo/userInfo';
 
 import React from 'react';
 import { useCookies } from 'react-cookie';
+
+import parseBool from '../../utils/parseBool';
 
 export default function Drawer({open, setOpen, handleLogout}) {
 
@@ -36,13 +37,13 @@ export default function Drawer({open, setOpen, handleLogout}) {
             <div className={open && size.width < 768 ? styles.drawer : styles.hiddenDrawer} id="drawer">
                 <div className={styles.drawerTop}>
                     <button className={styles.closeBtn} onClick={() => setOpen(true)}>X</button>
-                    {!JSON.parse(cookie.logged) ? <h1>MENÚ</h1> : <UserInfo section="drawer"/>}
+                    {!parseBool(cookie.logged) ? <h1>MENÚ</h1> : <UserInfo section="drawer"/>}
                     
                 </div>
 
                 <div className={styles.drawerBottom}>
                     <div className={styles.controls}>
-                        {!JSON.parse(cookie.logged) && 
+                        {!parseBool(cookie.logged) && 
                         <div className={styles.controlsTop}>
                             <div className={styles.controlBox + " " + styles.bottomBorder}>
                                 <button onClick={() => navegar("register")}>Crear cuenta</button>
@@ -52,17 +53,17 @@ export default function Drawer({open, setOpen, handleLogout}) {
                             </div>
                         </div>
                         }
-                        {JSON.parse(cookie.logged) && 
+                        {parseBool(cookie.logged) && 
                             <div className={styles.controlsBottom + " " + styles.bottomBorder}>
                                 <p>¿Deseas <span className={styles.logoutBtn} onClick={handleLogout}>cerrar sesión</span>?</p>
                             </div>
                         }
                     </div>
                     <div className={styles.links}>
-                        <a id="facebook" href=""><FaFacebook/></a>
-                        <a id="linkedin" href=""><FaLinkedinIn/></a>
-                        <a id="twitter" href=""><FaTwitter/></a>
-                        <a id="instagram" href=""><FaInstagram/></a>
+                        <a id="facebook" href="/"><FaFacebook/></a>
+                        <a id="linkedin" href="/"><FaLinkedinIn/></a>
+                        <a id="twitter" href="/"><FaTwitter/></a>
+                        <a id="instagram" href="/"><FaInstagram/></a>
                     </div>
                 </div>
             </div>

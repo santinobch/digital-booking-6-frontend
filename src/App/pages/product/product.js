@@ -3,32 +3,30 @@ import styles from "./product.module.scss";
 import ProductTop from "./components/productTop/productTop";
 import ProductBottom from "../../components/productBottom/productBottom";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { getProduct, getBookings } from "../../services/products";
+import { useState } from "react";
+//import { getProduct, getBookings } from "../../services/products";
 import SpinnerLoader from "../../components/spinnerLoader/spinnerLoader";
 
-
+import { getProduct } from "../../services/products";
+import { getBookings } from "../../services/bookings";
 
 export default function Product() {
     const { idProduct } = useParams();
 
-    const [product, setProduct] = useState([]);
+    const [product, setProduct] = useState();
     const [bookings, setBookings] = useState();
 
-    const getDataProduct = async() => {
-        await getProduct(idProduct).then((data) => setProduct(data))
-    }
 
-    const getDataBookings = async() => {
-        await getBookings(idProduct).then((data) => Array.isArray(data) ? setBookings(data) : "" )
-    }
+    getProduct(idProduct)
+        .then((response) => {
+            setProduct(response);
+        });
+    getBookings(idProduct)
+        .then((response) => {
+            if (Array.isArray(response)) { setBookings(response) }
+        });
 
-    useEffect(() => {
-        getDataProduct()
-        getDataBookings()
-    }, [])
-
-    if(product.length === 0){
+    if(product === undefined && bookings === undefined){
         return (
             <SpinnerLoader/>
         )
