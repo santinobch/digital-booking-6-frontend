@@ -12,11 +12,10 @@ import SpinnerLoader from "../../components/spinnerLoader/spinnerLoader";
 
 import { useParams } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
-import { getStoreItem } from "../../utils/storage";
+import { useCookies } from "react-cookie";
 
 export default function Booking() {
-    const auth = getStoreItem('auth');
-    const usuario = getStoreItem('usuario');
+    const [cookie] = useCookies();
 
     const { idProduct } = useParams();
     
@@ -52,16 +51,16 @@ export default function Booking() {
             <div className={styles.content}>
                 <div className={styles.leftContainer}>
                     <DataInput 
-                        nombre={usuario ? usuario.nombre : ""} 
-                        apellido={usuario ? usuario.apellido : ""} 
-                        email={usuario ? usuario.email : ""} 
-                        ciudad={usuario ? usuario.ciudad : ""}
+                        nombre={cookie.user.nombre} 
+                        apellido={cookie.user.apellido} 
+                        email={cookie.user.email} 
+                        ciudad={cookie.user.ciudad}
                         />
                     <CalendarBooking bookings={bookings} fechasBooking={fechasBooking} setFechasBooking={setFechasBooking}/>
                     <Llegada />
                 </div>
                 
-                <DetalleBooking auth={auth} product={product} fechas={fechasBooking} usuario={usuario} />
+                <DetalleBooking auth={cookie.auth} product={product} fechas={fechasBooking} usuario={cookie.user} />
             </div>
 
             <ProductBottom />

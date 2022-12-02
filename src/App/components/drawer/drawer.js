@@ -11,21 +11,15 @@ import { FaInstagram } from "react-icons/fa";
 import UserInfo from '../userInfo/userInfo';
 
 import React from 'react';
-import { getStoreItem } from '../../utils/storage';
+import { useCookies } from 'react-cookie';
 
 export default function Drawer({open, setOpen, handleLogout}) {
 
     const navigate = useNavigate();
     const size = useWindowSize();
-
-    const [usuario, setUsuario] = useState(getStoreItem('usaurio'));
-    const [usuarioLogeado, setUsuarioLogeado] = useState(false);
     
-    useEffect(() => {
-        if(usuario !== undefined){
-            setUsuarioLogeado(true)
-        }
-    })
+    const [cookie] = useCookies();
+
 
     const navegar = sitio => {
         let path = "/"+sitio
@@ -42,13 +36,13 @@ export default function Drawer({open, setOpen, handleLogout}) {
             <div className={open && size.width < 768 ? styles.drawer : styles.hiddenDrawer} id="drawer">
                 <div className={styles.drawerTop}>
                     <button className={styles.closeBtn} onClick={() => setOpen(true)}>X</button>
-                    {!usuarioLogeado ? <h1>MENÚ</h1> : <UserInfo section="drawer"/>}
+                    {!JSON.parse(cookie.logged) ? <h1>MENÚ</h1> : <UserInfo section="drawer"/>}
                     
                 </div>
 
                 <div className={styles.drawerBottom}>
                     <div className={styles.controls}>
-                        {!usuarioLogeado && 
+                        {!JSON.parse(cookie.logged) && 
                         <div className={styles.controlsTop}>
                             <div className={styles.controlBox + " " + styles.bottomBorder}>
                                 <button onClick={() => navegar("register")}>Crear cuenta</button>
@@ -58,7 +52,7 @@ export default function Drawer({open, setOpen, handleLogout}) {
                             </div>
                         </div>
                         }
-                        {usuarioLogeado && 
+                        {JSON.parse(cookie.logged) && 
                             <div className={styles.controlsBottom + " " + styles.bottomBorder}>
                                 <p>¿Deseas <span className={styles.logoutBtn} onClick={handleLogout}>cerrar sesión</span>?</p>
                             </div>

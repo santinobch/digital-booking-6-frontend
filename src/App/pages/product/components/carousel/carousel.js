@@ -4,7 +4,6 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './carousel.scss'
 
 const ImgCarousel = ({images}) => {
-  console.log(images)
   return (
     <>
       <Carousel infiniteLoop showIndicators={false} statusFormatter={(currentItem, total) => `${currentItem}/${total}` } >

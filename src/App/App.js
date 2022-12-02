@@ -5,13 +5,15 @@ import React from "react";
 import { RouterProvider } from "react-router-dom";
 import { route } from "./Routes";
 
-//Context
+//Cookies
 import { CookiesProvider } from 'react-cookie';
+import Cookies from "./Cookies";
 
 function App() {
 
     return (
         <CookiesProvider>
+            {/* <Cookies></Cookies> */}
             <RouterProvider router={route} />  
         </CookiesProvider>
     );

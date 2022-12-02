@@ -3,17 +3,12 @@ import * as FontAwesome from "react-icons/fa";
 import Boton from "../button/button";
 import React from "react";
 import heart from "../../../imgs/icons/heart.png";
-import { isString } from "formik";
 import star from "../../../imgs/icons/star.png";
 import styles from "./recommendedCard.module.scss";
 import { useNavigate } from "react-router-dom";
 
 function shorten(textInput) {
-  if (isString(textInput)) {
-    return textInput.slice(0, 80) + "...";
-  } else {
-    return "";
-  }
+  return textInput.slice(0, 80) + "...";
 }
 
 export default function RecommendedCard({
@@ -29,8 +24,6 @@ export default function RecommendedCard({
   const navigate = useNavigate();
 
   const renderIcon = (icon) => React.createElement(FontAwesome[icon]);
-
-  console.log(imagenes)
 
   return (
     <div className={styles.card}>

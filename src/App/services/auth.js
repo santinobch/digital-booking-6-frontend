@@ -1,8 +1,14 @@
-import { setStoreItem, getStoreItem } from "../utils/storage";
+//Cookies
+import { render } from '@testing-library/react';
+import { useCookies } from 'react-cookie';
+
+//Model
+import AuthModel from "../models/auth.model";
+import ResponseModel from '../models/response.model';
 
 const urlBase = process.env.REACT_APP_API_URL;
 
-export async function PostAuth(email, pass, setAuth) {
+export async function PostAuth(email, pass, setCookie) {
 
     let status = 0;
 
@@ -22,11 +28,8 @@ export async function PostAuth(email, pass, setAuth) {
             status = response.status;
             return response.json()
         }).then(data => {
-            setStoreItem('auth', data);
-            if (setAuth !== undefined) {
-                setAuth(data);
-            }
-            return status;
+            setCookie('auth', data);
+            return new ResponseModel(status, data);
         })
         .catch( error => {
             console.log('Hubo un problema con la petición Fetch, auth.js: ' + error.message);

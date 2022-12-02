@@ -9,40 +9,32 @@ import {PostAuth} from "../../services/auth";
 import { GetLoggedUser } from "../../services/users";
 import { useEffect } from "react";
 
-//Models
-import AuthModel from "../../models/auth.model";
-import UsuarioModel from "../../models/usuario.model";
-import { LoggedContext } from "../../Context";
-import { useContext } from "react";
+//Cookies
+import { useCookies } from 'react-cookie';
 
 const Login = () => {
-    const [auth, setAuth] = useState(new AuthModel);
-
     const navigate = useNavigate();
 
     const [hasError, setHasError] = useState(false);
-    const [status, setStatus] = useState(0);
 
-    const {logged, handleLogged} = useContext(LoggedContext);
-
-
-    useEffect(() => {
-        if (status === 200 && auth.jwt !== "") {
-            GetLoggedUser().then(() => {
-                handleLogged(true);
-                navigate("/home");
-            });
-        } else if (status !== 0 &&  status !== 200) {
-            setHasError(true);
-        }
-    }, [auth])
+    const [cookie, setCookie] = useCookies();
 
 
     const HandleLogin = el => {
         el.preventDefault();
         let form = document.getElementById("loginForm");
 
-        PostAuth(form.email.value, form.password.value, setAuth).then((s) => setStatus(s));
+        PostAuth(form.email.value, form.password.value, setCookie).then((response) => {
+            if (response.status === 200 && response.data.jwt !== "") {
+                GetLoggedUser(response.data, setCookie).then(() => {
+                    setCookie('logged', true);
+                    navigate("/home");
+                });
+            } else if (response.status !== 0 &&  response.status !== 200) {
+                setHasError(true);
+            }
+        });
+
     }
 
     return (

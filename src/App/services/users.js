@@ -1,15 +1,12 @@
-import { isString } from "formik";
-import AuthModel from "../models/auth.model";
-import { setStoreItem, getStoreItem } from "../utils/storage";
+//Models
+import ResponseModel from "../models/response.model";
 
 const urlBase = process.env.REACT_APP_API_URL;
 
 
-export function GetLoggedUser(setUsuario) {
+export function GetLoggedUser(auth, setCookie) {
 
     let status = 0;
-
-    let auth = getStoreItem('auth');
 
     const requestOptions = {
         method: 'GET',
@@ -19,25 +16,16 @@ export function GetLoggedUser(setUsuario) {
         }
     };
 
-    
-
     return fetch(`${urlBase}/users?username=${auth.username}`, requestOptions)
         .then(response => {
             status = response.status;
             return response.json()
         }).then(data => {
-            console.log('user: ' + auth.username);
-
-            setStoreItem('usuario', data);
-            if (setUsuario !== undefined) {
-                setUsuario(data);
-            }
-            return status;
+            setCookie('user', data);
+            return new ResponseModel(status, data);
         })
         .catch( error => {
             console.log('Hubo un problema con la petición Fetch, users.js: ' + error.message);
-
-            console.log(auth);
             return error.status;
         });
 }

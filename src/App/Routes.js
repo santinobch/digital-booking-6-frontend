@@ -19,12 +19,21 @@ import SuccesfullBooking from "./pages/succesfullBooking/succesfullBooking";
 //Cookies
 import { useCookies } from 'react-cookie';
 
-function Root() {
-    const [cookies, setCookie] = useCookies(['name']);
+//Model
+import AuthModel from "./models/auth.model";
+import UsuarioModel from "./models/usuario.model";
 
-    function onChange(newName) {
-        setCookie('name', newName, { path: '/' });
+function Root() {
+
+    const cookieOptions = {
+        //Accesable in all the site
+        path: "/",
+        //One week expiration
+        expires: 60*60*24*7
     }
+
+    const [cookie] = useCookies( [], [], cookieOptions );
+
 
     return (
         <>

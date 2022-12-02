@@ -9,19 +9,13 @@ import Button from "../button/button";
 import Drawer from "../drawer/drawer";
 import {GiHamburgerMenu} from "react-icons/gi"
 import useWindowSize from "../../utils/useWindowSize";
-import { getStoreItem, removeItem } from "../../utils/storage";
-import { LoggedContext } from "../../Context";
+
+import { useCookies } from "react-cookie";
 
 export default function Header() {
     const size = useWindowSize();
     const navigate = useNavigate();
     const location = useLocation();
-
-    const [usuario, setUsuario] = useState(getStoreItem('usuario'))
-    const [usuarioLogeado, setUsuarioLogeado] = useState(false)
-
-    const {logged, handleLogged} = useContext(LoggedContext);
-
 
     const [drawerOpen, setDrawerOpen] = useState(false)
     const isLoginPage = location.pathname === "/login";
@@ -31,23 +25,13 @@ export default function Header() {
         drawerOpen ? setDrawerOpen(false) : setDrawerOpen(true)
     }
 
-    useEffect(() => {
-        if(usuario !== undefined && usuario !== null){
-            setUsuarioLogeado(true)
-        }
-    }, [usuario])
-
-    useEffect(() => {
-        setUsuario(getStoreItem('usuario'));
-    }, [logged])
+    const [cookie, setCookie, removeCookie] = useCookies();
 
     const handleLogout =() =>{
-        console.log("cerrando sesión")
-        removeItem('auth');
-        removeItem('usuario');
-        setUsuario(undefined);
-        setUsuarioLogeado(false);
-        handleLogged(false);
+        removeCookie('auth');
+        removeCookie('user');
+        setCookie('logged', false);
+        
         navigate('/home');
     }
 
@@ -59,13 +43,13 @@ export default function Header() {
                 </Link>
             </div>
             <div className={styles.loginButtons}>
-                {!isLoginPage && !usuarioLogeado && size.width > 768 && (
+                {!isLoginPage && !JSON.parse(cookie.logged) && size.width > 768 && (
                     <Button width="200px"  onClick={() => navigate("/login")}> Iniciar sesion</Button>
                 )}
-                {!isRegisterPage && !usuarioLogeado && size.width > 768 && (
+                {!isRegisterPage && !JSON.parse(cookie.logged) && size.width > 768 && (
                     <Button width="200px" onClick={() => navigate("/register")}> Crear Cuenta </Button>
                 )}
-                {usuarioLogeado && size.width > 768 && (
+                {JSON.parse(cookie.logged) && size.width > 768 && (
                     <UserInfo handleLogout={handleLogout}/>
                 )}
                 {size.width <= 768 ? <GiHamburgerMenu size={30} className={styles.drawerBtn} onClick={() => setDrawerOpen(true)}/> : null}

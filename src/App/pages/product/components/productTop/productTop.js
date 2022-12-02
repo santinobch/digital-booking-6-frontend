@@ -15,7 +15,6 @@ import ProductHeader from "../../../../components/productHeader/productHeader";
 
 export default function ProductTop({product, bookings}) {
 
-    console.log(product)
     const size = useWindowSize()    
 
     const renderIcon = icon => React.createElement(FontAwesome[icon])

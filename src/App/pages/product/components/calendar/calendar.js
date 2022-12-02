@@ -10,8 +10,6 @@ import "./calendar.scss"
 
 export default function ProductCalendar({productInfo, bookings}) {
 
-  console.log(productInfo)
-
   const [fechasBookingdas, setFechasBookingdas] = useState([]);
 
   useEffect(() => {

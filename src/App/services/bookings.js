@@ -19,10 +19,6 @@ const urlBase = process.env.REACT_APP_API_URL;
 // }
 
 export function postBooking(auth, user, product, fechas){
-    console.log(auth)
-    console.log(user)
-    console.log(product)
-    console.log(fechas)
 
     let fechaDesde = fechas.fechaCheckIn.split("/").reverse().join("-")
     let fechaHasta = fechas.fechaCheckOut.split("/").reverse().join("-")

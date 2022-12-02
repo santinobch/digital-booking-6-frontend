@@ -1,19 +1,17 @@
-import { useState } from 'react';
 import { useEffect } from 'react';
+import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
-
-import { getStoreItem } from '../utils/storage';
   
 export default function ProtectedLoggedRoute(props) {
 
-    const auth = getStoreItem('auth');
+    const [cookie] = useCookies();
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (props.checkUnlogged === undefined && (auth === undefined || auth.jwt === "")) {
+        if (props.checkUnlogged === undefined && !JSON.parse(cookie.logged)) {
             navigate(props.redirect);
-        } else if (props.checkUnlogged && auth !== null && auth !== undefined) {
+        } else if (props.checkUnlogged && JSON.parse(cookie.logged)) {
             navigate(props.redirect);
         }
     })
