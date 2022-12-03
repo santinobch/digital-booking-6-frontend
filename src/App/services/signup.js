@@ -1,14 +1,8 @@
-//Cookies
-import { render } from '@testing-library/react';
-import { useCookies } from 'react-cookie';
-
-//Model
-import AuthModel from "../models/auth.model";
 import ResponseModel from '../models/response.model';
 
 const urlBase = process.env.REACT_APP_API_URL;
 
-export async function postAuth(email, pass, setCookie) {
+export async function postSignUp(email, username, name, surname, pass) {
 
     let status = 0;
 
@@ -19,20 +13,22 @@ export async function postAuth(email, pass, setCookie) {
         },
         body: JSON.stringify({ 
             email: email,
+            username: username,
+            nombre: name,
+            apellido: surname,
             password: pass
         })
     };
 
-    return fetch(`${urlBase}/auth/`, requestOptions)
+    return fetch(`${urlBase}/signup`, requestOptions)
         .then(response => {
             status = response.status;
             return response.json()
         }).then(data => {
-            setCookie('auth', data);
-            return new ResponseModel(status, data);
+            return new ResponseModel(status);
         })
         .catch( error => {
-            console.log('Hubo un problema con la petición Fetch, auth.js: ' + error.message);
+            console.log('Hubo un problema con la petición Fetch, signup.js: ' + error.message);
             return error.status;
         });
 }

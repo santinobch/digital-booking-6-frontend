@@ -5,9 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import Input from "../../components/inputs/text/input";
 import Button from "../../components/button/button";
 import { useState } from "react";
-import {PostAuth} from "../../services/auth";
-import { GetLoggedUser } from "../../services/users";
-import { useEffect } from "react";
+import { postAuth } from "../../services/auth";
+import { getLoggedUser } from "../../services/users";
 
 //Cookies
 import { useCookies } from 'react-cookie';
@@ -19,14 +18,70 @@ const Login = () => {
 
     const [cookie, setCookie] = useCookies();
 
+    const [loginData, setLoginData] = useState({ 'email': '', 'password': '' })
 
-    const HandleLogin = el => {
-        el.preventDefault();
-        let form = document.getElementById("loginForm");
+    const [validations, setValidations] = useState({'email': '', 'password': '' })
 
-        PostAuth(form.email.value, form.password.value, setCookie).then((response) => {
+    const validateAll = () => {
+        const { email, password } = loginData
+        const validations = {}
+        let isValid = true
+    
+        if (!email) {
+          validations.email = 'El email es obligatorio'
+          isValid = false
+        }
+
+        if (!password) {
+            validations.password = 'El email es obligatorio'
+            isValid = false
+        }
+    
+        if (!isValid) {
+            setValidations(validations)
+        }
+    
+        return isValid
+    }
+
+    const validateSingle = e => {
+        console.log(e.target)
+        const { name } = e.target
+        const value = loginData[name]
+        let message = ''
+
+        if(!value){
+            console.log("a")
+            message = `El campo no puede estar vacío`
+        }
+
+        if(value && name === "password" && (value.length < 6 || value.length > 20)){
+            message = 'La contraseña debe estar compuesta de 6 a 20 caracteres alfanuméricos'
+        }
+
+        if (value && name === 'email' && !/\S+@\S+\.\S+/.test(value)) {
+            message = 'El formato del email debe ser ejemplo@mail.com'
+        }
+
+        setValidations({ ...validations, [name]: message })
+    }
+
+    const handleChange = e => {
+        setHasError(false)
+        const {name, value} = e.target;
+        setLoginData({ ...loginData, [name]: value})
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const isValid = validateAll()
+        if(!isValid){
+            return false
+        }
+
+        postAuth(loginData['email'], loginData['password'], setCookie).then((response) => {
             if (response.status === 200 && response.data.jwt !== "") {
-                GetLoggedUser(response.data, setCookie).then(() => {
+                getLoggedUser(response.data, setCookie).then(() => {
                     setCookie('logged', true);
                     navigate("/home");
                 });
@@ -34,13 +89,15 @@ const Login = () => {
                 setHasError(true);
             }
         });
-
     }
+
+    const {email: emailVal, password: passwordVal } = validations
+
 
     return (
         <main className={styles.main}>
 
-            <form id="loginForm" className={styles.formContainer} onSubmit={HandleLogin}>
+            <form id="loginForm" className={styles.formContainer} onSubmit={handleSubmit}>
 
                 <h2>Iniciar sesión</h2>
 
@@ -49,28 +106,28 @@ const Login = () => {
                 <Input
                     name="email"
                     type="email"
-                    placeholder="email@example.com"
+                    placeholder="example@mail.com"
                     label="Correo Electronico"
-                    subLabel="Este campo es obligatorio"
-                    pattern="[A-Za-z0-9]{1,20}@[A-Za-z0-9.]{1,20}"
+                    subLabel={emailVal}
                     width="100%"
-                    setHasError={setHasError}/>
+                    onChange={handleChange}
+                    onBlur={validateSingle}/>
 
                 <Input
                     name="password"
                     type="password"
                     placeholder="••••••••"
                     label="Contraseña"
-                    subLabel="Este campo es obligatorio"
-                    pattern="[A-Za-z0-9]{6,20}"
+                    subLabel={passwordVal}
                     width="100%"
-                    setHasError={setHasError}/>
+                    onChange={handleChange}
+                    onBlur={validateSingle}/>
 
                 <Button styleBtn="dark" width="100%" type="submit">Ingresar</Button>
 
                 
                 <div className={styles.changeForm}>
-                    <span> aun no tenes cuenta?  </span>
+                    <span>¿Aún no tenes cuenta?  </span>
                     <Link to={`/register`}>
                         Registrate
                     </Link>

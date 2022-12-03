@@ -1,19 +1,31 @@
 import styles from "./register.module.scss";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Input from "../../components/inputs/text/input";
 import Button from "../../components/button/button";
-
+import { postSignUp } from "../../services/signup";
 import {useState} from 'react'
+import { getLoggedUser } from "../../services/users";
+import { postAuth } from "../../services/auth";
+import SpinnerLoader from "../../components/spinnerLoader/spinnerLoader";
+
+//Cookies
+import { useCookies } from 'react-cookie';
 
 const Register = () => {
 
     const [passState, setPass] = useState("");
+    const [hasError, setHasError] = useState(false);
+    const [loading, setLoading] = useState(false)
+    const navigate = useNavigate();
+
+    const [cookie, setCookie] = useCookies();
 
     const [registerData, setRegisterData] = useState({
         'name': '',
         'surname': '',
+        'username': '',
         'email': '',
         'password': '',
         'passwordConfirm': ''
@@ -22,19 +34,25 @@ const Register = () => {
     const [validations, setValidations] = useState({
         'name': '',
         'surname': '',
+        'username': '',
         'email': '',
         'password': '',
         'passwordConfirm': ''
     })
 
     const validateAll = () => {
-        const { name, surname, email, password } = registerData
-        const validations = { name: '', email: '', gender: '' }
+        const { name, username, surname, email, password } = registerData
+        const validations = {}
         let isValid = true
     
         if (!name) {
           validations.name = 'El nombre es obligatorio'
           isValid = false
+        }
+
+        if (!username) {
+            validations.name = 'El nombre de usuario es obligatorio'
+            isValid = false
         }
 
         if (!surname) {
@@ -53,14 +71,13 @@ const Register = () => {
         }
     
         if (!isValid) {
-          this.setState({ validations })
+            setValidations(validations)
         }
     
         return isValid
     }
 
     const validateSingle = e => {
-        console.log(e.target)
         const { name } = e.target
         const value = registerData[name]
         let message = ''
@@ -72,6 +89,10 @@ const Register = () => {
         if (value && (name === 'name' || name === 'surname') && !/^[a-zA-Z]+$/.test(value)) {
             let campo = name === "name" ? "nombre" : "apellido"
             message = `El ${campo} debe contener solo letras`
+        }
+
+        if(value && name === "username" && (value.length < 4 || value.length > 15)){
+            message = 'El nombre de usuario debe estar compuesto de 5 a 15 caracteres alfanuméricos'
         }
 
         if(value && name === "password" && (value.length < 6 || value.length > 20)){
@@ -90,28 +111,51 @@ const Register = () => {
     }
 
     const handleChange = e => {
-        console.log(e.target.value)
         const {name, value} = e.target;
         setRegisterData({ ...registerData, [name]: value})
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        const { name, username, surname, email, password } = registerData
+        
         const isValid = validateAll()
         if(!isValid){
             return false
         }
-        alert('OK')
-
+        setLoading(true)
+        postSignUp(email, username, name, surname, password).then(res => {
+            if (res.status > 200 && res.status < 300) {
+                postAuth(email, password, setCookie).then((response) => {
+                    if (response.status === 200 && response.data.jwt !== "") {
+                        getLoggedUser(response.data, setCookie).then(() => {
+                            setCookie('logged', true);
+                            navigate("/home");
+                        });
+                    } else if (response.status !== 0 &&  response.status !== 200) {
+                        setHasError(true);
+                    }
+                });
+            } else if (res.status !== 0 &&  res.status !== 200) {
+                setHasError(true);
+            }  
+        }).finally(
+            setLoading(false)
+        )
     }
 
-    const {name: nameVal, surname: surnameVal, email: emailVal, password: passwordVal, passwordConfirm: passwordConfirmVal } = validations
+    const {name: nameVal, surname: surnameVal, email: emailVal, username: usernameVal , password: passwordVal, passwordConfirm: passwordConfirmVal } = validations
 
     return (
         <main className={styles.main}>
+
+            {!loading ? (
             <form className={styles.formContainer} onSubmit={handleSubmit}>
 
                 <h2>Crear cuenta</h2>
+
+                <p className={styles.errorDiv} style={{ display: hasError ? "block" : "none" }}>Lamentablemente no ha podido registrarse. Por favor intente más tarde</p>
+
 
                 <div className={styles.namesContainer}>
                     <Input
@@ -132,6 +176,15 @@ const Register = () => {
                         onChange={handleChange}
                         onBlur={validateSingle}/>
                 </div>
+
+                <Input
+                    name="username"
+                    type="text"
+                    width="100%"
+                    subLabel={usernameVal}
+                    label="Nombre de usuario"
+                    onChange={handleChange}
+                    onBlur={validateSingle}/>
 
                 <Input
                     name="email"
@@ -171,6 +224,7 @@ const Register = () => {
                     </Link>
                 </div>
             </form>
+            ) : <SpinnerLoader/>}
         </main>
     );
 };
