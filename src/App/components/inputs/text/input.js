@@ -22,32 +22,32 @@ export default function Input(props) {
         showPassButton = "block";
     }
 
-    function keyUp(event) {
-        if (!document.getElementById(id).checkValidity()) {
-            setSubLabelVisibility("block");
-        } else {
-            setSubLabelVisibility("none");
-        }
+    // function keyUp(event) {
+    //     if (!document.getElementById(id).checkValidity()) {
+    //         setSubLabelVisibility("block");
+    //     } else {
+    //         setSubLabelVisibility("none");
+    //     }
 
-        props.setHasError(false)
+    //     props.setHasError(false)
 
-        if(props.name === "password_confirm"){
-            let confirmValue = event.target.value
-            if(props.comparePass !== undefined && props.comparePass === confirmValue){
-                setSubLabelVisibility("none");
-                setInvalid(false)
-            } else {
-                setSubLabelVisibility("block");
-                setInvalid(true)
-            }
-        }
-    }
+    //     if(props.name === "passwordConfirm"){
+    //         let confirmValue = event.target.value
+    //         if(props.comparePass !== undefined && props.comparePass === confirmValue){
+    //             setSubLabelVisibility("none");
+    //             setInvalid(false)
+    //         } else {
+    //             setSubLabelVisibility("block");
+    //             setInvalid(true)
+    //         }
+    //     }
+    // }
     
-    const handleChange = event => {
-        if (props.handlePass !== undefined) {
-            props.handlePass(event.target.value);
-        }
-    };
+    // const handleChange = event => {
+    //     if (props.handlePass !== undefined) {
+    //         props.handlePass(event.target.value);
+    //     }
+    // };
 
 
     return (
@@ -63,32 +63,21 @@ export default function Input(props) {
                 id={id}
                 className= {`${styles.input} ${invalid ? styles.invalidInput :null}`}
                 style={{width: props.width}}
-
-                src={props.src}
-                
+                src={props.src}     
                 type={(props.type === "password") ? (toggleState ? "text" : "password") : props.type}
-
+                onBlur={props.onBlur}
                 name={props.name}
-                onChange={handleChange}
+                onChange={props.onChange}
                 value={props.value}
                 placeholder={props.placeholder}
-
                 disabled={props.disabled}
-                checked={props.checked}
-                
-                required={props.required}
-                pattern={props.pattern}
-                onKeyUp={(event) => keyUp(event)}>
-
+                checked={props.checked}  
+                required={props.required}>
                 {props.children}
             </input>
-
-
             <label 
                 className={styles.subLabel}
-                htmlFor={props.name}
-                style={{display: showSubLabel}}>
-
+                htmlFor={props.name}>
                 {props.subLabel}
             </label>
 
