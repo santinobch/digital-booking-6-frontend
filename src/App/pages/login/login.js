@@ -82,15 +82,16 @@ const Login = () => {
         }
         setLoading(true)
 
-        postAuth(loginData['email'], loginData['password'], setCookie).then((response) => {
-            if (response.status === 200 && response.data.jwt !== "") {
+        postAuth(loginData['email'], loginData['password'], setCookie)
+        .then((response) => {
+            if(!response){
+                setLoading(false)
+                setHasError(true);
+            } else if (response.status === 200 && response.data.jwt !== "") {
                 getLoggedUser(response.data, setCookie).then(() => {
                     setCookie('logged', true);
                     navigate("/home");
                 });
-            } else if (response.status !== 0 &&  response.status !== 200) {
-                setLoading(false)
-                setHasError(true);
             }
         });
     }

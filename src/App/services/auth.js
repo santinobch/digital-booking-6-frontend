@@ -32,6 +32,7 @@ export async function postAuth(email, pass, setCookie) {
             return new ResponseModel(status, data);
         })
         .catch( error => {
+            console.log(error)
             console.log('Hubo un problema con la petición Fetch, auth.js: ' + error.message);
             return error.status;
         });
