@@ -62,7 +62,7 @@ export default function ProductCalendar({productInfo, bookings}) {
           </div>
           <div className={styles.form}>
             <h3 className={styles.h3}>Agregá tus fechas de viaje para obtener precios exactos</h3>
-            <Button width={size.width >= 768 && size.width <= 1280 ? "50%" : "100%"} styleBtn="dark" onClick={() => navigate(`/product/${productInfo.idProduct}/booking`)}> Iniciar booking </Button>
+            <Button width={size.width >= 768 && size.width <= 1280 ? "50%" : "100%"} styleBtn="dark" onClick={() => navigate(`/product/${productInfo.idProducto}/booking`)}> Iniciar booking </Button>
           </div>
         </div>
       </section>
