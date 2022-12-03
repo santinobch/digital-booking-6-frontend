@@ -14,14 +14,13 @@ import SpinnerLoader from "../../components/spinnerLoader/spinnerLoader";
 import { useCookies } from 'react-cookie';
 
 const Register = () => {
-
-    const [passState, setPass] = useState("");
-    const [hasError, setHasError] = useState(false);
-    const [loading, setLoading] = useState(false)
     const navigate = useNavigate();
 
-    const [cookie, setCookie] = useCookies();
-
+    //States
+    const [passState, setPass] = useState("");
+    const [hasError, setHasError] = useState(false);
+    const [registerError, setRegisterError] = useState('')
+    const [loading, setLoading] = useState(false);
     const [registerData, setRegisterData] = useState({
         'name': '',
         'surname': '',
@@ -40,6 +39,8 @@ const Register = () => {
         'passwordConfirm': ''
     })
 
+    const [cookie, setCookie] = useCookies();
+
     const validateAll = () => {
         const { name, username, surname, email, password } = registerData
         const validations = {}
@@ -51,7 +52,7 @@ const Register = () => {
         }
 
         if (!username) {
-            validations.name = 'El nombre de usuario es obligatorio'
+            validations.username = 'El nombre de usuario es obligatorio'
             isValid = false
         }
 
@@ -86,13 +87,13 @@ const Register = () => {
             message = `El campo no puede estar vacío`
         }
 
-        if (value && (name === 'name' || name === 'surname') && !/^[a-zA-Z]+$/.test(value)) {
+        if (value && (name === 'name' || name === 'surname') && !/^[a-zA-Z ]+$/.test(value)) {
             let campo = name === "name" ? "nombre" : "apellido"
             message = `El ${campo} debe contener solo letras`
         }
 
-        if(value && name === "username" && (value.length < 4 || value.length > 15)){
-            message = 'El nombre de usuario debe estar compuesto de 5 a 15 caracteres alfanuméricos'
+        if(value && name === "username" && (value.length < 3 || value.length > 15)){
+            message = 'El nombre de usuario debe estar compuesto de 3 a 15 caracteres alfanuméricos'
         }
 
         if(value && name === "password" && (value.length < 6 || value.length > 20)){
@@ -111,6 +112,7 @@ const Register = () => {
     }
 
     const handleChange = e => {
+        setHasError(false)
         const {name, value} = e.target;
         setRegisterData({ ...registerData, [name]: value})
     }
@@ -137,11 +139,11 @@ const Register = () => {
                     }
                 });
             } else if (res.status !== 0 &&  res.status !== 200) {
+                setRegisterError(res.data.message)
                 setHasError(true);
+                setLoading(false)
             }  
-        }).finally(
-            setLoading(false)
-        )
+        })
     }
 
     const {name: nameVal, surname: surnameVal, email: emailVal, username: usernameVal , password: passwordVal, passwordConfirm: passwordConfirmVal } = validations
@@ -154,7 +156,7 @@ const Register = () => {
 
                 <h2>Crear cuenta</h2>
 
-                <p className={styles.errorDiv} style={{ display: hasError ? "block" : "none" }}>Lamentablemente no ha podido registrarse. Por favor intente más tarde</p>
+                <p className={styles.errorDiv} style={{ display: hasError ? "block" : "none" }}>{registerError}</p>
 
 
                 <div className={styles.namesContainer}>

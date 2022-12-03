@@ -7,6 +7,7 @@ import Button from "../../components/button/button";
 import { useState } from "react";
 import { postAuth } from "../../services/auth";
 import { getLoggedUser } from "../../services/users";
+import SpinnerLoader from "../../components/spinnerLoader/spinnerLoader";
 
 //Cookies
 import { useCookies } from 'react-cookie';
@@ -14,13 +15,14 @@ import { useCookies } from 'react-cookie';
 const Login = () => {
     const navigate = useNavigate();
 
+    //States
+    const [loginData, setLoginData] = useState({ 'email': '', 'password': '' })
+    const [validations, setValidations] = useState({'email': '', 'password': '' })
     const [hasError, setHasError] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const [cookie, setCookie] = useCookies();
 
-    const [loginData, setLoginData] = useState({ 'email': '', 'password': '' })
-
-    const [validations, setValidations] = useState({'email': '', 'password': '' })
 
     const validateAll = () => {
         const { email, password } = loginData
@@ -78,6 +80,7 @@ const Login = () => {
         if(!isValid){
             return false
         }
+        setLoading(true)
 
         postAuth(loginData['email'], loginData['password'], setCookie).then((response) => {
             if (response.status === 200 && response.data.jwt !== "") {
@@ -86,6 +89,7 @@ const Login = () => {
                     navigate("/home");
                 });
             } else if (response.status !== 0 &&  response.status !== 200) {
+                setLoading(false)
                 setHasError(true);
             }
         });
@@ -97,42 +101,44 @@ const Login = () => {
     return (
         <main className={styles.main}>
 
-            <form id="loginForm" className={styles.formContainer} onSubmit={handleSubmit}>
+            {!loading ? (            
+                <form id="loginForm" className={styles.formContainer} onSubmit={handleSubmit}>
 
-                <h2>Iniciar sesión</h2>
+                    <h2>Iniciar sesión</h2>
 
-                <p className={styles.errorDiv} style={{ visibility: hasError ? "visible" : "hidden" }}>Por favor, revise las credenciales ingresadas</p>
+                    <p className={styles.errorDiv} style={{ display: hasError ? "block" : "none" }}>Por favor, revise las credenciales ingresadas</p>
 
-                <Input
-                    name="email"
-                    type="email"
-                    placeholder="example@mail.com"
-                    label="Correo Electronico"
-                    subLabel={emailVal}
-                    width="100%"
-                    onChange={handleChange}
-                    onBlur={validateSingle}/>
+                    <Input
+                        name="email"
+                        type="email"
+                        placeholder="example@mail.com"
+                        label="Correo Electronico"
+                        subLabel={emailVal}
+                        width="100%"
+                        onChange={handleChange}
+                        onBlur={validateSingle}/>
 
-                <Input
-                    name="password"
-                    type="password"
-                    placeholder="••••••••"
-                    label="Contraseña"
-                    subLabel={passwordVal}
-                    width="100%"
-                    onChange={handleChange}
-                    onBlur={validateSingle}/>
+                    <Input
+                        name="password"
+                        type="password"
+                        placeholder="••••••••"
+                        label="Contraseña"
+                        subLabel={passwordVal}
+                        width="100%"
+                        onChange={handleChange}
+                        onBlur={validateSingle}/>
 
-                <Button styleBtn="dark" width="100%" type="submit">Ingresar</Button>
+                    <Button styleBtn="dark" width="100%" type="submit">Ingresar</Button>
 
-                
-                <div className={styles.changeForm}>
-                    <span>¿Aún no tenes cuenta?  </span>
-                    <Link to={`/register`}>
-                        Registrate
-                    </Link>
-                </div>
-            </form>
+                    
+                    <div className={styles.changeForm}>
+                        <span>¿Aún no tenes cuenta?  </span>
+                        <Link to={`/register`}>
+                            Registrate
+                        </Link>
+                    </div>
+                </form>
+            ) : <SpinnerLoader/>}
         </main>
     );
 };

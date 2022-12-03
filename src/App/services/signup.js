@@ -25,7 +25,8 @@ export async function postSignUp(email, username, name, surname, pass) {
             status = response.status;
             return response.json()
         }).then(data => {
-            return new ResponseModel(status);
+            console.log(data)
+            return new ResponseModel(status, data);
         })
         .catch( error => {
             console.log('Hubo un problema con la petición Fetch, signup.js: ' + error.message);
