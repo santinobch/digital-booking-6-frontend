@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,17 +10,35 @@ export default function ProtectedLoggedRoute(props) {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (props.checkUnlogged === undefined && !parseBool(cookie.logged)) {
-            navigate(props.redirect);
-        } else if (props.checkUnlogged && parseBool(cookie.logged)) {
-            navigate(props.redirect);
-        }
-    })
+    const [allowed, setAllowed] = useState(false);
 
-    return (
-        <>
-            {props.children}
-        </>
-    )
+    useEffect(() => {
+        console.log("test");
+        //Checks unlogged
+        if (parseBool(props.checkUnlogged)) {
+            if (parseBool(cookie.logged)) {
+                setAllowed(false);
+                navigate(props.redirect);
+            } else {
+                setAllowed(true);
+            }
+        }
+        //Checks logged
+        else {
+            if (!parseBool(cookie.logged)) {
+                setAllowed(false);
+                navigate(props.redirect);
+            } else {
+                setAllowed(true);
+            }
+        }
+    }, [])
+
+    if (allowed) {
+        return (
+            <>
+                {props.children}
+            </>
+        )
+    }
 };
