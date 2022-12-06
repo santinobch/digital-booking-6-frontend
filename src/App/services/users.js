@@ -4,7 +4,7 @@ import ResponseModel from "../models/response.model";
 const urlBase = process.env.REACT_APP_API_URL;
 
 
-export function GetLoggedUser(auth, setCookie) {
+export function getLoggedUser(auth, setCookie) {
 
     let status = 0;
 

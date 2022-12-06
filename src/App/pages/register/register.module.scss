@@ -32,6 +32,15 @@
             color: $black2-books;
         }
     }
+
+    .errorDiv{
+        text-align: center;
+        color: #FF0000;
+        width: 100%;
+        background-color: #ff000035;
+        padding: 6px;
+        border-radius: 5px;
+    }
 }
 
 @media only screen and (min-width: 768px) {
@@ -47,7 +56,7 @@
                     margin-right: 6px;
                 }
     
-                input[name=apellido] {
+                input[name=surname] {
                     margin-left: 6px;
                 }
             }
