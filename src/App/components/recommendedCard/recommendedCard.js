@@ -8,7 +8,7 @@ import styles from "./recommendedCard.module.scss";
 import { useNavigate } from "react-router-dom";
 
 function shorten(textInput) {
-  return textInput.slice(0, 80) + "...";
+  return textInput.slice(0, 78) + "...";
 }
 
 export default function RecommendedCard({

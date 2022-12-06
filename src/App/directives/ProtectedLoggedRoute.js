@@ -13,7 +13,6 @@ export default function ProtectedLoggedRoute(props) {
     const [allowed, setAllowed] = useState(false);
 
     useEffect(() => {
-        console.log("test");
         //Checks unlogged
         if (parseBool(props.checkUnlogged)) {
             if (parseBool(cookie.logged)) {
@@ -27,14 +26,16 @@ export default function ProtectedLoggedRoute(props) {
         else {
             if (!parseBool(cookie.logged)) {
                 setAllowed(false);
-                navigate(props.redirect);
+                navigate(props.redirect, {
+                    state: { unlogged: true },
+                    replace: true});
             } else {
                 setAllowed(true);
             }
         }
-    }, [])
+    })
 
-    if (allowed) {
+    if (allowed){
         return (
             <>
                 {props.children}

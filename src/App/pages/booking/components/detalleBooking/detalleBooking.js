@@ -67,7 +67,7 @@ export default function DetalleBooking({auth, product, fechas, usuario}) {
     
                         <hr />
     
-                        <Button styleBtn="dark" onClick={handleConfirmarBooking}>Confirmar booking</Button>
+                        <Button styleBtn="dark" onClick={handleConfirmarBooking}>Confirmar reserva</Button>
                     </div>
                 </div>
                 

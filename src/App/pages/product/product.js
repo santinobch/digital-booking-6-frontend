@@ -9,6 +9,7 @@ import SpinnerLoader from "../../components/spinnerLoader/spinnerLoader";
 
 import { getProduct } from "../../services/products";
 import { getBookings } from "../../services/bookings";
+import { useEffect } from "react";
 
 export default function Product() {
     const { idProduct } = useParams();
@@ -16,22 +17,23 @@ export default function Product() {
     const [product, setProduct] = useState();
     const [bookings, setBookings] = useState();
 
-
-    getProduct(idProduct)
+    useEffect(() => {
+        getProduct(idProduct)
         .then((response) => {
             setProduct(response);
         });
-    getBookings(idProduct)
-        .then((response) => {
-            if (Array.isArray(response)) { setBookings(response) }
-        });
+        getBookings(idProduct)
+            .then((response) => {
+                if (Array.isArray(response)) { setBookings(response) }
+            });
+        }, [idProduct])
 
     if(product === undefined && bookings === undefined){
         return (
             <SpinnerLoader/>
         )
     }
-    
+
     return (
         <main className={styles.main}>
 

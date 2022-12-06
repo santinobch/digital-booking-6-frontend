@@ -15,6 +15,7 @@ import { useCookies } from "react-cookie";
 
 import { getProduct } from "../../services/products";
 import { getBookings } from "../../services/bookings";
+import { useEffect } from "react";
 
 export default function Booking() {
     const [cookie] = useCookies();
@@ -36,7 +37,8 @@ export default function Booking() {
     //     await getBookings(idProduct).then((data) => Array.isArray(data) ? setBookings(data) : "" )
     // }
 
-    getProduct(idProduct)
+    useEffect(() => {
+        getProduct(idProduct)
         .then((response) => {
             setProduct(response);
         });
@@ -44,6 +46,7 @@ export default function Booking() {
         .then((response) => {
             if (Array.isArray(response)) { setBookings(response) }
         });
+    }, [idProduct])
 
     if(product === undefined && bookings === undefined){
         return (
@@ -70,7 +73,7 @@ export default function Booking() {
                 <DetalleBooking auth={cookie.auth} product={product} fechas={fechasBooking} usuario={cookie.user} />
             </div>
 
-            <ProductBottom />
+            <ProductBottom product={product}/>
         </main>
     );
 }
