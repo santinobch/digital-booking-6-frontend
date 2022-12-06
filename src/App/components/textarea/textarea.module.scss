@@ -1,0 +1,50 @@
+@import "../../scss/colors";
+
+.textareaContainer {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+
+    .label {
+        font-size: 12px;
+        font-weight: 500;
+        color: $black2-books;
+
+        align-self: flex-start;
+        margin: 0;
+        margin-bottom: 6px;
+    }
+    
+    .textarea {
+        resize: none;
+
+        height: 200px;
+        box-shadow: 0px 1px 5px 0px #00000026;
+        background-color: $white-books;
+    
+        border-radius: 5px;
+        border: 1px solid $white-books;
+    
+        outline: none;
+
+        padding-left: 12px;
+    }
+
+    .invalidtextarea{
+        background-color: #FFE1E1;
+        border: 1px solid #FF0000;
+    }
+
+    
+    .subLabel {
+        font-size: 12px;
+        font-weight: 500;
+        color: #FF0000;
+
+        align-self: flex-end;
+        margin-top: 6px;
+    }
+}

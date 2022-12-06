@@ -1,3 +1,4 @@
+//React
 import { createBrowserRouter } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 
@@ -15,13 +16,11 @@ import Register from "./pages/register/register";
 import Product from "./pages/product/product";
 import Booking from "./pages/booking/booking";
 import SuccesfullBooking from "./pages/succesfullBooking/succesfullBooking";
+import CreateProduct from "./pages/createProduct/createProduct";
 
 //Cookies
 import { useCookies } from 'react-cookie';
 
-//Model
-import AuthModel from "./models/auth.model";
-import UsuarioModel from "./models/usuario.model";
 
 function Root() {
 
@@ -84,6 +83,10 @@ export const route = createBrowserRouter([{
         {
             path: "succesfulBooking",
             element: <SuccesfullBooking />,
+        },
+        {
+            path: "createProduct",
+            element: <CreateProduct />,
         }
     ]
 }]);
