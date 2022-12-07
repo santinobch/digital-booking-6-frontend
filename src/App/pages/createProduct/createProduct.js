@@ -8,6 +8,7 @@ import ProductHeader from "../../components/productHeader/productHeader";
 import Input from "../../components/inputs/text/input";
 import Textarea from "../../components/textarea/textarea";
 import { SelectInput } from "../../components/inputs/selectTest/select";
+import Button from "../../components/button/button";
 
 //Services
 
@@ -32,7 +33,11 @@ export default function CreateProduct() {
 
                 <div className={styles.atributosContainer}>
                     <h4>Agregar atributos</h4>
-                    <Input label="Descripción" placeholder="Escriba aquí"></Input>
+
+                    <div className={styles.flexRow}>
+                        <SelectInput></SelectInput>
+                        <button className={styles.plusButton}>+</button>
+                    </div>
                 </div>
                 
                 <div className={styles.politicaContainer}>
@@ -53,7 +58,13 @@ export default function CreateProduct() {
                 </div>
 
                 <h4>Cargar imágenes</h4>
-                <Input placeholder="Escriba la URL de su imagen"></Input>
+                
+                <div className={styles.flexRow}>
+                    <Input placeholder="Escriba la URL de su imagen"></Input>
+                    <button className={styles.plusButton}>+</button>
+                </div>
+
+                <Button styleBtn="dark">Crear</Button>
             </div>
 
         </main>

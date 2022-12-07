@@ -20,6 +20,24 @@
         font-size: 16px;
     }
 
+    .flexRow {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+
+        & > div {
+            width: 100%;
+        }
+    }
+
+    .plusButton {
+        height: 40px;
+        width: 40px;
+        border-radius: 10px;
+        
+    }
+
     .propiedadContainer {
         background-color: $white-books;
         border-radius: 10px;
@@ -52,12 +70,4 @@
             }
         }
     }
-}
-
-.spinner{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: inherit;
-    background-color: white;
 }
