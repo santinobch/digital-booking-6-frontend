@@ -1,5 +1,11 @@
+import Button from "../../components/button/button";
+import Input from "../../components/inputs/text/input";
+import ProductHeader from "../../components/productHeader/productHeader";
+import { SelectInput } from "../../components/inputs/selectTest/select";
+import Textarea from "../../components/textarea/textarea";
 import styles from "./createProduct.module.scss";
-
+import { text } from "@fortawesome/fontawesome-svg-core";
+import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 
@@ -11,25 +17,30 @@ import { SelectInput } from "../../components/inputs/selectTest/select";
 import Button from "../../components/button/button";
 
 //Services
-
+const styleMessageError = {
+  marginTop: "-15px",
+  color: "red",
+  fontWeight: "400",
+  fontSize: ".85rem",
+  textAlign: "right",
+};
 
 export default function CreateProduct() {
-    
-    return (
-        <main className={styles.main}>
+  const navigate = useNavigate();
+  const [errors, setErrors] = useState(null);
 
-            <ProductHeader titulo="Administración"></ProductHeader>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const values = Object.fromEntries(formData.entries());
 
-            <h3>Crear propiedad</h3>
-            <div className={styles.propiedadContainer}>
-                <div className={styles.inputsContainer}>
-                    <Input label="Nombre de la propiedad" placeholder="Hermirage Hotel"></Input>
-                    {/* <Input label="Categoría" placeholder="Hotel"></Input> */}
-                    <SelectInput></SelectInput>   
-                    <Input label="Dirección" placeholder="Av. Colón 1643"></Input>
-                    {/* <Input label="Ciudad" placeholder="Ciudad"></Input> */}
-                    <SelectInput></SelectInput>
-                </div>
+    // validaciones
+    let fieldErrors = {};
+    for (const key in values) {
+      if (!values[key]) {
+        fieldErrors[key] = "Este campo es requerido";
+      }
+    }
 
                 <div className={styles.atributosContainer}>
                     <h4>Agregar atributos</h4>
@@ -56,6 +67,10 @@ export default function CreateProduct() {
                         <Textarea label="Descripción" placeholder="Escriba aquí"></Textarea>
                     </div>
                 </div>
+    if (Object.keys(fieldErrors).length > 0) {
+      setErrors(fieldErrors);
+      return;
+    }
 
                 <h4>Cargar imágenes</h4>
                 
@@ -65,8 +80,53 @@ export default function CreateProduct() {
                 </div>
 
                 <Button styleBtn="dark">Crear</Button>
+    navigate("/succesfull?page=create-product");
+    // guardando datos
+  }
+  function handleKeyUp(e) {
+    const { name } = e.target;
+    setErrors({ ...errors, [name]: "" });
+  }
+      <form method="POST" onSubmit={handleSubmit}>
             </div>
+            <div className={styles.politica}>
+              <h5>Salud y seguridad</h5>
+              <Textarea
+                label="Descripción"
+                placeholder="Escriba aquí"
+                name="saludSeguridad"
+                onKeyUp={handleKeyUp}
+                error={!!errors?.saludSeguridad}
+              />
+              <p style={styleMessageError}>{errors?.saludSeguridad}</p>
+            </div>
+            <div className={styles.politica}>
+              <h5>Política de cancelación</h5>
+              <Textarea
+                label="Descripción"
+                placeholder="Escriba aquí"
+                name="politicaCancelacion"
+                onKeyUp={handleKeyUp}
+                error={!!errors?.politicaCancelacion}
+              />
+              <p style={styleMessageError}>{errors?.politicaCancelacion}</p>
+            </div>
+          </div>
 
-        </main>
-    );
+          <h4>Cargar imágenes</h4>
+          <Input
+            placeholder="Escriba la URL de su imagen"
+            name="urlImagen"
+            type="text"
+            onKeyUp={handleKeyUp}
+            error={!!errors?.urlImagen}
+          />
+          <p style={styleMessageError}>{errors?.urlImagen}</p>
+        </div>
+        <Button type="submit" styleBtn="dark" width="20%">
+          Crear
+        </Button>
+      </form>
+    </main>
+  );
 }

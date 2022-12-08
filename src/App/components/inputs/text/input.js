@@ -1,63 +1,98 @@
-import styles from "./input.module.scss";
 import { FaRegEyeSlash } from "react-icons/fa";
-
-import {useState} from 'react'
-
-import { v4 as uuid } from 'uuid';
-
+import styles from "./input.module.scss";
+import { useState } from "react";
+import { v4 as uuid } from "uuid";
 
 export default function Input(props) {
+  const id = uuid();
+  let showPassButton = "none";
+  let showSubLabel_ = "none";
+  const [showSubLabel, setSubLabelVisibility] = useState(showSubLabel_);
+  const [invalid, setInvalid] = useState(false);
 
-    const id = uuid();
+  let toggle_ = false;
+  const [toggleState, setToggle] = useState(toggle_);
 
-    let showPassButton = "none";
-    let showSubLabel_ = "none";
-    const [showSubLabel, setSubLabelVisibility] = useState(showSubLabel_);
-    const [invalid, setInvalid] = useState()
+  if (props.type === "password") {
+    showPassButton = "block";
+  }
 
-    let  toggle_ = false;
-    const [toggleState, setToggle] = useState(toggle_);
-
-    if (props.type === "password") {
-        showPassButton = "block";
+  function keyUp(event) {
+    if (!document.getElementById(id).checkValidity()) {
+      setSubLabelVisibility("block");
+    } else {
+      setSubLabelVisibility("none");
     }
 
-    // function keyUp(event) {
-    //     if (!document.getElementById(id).checkValidity()) {
-    //         setSubLabelVisibility("block");
-    //     } else {
-    //         setSubLabelVisibility("none");
-    //     }
+    props?.setHasError?.(false);
 
-    //     props.setHasError(false)
+    if (props.name === "password_confirm") {
+      let confirmValue = event.target.value;
+      if (
+        props.comparePass !== undefined &&
+        props.comparePass === confirmValue
+      ) {
+        setSubLabelVisibility("none");
+        setInvalid(false);
+      } else {
+        setSubLabelVisibility("block");
+        setInvalid(true);
+      }
+    }
+  }
 
-    //     if(props.name === "passwordConfirm"){
-    //         let confirmValue = event.target.value
-    //         if(props.comparePass !== undefined && props.comparePass === confirmValue){
-    //             setSubLabelVisibility("none");
-    //             setInvalid(false)
-    //         } else {
-    //             setSubLabelVisibility("block");
-    //             setInvalid(true)
-    //         }
-    //     }
-    // }
+  const handleChange = (event) => {
+    if (props.handlePass !== undefined) {
+      props.handlePass(event.target.value);
+    }
+  };
+
+    function keyUp(event) {
+        if (!document.getElementById(id).checkValidity()) {
+            setSubLabelVisibility("block");
+        } else {
+            setSubLabelVisibility("none");
+        }
+
+        props.setHasError(false)
+
+        if(props.name === "password_confirm"){
+            let confirmValue = event.target.value
+            if(props.comparePass !== undefined && props.comparePass === confirmValue){
+                setSubLabelVisibility("none");
+                setInvalid(false)
+            } else {
+                setSubLabelVisibility("block");
+                setInvalid(true)
+            }
+        }
+    }
     
-    // const handleChange = event => {
-    //     if (props.handlePass !== undefined) {
-    //         props.handlePass(event.target.value);
-    //     }
-    // };
+    const handleChange = event => {
+        if (props.handlePass !== undefined) {
+            props.handlePass(event.target.value);
+        }
+    };
 
+      <label
+        className={styles.subLabel}
+        htmlFor={props.name}
+        style={{ display: showSubLabel }}
+      >
+        {props.subLabel}
+      </label>
 
-    return (
-        <div className={styles.inputContainer} style={{width: props.width}}>
-            <label 
-                className= {styles.label}
-                htmlFor={props.name}>
-                
-                {props.label}
-            </label>
+      <button
+        type="button"
+        style={{ display: showPassButton }}
+        className={styles.showPassButton}
+        onClick={() => setToggle(!toggleState)}
+      >
+        <FaRegEyeSlash style={{ color: "#31363F", fontSize: "24px" }} />
+      </button>
+    </div>
+  );
+}
 
             <input 
                 id={id}
