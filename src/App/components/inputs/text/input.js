@@ -64,6 +64,13 @@ export default function Input(props) {
     return (
       <div className={styles.inputContainer} style={{ width: props.width }}>
 
+      <label 
+          className= {styles.label}
+          htmlFor={props.name}>
+          
+          {props.label}
+      </label>
+
       <input 
         id={id}
         className= {`${styles.input} ${invalid ? styles.invalidInput :null}`}

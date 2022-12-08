@@ -6,20 +6,9 @@ import RecommendedCard from "../../components/recommendedCard/recommendedCard";
 import { getProducts } from "../../services/index.js";
 import SpinnerLoader from "../spinnerLoader/spinnerLoader";
 
-const Listing = ({ filtros }) => {
-  const [hospedajes, setHospedajes] = useState([]);
-  const [error, setError] = useState("");
+const Listing = ({ hospedajes, error, bookings }) => {
 
-  useEffect(() => {
-    setError("");
-    getProducts(filtros)
-      .then((data) => {
-        setHospedajes(data);
-      })
-      .catch((error) => {
-        setError(error.message);
-      });
-  }, [filtros]);
+  console.log(hospedajes)
 
   if (hospedajes.length === 0) {
     return <SpinnerLoader />;
@@ -27,7 +16,7 @@ const Listing = ({ filtros }) => {
 
   return (
     <section className="listingSection">
-      <h2>Recomendaciones</h2>
+      <h2>{!bookings ? "Recomendaciones" : null}</h2>
       <div className="listingGrid">
         {error ? (
           <p>{error}</p>

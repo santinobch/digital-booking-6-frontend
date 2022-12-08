@@ -21,6 +21,7 @@ export function getLoggedUser(auth, setCookie) {
             status = response.status;
             return response.json()
         }).then(data => {
+            console.log(data)
             setCookie('user', data);
             return new ResponseModel(status, data);
         })

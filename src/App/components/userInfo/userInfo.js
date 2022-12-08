@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 //Assets
 import styles from './userInfo.module.scss'
@@ -7,7 +7,7 @@ import { useCookies } from 'react-cookie';
 
 
 const UserInfo = ({section, handleLogout}) => {
-
+  const navigate = useNavigate();
   const [cookie] = useCookies();
 
   if (cookie.user !== undefined) {
@@ -21,7 +21,7 @@ const UserInfo = ({section, handleLogout}) => {
               <span style={{color: '#00000080', alignSelf: 'end'}}>Hola, </span>
               <button onClick={handleLogout} className={section === "drawer" ? styles.logoutBtnDrawer : styles.logoutBtn}>X</button>
             </div>
-            <span className={styles.userName}>{cookie.user.nombre} {cookie.user.apellido}</span>
+            <span className={styles.userName} onClick={() => navigate(`/user/${cookie.user.id}/bookings`)}>{cookie.user.nombre} {cookie.user.apellido}</span>
           </div>
       </div>
     )

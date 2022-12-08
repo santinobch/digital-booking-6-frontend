@@ -6,6 +6,7 @@ import Footer from "./components/footer/footer";
 import Header from "./components/header/header";
 import Home from "./pages/home/home";
 import Login from "./pages/login/login";
+import MyBookings from "./pages/myBookings/myBookings";
 import { Outlet } from "react-router-dom";
 import Product from "./pages/product/product";
 import ProtectedLoggedRoute from "./directives/ProtectedLoggedRoute";
@@ -71,6 +72,12 @@ export const route = createBrowserRouter([
           <ProtectedLoggedRoute redirect="/home" checkUnlogged>
             <Login />
           </ProtectedLoggedRoute>
+        ),
+      },
+      {
+        path: "/user/:idUser/bookings",
+        element: (
+          <MyBookings />
         ),
       },
       {

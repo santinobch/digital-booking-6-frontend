@@ -20,10 +20,19 @@ export default function RecommendedCard({
   ciudadPais,
   descripcion,
   caracteristicas,
+  booking,
+  checkIn,
+  checkOut
 }) {
   const navigate = useNavigate();
 
   const renderIcon = (icon) => React.createElement(FontAwesome[icon]);
+
+  const dateFormat = (value) =>{
+    const [year, month, day] = value.split('-');
+
+    return `${day}/${month}/${year}`;
+  }
 
   return (
     <div className={styles.card}>
@@ -61,20 +70,35 @@ export default function RecommendedCard({
               <p>Muy bueno</p>
             </div>
           </div>
-
           <div className={styles.ubicacion}>
-            <p>
-              {ciudadNombre}, {ciudadPais}
-            </p>
-          </div>
+              <p>
+                {ciudadNombre}, {ciudadPais}
+              </p>
+            </div>
 
-          <div className={styles.caracteristicas}>
-            {caracteristicas.map((i) => (
-              <span>{renderIcon(i.caracteristicaIcono)}</span>
-            ))}
+          {!booking ? (
+          <>
+            <div className={styles.caracteristicas}>
+              {caracteristicas.map((i) => (
+                <span>{renderIcon(i.caracteristicaIcono)}</span>
+                ))}
+            </div>
+            <p className={styles.text}>{shorten(descripcion)}</p>
+          </>
+          ) : 
+          <div>
+            <div className={styles.bookingDates}>
+              <span className={styles.dateLabel}>Check In: </span>
+              <span>{dateFormat(checkIn)}</span>
+            </div>
+            <div className={styles.bookingDates}>
+              <span className={styles.dateLabel}>Check Out:  </span>
+              <span>{dateFormat(checkOut)}</span>
+            </div>
           </div>
+          }
 
-          <p className={styles.text}>{shorten(descripcion)}</p>
+          
 
           <Boton styleBtn="dark" onClick={() => navigate(`/product/${idProducto}`)}>
             Ver más

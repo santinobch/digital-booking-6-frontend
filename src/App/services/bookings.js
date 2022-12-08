@@ -26,7 +26,16 @@ export function postBooking(auth, user, product, fechas){
 
     return fetch(`${urlBase}/bookings/`, requestOptions)
     .then(response => response.status)
+}
 
+export function getBookingsByUser(auth, idUser) {
+    const requestOptions = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${auth.jwt}`
+       }
+    }
 
-
+    return fetch(`${urlBase}/users/${idUser}/bookings`, requestOptions).then(res => res.json());
 }

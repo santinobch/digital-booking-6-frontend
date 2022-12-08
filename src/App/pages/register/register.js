@@ -165,12 +165,14 @@ const Register = () => {
                         type="text"
                         label="Nombre"
                         width="100%"
+                        placeholder="Nombre"
                         subLabel={nameVal}
                         onChange={handleChange}
                         onBlur={validateSingle}/>
 
                     <Input
                         name="surname"
+                        placeholder="Apellido"
                         type="text"
                         label="Apellido"
                         width="100%"
@@ -181,6 +183,7 @@ const Register = () => {
 
                 <Input
                     name="username"
+                    placeholder="Nombre de usuario"
                     type="text"
                     width="100%"
                     subLabel={usernameVal}
@@ -191,6 +194,7 @@ const Register = () => {
                 <Input
                     name="email"
                     type="email"
+                    placeholder="Correo electrónico"
                     width="100%"
                     subLabel={emailVal}
                     label="Correo Electronico"
@@ -199,6 +203,7 @@ const Register = () => {
 
                 <Input
                     name="password"
+                    placeholder="••••••••"
                     type="password"
                     label="Contraseña"
                     width="100%"
@@ -209,6 +214,7 @@ const Register = () => {
 
                 <Input
                     name="passwordConfirm"
+                    placeholder="••••••••"
                     type="password"
                     width="100%"
                     label="Confirmar Contraseña"
