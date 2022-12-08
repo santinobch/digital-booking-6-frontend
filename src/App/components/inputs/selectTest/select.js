@@ -2,12 +2,13 @@ import "./select.module.scss";
 
 import Select from "react-select";
 
-export const SelectInput = () => {
+export const SelectInput = ({name}) => {
 
   return (
-        <Select
-            placeholder=""
-            options=""
+        <Select 
+          name={name}
+          placeholder=""
+          options=""
         />
   );
 };
