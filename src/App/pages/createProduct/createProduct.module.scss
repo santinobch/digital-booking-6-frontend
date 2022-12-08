@@ -1,0 +1,73 @@
+@import "../../scss/colors";
+
+.main {
+    display: flex;
+    flex-direction: column;
+
+    background-color: $light-books;
+
+    h3, h4, h5 {
+        font-weight: 700;
+    }
+
+    h3 {
+        font-size: 24px;
+    }
+    h4 {
+        font-size: 20px;
+    }
+    h5 {
+        font-size: 16px;
+    }
+
+    .flexRow {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+
+        & > div {
+            width: 100%;
+        }
+    }
+
+    .plusButton {
+        height: 40px;
+        width: 40px;
+        border-radius: 10px;
+        
+    }
+
+    .propiedadContainer {
+        background-color: $white-books;
+        border-radius: 10px;
+        padding: 27px;
+
+        display: flex;
+        flex-direction: column;
+
+        .inputsContainer {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+
+            margin-bottom: 10px;
+        }
+
+        .atributosContainer {
+            margin-bottom: 10px;
+        }
+
+        .politicaContainer {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+
+            margin-bottom: 10px;
+
+            .politica {
+
+            }
+        }
+    }
+}
