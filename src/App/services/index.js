@@ -48,13 +48,17 @@ export function getProduct(id) {
     respuesta.json()
   );
 }
+export function getFeatures() {
+  return fetch(`${urlBase}/features/`).then((respuesta) => respuesta.json());
+}
 
-export function createProduct(data) {
+export function createProduct(data, token) {
   const config = {
     method: "POST",
     body: JSON.stringify(data),
+    Authorization: `Bearer ${token}`,
   };
   return fetch(`${urlBase}/products/`, config).then((respuesta) =>
-    respuesta.json()
+    respuesta.status()
   );
 }

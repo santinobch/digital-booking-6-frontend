@@ -1,6 +1,5 @@
+import { getCategories, getFeatures } from "../services";
 import { useEffect, useState } from "react";
-
-import { getCategories } from "../services";
 
 function useCategories() {
   const [categories, setCategories] = useState([]);
@@ -12,4 +11,16 @@ function useCategories() {
   return categories;
 }
 
-export { useCategories };
+function useFeatures() {
+  const [features, setFeatures] = useState([]);
+
+  useEffect(() => {
+    getFeatures().then((data) =>
+      setFeatures(data.map((feat) => ({ value: feat.id, label: feat.nombre })))
+    );
+  }, []);
+
+  return features;
+}
+
+export { useCategories, useFeatures };

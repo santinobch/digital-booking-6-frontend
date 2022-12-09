@@ -1,3 +1,5 @@
+import { useCategories, useFeatures } from "../../hooks";
+
 import Button from "../../components/button/button";
 import Input from "../../components/inputs/text/input";
 import ProductHeader from "../../components/productHeader/productHeader";
@@ -6,7 +8,7 @@ import { SelectSearch } from "../../components/inputs/select/SearchBar";
 import Textarea from "../../components/textarea/textarea";
 import { createProduct } from "../../services";
 import styles from "./createProduct.module.scss";
-import { useCategories } from "../../hooks";
+import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -20,8 +22,12 @@ const styleMessageError = {
 };
 
 export default function CreateProduct() {
+  const [cookie] = useCookies();
+  const { jwt: token } = cookie.auth;
   const [selectCity, setSelectCity] = useState({});
+  const [selectFeature, setSelectFeature] = useState({});
   const categories = useCategories();
+  const features = useFeatures();
   const navigate = useNavigate();
   const [errors, setErrors] = useState(null);
 
@@ -48,11 +54,18 @@ export default function CreateProduct() {
       return;
     }
     // guardando datos
-    createProduct({ ...values, idCiudad: selectCity.value })
-      .then((_response) => {
-        navigate("/succesfull?page=create-product");
-      })
-      .catch((err) => console.error(err));
+    if (token) {
+      const data = {
+        ...values,
+        idCiudad: selectCity.value,
+        caracteristicas: selectFeature.map((feature) => feature.value),
+      };
+      createProduct(data, token)
+        .then((_response) => {
+          navigate("/succesfull?page=create-product");
+        })
+        .catch((err) => console.error(err));
+    }
   }
 
   function handleKeyUp(e) {
@@ -78,21 +91,21 @@ export default function CreateProduct() {
 
             {/* <Input label="Categoría" placeholder="Hotel"></Input> */}
             <SelectInput
-              name="idcategoria"
+              name="idCategoria"
               placeholder="Seleccione..."
               options={categoryOptions}
             />
-            <p style={styleMessageError}>{errors?.idcategoria}</p>
+            <p style={styleMessageError}>{errors?.idCategoria}</p>
 
             <Input
               label="Dirección"
               placeholder="Av. Colón 1643"
-              name="direccion"
+              name="descripcion"
               type="text"
               onKeyUp={handleKeyUp}
-              error={!!errors?.direccion}
+              error={!!errors?.descripcion}
             />
-            <p style={styleMessageError}>{errors?.direccion}</p>
+            <p style={styleMessageError}>{errors?.descripcion}</p>
 
             {/* <Input label="Ciudad" placeholder="Ciudad"></Input> */}
             <SelectSearch name="idciudad" onChange={setSelectCity} />
@@ -103,7 +116,12 @@ export default function CreateProduct() {
             <h4>Agregar atributos</h4>
 
             <div className={styles.flexRow}>
-              <SelectInput isMulti name="caracteristicas" />
+              <SelectInput
+                isMulti
+                name="caracteristicas"
+                options={features}
+                onChange={setSelectFeature}
+              />
               <button className={styles.plusButton}>+</button>
             </div>
           </div>
@@ -151,7 +169,7 @@ export default function CreateProduct() {
           <div className={styles.flexRow}>
             <Input
               placeholder="Escriba la URL de su imagen"
-              name="urlImagen"
+              name="imagenes"
               type="text"
               onKeyUp={handleKeyUp}
               error={!!errors?.imagenes}
