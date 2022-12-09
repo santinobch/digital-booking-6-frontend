@@ -65,7 +65,7 @@ export default function Input(props) {
         }
         onBlur={props.onBlur}
         name={props.name}
-        onChange={handleChange}
+        onChange={props.onChange}
         value={props.value}
         placeholder={props.placeholder}
         disabled={props.disabled}
