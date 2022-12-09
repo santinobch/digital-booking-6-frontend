@@ -7,6 +7,8 @@ import { getBookingsByUser } from "../../services/bookings";
 import { getProduct } from '../../services';
 import SpinnerLoader from "../../components/spinnerLoader/spinnerLoader";
 import Button from '../../components/button/button';
+import notFound from '../../../imgs/icons/not-found.png'
+import styles from './myBookings.module.scss'
 
 export default function MyBookings() {
     const navigate = useNavigate();
@@ -42,8 +44,9 @@ export default function MyBookings() {
                 <Listing hospedajes={hospedajes} bookings={true}/>
             )}
             {!loading && !hospedajes && (
-                      <div>
-                            <h4>Aún no has efectuado ninguna reserva</h4>
+                      <div className={styles.notFound}>
+                            <img src={notFound} alt='No bookings'/>
+                            <h5>Aún no has efectuado ninguna reserva</h5>
                             <Button
                             onClick={() => navigate("/home")}
                             styleBtn="dark"
