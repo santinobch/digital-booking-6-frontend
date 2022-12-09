@@ -31,11 +31,30 @@
         }
     }
 
+    .greyContainer {
+        background-color: $light-books;
+        border-radius: 10px;
+
+        padding: 10px;
+
+        & > div {
+            margin: 0;
+        }
+    }
+
     .plusButton {
         height: 40px;
         width: 40px;
+        border: none;
         border-radius: 10px;
+
+        outline: none;
+
+        background-color: $red-books;
+        color: $white-books;
         
+        font-size: 30px;
+        line-height: 0;
     }
 
     .propiedadContainer {
@@ -48,7 +67,6 @@
 
         .inputsContainer {
             display: grid;
-            grid-template-columns: 1fr;
             gap: 10px;
 
             margin-bottom: 10px;
@@ -60,14 +78,58 @@
 
         .politicaContainer {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
-
             margin-bottom: 10px;
+
+            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
+            border-radius: 5px;
+
+            padding: 30px;
 
             .politica {
 
             }
+        }
+
+        .createButton {
+            margin-top: 10px;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .propiedadContainer {
+
+        .inputsContainer {
+            grid-template-columns: 1fr;
+        }
+
+        .politicaContainer {
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+
+    .propiedadContainer {
+
+        .inputsContainer {
+            grid-template-columns: 1fr 1fr;
+
+            .select {
+                margin-top: 36px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1366px) { 
+
+    .propiedadContainer {
+        .politicaContainer {
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
         }
     }
 }

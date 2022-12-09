@@ -10,6 +10,8 @@ import Textarea from "../../components/textarea/textarea";
 import { SelectInput } from "../../components/inputs/selectTest/select";
 import Button from "../../components/button/button";
 
+import Select from "react-select";
+
 //Services
 
 
@@ -24,25 +26,22 @@ export default function CreateProduct() {
             <div className={styles.propiedadContainer}>
                 <div className={styles.inputsContainer}>
                     <Input label="Nombre de la propiedad" placeholder="Hermirage Hotel"></Input>
-                    {/* <Input label="Categoría" placeholder="Hotel"></Input> */}
-                    <SelectInput></SelectInput>   
+                    <Select className={styles.select}></Select>   
                     <Input label="Dirección" placeholder="Av. Colón 1643"></Input>
-                    {/* <Input label="Ciudad" placeholder="Ciudad"></Input> */}
-                    <SelectInput></SelectInput>
+                    <Select className={styles.select}></Select>   
                 </div>
 
                 <div className={styles.atributosContainer}>
                     <h4>Agregar atributos</h4>
 
-                    <div className={styles.flexRow}>
-                        <SelectInput></SelectInput>
+                    <div className={styles.flexRow + ' ' + styles.greyContainer}>
+                        <Select></Select>
                         <button className={styles.plusButton}>+</button>
                     </div>
                 </div>
-                
+
+                <h4>Políticas del producto</h4>
                 <div className={styles.politicaContainer}>
-                    <h4>Políticas del producto</h4>
-                
                     <div className={styles.politica}>
                         <h5>Normas de la casa</h5>
                         <Textarea label="Descripción" placeholder="Escriba aquí"></Textarea>
@@ -59,10 +58,12 @@ export default function CreateProduct() {
 
                 <h4>Cargar imágenes</h4>
                 
-                <div className={styles.flexRow}>
+                <div className={styles.flexRow + ' ' + styles.greyContainer}>
                     <Input placeholder="Escriba la URL de su imagen"></Input>
                     <button className={styles.plusButton}>+</button>
                 </div>
+
+                <br/>
 
                 <Button styleBtn="dark">Crear</Button>
             </div>
