@@ -57,7 +57,9 @@ export default function CreateProduct() {
     if (token) {
       const data = {
         ...values,
-        idCiudad: selectCity.value,
+        idCategoria: parseInt(values.idCategoria),
+        imagenes: [values.imagenes],
+        idCiudad: parseInt(selectCity.value),
         caracteristicas: selectFeature.map((feature) => feature.value),
       };
       createProduct(data, token)

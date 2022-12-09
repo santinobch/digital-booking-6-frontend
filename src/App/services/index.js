@@ -53,12 +53,15 @@ export function getFeatures() {
 }
 
 export function createProduct(data, token) {
-  const config = {
-    method: "POST",
-    body: JSON.stringify(data),
-    Authorization: `Bearer ${token}`,
-  };
-  return fetch(`${urlBase}/products/`, config).then((respuesta) =>
-    respuesta.status()
-  );
+
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+   },
+    body: JSON.stringify(data)
+}
+
+  return fetch(`${urlBase}/products/`, requestOptions).then((respuesta) => respuesta.json());
 }
