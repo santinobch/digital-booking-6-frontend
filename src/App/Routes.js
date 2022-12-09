@@ -86,7 +86,10 @@ export const route = createBrowserRouter([{
         },
         {
             path: "createProduct",
-            element: <CreateProduct />,
+            element: 
+            <ProtectedLoggedRoute role="Administrador" redirect="/home">
+                <CreateProduct />
+            </ProtectedLoggedRoute>
         }
     ]
 }]);
