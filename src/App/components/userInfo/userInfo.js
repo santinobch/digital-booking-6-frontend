@@ -6,9 +6,14 @@ import avatar from "../../../imgs/icons/avatar.svg"
 import { useCookies } from 'react-cookie';
 
 
-const UserInfo = ({section, handleLogout}) => {
+const UserInfo = ({section, handleLogout, setOpen}) => {
   const navigate = useNavigate();
   const [cookie] = useCookies();
+
+  const handleMyBookingsNavigation = () => {
+    navigate(`/user/${cookie.user.id}/bookings`)
+    setOpen(false)
+  }
 
   if (cookie.user !== undefined) {
     return (
@@ -21,7 +26,7 @@ const UserInfo = ({section, handleLogout}) => {
               <span style={{color: '#00000080', alignSelf: 'end'}}>Hola, </span>
               <button onClick={handleLogout} className={section === "drawer" ? styles.logoutBtnDrawer : styles.logoutBtn}>X</button>
             </div>
-            <span className={styles.userName} onClick={() => navigate(`/user/${cookie.user.id}/bookings`)}>{cookie.user.nombre} {cookie.user.apellido}</span>
+            <span className={styles.userName} onClick={handleMyBookingsNavigation}>{cookie.user.nombre} {cookie.user.apellido}</span>
           </div>
       </div>
     )

@@ -33,7 +33,7 @@ export default function Header() {
         removeCookie('auth');
         removeCookie('user');
         setCookie('logged', false);
-        
+        setDrawerOpen(false)
         navigate('/home');
     }
 

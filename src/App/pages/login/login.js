@@ -90,7 +90,8 @@ const Login = () => {
 
         postAuth(loginData['email'], loginData['password'], setCookie)
         .then((response) => {
-            if(!response){
+            console.log(response)
+            if(!response || response.status === 404){
                 setLoading(false)
                 setHasError({
                     visible: true,

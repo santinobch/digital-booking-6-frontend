@@ -18,7 +18,6 @@ export default function Drawer({open, setOpen, handleLogout}) {
 
     const navigate = useNavigate();
     const size = useWindowSize();
-    
     const [cookie] = useCookies();
 
 
@@ -37,7 +36,7 @@ export default function Drawer({open, setOpen, handleLogout}) {
             <div className={open && size.width < 768 ? styles.drawer : styles.hiddenDrawer} id="drawer">
                 <div className={styles.drawerTop}>
                     <button className={styles.closeBtn} onClick={() => setOpen(true)}>X</button>
-                    {!parseBool(cookie.logged) ? <h1>MENÚ</h1> : <UserInfo section="drawer"/>}
+                    {!parseBool(cookie.logged) ? <h1>MENÚ</h1> : <UserInfo section="drawer" setOpen={setOpen}/>}
                     
                 </div>
 
