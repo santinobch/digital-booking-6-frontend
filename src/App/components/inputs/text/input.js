@@ -40,51 +40,42 @@ export default function Input(props) {
       }
     }
   }
-
-    function keyUp(event) {
-        if (!document.getElementById(id).checkValidity()) {
-            setSubLabelVisibility("block");
-        } else {
-            setSubLabelVisibility("none");
-        }
-
-        props.setHasError(false)
-
-        if(props.name === "password_confirm"){
-            let confirmValue = event.target.value
-            if(props.comparePass !== undefined && props.comparePass === confirmValue){
-                setSubLabelVisibility("none");
-                setInvalid(false)
-            } else {
-                setSubLabelVisibility("block");
-                setInvalid(true)
-            }
-        }
+  const handleChange = (event) => {
+    if (props.handlePass !== undefined) {
+      props.handlePass(event.target.value);
     }
-    return (
-      <div className={styles.inputContainer} style={{ width: props.width }}>
-
-      <label 
-          className= {styles.label}
-          htmlFor={props.name}>
-          
-          {props.label}
+  };
+  return (
+    <div className={styles.inputContainer} style={{ width: props.width }}>
+      <label className={styles.label} htmlFor={props.name}>
+        {props.label}
       </label>
 
-      <input 
+      <input
         id={id}
-        className= {`${styles.input} ${invalid ? styles.invalidInput :null}`}
-        style={{width: props.width}}
-        src={props.src}     
-        type={(props.type === "password") ? (toggleState ? "text" : "password") : props.type}
+        className={`${styles.input} ${invalid ? styles.invalidInput : null}`}
+        style={{ width: props.width }}
+        src={props.src}
+        type={
+          props.type === "password"
+            ? toggleState
+              ? "text"
+              : "password"
+            : props.type
+        }
         onBlur={props.onBlur}
         name={props.name}
-        onChange={props.onChange}
+        onChange={handleChange}
         value={props.value}
         placeholder={props.placeholder}
         disabled={props.disabled}
-        checked={props.checked}  
-        required={props.required}>
+        checked={props.checked}
+        required={props.required}
+        pattern={props.pattern}
+        onKeyUp={(event) =>
+          props.onKeyUp ? props.onKeyUp(event) : keyUp(event)
+        }
+      >
         {props.children}
       </input>
 

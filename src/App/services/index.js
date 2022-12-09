@@ -48,3 +48,13 @@ export function getProduct(id) {
     respuesta.json()
   );
 }
+
+export function createProduct(data) {
+  const config = {
+    method: "POST",
+    body: JSON.stringify(data),
+  };
+  return fetch(`${urlBase}/products/`, config).then((respuesta) =>
+    respuesta.json()
+  );
+}

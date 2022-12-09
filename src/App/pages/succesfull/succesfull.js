@@ -27,8 +27,6 @@ export default function Succesfull() {
         buttonText: "Volver",
       };
       break;
-      break;
-
     case "reserva-exitosa":
       values = defaultCase;
       break;
