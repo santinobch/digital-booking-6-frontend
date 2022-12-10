@@ -1,6 +1,7 @@
 @import "../../scss/colors";
 
 .main {
+
     display: flex;
     flex-direction: column;
 
@@ -12,12 +13,18 @@
 
     h3 {
         font-size: 24px;
+        margin-bottom: 16px;
     }
     h4 {
         font-size: 20px;
+        margin-top: 16px;
     }
     h5 {
         font-size: 16px;
+    }
+
+    form{
+        padding: 40px;
     }
 
     .flexRow {
@@ -35,7 +42,7 @@
         background-color: $light-books;
         border-radius: 10px;
 
-        padding: 10px;
+        padding: 16px;
 
         & > div {
             margin: 0;
@@ -70,6 +77,16 @@
             gap: 10px;
 
             margin-bottom: 10px;
+
+            .label {
+                font-size: 12px;
+                font-weight: 500;
+                color: $black2-books;
+        
+                align-self: flex-start;
+                margin: 0;
+                margin-bottom: 6px;
+            }
         }
 
         .atributosContainer {
@@ -90,13 +107,21 @@
             }
         }
 
-        .createButton {
-            margin-top: 10px;
-        }
+    }
+
+    .createButton{
+        display: flex;
+        justify-content: center;
     }
 }
 
 @media only screen and (max-width: 768px) {
+    .main{
+        form{
+            padding:  16px 0;
+        }
+    }
+
     .propiedadContainer {
 
         .inputsContainer {

@@ -17,7 +17,11 @@ const formatOptionLabel = ({ label, country }) => (
   </div>
 );
 
-export const SelectSearch = ({ onChange }) => {
+const formatOptionLabelCreation = ({ label, country }) => (
+      <p style={{ marginBottom: "0px" }}>{label}, {country}</p>
+);
+
+export const SelectSearch = ({ onChange, home }) => {
   const [ciudades, setCiudades] = useState([]);
 
   useEffect(() => {
@@ -34,6 +38,7 @@ export const SelectSearch = ({ onChange }) => {
 
   return (
     <div className="placeholder-select">
+      {home ?       
       <Select
         placeholder={
           <div className="SearchBar-container">
@@ -51,7 +56,18 @@ export const SelectSearch = ({ onChange }) => {
         }))}
         onChange={handleSelectChange}
         formatOptionLabel={formatOptionLabel}
-      />
+      /> : 
+      <Select
+      placeholder="Ciudad"
+      options={ciudades.map((opc) => ({
+        value: opc.id,
+        country: opc.pais,
+        label: opc.nombre,
+      }))}
+      onChange={handleSelectChange}
+      formatOptionLabel={formatOptionLabelCreation}
+    />}
+
     </div>
   );
 };

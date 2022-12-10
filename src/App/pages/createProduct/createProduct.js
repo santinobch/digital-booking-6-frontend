@@ -80,53 +80,61 @@ export default function CreateProduct() {
   return (
     <main className={styles.main}>
       <ProductHeader titulo="Administración"></ProductHeader>
-      <h3>Crear propiedad</h3>
       <form method="POST" onSubmit={handleSubmit}>
+      <h3>Crear propiedad</h3>
         <div className={styles.propiedadContainer}>
           <div className={styles.inputsContainer}>
-            <Input
-              label="Nombre de la propiedad"
-              name="titulo"
-              placeholder="Hermirage Hotel"
-              onKeyUp={handleKeyUp}
-              error={!!errors?.titulo}
-            />
-            <p style={styleMessageError}>{errors?.titulo}</p>
+            <div>
+              <Input
+                label="Nombre de la propiedad"
+                name="titulo"
+                placeholder="Hermirage Hotel"
+                onKeyUp={handleKeyUp}
+                error={!!errors?.titulo}
+                />
+              <p style={styleMessageError}>{errors?.titulo}</p>
+            </div>
 
             {/* <Input label="Categoría" placeholder="Hotel"></Input> */}
-            <SelectInput
-              name="idCategoria"
-              placeholder="Seleccione..."
-              options={categoryOptions}
-            />
-            <p style={styleMessageError}>{errors?.idCategoria}</p>
-
-            <Input
-              label="Dirección"
-              placeholder="Av. Colón 1643"
-              name="descripcion"
-              type="text"
-              onKeyUp={handleKeyUp}
-              error={!!errors?.descripcion}
-            />
-            <p style={styleMessageError}>{errors?.descripcion}</p>
-
-            {/* <Input label="Ciudad" placeholder="Ciudad"></Input> */}
-            <SelectSearch name="idciudad" onChange={setSelectCity} />
-            <p style={styleMessageError}>{errors?.idciudad}</p>
+            <div className="">
+            <label className={styles.label}>Categoría</label>
+              <SelectInput
+                name="idCategoria"
+                placeholder="Seleccione..."
+                options={categoryOptions}
+                />
+              
+            </div>
+            <div className="">
+              <Input
+                label="Dirección"
+                placeholder="Av. Colón 1643"
+                name="descripcion"
+                type="text"
+                onKeyUp={handleKeyUp}
+                error={!!errors?.descripcion}
+                />
+              <p style={styleMessageError}>{errors?.descripcion}</p>
+            </div>
+            <div className="">
+            <label className={styles.label}>Ciudad</label>
+              {/* <Input label="Ciudad" placeholder="Ciudad"></Input> */}
+              <SelectSearch name="idciudad" onChange={setSelectCity} />
+              <p style={styleMessageError}>{errors?.idciudad}</p>
+            </div>
           </div>
 
           <div className={styles.atributosContainer}>
             <h4>Agregar atributos</h4>
 
-            <div className={styles.flexRow}>
+            <div className={styles.flexRow + ' ' + styles.greyContainer}>
               <SelectInput
+              placeholder="Seleccione los atributos correspondientes"
                 isMulti
                 name="caracteristicas"
                 options={features}
-                onChange={setSelectFeature}
+                onChange={setSelectFeature}               
               />
-              <button className={styles.plusButton}>+</button>
             </div>
           </div>
             
@@ -179,10 +187,9 @@ export default function CreateProduct() {
           </div>
 
           <br/>
-
-          <Button type="submit" styleBtn="dark">
-            Crear
-          </Button>
+          <div className={styles.createButton}>
+            <Button width="30%" type="submit" styleBtn="dark"> Crear </Button>
+          </div>
       </form>
     </main>
   );

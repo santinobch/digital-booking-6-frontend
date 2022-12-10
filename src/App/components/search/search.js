@@ -42,7 +42,7 @@ const Search = ({ onChange }) => {
         <h1>Busca ofertas en hoteles, casas y mucho más</h1>
       </div>
       <form className="formSearch" onSubmit={handleSubmit}>
-        <SelectSearch onChange={handleChange} />
+        <SelectSearch onChange={handleChange} home={true} />
         <Datepicker value={inputValue.fecha} onChange={handleChange} />
         <Button className="btnSearch" type="Submit" styleBtn="dark">
           BUSCAR
