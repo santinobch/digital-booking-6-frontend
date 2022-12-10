@@ -9,6 +9,8 @@ import Textarea from "../../components/textarea/textarea";
 import { SelectInput } from "../../components/inputs/selectTest/select";
 import Button from "../../components/button/button";
 
+import Select from "react-select";
+
 //Services
 const styleMessageError = {
   marginTop: "-15px",
