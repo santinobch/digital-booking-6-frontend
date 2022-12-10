@@ -4,10 +4,6 @@ export default class UsuarioModel {
     nombre = "";
     apellido = "";
     email = "";
-    password = "";
     ciudad = "";
-    rol = {
-        id: 0,
-        nombre: ""
-    }
+    rol = ""
 }

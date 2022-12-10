@@ -5,6 +5,10 @@
     flex-direction: column;
     align-items: flex-end;
 
+    .adminContainer { 
+        display: none;
+    }
+
     .userInfo{
         display: flex;
         align-items: flex-end;
@@ -26,6 +30,29 @@
     display: flex;
     flex-direction: row;
 
+    align-items: center;
+
+    gap: 10px;
+
+    .adminContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        gap: 10px;
+
+        a {
+            text-decoration: none;
+            color: black;
+            font-weight: 700;
+        }
+
+        .verticalRule {
+            height: 40px;
+            border: 1px solid $red-books;
+        }
+    }
+
     .avatar{
         align-self: 'center';
     }
@@ -33,7 +60,6 @@
     .userInfo{
         display: flex;
         flex-direction: column;
-        margin: 0 1rem; 
 
         .greetingsSpan{
             display: flex;

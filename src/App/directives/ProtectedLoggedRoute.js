@@ -13,24 +13,35 @@ export default function ProtectedLoggedRoute(props) {
     const [allowed, setAllowed] = useState(false);
 
     useEffect(() => {
-        //Checks unlogged
+        //Redirects if logged
         if (parseBool(props.checkUnlogged)) {
             if (parseBool(cookie.logged)) {
                 setAllowed(false);
                 navigate(props.redirect);
-            } else {
+            } 
+            else {
                 setAllowed(true);
             }
         }
-        //Checks logged
+        //Redirects if unlogged
         else {
             if (!parseBool(cookie.logged)) {
                 setAllowed(false);
                 navigate(props.redirect, {
                     state: { unlogged: true },
                     replace: true});
-            } else {
-                setAllowed(true);
+            } 
+            else {
+                //Is logged, checking for roles
+                if (props.role !== undefined) {
+                    if (cookie.user.rol !== props.role) {
+                        setAllowed(false);
+                        navigate(props.redirect);
+                    }
+                } 
+                else {
+                    setAllowed(true);
+                }
             }
         }
     })

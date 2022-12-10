@@ -58,56 +58,49 @@ export const route = createBrowserRouter([
     path: "/",
     element: <Root />,
     children: [
-      {
-        path: "",
-        element: <Home />,
-      },
-      {
-        path: "home",
-        element: <Home />,
-      },
-      {
-        path: "login",
-        element: (
-          <ProtectedLoggedRoute redirect="/home" checkUnlogged>
-            <Login />
-          </ProtectedLoggedRoute>
-        ),
-      },
-      {
-        path: "/user/:idUser/bookings",
-        element: (
-          <MyBookings />
-        ),
-      },
-      {
-        path: "register",
-        element: (
-          <ProtectedLoggedRoute redirect="/home" checkUnlogged>
-            <Register />
-          </ProtectedLoggedRoute>
-        ),
-      },
-      {
-        path: "product/:idProduct",
-        element: <Product />,
-      },
-      {
-        path: "product/:idProduct/booking",
-        element: (
-          <ProtectedLoggedRoute redirect="/login">
-            <Booking />
-          </ProtectedLoggedRoute>
-        ),
-      },
-      {
-        path: "succesfull",
-        element: <Succesfull />,
-      },
-      {
-        path: "createProduct",
-        element: <CreateProduct />,
-      },
-    ],
-  },
-]);
+        {
+            path: "",
+            element: <Home />,
+        },
+        {
+            path: "home",
+            element: <Home />,
+        },
+        {
+            path: "login",
+            element: 
+            <ProtectedLoggedRoute redirect="/home" checkUnlogged>
+                <Login />
+            </ProtectedLoggedRoute>
+        },
+        {
+            path: "register",
+            element: 
+            <ProtectedLoggedRoute redirect="/home" checkUnlogged>
+                <Register />
+            </ProtectedLoggedRoute>
+        },
+        {
+            path: "product/:idProduct",
+            element: <Product />,
+        },
+        {
+            path: "product/:idProduct/booking",
+            element: 
+            <ProtectedLoggedRoute redirect="/login">
+                <Booking />
+            </ProtectedLoggedRoute>
+        },
+        {
+            path: "succesfulBooking",
+            element: <SuccesfullBooking />,
+        },
+        {
+            path: "createProduct",
+            element: 
+            <ProtectedLoggedRoute role="Administrador" redirect="/home">
+                <CreateProduct />
+            </ProtectedLoggedRoute>
+        }
+    ]
+}]);
