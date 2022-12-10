@@ -1,22 +1,14 @@
 import "./categories.scss";
 
-import React, { useEffect, useState } from "react";
-
 import Card from "../../components/card/card";
-import { getCategories } from "../../services/categories";
 import SpinnerLoader from "../spinnerLoader/spinnerLoader";
+import { useCategories } from "../../hooks";
 
 const Categories = ({ onCategorySeleccionada }) => {
-  const [categories, setCategories] = useState([]);
+  const categories = useCategories();
 
-  useEffect(() => {
-    getCategories().then((data) => setCategories(data));
-  }, []);
-
-  if(categories.length === 0){
-    return (
-        <SpinnerLoader/>
-      )
+  if (categories.length === 0) {
+    return <SpinnerLoader />;
   }
   return (
     <section className="categoriesSection">
