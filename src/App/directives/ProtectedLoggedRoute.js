@@ -11,12 +11,16 @@ export default function ProtectedLoggedRoute(props) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log(cookie.user);
+        //Redirects if unlogged
         if (props.checkUnlogged === undefined && !parseBool(cookie.logged)) {
             navigate(props.redirect);
-        } else if (props.checkUnlogged && parseBool(cookie.logged)) {
+        } 
+        //Redirects if logged
+        else if (props.checkUnlogged && parseBool(cookie.logged)) {
             navigate(props.redirect);
-        } else if (props.role !== undefined) {
+        } 
+        //Redirects if not allowed by role
+        else if (props.role !== undefined) {
             if (cookie.user.rol !== props.role) {
                 navigate(props.redirect);
             }

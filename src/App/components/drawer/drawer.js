@@ -53,6 +53,13 @@ export default function Drawer({open, setOpen, handleLogout}) {
                             </div>
                         </div>
                         }
+                        {cookie.user !== undefined && cookie.user.rol === 'Administrador' && 
+                        <div className={styles.controlsTop}>
+                            <div className={styles.controlBox + " " + styles.bottomBorder}>
+                                <button onClick={() => navegar("createProduct")}>Administración</button>
+                            </div>
+                        </div>
+                        }
                         {parseBool(cookie.logged) && 
                             <div className={styles.controlsBottom + " " + styles.bottomBorder}>
                                 <p>¿Deseas <span className={styles.logoutBtn} onClick={handleLogout}>cerrar sesión</span>?</p>
