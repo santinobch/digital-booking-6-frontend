@@ -11,6 +11,8 @@ import { Link } from "react-router-dom";
 const UserInfo = ({section, handleLogout, setOpen}) => {
     const [cookie] = useCookies();
 
+    const navigate = useNavigate();
+
     const handleMyBookingsNavigation = () => {
         navigate(`/user/${cookie.user.id}/bookings`)
         setOpen(false)

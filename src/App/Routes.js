@@ -15,7 +15,8 @@ import Login from "./pages/login/login";
 import Register from "./pages/register/register";
 import Product from "./pages/product/product";
 import Booking from "./pages/booking/booking";
-import SuccesfullBooking from "./pages/succesfullBooking/succesfullBooking";
+import MyBookings from "./pages/myBookings/myBookings";
+import Succesfull from "./pages/succesfull/succesfull";
 import CreateProduct from "./pages/createProduct/createProduct";
 
 //Cookies
@@ -79,8 +80,14 @@ export const route = createBrowserRouter([
             </ProtectedLoggedRoute>
         },
         {
-            path: "succesfulBooking",
-            element: <SuccesfullBooking />,
+            path: "/user/:idUser/bookings",
+            element: (
+                <MyBookings />
+            ),
+        },
+        {
+            path: "succesfull",
+            element: <Succesfull />,
         },
         {
             path: "createProduct",
@@ -91,3 +98,6 @@ export const route = createBrowserRouter([
         }
     ]
 }]);
+
+
+
