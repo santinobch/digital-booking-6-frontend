@@ -14,14 +14,10 @@ export default function ProductHeader({productInfo, categoria, titulo}) {
         <>
             <section className={styles.productHeader}>
                 <div>
-                    {productInfo ? 
                     <>
                         <h2>{productInfo !== undefined ? productInfo.tituloCategoria : categoria}</h2>
                         <h1>{productInfo !== undefined ? productInfo.titulo : titulo}</h1>
                     </>
-                    :
-                    <h1>Mis Reservas</h1>
-                    }
                 </div>
                 <div onClick={() => navigate(-1)} className={styles.backArrow}>
                     <img src={avatar} alt="" />

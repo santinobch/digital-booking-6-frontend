@@ -35,7 +35,7 @@ export default function Textarea(props) {
 
             <textarea 
                 id={id}
-                className={`${styles.textarea} ${invalid ? styles.invalidtextarea : null}`}
+                className={`${styles.textarea}`}
                 style={{width: props.width}}
 
                 name={props.name}

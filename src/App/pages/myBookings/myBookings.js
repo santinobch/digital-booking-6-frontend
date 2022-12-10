@@ -39,7 +39,7 @@ export default function MyBookings() {
 
     return(
         <main>
-            <ProductHeader/>
+            <ProductHeader titulo="Mis Reservas"/>
             {!loading && hospedajes && (
                 <Listing hospedajes={hospedajes} bookings={true}/>
             )}

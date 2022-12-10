@@ -129,18 +129,9 @@ export default function CreateProduct() {
               <button className={styles.plusButton}>+</button>
             </div>
           </div>
-
-          <div className={styles.politicaContainer}>
-            <h4>Políticas del producto</h4>
-
-                <div className={styles.flexRow}>
-                    <SelectInput></SelectInput>
-                    <button className={styles.plusButton}>+</button>
-                </div>
-            </div>
             
+            <h4>Políticas del producto</h4>
             <div className={styles.politicaContainer}>
-                <h4>Políticas del producto</h4>
             
                 <div className={styles.politica}>
                     <h5>Normas de la casa</h5>
@@ -183,28 +174,15 @@ export default function CreateProduct() {
                   onKeyUp={handleKeyUp}
                   error={!!errors?.urlImagen}/>
                 <button className={styles.plusButton}>+</button>
-                <p style={styleMessageError}>{errors?.urlImagen}</p>
             </div>
+            <p style={styleMessageError}>{errors?.urlImagen}</p>
           </div>
 
-          <h4>Cargar imágenes</h4>
-
-          <div className={styles.flexRow}>
-            <Input
-              placeholder="Escriba la URL de su imagen"
-              name="imagenes"
-              type="text"
-              onKeyUp={handleKeyUp}
-              error={!!errors?.imagenes}
-            />
-            <button className={styles.plusButton}>+</button>
-            <p style={styleMessageError}>{errors?.imagenes}</p>
-          </div>
+          <br/>
 
           <Button type="submit" styleBtn="dark">
             Crear
           </Button>
-        </div>
       </form>
     </main>
   );
