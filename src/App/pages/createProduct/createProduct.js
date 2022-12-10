@@ -65,7 +65,7 @@ export default function CreateProduct() {
                 <p style={styleMessageError}>{errors?.nameP}</p>
 
                 {/* <Input label="Categoría" placeholder="Hotel"></Input> */}
-                <SelectInput name="category"/>
+                <SelectInput name="category" className={styles.select}/>
                 <p style={styleMessageError}>{errors?.category}</p>   
 
                 <Input label="Dirección"
@@ -77,21 +77,21 @@ export default function CreateProduct() {
                 <p style={styleMessageError}>{errors?.direccion}</p>
 
                 {/* <Input label="Ciudad" placeholder="Ciudad"></Input> */}
-                <SelectInput name="city"/>
+                <SelectInput name="city" className={styles.select}/>
                 <p style={styleMessageError}>{errors?.city}</p>
             </div>
 
             <div className={styles.atributosContainer}>
                 <h4>Agregar atributos</h4>
 
-                <div className={styles.flexRow}>
+                <div className={styles.flexRow + ' ' + styles.greyContainer}>
                     <SelectInput></SelectInput>
                     <button className={styles.plusButton}>+</button>
                 </div>
             </div>
             
+            <h4>Políticas del producto</h4>
             <div className={styles.politicaContainer}>
-                <h4>Políticas del producto</h4>
             
                 <div className={styles.politica}>
                     <h5>Normas de la casa</h5>
@@ -127,7 +127,7 @@ export default function CreateProduct() {
 
             <h4>Cargar imágenes</h4>
             
-            <div className={styles.flexRow}>
+            <div className={styles.flexRow + ' ' + styles.greyContainer}>
                 <Input placeholder="Escriba la URL de su imagen"
                   name="urlImagen"
                   type="text"
