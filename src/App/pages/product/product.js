@@ -17,6 +17,8 @@ export default function Product() {
     const [product, setProduct] = useState();
     const [bookings, setBookings] = useState();
 
+    console.log(bookings)
+
     useEffect(() => {
         getProduct(idProduct)
         .then((response) => {

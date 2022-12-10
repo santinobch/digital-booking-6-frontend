@@ -10,15 +10,17 @@ import "./calendar.scss"
 
 export default function ProductCalendar({productInfo, bookings}) {
 
-  const [fechasBookingdas, setFechasBookingdas] = useState([]);
+  const [fechasReservadas, setFechasReservadas] = useState([]);
 
   useEffect(() => {
-    getFechasBookingdas()
+    getFechasReservadas()
 }, [bookings])
 
-  const getFechasBookingdas = () => {
+console.log(fechasReservadas)
+
+  const getFechasReservadas = () => {
     if(bookings){
-      let fechasBookingdas = []
+      let fechasReservadas = []
       bookings?.forEach(i => {
         
         let fechaInicio = new Date(i.fechaDesde);
@@ -27,11 +29,11 @@ export default function ProductCalendar({productInfo, bookings}) {
         let currentDate = fechaInicio
         
         while(currentDate <= fechaFin){
-          fechasBookingdas.push(new Date(currentDate).toDateString())
+          fechasReservadas.push(new Date(currentDate).toDateString())
           currentDate.setDate(currentDate.getDate() + 1)
         }
 
-        if(fechasBookingdas.length > 0) {setFechasBookingdas(fechasBookingdas)}
+        if(fechasReservadas.length > 0) {setFechasReservadas(fechasReservadas)}
       })
     }
   }
@@ -55,7 +57,7 @@ export default function ProductCalendar({productInfo, bookings}) {
               hideYear
               mapDays={ ({date})  => {
                 let props = {}
-                if(fechasBookingdas.includes(date.toDate().toDateString())) props.disabled = true
+                if(fechasReservadas.includes(date.toDate().toDateString())) props.disabled = true
                 return props
               }}
             />

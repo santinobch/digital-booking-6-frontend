@@ -1,7 +1,7 @@
 const urlBase = process.env.REACT_APP_API_URL;
 
 export function getBookings(idProduct) {
-    return fetch(`${urlBase}/bookings/product/${idProduct}`);
+    return fetch(`${urlBase}/bookings/product/${idProduct}`).then(res => res.json());
 }
 
 export function postBooking(auth, user, product, fechas){
