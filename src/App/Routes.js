@@ -1,38 +1,25 @@
 //React
-
-import Booking from "./pages/booking/booking";
-import CreateProduct from "./pages/createProduct/createProduct";
-import Footer from "./components/footer/footer";
-import Header from "./components/header/header";
-import Home from "./pages/home/home";
-import Login from "./pages/login/login";
-import MyBookings from "./pages/myBookings/myBookings";
-import { Outlet } from "react-router-dom";
-import Product from "./pages/product/product";
-import ProtectedLoggedRoute from "./directives/ProtectedLoggedRoute";
-import Register from "./pages/register/register";
-import Succesfull from "./pages/succesfull/succesfull";
 import { createBrowserRouter } from "react-router-dom";
-import { useCookies } from "react-cookie";
+import { Outlet } from "react-router-dom";
 
 //Components
-
-
+import Footer from "./components/footer/footer";
+import Header from "./components/header/header";
 
 //Directives
-
+import ProtectedLoggedRoute from "./directives/ProtectedLoggedRoute";
 
 //Pages
-
-
-
-
-
-
-
+import Home from "./pages/home/home";
+import Login from "./pages/login/login";
+import Register from "./pages/register/register";
+import Product from "./pages/product/product";
+import Booking from "./pages/booking/booking";
+import SuccesfullBooking from "./pages/succesfullBooking/succesfullBooking";
+import CreateProduct from "./pages/createProduct/createProduct";
 
 //Cookies
-
+import { useCookies } from 'react-cookie';
 
 function Root() {
   const cookieOptions = {
