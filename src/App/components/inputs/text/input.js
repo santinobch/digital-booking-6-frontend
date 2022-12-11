@@ -47,7 +47,6 @@ export default function Input(props) {
         <label
             className={styles.subLabel}
             htmlFor={props.name}
-            style={{ display: showSubLabel }}
             >
             {props.subLabel}
         </label>

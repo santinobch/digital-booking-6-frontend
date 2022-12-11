@@ -2,14 +2,18 @@ import "./categories.scss";
 
 import Card from "../../components/card/card";
 import SpinnerLoader from "../spinnerLoader/spinnerLoader";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getCategories } from "../../services/categories";
 
 const Categories = ({ onCategorySeleccionada }) => {
 
   const [categories, setCategories] = useState();
 
-  getCategories().then((data) => setCategories(data));
+  useEffect(() => {
+    getCategories().then((data) => setCategories(data));
+  }, [])
+  
+
 
   if (categories !== undefined) {
         if (categories.length === 0) {

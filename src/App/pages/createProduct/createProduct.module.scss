@@ -27,6 +27,15 @@
         padding: 40px;
     }
 
+    .subLabel {
+        font-size: 12px;
+        font-weight: 500;
+        color: #FF0000;
+        margin-top: 6px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
     .flexRow {
         display: flex;
         flex-direction: row;
