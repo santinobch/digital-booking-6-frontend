@@ -6,8 +6,6 @@ import { useNavigate } from 'react-router-dom';
 
 export default function ProductHeader({productInfo, categoria, titulo}) {
 
-    console.log(productInfo)
-
     const navigate = useNavigate();
 
     return (

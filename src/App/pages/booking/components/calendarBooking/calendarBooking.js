@@ -52,11 +52,9 @@ export default function CalendarBooking({bookings, setFechasBooking}) {
 
   const handleSelectDates = (value) => {
     let isoDatesArr = value.map(i => {
-      //console.log(i.toDate().getDate().toString().length === 1)
 
       let day = i.toDate().getDate().toString().length === 1 ? `0${i.toDate().getDate()}` : i.toDate().getDate()
       let month = (i.toDate().getMonth()+1).toString().length === 1 ? `0${i.toDate().getMonth()+1}` : i.toDate().getMonth()+1
-      //console.log(`${day}/${month}/${i.toDate().getFullYear()}`)
       
       return `${day}/${month}/${i.toDate().getFullYear()}`
     })

@@ -5,7 +5,7 @@ import styles from "./home.module.scss";
 import { useState, useEffect } from "react";
 import AuthModel from "../../models/auth.model";
 import { useCookies } from "react-cookie";
-import { getProducts } from "../../services/index.js";
+import { getProducts } from "../../services/products";
 
 
 export default function Home() {

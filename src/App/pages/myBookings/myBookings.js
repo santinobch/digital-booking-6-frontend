@@ -4,7 +4,7 @@ import ProductHeader from '../../components/productHeader/productHeader'
 import Listing from "../../components/listing/listing";
 import { useCookies } from "react-cookie";
 import { getBookingsByUser } from "../../services/bookings";
-import { getProduct } from '../../services';
+import { getProduct } from '../../services/products';
 import SpinnerLoader from "../../components/spinnerLoader/spinnerLoader";
 import Button from '../../components/button/button';
 import notFound from '../../../imgs/icons/not-found.png'

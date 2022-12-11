@@ -16,8 +16,6 @@ export default function ProductCalendar({productInfo, bookings}) {
     getFechasReservadas()
 }, [bookings])
 
-console.log(fechasReservadas)
-
   const getFechasReservadas = () => {
     if(bookings){
       let fechasReservadas = []

@@ -55,7 +55,6 @@ const Login = () => {
         let message = ''
 
         if(!value){
-            console.log("a")
             message = `El campo no puede estar vacío`
         }
 
@@ -90,7 +89,6 @@ const Login = () => {
 
         postAuth(loginData['email'], loginData['password'], setCookie)
         .then((response) => {
-            console.log(response)
             if(!response || response.status === 404){
                 setLoading(false)
                 setHasError({

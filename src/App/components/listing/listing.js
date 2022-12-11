@@ -3,7 +3,6 @@ import "./listing.scss";
 import React, { useEffect, useState } from "react";
 
 import RecommendedCard from "../../components/recommendedCard/recommendedCard";
-import { getProducts } from "../../services/index.js";
 import SpinnerLoader from "../spinnerLoader/spinnerLoader";
 
 const Listing = ({ hospedajes, error, bookings }) => {
