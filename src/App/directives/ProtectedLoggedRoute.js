@@ -39,9 +39,8 @@ export default function ProtectedLoggedRoute(props) {
                         navigate(props.redirect);
                     }
                 } 
-                else {
-                    setAllowed(true);
-                }
+
+                setAllowed(true);
             }
         }
     })
