@@ -21,7 +21,8 @@ export default function Booking() {
     const [cookie] = useCookies();
 
     const { idProduct } = useParams();
-    
+
+    const [arrivalTime, setArrivalTime] = useState();  
     const [product, setProduct] = useState([]);
     const [bookings, setBookings] = useState();
     const [fechasBooking, setFechasBooking] = useState({
@@ -39,13 +40,13 @@ export default function Booking() {
 
     useEffect(() => {
         getProduct(idProduct)
-        .then((response) => {
-            setProduct(response);
-        });
-    getBookings(idProduct)
-        .then((response) => {
-            if (Array.isArray(response)) { setBookings(response) }
-        });
+            .then((response) => {
+                setProduct(response);
+            });
+        getBookings(idProduct)
+            .then((response) => {
+                if (Array.isArray(response)) { setBookings(response) }
+            });
     }, [idProduct])
 
     if(product === undefined && bookings === undefined){
@@ -67,10 +68,10 @@ export default function Booking() {
                         ciudad={cookie.user.ciudad}
                         />
                     <CalendarBooking bookings={bookings} fechasBooking={fechasBooking} setFechasBooking={setFechasBooking}/>
-                    <Llegada />
+                    <Llegada setArrivalTime={setArrivalTime} />
                 </div>
                 
-                <DetalleBooking auth={cookie.auth} product={product} fechas={fechasBooking} usuario={cookie.user} />
+                <DetalleBooking arrivalTime={arrivalTime} auth={cookie.auth} product={product} fechas={fechasBooking} usuario={cookie.user} />
             </div>
 
             <ProductBottom product={product}/>
