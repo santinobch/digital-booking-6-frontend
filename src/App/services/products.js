@@ -7,10 +7,10 @@ export function getProducts(busqueda) {
     let url = "";
 
     if (category) {
-        url = `categories/${category}`;
+        url = `category/${category}`;
     }
     if (ciudad) {
-        url = `cities/${ciudad}`;
+        url = `city/${ciudad}`;
     }
 
     return fetch(`${config.API_URL}/products/${url}`).then((respuesta) => respuesta.json());

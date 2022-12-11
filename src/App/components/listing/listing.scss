@@ -1,5 +1,16 @@
 @import "../../scss/colors";
 
+.notFound {
+    padding: 16px;
+    height: 100%;
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: $light-books;
+}
+
 .listingSection{
     background-color: $light-books;
     width: 100%;

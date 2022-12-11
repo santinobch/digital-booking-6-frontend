@@ -1,4 +1,5 @@
 import "./listing.scss";
+import notFound from '../../../imgs/icons/not-found.png'
 
 import React, { useEffect, useState } from "react";
 
@@ -11,6 +12,15 @@ const Listing = ({ hospedajes, error, bookings }) => {
 
   if (hospedajes.length === 0) {
     return <SpinnerLoader />;
+  }
+
+  if(hospedajes.code === "NF-202"){
+    return (
+    <div className="notFound">
+      <img src={notFound} alt='No bookings'/>
+      <h5>No existen productos registrados en esta ciudad</h5>
+</div>
+)
   }
 
   return (
