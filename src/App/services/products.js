@@ -1,4 +1,4 @@
-const urlBase = process.env.REACT_APP_API_URL;
+import { config } from "../Constants";
 
 export function getProducts(busqueda) {
   const { ciudad, category, fecha } = busqueda || {};
@@ -13,15 +13,15 @@ export function getProducts(busqueda) {
     url = `cities/${ciudad}`;
   }
 
-  return fetch(`${urlBase}/products/${url}`).then((respuesta) => respuesta.json());
+  return fetch(`${config.API_URL}/products/${url}`).then((respuesta) => respuesta.json());
 }
 
 export function getProduct(id){
-  return fetch(`${urlBase}/products/${id}`).then(response => response.json());
+  return fetch(`${config.API_URL}/products/${id}`).then(response => response.json());
 }
 
 export function getRandomProducts() {
-  return fetch(`${urlBase}/products/random`).then((respuesta) =>
+  return fetch(`${config.API_URL}/products/random`).then((respuesta) =>
     respuesta.json()
   );
 }

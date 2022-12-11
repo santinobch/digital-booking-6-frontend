@@ -1,6 +1,6 @@
 import ResponseModel from '../models/response.model';
 
-const urlBase = process.env.REACT_APP_API_URL;
+import { config } from '../Constants';
 
 export async function postSignUp(email, username, name, surname, pass) {
 
@@ -20,7 +20,7 @@ export async function postSignUp(email, username, name, surname, pass) {
         })
     };
 
-    return fetch(`${urlBase}/signup`, requestOptions)
+    return fetch(`${config.API_URL}/signup`, requestOptions)
         .then(response => {
             status = response.status;
             return response.json()

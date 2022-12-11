@@ -1,12 +1,7 @@
-//Cookies
-import { render } from '@testing-library/react';
-import { useCookies } from 'react-cookie';
+import { config } from '../Constants';
 
 //Model
-import AuthModel from "../models/auth.model";
 import ResponseModel from '../models/response.model';
-
-const urlBase = process.env.REACT_APP_API_URL;
 
 export async function postAuth(email, pass, setCookie) {
 
@@ -23,7 +18,7 @@ export async function postAuth(email, pass, setCookie) {
         })
     };
 
-    return fetch(`${urlBase}/auth/`, requestOptions)
+    return fetch(`${config.API_URL}/auth/`, requestOptions)
         .then(response => {
             status = response.status;
             return response.json()

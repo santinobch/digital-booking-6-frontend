@@ -1,7 +1,7 @@
 //Models
 import ResponseModel from "../models/response.model";
 
-const urlBase = process.env.REACT_APP_API_URL;
+import { config } from "../Constants";
 
 
 export function getLoggedUser(auth, setCookie) {
@@ -16,7 +16,7 @@ export function getLoggedUser(auth, setCookie) {
         }
     };
 
-    return fetch(`${urlBase}/users?username=${auth.username}`, requestOptions)
+    return fetch(`${config.API_URL}/users?username=${auth.username}`, requestOptions)
         .then(response => {
             status = response.status;
             return response.json()

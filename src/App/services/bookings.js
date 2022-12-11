@@ -1,7 +1,7 @@
-const urlBase = process.env.REACT_APP_API_URL;
+import { config } from "../Constants";
 
 export function getBookings(idProduct) {
-    return fetch(`${urlBase}/bookings/product/${idProduct}`).then(res => res.json());
+    return fetch(`${config.API_URL}/bookings/product/${idProduct}`).then(res => res.json());
 }
 
 export function postBooking(auth, user, product, fechas){
@@ -24,7 +24,7 @@ export function postBooking(auth, user, product, fechas){
         })
     }
 
-    return fetch(`${urlBase}/bookings/`, requestOptions)
+    return fetch(`${config.API_URL}/bookings/`, requestOptions)
     .then(response => response.status)
 }
 
@@ -37,5 +37,5 @@ export function getBookingsByUser(auth, idUser) {
        }
     }
 
-    return fetch(`${urlBase}/users/${idUser}/bookings`, requestOptions).then(res => res.json());
+    return fetch(`${config.API_URL}/users/${idUser}/bookings`, requestOptions).then(res => res.json());
 }

@@ -1,7 +1,7 @@
-const urlBase = process.env.REACT_APP_API_URL;
+import { config } from "../Constants";
 
 export function getCategories() {
-    return fetch(`${urlBase}/categories/`).then((respuesta) =>
+    return fetch(`${config.API_URL}/categories/`).then((respuesta) =>
       respuesta.json()
     ); 
 }

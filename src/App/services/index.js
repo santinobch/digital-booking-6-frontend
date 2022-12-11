@@ -1,7 +1,7 @@
-const urlBase = process.env.REACT_APP_API_URL;
+import { config } from "../Constants";
 
 export function getCiudades() {
-  return fetch(`${urlBase}/cities/`).then((respuesta) => respuesta.json());
+  return fetch(`${config.API_URL}/cities/`).then((respuesta) => respuesta.json());
 }
 
 //
@@ -24,7 +24,7 @@ export function getProducts(busqueda) {
     url = `city/${ciudad}/dates?from=${fechaInicio}&to=${fechaFin}`;
   }
 
-  return fetch(`${urlBase}/products/${url}`).then((respuesta) => {
+  return fetch(`${config.API_URL}/products/${url}`).then((respuesta) => {
     if (respuesta.ok) {
       return respuesta.json();
     }
@@ -33,23 +33,23 @@ export function getProducts(busqueda) {
 }
 
 export function getCategories() {
-  return fetch(`${urlBase}/categories/`).then((respuesta) => respuesta.json());
+  return fetch(`${config.API_URL}/categories/`).then((respuesta) => respuesta.json());
 }
 
 // Estos se renderizan en el home
 export function getRandomProducts() {
-  return fetch(`${urlBase}/products/random`).then((respuesta) =>
+  return fetch(`${config.API_URL}/products/random`).then((respuesta) =>
     respuesta.json()
   );
 }
 
 export function getProduct(id) {
-  return fetch(`${urlBase}/products/${id}`).then((respuesta) =>
+  return fetch(`${config.API_URL}/products/${id}`).then((respuesta) =>
     respuesta.json()
   );
 }
 export function getFeatures() {
-  return fetch(`${urlBase}/features/`).then((respuesta) => respuesta.json());
+  return fetch(`${config.API_URL}/features/`).then((respuesta) => respuesta.json());
 }
 
 export function createProduct(data, token) {
@@ -63,5 +63,5 @@ export function createProduct(data, token) {
     body: JSON.stringify(data)
 }
 
-  return fetch(`${urlBase}/products/`, requestOptions).then((respuesta) => respuesta.json());
+  return fetch(`${config.API_URL}/products/`, requestOptions).then((respuesta) => respuesta.json());
 }
