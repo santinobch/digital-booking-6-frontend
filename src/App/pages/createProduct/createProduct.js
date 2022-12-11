@@ -64,23 +64,23 @@ export default function CreateProduct() {
         }
 
         if (Object.keys(fieldErrors).length > 0) {
-        setErrors(fieldErrors);
-        return;
+            setErrors(fieldErrors);
+            return;
         }
         // guardando datos
         if (token) {
-        const data = {
-            ...values,
-            idCategoria: parseInt(values.idCategoria),
-            imagenes: [values.imagenes],
-            idCiudad: parseInt(selectCity.value),
-            caracteristicas: selectFeature.map((feature) => feature.value),
-        };
-        createProduct(data, token)
-            .then((_response) => {
-            navigate("/succesfull?page=create-product");
-            })
-            .catch((err) => console.error(err));
+            const data = {
+                ...values,
+                idCategoria: parseInt(values.idCategoria),
+                imagenes: [values.imagenes],
+                idCiudad: parseInt(selectCity.value),
+                caracteristicas: selectFeature.map((feature) => feature.value),
+            };
+            createProduct(data, token)
+                .then((_response) => {
+                navigate("/succesfull?page=create-product");
+                })
+                .catch((err) => console.error(err));
         }
     }
 
@@ -109,7 +109,6 @@ export default function CreateProduct() {
                             <p style={styleMessageError}>{errors?.titulo}</p>
                         </div>
 
-                        {/* <Input label="Categoría" placeholder="Hotel"></Input> */}
                         <div className="">
                             <label className={styles.label}>Categoría</label>
                             <Select
@@ -132,7 +131,6 @@ export default function CreateProduct() {
                         </div>
                         <div className="">
                             <label className={styles.label}>Ciudad</label>
-                            {/* <Input label="Ciudad" placeholder="Ciudad"></Input> */}
                             <SelectSearch name="idciudad" onChange={setSelectCity} />
                             <p style={styleMessageError}>{errors?.idciudad}</p>
                         </div>
