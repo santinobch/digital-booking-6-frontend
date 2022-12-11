@@ -6,7 +6,7 @@ import { v4 as uuid } from "uuid";
 export default function Input(props) {
     const id = uuid();
     let showPassButton = "none";
-    let showSubLabel_ = "none";
+    let showSubLabel_ = "block";
     const [showSubLabel, setSubLabelVisibility] = useState(showSubLabel_);
     const [invalid, setInvalid] = useState(false);
 
@@ -15,35 +15,6 @@ export default function Input(props) {
     if (props.type === "password") {
         showPassButton = "block";
     }
-
-    function keyUp(event) {
-        if (!document.getElementById(id).checkValidity()) {
-            setSubLabelVisibility("block");
-        } else {
-            setSubLabelVisibility("none");
-        }
-
-        props?.setHasError?.(false);
-
-        if (props.name === "password_confirm") {
-            let confirmValue = event.target.value;
-            if (
-                props.comparePass !== undefined &&
-                props.comparePass === confirmValue
-            ) {
-                setSubLabelVisibility("none");
-                setInvalid(false);
-            } else {
-                setSubLabelVisibility("block");
-                setInvalid(true);
-            }
-        }
-    }
-    const handleChange = (event) => {
-        if (props.handlePass !== undefined) {
-            props.handlePass(event.target.value);
-        }
-    };
 
     return (
         <div className={styles.inputContainer} style={{ width: props.width }}>
@@ -68,20 +39,19 @@ export default function Input(props) {
             checked={props.checked}
             required={props.required}
             pattern={props.pattern}
-            onKeyUp={(event) =>
-                props.onKeyUp ? props.onKeyUp(event) : keyUp(event)
-            }
         >
             {props.children}
         </input>
 
+        <>
         <label
             className={styles.subLabel}
             htmlFor={props.name}
             style={{ display: showSubLabel }}
-        >
+            >
             {props.subLabel}
         </label>
+        </>
 
         <button
             type="button"

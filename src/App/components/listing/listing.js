@@ -7,6 +7,8 @@ import SpinnerLoader from "../spinnerLoader/spinnerLoader";
 
 const Listing = ({ hospedajes, error, bookings }) => {
 
+  console.log(hospedajes);
+
   if (hospedajes.length === 0) {
     return <SpinnerLoader />;
   }
