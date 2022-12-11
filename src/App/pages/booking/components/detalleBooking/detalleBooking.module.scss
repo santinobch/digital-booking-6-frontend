@@ -112,8 +112,31 @@
     }
 }
 
+@media only screen and (min-width: 768px) and (max-width: 1366px){
+    .inputContainer {
+        width: 90vw;
 
-@media only screen and (min-width: 768px) { 
+        padding: 17px;
+
+        .title {
+            margin: 0;
+            margin-bottom: 15px;
+        }
+
+        .tabletContainer { 
+            flex-direction: row;
+            gap: 14px;
+
+            .bottomContainer {
+                width: 100%;
+                margin: 0;
+            }
+        }
+    }
+}
+
+
+@media only screen and (min-width: 1366px) { 
     .inputContainer {
         width: 90vw;
 

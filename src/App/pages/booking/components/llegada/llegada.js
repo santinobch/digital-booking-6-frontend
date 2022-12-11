@@ -13,7 +13,7 @@ const getHours = () => {
   for (let i=0;tt<24*60; i++) {
     let hh = Math.floor(tt/60); 
     let mm = (tt%60); 
-    hours[i] = ("0" + (hh % 12)).slice(-2) + ':' + ("0" + mm).slice(-2);
+    hours[i] = ("0" + (hh % 24)).slice(-2) + ':' + ("0" + mm).slice(-2);
     tt = tt + 60;
   }
 
