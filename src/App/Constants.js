@@ -9,19 +9,5 @@ const test = {
     API_URL: 'http://localhost:8080'
 };
 
-() => {
-    switch (process.env.NODE_ENV) {
-        case "development":
-            return dev;
-
-        case "production":
-            return prod;
-
-        case "test":
-            return test;
-    }
-}
-
-
 export const config = (process.env.NODE_ENV === 'development') ? dev : ( (process.env.NODE_ENV === 'test') ? test : prod)
 
