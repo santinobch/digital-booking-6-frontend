@@ -26,13 +26,13 @@ const standardTest = (data, model) => {
 
 let authCookie;
 
-const setAuthCookie = (data) => {
+const setAuthCookie = (string ,data) => {
     authCookie = data;
 }
 
 let userCookie;
 
-const setUserCookie = (data) => {
+const setUserCookie = (string, data) => {
     userCookie = data;
 }
 
@@ -46,73 +46,38 @@ let fechas = {
 
 test('Authenticating', async () => {
 
-    console.log("start");
-
-    /* ESTO ANDA, NO SE PORQUE */
-    // let status = 0;
-
-    // const requestOptions = {
-    //     method: 'POST',
-    //     headers: { 
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({ 
-    //         email: 'agomez@mail.com',
-    //         password: '123456'
-    //     })
-    // };
-
-    // await fetch(`http://localhost:8080/auth/`, requestOptions)
-    //     .then(response => {
-    //         status = response.status;
-    //         return response.json()
-    //     }).then(data => {
-    //         console.log(data);
-    //     })
-
-    /* ESTO NO ANDA, TAMPOCO SE PORQUE JAJAJ */
-
     //Authentication Service
-    const response = postAuth('agomez@mail.com', '123456', setAuthCookie);
+    const response = await postAuth('agomez@mail.com', '123456', setAuthCookie);
 
     const model = new AuthModel();
-    //standardTest(response, model);
-
-    response.then(data => console.log(data))
-
-    //console.log(response);
-
-    console.log("end");
+    standardTest(response.data, model);
 });
 
-// test('Getting user data', async () => {
+test('Getting user data', async () => {
 
-//     //Users Service
-//     await getLoggedUser(authCookie, setUserCookie).then(
-//         data => {
-//             const model = new UsuarioModel();
+    //Users Service
+    const response = await getLoggedUser(authCookie, setUserCookie);
 
-//             standardTest(data, model);
+    console.log(response.data);
 
-//             console.log(data);
-//         }
-//     )
-// });
+    const model = new UsuarioModel();
+    standardTest(response.data, model);
+});
 
 
-// test('Getting product for testing', async () => {
+test('Getting product for testing', async () => {
 
-//     //Product service
-//     await getProduct(1).then(
-//         data => {
-//             const model = new ProductModel();
+    //Product service
+    await getProduct(1).then(
+        data => {
+            const model = new ProductModel();
 
-//             standardTest(data, model);
+            standardTest(data, model);
 
-//             product = data;
-//         }
-//     )
-// });
+            product = data;
+        }
+    )
+});
 
 
 // test('Testing Booking service', () => {
