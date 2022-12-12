@@ -122,10 +122,18 @@ $radius: 10px;
                     margin: 0px 6px;
                 }
             }
+            
+            .checkIn{
+                font-style: italic;
+                display: flex;
+                justify-content: flex-end;
+                gap:16px;
+            }
 
             .bookingDates {
                 display: flex;
                 justify-content: space-between;
+                margin-top: 8px;
 
                 .dateLabel{
                     font-weight: 800;

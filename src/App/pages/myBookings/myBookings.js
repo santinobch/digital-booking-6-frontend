@@ -27,6 +27,7 @@ export default function MyBookings() {
                         data[i].booking = response[i].idReserva
                         data[i].checkIn = response[i].fechaDesde
                         data[i].checkOut = response[i].fechaHasta
+                        data[i].hora = response[i].hora
                     }
                     setHospedajes(data)
                     setLoading(false)

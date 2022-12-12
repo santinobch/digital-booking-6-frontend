@@ -31,7 +31,7 @@ const Listing = ({ hospedajes, error, bookings }) => {
           <p>{error}</p>
         ) : (
           hospedajes?.map((item) => (
-            <RecommendedCard key={item.titulo} {...item} />
+            <RecommendedCard bookings={bookings} key={item.titulo} {...item} />
           ))
         )}
       </div>

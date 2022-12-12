@@ -22,7 +22,8 @@ export default function RecommendedCard({
   caracteristicas,
   booking,
   checkIn,
-  checkOut
+  checkOut,
+  hora
 }) {
   const navigate = useNavigate();
 
@@ -87,9 +88,14 @@ export default function RecommendedCard({
           </>
           ) : 
           <div>
+            
             <div className={styles.bookingDates}>
               <span className={styles.dateLabel}>Check In: </span>
               <span>{dateFormat(checkIn)}</span>
+            </div>
+            <div className={styles.checkIn}>
+            <span>Hora check in: </span>
+            <span>{hora}</span>
             </div>
             <div className={styles.bookingDates}>
               <span className={styles.dateLabel}>Check Out:  </span>
@@ -97,9 +103,7 @@ export default function RecommendedCard({
             </div>
           </div>
           }
-
           
-
           <Boton styleBtn="dark" onClick={() => navigate(`/product/${idProducto}`)}>
             Ver más
           </Boton>
