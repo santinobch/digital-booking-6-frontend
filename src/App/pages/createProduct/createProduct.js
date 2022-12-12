@@ -190,6 +190,7 @@ export default function CreateProduct() {
                         <div className="">
                             <label className={styles.label}>Categoría</label>
                             <Select
+                                classNamePrefix="selectBooking"
                                 name="idCategoria"
                                 placeholder="Seleccione..."
                                 options={categories}
@@ -230,6 +231,7 @@ export default function CreateProduct() {
 
                         <div className={styles.flexRow + ' ' + styles.greyContainer}>
                         <Select
+                            classNamePrefix="selectBooking"
                             placeholder="Seleccione los atributos correspondientes"
                             isMulti
                             name="caracteristicas"

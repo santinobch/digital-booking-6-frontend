@@ -44,6 +44,7 @@ export default function Llegada({setArrivalTime}) {
             </div>
 
             <Select
+                classNamePrefix="selectBooking"
                 placeholder="Seleccionar hora de llegada"
                 name="caracteristicas"
                 options={options}
