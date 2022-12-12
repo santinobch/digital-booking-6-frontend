@@ -8,13 +8,26 @@
     box-shadow: 0px 4px 4px 0px #00000040;
 
     width: 90vw;
-
-    .title {
-        font-weight: 700;
-        font-size: 20px;
     
-        margin: 17px;
-        margin-bottom: 15px;
+    .detalleHeader{
+        display: flex;
+        justify-content: space-between;      
+        .title {
+            font-weight: 700;
+            font-size: 20px;
+            
+            margin: 17px;
+            margin-bottom: 15px;
+        }
+    }
+
+    .errorDiv{
+        font-size: 12px;
+        font-weight: 500;
+        color: #FF0000;
+
+        align-self: center;
+        margin-top: 2px;
     }
 
     .tabletContainer {
@@ -87,6 +100,7 @@
 
                 .date {
                     text-decoration: underline;
+                    align-self: center;
                 }
             }
     
@@ -98,8 +112,7 @@
     }
 }
 
-
-@media only screen and (min-width: 768px) { 
+@media only screen and (min-width: 768px) and (max-width: 1366px){
     .inputContainer {
         width: 90vw;
 
@@ -112,7 +125,31 @@
 
         .tabletContainer { 
             flex-direction: row;
-            gap: 17px;
+            gap: 14px;
+
+            .bottomContainer {
+                width: 100%;
+                margin: 0;
+            }
+        }
+    }
+}
+
+
+@media only screen and (min-width: 1366px) { 
+    .inputContainer {
+        width: 90vw;
+
+        padding: 17px;
+
+        .title {
+            margin: 0;
+            margin-bottom: 15px;
+        }
+
+        .tabletContainer { 
+            flex-direction: row;
+            gap: 14px;
 
             .bottomContainer {
                 margin: 0;

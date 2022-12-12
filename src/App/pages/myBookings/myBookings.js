@@ -20,6 +20,7 @@ export default function MyBookings() {
     useEffect(() => {
         getBookingsByUser(cookie.auth, idUser)        
             .then((response) => {
+                console.log(response);
                 let idArray = response.map(e => e.idProducto)
                 let products = idArray.map(e => getProduct(e))
                 Promise.all(products).then((data) => {
@@ -27,8 +28,9 @@ export default function MyBookings() {
                         data[i].booking = response[i].idReserva
                         data[i].checkIn = response[i].fechaDesde
                         data[i].checkOut = response[i].fechaHasta
+                        data[i].hora = response[i].hora
                     }
-                    setHospedajes(data)
+                    setHospedajes(data.sort((a,b) => new Date(a.checkIn).getTime() > new Date(b.checkIn).getTime()))
                     setLoading(false)
                 })
             }).catch(() => {

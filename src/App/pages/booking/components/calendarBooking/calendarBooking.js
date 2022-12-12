@@ -74,7 +74,7 @@ export default function CalendarBooking({bookings, setFechasBooking}) {
   return (
         <div className={styles.calendarSection}>
             <section className={styles.calendarLayout}>
-                <h3 className={styles.title}>Seleccioná tu fecha de booking</h3>
+                <h3 className={styles.title}>Seleccioná tu fecha de reserva</h3>
                 <div className={styles.elements}>
                     <div className={styles.container}>
                     <Calendar

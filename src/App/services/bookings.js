@@ -4,7 +4,7 @@ export function getBookings(idProduct) {
     return fetch(`${config.API_URL}/bookings/product/${idProduct}`).then(res => res.json());
 }
 
-export function postBooking(auth, user, product, fechas){
+export function postBooking(arrivalTime, auth, user, product, fechas){
 
     let fechaDesde = fechas.fechaCheckIn.split("/").reverse().join("-")
     let fechaHasta = fechas.fechaCheckOut.split("/").reverse().join("-")
@@ -18,7 +18,7 @@ export function postBooking(auth, user, product, fechas){
         body: JSON.stringify({ 
             username:user.username,
             idProducto:product.idProducto,
-            hora: "10:00:00",
+            hora: `${arrivalTime}:00`,
             fechaDesde: fechaDesde,
             fechaHasta: fechaHasta
         })

@@ -93,7 +93,7 @@ const Register = () => {
         }
 
         if(value && name === "username" && (value.length < 3 || value.length > 15)){
-            message = 'El nombre de usuario debe estar compuesto de 3 a 15 caracteres alfanuméricos'
+            message = 'El nombre de usuario debe estar compuesto de 3 a 15 caracteres'
         }
 
         if(value && name === "password" && (value.length < 6 || value.length > 20)){

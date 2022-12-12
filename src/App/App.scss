@@ -4,6 +4,7 @@
 @import "~bootstrap/scss/bootstrap";
 
 @import "./scss/vars";
+@import "./scss/colors";
 
 body {
   font-family: 'Quicksand', sans-serif;
@@ -29,4 +30,22 @@ main {
 .flex-column {
   display: flex;
   flex-direction: column;
+}
+
+
+//Estilos para los selects
+.selectBooking {
+  &__control {
+      height: 40px;
+      box-shadow: 0px 1px 5px 0px #00000026;
+      background-color: $white-books;
+  
+      border-radius: 5px;
+      border: 1px solid $white-books !important;
+      padding: 1px;
+  }
+
+  &__indicator-separator {
+      display: none;
+  }
 }

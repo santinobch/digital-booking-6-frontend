@@ -10,19 +10,9 @@ export default function Textarea(props) {
 
     const id = uuid();
 
-    let showSubLabel_ = "none";
+    let showSubLabel_ = "block";
     const [showSubLabel, setSubLabelVisibility] = useState(showSubLabel_);
     const [invalid, setInvalid] = useState()
-
-    function keyUp(event) {
-        if (!document.getElementById(id).value.length == 0) {
-            setSubLabelVisibility("block");
-            setInvalid(true);
-        } else {
-            setSubLabelVisibility("none");
-            setInvalid(false);
-        }
-    }
 
     return (
         <div className={styles.textareaContainer} style={{width: props.width}}>
@@ -43,8 +33,7 @@ export default function Textarea(props) {
                 placeholder={props.placeholder}
 
                 disabled={props.disabled}
-                required={props.required}
-                onKeyUp={(event) => keyUp(event)}>
+                required={props.required}>
 
                 {props.children}
             </textarea>
@@ -52,8 +41,7 @@ export default function Textarea(props) {
 
             <label 
                 className={styles.subLabel}
-                htmlFor={props.name}
-                style={{display: showSubLabel}}>
+                htmlFor={props.name}>
 
                 {props.subLabel}
             </label>

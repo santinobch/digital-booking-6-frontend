@@ -59,6 +59,7 @@ export const SelectSearch = ({ onChange, home }) => {
                     formatOptionLabel={formatOptionLabel}
                 /> : 
                 <Select
+                    classNamePrefix="selectBooking"
                     placeholder="Ciudad"
                     options={ciudades.map((opc) => ({
                         value: opc.id,
