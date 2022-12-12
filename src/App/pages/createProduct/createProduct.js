@@ -301,7 +301,7 @@ export default function CreateProduct() {
                                 type="text"
                                 value={e.urlImagen || ""}
                                 error={!!errors?.urlImagen}/>
-                                {idx === 0 ? 
+                                {idx === imageInputs.length-1 ? 
                             <button type="button" className={styles.plusButton} onClick={handleAddImage}>+</button>
                             : <button type="button" className={styles.plusButton} onClick={() => handleRemoveImage(idx)}>-</button>}
                         </div>
