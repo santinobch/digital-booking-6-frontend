@@ -1,0 +1,64 @@
+@import "../../scss/colors";
+
+.notFound {
+    padding: 16px;
+    height: 100%;
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: $light-books;
+}
+
+.listingSection{
+    background-color: $light-books;
+    width: 100%;
+
+    h2{
+        font-size: 24px;
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    .listingSection{
+        padding: 36px 12px;
+
+        .listingGrid{
+            display: grid;
+            width: 100%;
+            gap: 17px;
+            grid-template-columns: 1fr;
+            justify-items: center;
+        }
+    }
+        
+}
+
+@media only screen and (min-width: 768px) {
+    .listingSection{
+        padding: 36px 12px;
+        
+        .listingGrid{
+            display: grid;
+            width: 100%;
+            gap: 17px;
+            grid-template-columns: 1fr;
+            justify-items: center;
+        }
+    }
+}
+
+@media only screen and (min-width: 1366px) {
+    .listingSection{
+        padding: 17px 40px;
+
+        .listingGrid{
+            display: grid;
+            width: 100%;
+            gap: 13px;
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}

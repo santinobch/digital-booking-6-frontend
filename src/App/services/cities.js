@@ -1,5 +1,5 @@
-const urlBase = process.env.REACT_APP_API_URL;
+import { config } from "../Constants";
 
 export function getCiudades() {
-    return fetch(`${urlBase}/cities/`).then((respuesta) => respuesta.json());
+    return fetch(`${config.API_URL}/cities/`).then((respuesta) => respuesta.json());
 }

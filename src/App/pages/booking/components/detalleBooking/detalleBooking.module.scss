@@ -1,0 +1,185 @@
+@import "../../../../scss/colors";
+
+
+.inputContainer {
+    border-radius: 8px;
+    border: 1px solid $light-books;
+    background-color: $white-books;
+    box-shadow: 0px 4px 4px 0px #00000040;
+
+    width: 90vw;
+    
+    .detalleHeader{
+        display: flex;
+        justify-content: space-between;      
+        .title {
+            font-weight: 700;
+            font-size: 20px;
+            
+            margin: 17px;
+            margin-bottom: 15px;
+        }
+    }
+
+    .errorDiv{
+        font-size: 12px;
+        font-weight: 500;
+        color: #FF0000;
+
+        align-self: center;
+        margin-top: 2px;
+    }
+
+    .tabletContainer {
+        display: flex;
+        flex-direction: column;
+
+        .cuartoImg {
+            width: 100%;
+
+            border-radius: 5px;
+        }
+    
+        .bottomContainer {
+            display: flex;
+            flex-direction: column;
+
+            margin: 17px;
+
+            h4 {
+                font-size: 14px;
+                font-weight: 700;
+                color: $grey-books;
+                margin: 0;
+            }
+
+            h3 {
+                font-size: 24px;
+                font-weight: 700;
+            }
+    
+            .stars {
+                display: flex;
+                flex-direction: row;
+                height: 14px;
+                margin-bottom: 2px;
+                margin-left: 6px;
+        
+                img {
+                    width: 14px;
+                }
+            }
+        
+            hr {
+                border: 1px solid $grey-books;
+                margin: 0;
+                margin-top: 14px;
+                margin-bottom: 19px;
+            }
+        
+            .ubication {
+                display: flex;
+                align-items: flex-start;
+
+                svg {
+                    margin-top: 4px;
+                }
+        
+                p {
+                    margin: 0;
+                }
+            }
+        
+            .dateInput {
+                display: flex;
+                justify-content: space-between;
+        
+                p {
+                    margin: 0;
+                }
+
+                .date {
+                    text-decoration: underline;
+                    align-self: center;
+                }
+            }
+    
+            button {
+                width: 100%;
+                margin-top: auto;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1366px){
+    .inputContainer {
+        width: 90vw;
+
+        padding: 17px;
+
+        .title {
+            margin: 0;
+            margin-bottom: 15px;
+        }
+
+        .tabletContainer { 
+            flex-direction: row;
+            gap: 14px;
+
+            .cuartoImg {
+                width: 60%;
+            }
+
+            .bottomContainer {
+                width: 100%;
+                margin: 0;
+            }
+        }
+    }
+}
+
+
+@media only screen and (min-width: 1366px) { 
+    .inputContainer {
+        width: 90vw;
+
+        padding: 17px;
+
+        .title {
+            margin: 0;
+            margin-bottom: 15px;
+        }
+
+        .tabletContainer { 
+            flex-direction: row;
+            gap: 14px;
+
+            .bottomContainer {
+                margin: 0;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1366px) { 
+
+    .inputContainer {
+        width: 400px;
+
+        padding: 0;
+
+        .title {
+            margin: 17px;
+        }
+
+        .tabletContainer { 
+            flex-direction: column;
+            gap: 0;
+
+            .bottomContainer {
+                margin: 17px;
+            }
+        }
+    }
+}

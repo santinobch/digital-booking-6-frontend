@@ -1,13 +1,10 @@
-import UsuarioModel from "../models/usuario.model";
-import { AuthContext, UsuarioContext } from "../services/context";
+//Models
+import ResponseModel from "../models/response.model";
 
-import {useContext} from 'react'
-import { useEffect } from "react";
-
-const urlBase = process.env.REACT_APP_API_URL;
+import { config } from "../Constants";
 
 
-export function GetLoggedUser(auth, handleUsuario) {
+export function getLoggedUser(auth, setCookie) {
 
     let status = 0;
 
@@ -19,13 +16,14 @@ export function GetLoggedUser(auth, handleUsuario) {
         }
     };
 
-    return fetch(`${urlBase}/users?username=${auth.username}`, requestOptions)
+    return fetch(`${config.API_URL}/users?username=${auth.username}`, requestOptions)
         .then(response => {
             status = response.status;
             return response.json()
         }).then(data => {
-            handleUsuario(data);
-            return status;
+            console.log(data)
+            setCookie('user', data);
+            return new ResponseModel(status, data);
         })
         .catch( error => {
             console.log('Hubo un problema con la petición Fetch, users.js: ' + error.message);

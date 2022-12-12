@@ -1,25 +1,25 @@
 import { useNavigate } from 'react-router-dom';
-import useWindowSize from '../../hooks/useWindowSize';
+import useWindowSize from '../../utils/useWindowSize';
 
 import styles from "./drawer.module.scss";
 import { IconContext } from "react-icons";
-import {useState, useContext, useEffect } from "react";
 import { FaFacebook } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
-import {UsuarioContext} from "../../services/context";
 import UserInfo from '../userInfo/userInfo';
 
 import React from 'react';
+import { useCookies } from 'react-cookie';
+
+import parseBool from '../../utils/parseBool';
 
 export default function Drawer({open, setOpen, handleLogout}) {
 
     const navigate = useNavigate();
     const size = useWindowSize();
+    const [cookie] = useCookies();
 
-    const { usuario } = useContext(UsuarioContext)
-    const [usuarioLogeado, setUsuarioLogeado] = useState()
 
     const navegar = sitio => {
         let path = "/"+sitio
@@ -27,50 +27,49 @@ export default function Drawer({open, setOpen, handleLogout}) {
         setOpen(true)
     }
 
-    useEffect(() => {
-        if(usuario !== undefined){
-            setUsuarioLogeado(true)
-            console.log(`HOLA ${usuario.email}`)
-        } else {
-            setUsuarioLogeado(false)
-        }
-      }, [usuario])
-
     if(size.width > 768){
         return(null);
     }
+
     return (
         <IconContext.Provider value={{ color: "#DFE4EA", size:24 }}>
             <div className={open && size.width < 768 ? styles.drawer : styles.hiddenDrawer} id="drawer">
                 <div className={styles.drawerTop}>
                     <button className={styles.closeBtn} onClick={() => setOpen(true)}>X</button>
-                    {!usuarioLogeado ? <h1>MENÚ</h1> : <UserInfo section="drawer"/>}
+                    {!parseBool(cookie.logged) ? <h1>MENÚ</h1> : <UserInfo section="drawer" setOpen={setOpen}/>}
                     
                 </div>
 
                 <div className={styles.drawerBottom}>
                     <div className={styles.controls}>
-                        {!usuarioLogeado && 
+                        {!parseBool(cookie.logged) && 
                         <div className={styles.controlsTop}>
                             <div className={styles.controlBox + " " + styles.bottomBorder}>
-                                <button onClick={() => navegar("registrarse")}>Crear cuenta</button>
+                                <button onClick={() => navegar("register")}>Crear cuenta</button>
                             </div>
                             <div className={styles.controlBox}>
                                 <button onClick={() => navegar("login")}>Iniciar sesión</button>
                             </div>
                         </div>
                         }
-                        {usuarioLogeado && 
+                        {cookie.user !== undefined && cookie.user.rol === 'Administrador' && 
+                        <div className={styles.controlsTop}>
+                            <div className={styles.controlBox + " " + styles.bottomBorder}>
+                                <button onClick={() => navegar("createProduct")}>Administración</button>
+                            </div>
+                        </div>
+                        }
+                        {parseBool(cookie.logged) && 
                             <div className={styles.controlsBottom + " " + styles.bottomBorder}>
                                 <p>¿Deseas <span className={styles.logoutBtn} onClick={handleLogout}>cerrar sesión</span>?</p>
                             </div>
                         }
                     </div>
                     <div className={styles.links}>
-                        <a id="facebook" href=""><FaFacebook/></a>
-                        <a id="linkedin" href=""><FaLinkedinIn/></a>
-                        <a id="twitter" href=""><FaTwitter/></a>
-                        <a id="instagram" href=""><FaInstagram/></a>
+                        <a id="facebook" href="/"><FaFacebook/></a>
+                        <a id="linkedin" href="/"><FaLinkedinIn/></a>
+                        <a id="twitter" href="/"><FaTwitter/></a>
+                        <a id="instagram" href="/"><FaInstagram/></a>
                     </div>
                 </div>
             </div>

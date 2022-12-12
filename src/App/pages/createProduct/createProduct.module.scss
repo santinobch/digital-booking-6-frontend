@@ -1,0 +1,180 @@
+@import "../../scss/colors";
+
+.main {
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: $light-books;
+
+    h3, h4, h5 {
+        font-weight: 700;
+    }
+
+    h3 {
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+    h4 {
+        font-size: 20px;
+        margin-top: 16px;
+    }
+    h5 {
+        font-size: 16px;
+    }
+
+    form{
+        padding: 40px;
+    }
+
+    .subLabel {
+        font-size: 12px;
+        font-weight: 500;
+        color: #FF0000;
+        margin-top: 6px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .flexRow {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+
+        & > div {
+            width: 100%;
+        }
+    }
+
+    .flexColumn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+
+        & > div {
+            width: 100%;
+        }
+    }
+
+    .greyContainer {
+        background-color: $light-books;
+        border-radius: 10px;
+
+        padding: 16px;
+
+        & > div {
+            margin: 0;
+        }
+    }
+
+    .plusButton {
+        height: 40px;
+        width: 40px;
+        border: none;
+        border-radius: 10px;
+
+        outline: none;
+
+        background-color: $red-books;
+        color: $white-books;
+        
+        font-size: 30px;
+        line-height: 0;
+    }
+
+    .propiedadContainer {
+        background-color: $white-books;
+        border-radius: 10px;
+        padding: 27px;
+
+        display: flex;
+        flex-direction: column;
+
+        .inputsContainer {
+            display: grid;
+            gap: 10px;
+
+            margin-bottom: 10px;
+
+            .label {
+                font-size: 12px;
+                font-weight: 500;
+                color: $black2-books;
+        
+                align-self: flex-start;
+                margin: 0;
+                margin-bottom: 6px;
+            }
+        }
+
+        .atributosContainer {
+            margin-bottom: 10px;
+        }
+
+        .politicaContainer {
+            display: grid;
+            margin-bottom: 10px;
+
+            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
+            border-radius: 5px;
+
+            padding: 30px;
+
+            .politica {
+
+            }
+        }
+
+    }
+
+    .createButton{
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .main{
+        form{
+            padding:  16px 0;
+        }
+    }
+
+    .propiedadContainer {
+
+        .inputsContainer {
+            grid-template-columns: 1fr;
+        }
+
+        .politicaContainer {
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+
+    .propiedadContainer {
+
+        .inputsContainer {
+            grid-template-columns: 1fr 1fr;
+
+            .select {
+                margin-top: 36px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1366px) { 
+
+    .propiedadContainer {
+        .politicaContainer {
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+    }
+}

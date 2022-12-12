@@ -1,30 +1,48 @@
+//React
 import { createBrowserRouter } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
+//Components
 import Footer from "./components/footer/footer";
 import Header from "./components/header/header";
 
-import { Outlet } from "react-router-dom";
+//Directives
+import ProtectedLoggedRoute from "./directives/ProtectedLoggedRoute";
 
+//Pages
 import Home from "./pages/home/home";
 import Login from "./pages/login/login";
 import Register from "./pages/register/register";
-import Producto from "./pages/producto/producto";
-import Reserva from "./pages/reserva/reserva";
-import ReservaExitosa from "./pages/reservaExitosa/reservaExitosa";
+import Product from "./pages/product/product";
+import Booking from "./pages/booking/booking";
+import MyBookings from "./pages/myBookings/myBookings";
+import Succesfull from "./pages/succesfull/succesfull";
+import CreateProduct from "./pages/createProduct/createProduct";
 
-
+//Cookies
+import { useCookies } from 'react-cookie';
 
 function Root() {
-    return (
-        <>
-        <Header />
-        <Outlet />
-        <Footer /> 
-        </>
-    );
+  const cookieOptions = {
+    //Accesable in all the site
+    path: "/",
+    //One week expiration
+    expires: 60 * 60 * 24 * 7,
+  };
+
+  const [cookie] = useCookies([], [], cookieOptions);
+
+  return (
+    <>
+      <Header />
+      <Outlet />
+      <Footer />
+    </>
+  );
 }
 
-export const route = createBrowserRouter([{
+export const route = createBrowserRouter([
+  {
     path: "/",
     element: <Root />,
     children: [
@@ -38,23 +56,48 @@ export const route = createBrowserRouter([{
         },
         {
             path: "login",
-            element: <Login />,
+            element: 
+            <ProtectedLoggedRoute redirect="/home" checkUnlogged>
+                <Login />
+            </ProtectedLoggedRoute>
         },
         {
-            path: "registrarse",
-            element: <Register />,
+            path: "register",
+            element: 
+            <ProtectedLoggedRoute redirect="/home" checkUnlogged>
+                <Register />
+            </ProtectedLoggedRoute>
         },
         {
-            path: "producto/:idProducto",
-            element: <Producto />,
+            path: "product/:idProduct",
+            element: <Product />,
         },
         {
-            path: "producto/:idProducto/reserva",
-            element: <Reserva />,
+            path: "product/:idProduct/booking",
+            element: 
+            <ProtectedLoggedRoute redirect="/login">
+                <Booking />
+            </ProtectedLoggedRoute>
         },
         {
-            path: "reservaExistosa",
-            element: <ReservaExitosa />,
+            path: "/user/:idUser/bookings",
+            element: (
+                <MyBookings />
+            ),
+        },
+        {
+            path: "succesfull",
+            element: <Succesfull />,
+        },
+        {
+            path: "createProduct",
+            element: 
+            <ProtectedLoggedRoute role="Administrador" redirect="/home">
+                <CreateProduct />
+            </ProtectedLoggedRoute>
         }
     ]
 }]);
+
+
+

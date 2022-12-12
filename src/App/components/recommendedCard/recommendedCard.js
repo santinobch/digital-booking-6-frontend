@@ -3,17 +3,12 @@ import * as FontAwesome from "react-icons/fa";
 import Boton from "../button/button";
 import React from "react";
 import heart from "../../../imgs/icons/heart.png";
-import { isString } from "formik";
 import star from "../../../imgs/icons/star.png";
 import styles from "./recommendedCard.module.scss";
 import { useNavigate } from "react-router-dom";
 
 function shorten(textInput) {
-  if (isString(textInput)) {
-    return textInput.slice(0, 80) + "...";
-  } else {
-    return "";
-  }
+  return textInput.slice(0, 78) + "...";
 }
 
 export default function RecommendedCard({
@@ -25,15 +20,23 @@ export default function RecommendedCard({
   ciudadPais,
   descripcion,
   caracteristicas,
+  booking,
+  checkIn,
+  checkOut,
+  hora
 }) {
   const navigate = useNavigate();
 
   const renderIcon = (icon) => React.createElement(FontAwesome[icon]);
 
-  console.log(imagenes)
+  const dateFormat = (value) =>{
+    const [year, month, day] = value.split('-');
+
+    return `${day}/${month}/${year}`;
+  }
 
   return (
-    <div className={styles.card}>
+    <div className={styles.card} data-testid="recommendedCard">
       
       <img className={styles.favoritoImg} src={heart} alt=""></img>
 
@@ -68,22 +71,40 @@ export default function RecommendedCard({
               <p>Muy bueno</p>
             </div>
           </div>
-
           <div className={styles.ubicacion}>
-            <p>
-              {ciudadNombre}, {ciudadPais}
-            </p>
+              <p>
+                {ciudadNombre}, {ciudadPais}
+              </p>
+            </div>
+
+          {!booking ? (
+          <>
+            <div className={styles.caracteristicas}>
+              {caracteristicas.map((i) => (
+                <span>{renderIcon(i.caracteristicaIcono)}</span>
+                ))}
+            </div>
+            <p className={styles.text}>{shorten(descripcion)}</p>
+          </>
+          ) : 
+          <div>
+            
+            <div className={styles.bookingDates}>
+              <span className={styles.dateLabel}>Check In: </span>
+              <span>{dateFormat(checkIn)}</span>
+            </div>
+            <div className={styles.checkIn}>
+            <span>Hora check in: </span>
+            <span>{hora}</span>
+            </div>
+            <div className={styles.bookingDates}>
+              <span className={styles.dateLabel}>Check Out:  </span>
+              <span>{dateFormat(checkOut)}</span>
+            </div>
           </div>
-
-          <div className={styles.caracteristicas}>
-            {caracteristicas.map((i) => (
-              <span>{renderIcon(i.caracteristicaIcono)}</span>
-            ))}
-          </div>
-
-          <p className={styles.text}>{shorten(descripcion)}</p>
-
-          <Boton styleBtn="dark" onClick={() => navigate(`/producto/${idProducto}`)}>
+          }
+          
+          <Boton styleBtn="dark" onClick={() => navigate(`/product/${idProducto}`)}>
             Ver más
           </Boton>
         </div>

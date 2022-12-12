@@ -1,0 +1,105 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "title": "Departamentos",
+      "description": "XXXXXX encontrados",
+      "img": "https://images.unsplash.com/photo-1597047084993-bf337e09ede0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8YXBhcnRtZW50c3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 2,
+      "title": "Hoteles",
+      "description": "XXXXXX encontrados",
+      "img": "https://images.unsplash.com/photo-1568084680786-a84f91d1153c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+    },
+    {
+      "id": 3,
+      "title": "Hostels",
+      "description": "XXXXXX encontrados",
+      "img": "https://images.unsplash.com/photo-1630486440513-034ef4480384?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fGhvc3RlbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 4,
+      "title": "Bed and Breakfast",
+      "description": "XXXXXX encontrados",
+      "img": "https://static.hosteltur.com/app/public/uploads/img/articles/2015/08/01/L_5b14fe49e7f2c_breakfast.jpg"
+    }
+  ],
+  "ciudades": [
+    {
+      "label": "Todos",
+      "value": "Todos",
+      "country": "Todos"
+    },
+    {
+      "label": "San Carlos de Bariloche",
+      "value": "San Carlos de Bariloche",
+      "country": "Argentina"
+    },
+    {
+      "label": "Buenos Aires",
+      "value": "Buenos Aires",
+      "country": "Argentina"
+    },
+    { "label": "Mendoza", "value": "Mendoza", "country": "Argentina" },
+    { "label": "Córdoba", "value": "Córdoba", "country": "Argentina" }
+  ],
+  "hospedajes": [
+    {
+      "image": "https://images.unsplash.com/photo-1515263487990-61b07816b324?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+      "category": "Departamentos",
+      "title": "Primer Dpto",
+      "location": "Buenos Aires",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque malesuada tempus tellus ac malesuada. Integer diam leo, ullamcorper eu facilisis non, fermentum eu purus. Vivamus gravida fermentum urna. Integer eget porttitor enim, in suscipit purus. Vivamus egestas lacus ac nisi sodales, sed volutpat erat faucibus. Aenean nec consequat nisi. Suspendisse accumsan blandit lectus in ultricies. Maecenas auctor, diam id vestibulum pretium, dui odio pharetra ex, vitae tempor ex diam non neque. Proin iaculis scelerisque augue. Pellentesque ornare lorem et maximus suscipit."
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1460317442991-0ec209397118?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+      "category": "Departamentos",
+      "title": "Segundo Dpto",
+      "location": "Mendoza",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id orci maximus, bibendum lacus at, convallis massa. Sed malesuada suscipit lectus nec faucibus. Quisque maximus, quam quis pellentesque vehicula, velit neque imperdiet eros, dignissim convallis ex lacus eget nulla. Sed et dui malesuada, suscipit felis sed, dictum leo. Aenean sed mauris ut ante porttitor aliquam eget non ex. Proin orci arcu, efficitur id laoreet ac, fringilla vitae nibh. Morbi tempus consectetur odio et semper. Suspendisse erat neque, luctus a ligula ut, rhoncus lacinia nisi. Suspendisse blandit rhoncus felis, vel posuere nulla facilisis in. Nulla feugiat convallis tellus. Morbi eu velit. "
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1455587734955-081b22074882?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "category": "Hoteles",
+      "title": "Primer Hotel",
+      "location": "La Habana",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget odio lorem. Ut iaculis arcu at arcu molestie convallis. Curabitur semper ipsum a enim maximus, id lacinia libero pellentesque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas eget ultrices ex, sollicitudin eleifend sapien. Nulla sollicitudin pharetra rutrum. Vestibulum id sodales risus. Curabitur eros dui, feugiat a felis et, elementum aliquet neque. Quisque laoreet blandit sapien eget fermentum. Pellentesque enim leo, tristique at hendrerit eget, vestibulum et est. Pellentesque maximus nisl blandit mi ultricies euismod. Sed elit ex, consectetur vitae mauris eu, fermentum dapibus quam. Vivamus rhoncus, urna. "
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1615460549969-36fa19521a4f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+      "category": "Hoteles",
+      "title": "Segundo Hotel",
+      "location": "Punta Cana",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquam ac purus nec dictum. Proin malesuada ante et accumsan lobortis. Donec pulvinar placerat mauris, sed molestie dolor porttitor vel. Nam sed nibh rutrum, porta quam eu, tempor lectus. Nam consectetur mattis sollicitudin. Pellentesque tempus lacus at hendrerit pellentesque. Curabitur dapibus ante a augue laoreet rutrum. Curabitur massa diam, sollicitudin vel malesuada sed, cursus a velit. Integer tincidunt ante sit amet eros faucibus ultricies. Sed pulvinar tempor commodo. Morbi ac dui fermentum, ornare orci sed, porta ligula. Vestibulum vulputate quam neque, id dignissim nisl molestie tempus. Donec cursus malesuada pharetra. Aliquam. s"
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aG9zdGVsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60",
+      "category": "Hostels",
+      "title": "Primer Hostel",
+      "location": "Rosario",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id feugiat urna, ac facilisis ligula. In hac habitasse platea dictumst. Integer sed commodo purus. In porttitor in ante eu sagittis. Nullam ullamcorper fermentum odio sit amet pulvinar. Sed vestibulum, risus at efficitur sagittis, ipsum purus dignissim magna, at venenatis massa tellus quis tellus. Curabitur nulla sem, tempus sit amet malesuada at, commodo vitae tortor. Duis ac augue et arcu convallis gravida non ut velit. Pellentesque elementum lorem ut lorem faucibus gravida. Duis eu sem odio. Pellentesque venenatis, quam et porttitor dictum, leo urna finibus nunc, non bibendum justo ante facilisis. "
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1520277739336-7bf67edfa768?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      "category": "Hostels",
+      "title": "Segundo Hostel",
+      "location": "Cordoba",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ut condimentum turpis. Nulla aliquet justo quam, et sodales justo molestie quis. In bibendum fermentum lectus vel finibus. Sed a ipsum placerat, dapibus justo vitae, suscipit lorem. Etiam non egestas nisl. Donec mollis dapibus velit, sit amet bibendum ligula. Duis accumsan pulvinar iaculis. Maecenas metus metus, dapibus sit amet tellus quis, efficitur pharetra dui. Vivamus fermentum commodo erat, sed cursus ante elementum lacinia. Praesent congue, dolor at consectetur consectetur, magna metus molestie eros, eu pulvinar mi arcu et felis. Mauris elementum purus lacus, sed mattis libero ultrices id. Vestibulum ultrices purus. "
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1600786288830-9f5d4bf1d516?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Ym5ifGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60",
+      "category": "bnb",
+      "title": "Primer BnB",
+      "location": "Catamarca",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus consequat aliquam dapibus. Praesent et turpis erat. Integer in erat eget orci hendrerit sollicitudin sed et nibh. Nulla egestas turpis ac risus venenatis, molestie vehicula odio finibus. Sed fringilla nisi ac lacus molestie pellentesque. Sed tempus rutrum lectus vel aliquam. Quisque luctus erat ac ipsum pulvinar volutpat. Fusce vel lacus sit amet ex rhoncus consequat a non ex. Sed eu finibus eros. Maecenas a elit vitae neque dapibus faucibus. Aenean orci lorem, rutrum ut vulputate eu, sodales sed nisi. Ut accumsan nibh vitae neque pellentesque iaculis. Pellentesque vehicula nulla massa, mollis. "
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1595978039051-29c55ea43051?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGJuYnxlbnwwfDB8MHx8&auto=format&fit=crop&w=500&q=60",
+      "category": "bnb",
+      "title": "Segundo BnB",
+      "location": "Misiones",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque malesuada urna eu tortor mattis, a euismod nisl dictum. Etiam dignissim diam in efficitur bibendum. Vestibulum dapibus, mauris id ullamcorper pulvinar, nisi nulla pharetra augue, ac suscipit velit velit vel lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris in metus nisl. Maecenas luctus libero mauris, a suscipit est mattis id. Mauris quis vehicula nisl. Suspendisse semper nibh non nibh venenatis, a condimentum lorem congue. Aenean consequat ornare augue, id sagittis nisl accumsan a. Integer auctor ligula quis quam feugiat, in mollis magna eleifend. Nunc. "
+    }
+  ]
+}

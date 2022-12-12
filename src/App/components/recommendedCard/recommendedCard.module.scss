@@ -102,7 +102,7 @@ $radius: 10px;
                 .textRight {
                     text-align: right;
                     align-items: flex-end;
-                    width: 30%;
+                    width:25%;
                 }
             }
     
@@ -120,6 +120,23 @@ $radius: 10px;
                 > * {
                     font-size: 20px;
                     margin: 0px 6px;
+                }
+            }
+            
+            .checkIn{
+                font-style: italic;
+                display: flex;
+                justify-content: space-between;
+                gap:16px;
+            }
+
+            .bookingDates {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 4px;
+
+                .dateLabel{
+                    font-weight: 800;
                 }
             }
     

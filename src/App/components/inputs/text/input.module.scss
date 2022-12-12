@@ -1,8 +1,8 @@
 @import "../../../scss/colors";
 
 .inputContainer {
-    margin-top: 12px;
-    margin-bottom: 12px;
+    margin-top: 6px;
+    margin-bottom: 6px;
     display: flex;
     flex-direction: column;
 
@@ -53,7 +53,7 @@
         color: #FF0000;
 
         align-self: flex-end;
-        margin-top: 6px;
+        margin-top: 2px;
     }
 
     .showPassButton {

@@ -1,29 +1,20 @@
 import "./App.scss";
 
-import React, { useState } from "react";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+//React libraries
+import React from "react";
+import { RouterProvider } from "react-router-dom";
 import { route } from "./Routes";
 
-import {AuthContext, UsuarioContext} from "./services/context";
+//Cookies
+import { CookiesProvider } from 'react-cookie';
+import Cookies from "./Cookies";
 
 function App() {
-    const [usuario, setUsuario] = useState();
-    const [auth, setAuth] = useState();
-    
-    const handleUsuario = usuario => {
-        setUsuario(usuario)
-    }
-
-    const handleAuth = auth => {
-        setAuth(auth)
-    }
 
     return (
-        <UsuarioContext.Provider value={ {usuario, handleUsuario} }>
-            <AuthContext.Provider value={ {auth, handleAuth} }>
-                <RouterProvider router={route} />  
-            </AuthContext.Provider>
-        </UsuarioContext.Provider>
+        <CookiesProvider>
+            <RouterProvider router={route} />  
+        </CookiesProvider>
     );
 }
 
