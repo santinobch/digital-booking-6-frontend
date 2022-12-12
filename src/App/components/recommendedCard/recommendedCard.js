@@ -36,7 +36,7 @@ export default function RecommendedCard({
   }
 
   return (
-    <div className={styles.card}>
+    <div className={styles.card} data-testid="recommendedCard">
       
       <img className={styles.favoritoImg} src={heart} alt=""></img>
 

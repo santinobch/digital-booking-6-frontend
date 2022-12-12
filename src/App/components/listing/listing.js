@@ -22,7 +22,7 @@ const Listing = ({ loading, hospedajes, error, bookings }) => {
   } 
 
   return (
-    <section className="listingSection">
+    <section className="listingSection" data-testid="listSection">
       <h2>{!bookings ? "Recomendaciones" : null}</h2>
       <div className="listingGrid">
         {error ? (
