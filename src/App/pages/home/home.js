@@ -12,6 +12,7 @@ export default function Home() {
   const [filtros, setFiltros] = useState({ category: "" });
   const [hospedajes, setHospedajes] = useState([]); 
   const [cookies, setCookie, removeCookie] = useCookies();
+  const [loading, setLoading] = useState(false)
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -19,9 +20,11 @@ export default function Home() {
     getProducts(filtros)
       .then((data) => {
         setHospedajes(data);
+        setLoading(false)
       })
       .catch((error) => {
         setError(error.message);
+        setLoading(false)
       });
   }, [filtros]);
 
@@ -31,9 +34,9 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <Search onChange={setFiltros} />
+      <Search onChange={setFiltros} setLoading={setLoading} />
       <Categories onCategorySeleccionada={setFiltros} />
-      <Listing filtros={filtros} error={error} hospedajes={hospedajes} />
+      <Listing loading={loading} filtros={filtros} error={error} hospedajes={hospedajes} />
     </main>
   );
 }

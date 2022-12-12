@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const DATE_FORMAT = "YYYY-MM-DD";
 
-const Search = ({ onChange }) => {
+const Search = ({ onChange, setLoading }) => {
   const [inputValue, setInputValue] = useState({
     ciudad: "",
     category: "",
@@ -21,6 +21,7 @@ const Search = ({ onChange }) => {
 
   function handleSubmit(evt) {
     evt.preventDefault();
+    setLoading(true)
     const { fecha = [], ciudad } = inputValue;
     const [fechaInicio, fechaFin] = fecha;
 
