@@ -46,9 +46,7 @@ export default function DetalleBooking({ arrivalTime, auth, product, fechas, usu
         <div className={styles.inputContainer}>
           <div className={styles.detalleHeader}>
             <h3 className={styles.title}>Detalle de la reserva</h3>
-            <div className={styles.errorDiv}>
-              <p>{validations}</p>
-            </div>
+            
           </div>
 
           <div className={styles.tabletContainer}>
@@ -77,25 +75,22 @@ export default function DetalleBooking({ arrivalTime, auth, product, fechas, usu
                 <p>
                   {product.ciudadNombre}, {product.ciudadPais}
                 </p>
-              </div>
-                          
+              </div>                          
                   <hr />
-
                   <div className={styles.dateInput}>
                       <p>Check in</p>
                       <p className={styles.date}>{fechas.fechaCheckIn}</p>
                   </div>
-
                   <hr />
-
                   <div className={styles.dateInput}>
                       <p>Check out</p>
                       <p className={styles.date}>{fechas.fechaCheckOut}</p>
                   </div>
-
                   <hr />
-
                   <Button styleBtn="dark" onClick={handleConfirmarBooking}>Confirmar reserva</Button>
+                <div className={styles.errorDiv}>
+                  <p>{validations}</p>
+                </div>
               </div>              
           </div>          
       </div>
