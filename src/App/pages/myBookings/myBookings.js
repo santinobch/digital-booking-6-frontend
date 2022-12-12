@@ -20,6 +20,7 @@ export default function MyBookings() {
     useEffect(() => {
         getBookingsByUser(cookie.auth, idUser)        
             .then((response) => {
+                console.log(response);
                 let idArray = response.map(e => e.idProducto)
                 let products = idArray.map(e => getProduct(e))
                 Promise.all(products).then((data) => {

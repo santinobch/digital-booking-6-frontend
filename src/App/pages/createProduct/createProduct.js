@@ -29,6 +29,7 @@ export default function CreateProduct() {
     const { jwt: token } = cookie.auth;
     const [selectCity, setSelectCity] = useState({});
     const [selectFeature, setSelectFeature] = useState({});
+    const [imageInputs, setImageInputs] = useState([{urlImagen: ''}])
     const [validations, setValidations] = useState({
         'titulo': '',
         'idCategoria': '',
@@ -37,8 +38,26 @@ export default function CreateProduct() {
         'normasDeCasa': '',
         'saludSeguridad': '',
         'politicaCancelacion': '',
-        'urlImagen': ''
+        'imagenes': ''
     })
+
+    const handleAddImage = () => {
+        setImageInputs([...imageInputs, {urlImagen: ''}])
+    }
+
+    const handleRemoveImage = (idx) => {
+        let newFormValues = [...imageInputs];
+        console.log(newFormValues[idx]);
+        newFormValues.splice(idx, 1);
+        console.log(newFormValues);
+        setImageInputs(newFormValues)
+    }
+
+    const handleUrlChange = (i,e) => {
+        let newFormValues = [...imageInputs];
+        newFormValues[i].urlImagen = e.target.value;
+        setImageInputs(newFormValues)
+    }
     
     const navigate = useNavigate();
     const [errors, setErrors] = useState(null);
@@ -47,7 +66,8 @@ export default function CreateProduct() {
 
     const validateAll = (values) => {
         console.log(values);
-        const { titulo, idCategoria, idCiudad, direccion, descripcion, normasDeCasa, saludSeguridad, politicaCancelacion, urlImagen } = values
+        const { titulo, idCategoria, idCiudad, direccion, descripcion, normasDeCasa, saludSeguridad, politicaCancelacion, imagenes } = values
+        console.log(imagenes);
         let isValid = true
         let validations={}       
     
@@ -91,8 +111,12 @@ export default function CreateProduct() {
             isValid = false
         }
 
-        if(!urlImagen){
-            validations.urlImagen = "Debe agregar por lo menos una imágen"
+        if(imagenes.length===1){         
+            console.log(imagenes.length);
+            validations.imagenes = "Debe agregar por lo menos una imágen"
+            isValid = false
+        } else if (imagenes.includes('')){
+            validations.imagenes = "Las URL de las imagenes no deben estar vacías"
             isValid = false
         }
    
@@ -126,9 +150,12 @@ export default function CreateProduct() {
         const values = Object.fromEntries(formData.entries());
 
         values.idCiudad = selectCity.value ? parseInt(selectCity.value) : ""
+        values.imagenes = imageInputs.map(e => e.urlImagen)
 
+        console.log(imageInputs);
 
         const isValid = validateAll(values)
+        console.log(isValid);
         if(!isValid){
             return false
         }
@@ -137,21 +164,15 @@ export default function CreateProduct() {
         if (token) {
             const data = {
                 ...values,
-                idCategoria: parseInt(values.idCategoria),
-                imagenes: [values.imagenes],
+                idCategoria: parseInt(values.idCategoria),               
                 caracteristicas: selectFeature.map((feature) => feature.value),
             };
             createProduct(data, token)
                 .then((_response) => {
-                navigate("/succesfull?page=create-product");
+                    navigate("/succesfull?page=create-product");
                 })
                 .catch((err) => console.error(err));
         }
-    }
-
-    function handleKeyUp(e) {
-        const { name } = e.target;
-        setErrors({ ...errors, [name]: "" });
     }
 
     const {
@@ -163,7 +184,7 @@ export default function CreateProduct() {
         normasDeCasa: normasVal, 
         saludSeguridad: saludVal, 
         politicaCancelacion: cancelVal, 
-        urlImagen: imgVal
+        imagenes: imgVal
     } = validations
 
     return (
@@ -181,7 +202,6 @@ export default function CreateProduct() {
                                 name="titulo"
                                 placeholder="Hermirage Hotel"
                                 subLabel={tituloVal}
-                                onKeyUp={handleKeyUp}
                                 error={!!errors?.titulo}
                                 />
                             <p style={styleMessageError}>{errors?.titulo}</p>
@@ -205,7 +225,6 @@ export default function CreateProduct() {
                                 name="direccion"
                                 subLabel={dirVal}
                                 type="text"
-                                onKeyUp={handleKeyUp}
                                 error={!!errors?.descripcion}
                                 />
                         </div>
@@ -221,7 +240,6 @@ export default function CreateProduct() {
                             label="Descripción" 
                             placeholder="Escriba aquí" 
                             name="descripcion"
-                            onKeyUp={handleKeyUp} 
                             subLabel={descVal}
                             error={!!errors?.saludSeguridad}/>
                     </div>
@@ -250,7 +268,6 @@ export default function CreateProduct() {
                             label="Descripción" 
                             placeholder="Escriba aquí" 
                             name="normasDeCasa"
-                            onKeyUp={handleKeyUp} 
                             subLabel={normasVal}
                             error={!!errors?.normasDeCasa}/>
                         </div>
@@ -260,7 +277,6 @@ export default function CreateProduct() {
                             label="Descripción" 
                             placeholder="Escriba aquí" 
                             name="saludSeguridad"
-                            onKeyUp={handleKeyUp} 
                             subLabel={saludVal}
                             error={!!errors?.saludSeguridad}/>
                         </div>
@@ -270,22 +286,27 @@ export default function CreateProduct() {
                             label="Descripción"
                             placeholder="Escriba aquí"
                             name="politicaCancelacion"
-                            onKeyUp={handleKeyUp}
                             subLabel={cancelVal}
                             error={!!errors?.politicaCancelacion}/>
                         </div>
                     </div>
 
                     <h4>Cargar imágenes</h4>
-                    
-                    <div className={styles.flexRow + ' ' + styles.greyContainer}>
-                        <Input placeholder="Escriba la URL de su imagen"
-                        name="urlImagen"
-                        type="text"
-                        onKeyUp={handleKeyUp}
-                        subLabel={imgVal}
-                        error={!!errors?.urlImagen}/>
-                        <button className={styles.plusButton}>+</button>
+
+                    <div className={styles.flexColumn + ' ' + styles.greyContainer}>
+                    {imageInputs.map((e, idx) => (
+                        <div className={styles.flexRow}>
+                            <Input onChange={e => handleUrlChange(idx, e)} 
+                                placeholder="Escriba la URL de su imagen"
+                                type="text"
+                                value={e.urlImagen || ""}
+                                error={!!errors?.urlImagen}/>
+                                {idx === 0 ? 
+                            <button type="button" className={styles.plusButton} onClick={handleAddImage}>+</button>
+                            : <button type="button" className={styles.plusButton} onClick={() => handleRemoveImage(idx)}>-</button>}
+                        </div>
+                    ))}
+                    <label className={styles.subLabel}> {imgVal}</label>                    
                     </div>
                 </div>
 

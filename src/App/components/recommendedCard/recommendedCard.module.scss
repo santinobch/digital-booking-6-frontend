@@ -126,14 +126,14 @@ $radius: 10px;
             .checkIn{
                 font-style: italic;
                 display: flex;
-                justify-content: flex-end;
+                justify-content: space-between;
                 gap:16px;
             }
 
             .bookingDates {
                 display: flex;
                 justify-content: space-between;
-                margin-top: 8px;
+                margin-top: 4px;
 
                 .dateLabel{
                     font-weight: 800;
