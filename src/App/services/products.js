@@ -20,12 +20,6 @@ export function getProduct(id){
     return fetch(`${config.API_URL}/products/${id}`).then(response => response.json());
 }
 
-export function getRandomProducts() {
-    return fetch(`${config.API_URL}/products/random`).then((respuesta) =>
-        respuesta.json()
-    );
-}
-
 export function createProduct(data, token) {
 
     const requestOptions = {

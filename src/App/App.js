@@ -13,7 +13,6 @@ function App() {
 
     return (
         <CookiesProvider>
-            {/* <Cookies></Cookies> */}
             <RouterProvider router={route} />  
         </CookiesProvider>
     );
