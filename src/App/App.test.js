@@ -58,14 +58,12 @@ test('Getting user data', async () => {
     //Users Service
     const response = await getLoggedUser(authCookie, setUserCookie);
 
-    console.log(response.data);
-
     const model = new UsuarioModel();
     standardTest(response.data, model);
 });
 
 
-test('Getting product for testing', async () => {
+test('Getting product', async () => {
 
     //Product service
     await getProduct(1).then(
@@ -80,32 +78,17 @@ test('Getting product for testing', async () => {
 });
 
 
-// test('Testing Booking service', () => {
+test('Getting bookings by user', () => {
 
-//     //Booking service
-//     getBookings(1).then(
-//         data => {
-//             const model = new BookingModel();
-
-//             standardTest(data, model);
-//         }
-//     )
-
-//     getBookingsByUser(authCookie, userCookie.id).then(
-//         data => {
+    getBookingsByUser(authCookie, userCookie.id).then(
+        data => {
             
-//             const model = new BookingModel();
-//             standardTest(data, model);
-//         }
-//     )
-
-//     postBooking(authCookie, userCookie, product, fechas).then(
-//         data => {
-//             const model = new BookingModel();
-
-//             standardTest(data, model);
-//         }
-//     )
-// });
+            const model = new BookingModel();
+            data.forEach(d => {
+                standardTest(d, model);
+            })
+        }
+    )
+});
 
 
