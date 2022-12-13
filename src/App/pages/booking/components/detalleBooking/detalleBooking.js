@@ -12,6 +12,7 @@ import { FaExclamationCircle } from "react-icons/fa";
 export default function DetalleBooking({ arrivalTime, auth, product, fechas, usuario }) {
   const [validations, setValidations] = useState('')
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false)
 
   const validate = e => {
     let isValid = true
@@ -30,16 +31,18 @@ export default function DetalleBooking({ arrivalTime, auth, product, fechas, usu
     if(!isValid){
       return false
     }
+    setLoading(true)
 
     postBooking(arrivalTime, auth, usuario, product, fechas).then((status) => {
       if (status > 200 && status < 300) {
         navigate("/succesfull?page=reserva-exitosa");
       }
+      setLoading(false)
     });
   };
 
   if (product.length === 0) {
-    return <SpinnerLoader />;
+    return 
   } else {
     return (
       <>
@@ -87,7 +90,12 @@ export default function DetalleBooking({ arrivalTime, auth, product, fechas, usu
                       <p className={styles.date}>{fechas.fechaCheckOut}</p>
                   </div>
                   <hr />
+                  {!loading && 
                   <Button styleBtn="dark" onClick={handleConfirmarBooking}>Confirmar reserva</Button>
+                  }
+                  {loading && 
+                    <SpinnerLoader />
+                  }
                 <div className={styles.errorDiv}>
                   <p>{validations}</p>
                 </div>

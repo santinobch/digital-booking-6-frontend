@@ -35,7 +35,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <Search onChange={setFiltros} setLoading={setLoading} />
-      <Categories onCategorySeleccionada={setFiltros} />
+      <Categories onCategorySeleccionada={setFiltros} setLoading={setLoading} />
       <Listing loading={loading} filtros={filtros} error={error} hospedajes={hospedajes} />
     </main>
   );

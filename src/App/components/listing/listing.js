@@ -8,11 +8,13 @@ import SpinnerLoader from "../spinnerLoader/spinnerLoader";
 
 const Listing = ({ loading, hospedajes, error, bookings }) => {
 
+  console.log(hospedajes);
+
   if (hospedajes.length === 0 || loading) {
     return <SpinnerLoader />;
   }
 
-  if(hospedajes.code === "NF-202" || hospedajes.code === "NF-205"){
+  if(hospedajes.code === "NF-202" || hospedajes.code === "NF-203" || hospedajes.code === "NF-205"){
     return (
       <div className="notFound">
         <img src={notFound} alt='No bookings'/>

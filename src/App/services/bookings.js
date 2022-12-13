@@ -18,7 +18,7 @@ export function postBooking(arrivalTime, auth, user, product, fechas){
         body: JSON.stringify({ 
             username:user.username,
             idProducto:product.idProducto,
-            hora: `${arrivalTime}:00`,
+            hora: `${arrivalTime ? arrivalTime : "10:00"}:00`,
             fechaDesde: fechaDesde,
             fechaHasta: fechaHasta
         })

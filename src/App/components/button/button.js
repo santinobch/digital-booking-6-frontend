@@ -13,7 +13,6 @@ export default function Button(props) {
       break;
 
     default:
-      console.warn("Invalid style");
       choosenStyle = styles.light;
       break;
   }
