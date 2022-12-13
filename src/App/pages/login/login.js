@@ -38,7 +38,7 @@ const Login = () => {
         }
 
         if (!password) {
-            validations.password = 'El email es obligatorio'
+            validations.password = 'Por favor, ingrese su contraseña'
             isValid = false
         }
     

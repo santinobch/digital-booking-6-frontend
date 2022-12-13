@@ -42,7 +42,7 @@ const Register = () => {
     const [cookie, setCookie] = useCookies();
 
     const validateAll = () => {
-        const { name, username, surname, email, password } = registerData
+        const { name, username, surname, email, password, passwordConfirm } = registerData
         const validations = {}
         let isValid = true
     
@@ -67,7 +67,12 @@ const Register = () => {
         }
 
         if (!password) {
-            validations.password = 'El email es obligatorio'
+            validations.password = 'La contraseña es obligatoria'
+            isValid = false
+        }
+
+        if(password && !passwordConfirm){
+            validations.passwordConfirm = 'Por favor, confirme su contraseña'
             isValid = false
         }
     
