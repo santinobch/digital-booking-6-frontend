@@ -21,10 +21,12 @@ const UserInfo = ({section, handleLogout, setOpen}) => {
     if (cookie.user !== undefined) {
         return (
             <div className={section === "drawer" ? styles.userLoggedDrawer : styles.userLoggedHeader}>
-                <div className={styles.adminContainer}>
+                {cookie.user.rol === "Administrador" ?                  
+                    <div className={styles.adminContainer}>
                     <Link to="/createProduct">Administración</Link>
                     <div className={styles.verticalRule}></div>
-                </div>
+                    </div>                  
+                : null}
                 <div className={styles.avatar}>
                     <img src={avatar} alt = "Avatar usuario"></img>
                 </div>

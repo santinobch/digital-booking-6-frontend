@@ -5,7 +5,7 @@ import SpinnerLoader from "../spinnerLoader/spinnerLoader";
 import { useState, useEffect } from "react";
 import { getCategories } from "../../services/categories";
 
-const Categories = ({ onCategorySeleccionada }) => {
+const Categories = ({ onCategorySeleccionada, setLoading }) => {
 
   const [categories, setCategories] = useState();
 
@@ -27,7 +27,10 @@ const Categories = ({ onCategorySeleccionada }) => {
                         <Card
                         key={item.titulo}
                         {...item}
-                        onClick={() => onCategorySeleccionada({ category: item.id })}
+                        onClick={() => {
+                          setLoading(true)
+                          onCategorySeleccionada({ category: item.id })   
+                        }}
                         />
                     ))}
                 </section>

@@ -47,6 +47,7 @@ export default function Llegada({setArrivalTime}) {
                 classNamePrefix="selectBooking"
                 placeholder="Seleccionar hora de llegada"
                 name="caracteristicas"
+                defaultValue={options[10]}
                 options={options}
                 onChange={handleTimeSelect}               
             />

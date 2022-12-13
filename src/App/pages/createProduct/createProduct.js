@@ -14,6 +14,7 @@ import { createProduct } from "../../services/products";
 import Select from "react-select";
 import { getCategories } from "../../services/categories";
 import { getFeatures } from "../../services/features";
+import SpinnerLoader from "../../components/spinnerLoader/spinnerLoader";
 
 //Services
 const styleMessageError = {
@@ -29,15 +30,16 @@ export default function CreateProduct() {
     const { jwt: token } = cookie.auth;
     const [selectCity, setSelectCity] = useState({});
     const [selectFeature, setSelectFeature] = useState({});
+    const [loading, setLoading] = useState(false)
     const [imageInputs, setImageInputs] = useState([{urlImagen: ''}])
     const [validations, setValidations] = useState({
         'titulo': '',
         'idCategoria': '',
         'descripcion': '',
         'caracteristicas': '',
-        'normasDeCasa': '',
-        'saludSeguridad': '',
-        'politicaCancelacion': '',
+        'houseRulesPolicy': '',
+        'healthAndSecurityPolicy': '',
+        'cancellationPolicy': '',
         'imagenes': ''
     })
 
@@ -65,9 +67,7 @@ export default function CreateProduct() {
     const [categories, setCategories] = useState();
 
     const validateAll = (values) => {
-        console.log(values);
-        const { titulo, idCategoria, idCiudad, direccion, descripcion, normasDeCasa, saludSeguridad, politicaCancelacion, imagenes } = values
-        console.log(imagenes);
+        const { titulo, idCategoria, idCiudad, direccion, descripcion, houseRulesPolicy, healthAndSecurityPolicy, cancellationPolicy, imagenes } = values
         let isValid = true
         let validations={}       
     
@@ -96,23 +96,22 @@ export default function CreateProduct() {
             isValid = false
         }
 
-        if (!normasDeCasa) {
-            validations.normasDeCasa = 'La normas no deben estar vacías'
+        if (!houseRulesPolicy) {
+            validations.houseRulesPolicy = 'La normas no deben estar vacías'
             isValid = false
         }
 
-        if (!saludSeguridad) {
-            validations.saludSeguridad = 'Las normas de seguridad son obligatorias'
+        if (!healthAndSecurityPolicy) {
+            validations.healthAndSecurityPolicy = 'Las normas de seguridad son obligatorias'
             isValid = false
         }
 
-        if (!politicaCancelacion) {
-            validations.politicaCancelacion = 'Las políticas de cancelación no deben estar vacías'
+        if (!cancellationPolicy) {
+            validations.cancellationPolicy = 'Las políticas de cancelación no deben estar vacías'
             isValid = false
         }
 
-        if(imagenes.length===1){         
-            console.log(imagenes.length);
+        if(imagenes.length===1 && imagenes.includes('')){
             validations.imagenes = "Debe agregar por lo menos una imágen"
             isValid = false
         } else if (imagenes.includes('')){
@@ -146,17 +145,16 @@ export default function CreateProduct() {
 
     function handleSubmit(e) {
         e.preventDefault();
+        setLoading(true)
         const formData = new FormData(e.target);
         const values = Object.fromEntries(formData.entries());
 
         values.idCiudad = selectCity.value ? parseInt(selectCity.value) : ""
         values.imagenes = imageInputs.map(e => e.urlImagen)
 
-        console.log(imageInputs);
-
         const isValid = validateAll(values)
-        console.log(isValid);
         if(!isValid){
+            setLoading(false)
             return false
         }
 
@@ -169,9 +167,13 @@ export default function CreateProduct() {
             };
             createProduct(data, token)
                 .then((_response) => {
+                    setLoading(false)
                     navigate("/succesfull?page=create-product");
                 })
-                .catch((err) => console.error(err));
+                .catch((err) => {
+                    setLoading(false)
+                    console.error(err)
+                });
         }
     }
 
@@ -181,9 +183,9 @@ export default function CreateProduct() {
         descripcion: descVal,
         idCategoria: categoriaVal, 
         idCiudad: ciudadVal,
-        normasDeCasa: normasVal, 
-        saludSeguridad: saludVal, 
-        politicaCancelacion: cancelVal, 
+        houseRulesPolicy: normasVal, 
+        healthAndSecurityPolicy: saludVal, 
+        cancellationPolicy: cancelVal, 
         imagenes: imgVal
     } = validations
 
@@ -241,7 +243,7 @@ export default function CreateProduct() {
                             placeholder="Escriba aquí" 
                             name="descripcion"
                             subLabel={descVal}
-                            error={!!errors?.saludSeguridad}/>
+                            error={!!errors?.healthAndSecurityPolicy}/>
                     </div>
 
                     <div className={styles.atributosContainer}>
@@ -267,27 +269,27 @@ export default function CreateProduct() {
                             <Textarea 
                             label="Descripción" 
                             placeholder="Escriba aquí" 
-                            name="normasDeCasa"
+                            name="houseRulesPolicy"
                             subLabel={normasVal}
-                            error={!!errors?.normasDeCasa}/>
+                            error={!!errors?.houseRulesPolicy}/>
                         </div>
                         <div className={styles.politica}>
                             <h5>Salud y seguridad</h5>
                             <Textarea 
                             label="Descripción" 
                             placeholder="Escriba aquí" 
-                            name="saludSeguridad"
+                            name="healthAndSecurityPolicy"
                             subLabel={saludVal}
-                            error={!!errors?.saludSeguridad}/>
+                            error={!!errors?.healthAndSecurityPolicy}/>
                         </div>
                         <div className={styles.politica}>
                             <h5>Política de cancelación</h5>
                             <Textarea 
                             label="Descripción"
                             placeholder="Escriba aquí"
-                            name="politicaCancelacion"
+                            name="cancellationPolicy"
                             subLabel={cancelVal}
-                            error={!!errors?.politicaCancelacion}/>
+                            error={!!errors?.cancellationPolicy}/>
                         </div>
                     </div>
 
@@ -312,7 +314,12 @@ export default function CreateProduct() {
 
                 <br/>
                 <div className={styles.createButton}>
-                    <Button width="30%" type="submit" styleBtn="dark"> Crear </Button>
+                    {!loading &&
+                        <Button width="30%" type="submit" styleBtn="dark"> Crear </Button>
+                    }
+                    {loading && 
+                        <SpinnerLoader/>
+                    }
                 </div>
             </form>
         </main>
